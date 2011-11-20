@@ -1,5 +1,7 @@
 package com.airtransfer.web.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -11,9 +13,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @Component
 public abstract class AbstractController {
 
-    @ModelAttribute("baseUrl")
-    public String getBaseUrl() {
-        return "http://localhost:8080/airtransfer";
+    protected AbstractController() {
+        System.out.println("boo");
     }
 
+//    @Value("${serverUrl}")
+    private String baseUrl;
+
+    @ModelAttribute("baseUrl")
+    public String getBaseUrl() {
+        return "http://127.0.0.1:8080/airtransfer";
+    }
+
+    public void setBaseUrl(String baseUrl) {
+//        this.baseUrl = baseUrl;
+    }
 }

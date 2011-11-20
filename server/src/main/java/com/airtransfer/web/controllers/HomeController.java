@@ -15,29 +15,22 @@ import java.util.Map;
  */
 
 @Controller
-@RequestMapping(value = {"/", "/home"})
+@RequestMapping(value = {"", "/", "/home"})
 public class HomeController extends AbstractController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView processGet(ModelAndView view) {
-        logger.warn("processGet");
+        logger.warn("processGet;");
+        logger.warn("baseUrl=${};", getBaseUrl());
         view.setViewName("home");
         return view;
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView processPost(ModelAndView view) {
-        logger.warn("processPost");
-        view.setViewName("home");
-        Map<String, Object> map = view.getModel();
-        StringBuilder builder = new StringBuilder();
-
-        for (String key : map.keySet()) {
-            builder.append(map.get(key).toString()).append(',');
-        }
-        view.addObject("msg", builder.toString());
+        logger.debug("processPost;");
         return view;
     }
 

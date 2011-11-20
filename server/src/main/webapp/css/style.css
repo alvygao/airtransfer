@@ -31,21 +31,14 @@ input {
 	width: 1024px;
 	margin: 0 auto;
 	min-height: 100%;
-	/*height: auto !important;*/
 	height: 100%;
 }
 
-
-/* Header
------------------------------------------------------------------------------*/
 #header {
 	height: 150px;
 	background: #FFE680;
 }
 
-
-/* Middle
------------------------------------------------------------------------------*/
 #middle {
 	width: 100%;
 	padding: 0 0 100px;
@@ -68,9 +61,6 @@ input {
 	padding: 0 270px 0 270px;
 }
 
-
-/* Sidebar Left
------------------------------------------------------------------------------*/
 #sideLeft {
 	float: left;
 	width: 250px;
@@ -79,9 +69,6 @@ input {
 	background: #B5E3FF;
 }
 
-
-/* Sidebar Right
------------------------------------------------------------------------------*/
 #sideRight {
 	float: left;
 	margin-right: -3px;
@@ -91,13 +78,18 @@ input {
 	background: #FFACAA;
 }
 
-
-/* Footer
------------------------------------------------------------------------------*/
 #footer {
 	width: 1024px;
 	margin: -100px auto 0;
 	height: 100px;
 	background: #BFF08E;
 	position: relative;
+}
+
+#deLocale {
+    src:url(../images/de.png)
+}
+
+#deLocale {
+    src:url(../images/ru.png)
 }

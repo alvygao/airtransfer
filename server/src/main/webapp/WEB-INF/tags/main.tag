@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 
 <%@ attribute name="title" fragment="true" %>
 <%@ attribute name="head" fragment="true" %>
@@ -20,9 +21,9 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <base href="${baseUrl}"/>
-    <link rel="stylesheet" href="${baseUrl}/css/style.css" type="text/css" media="screen, projection"/>
+    <link rel="stylesheet" href="${baseUrl}/css/style.css" type="text/css"/>
     <script type="text/javascript">
-        var APP_BASE_URL = '${baseUrl}';
+        APP_BASE_URL = '${baseUrl}';
     </script>
     <script type="text/javascript" src="${baseUrl}/js/jquery.js"></script>
     <script type="text/javascript" src="${baseUrl}/js/json2.js"></script>
@@ -31,13 +32,13 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <strong>Header: <c:out value="${greetings}"/></strong>
+        <strong>Header:</strong>
         <jsp:invoke fragment="header"/>
     </div>
     <div id="middle">
         <div id="container">
             <div id="content">
-                <strong>Content:</strong>
+                <strong>Content: <f:message key="label.greetings"/></strong>
                 <jsp:invoke fragment="center"/>
             </div>
         </div>
