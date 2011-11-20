@@ -11,23 +11,36 @@
                            http://www.springframework.org/schema/mvc
                            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <import resource="classpath:conf/applicationContext.xml"/>
+    <!--<import resource="classpath:/conf/applicationContext.xml"/>-->
+
+<!--
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:conf/application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+-->
 
     <context:component-scan base-package="com.airtransfer.web.controllers"/>
 
     <mvc:annotation-driven/>
 
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+          p:defaultEncoding="windows-1251"
+          p:cacheSeconds="0" p:basenames="WEB-INF/i18n/messages"/>
+
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp"/>
 
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-          p:basenames="messages"/>
-
     <mvc:interceptors>
-        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="locale"/>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
     </mvc:interceptors>
 
-    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+          p:cookieName="locale" p:defaultLocale="en"/>
 
 </beans>
