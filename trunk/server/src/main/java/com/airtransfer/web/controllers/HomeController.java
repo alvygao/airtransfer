@@ -18,12 +18,10 @@ import java.util.Map;
 @RequestMapping(value = {"", "/", "/home"})
 public class HomeController extends AbstractController {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
-
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView processGet(ModelAndView view) {
         logger.warn("processGet;");
-        logger.warn("baseUrl=${};", getBaseUrl());
+        logger.warn("baseUrl=${};", getUrl());
         view.setViewName("home");
         return view;
     }

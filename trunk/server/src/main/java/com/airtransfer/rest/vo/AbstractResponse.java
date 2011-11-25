@@ -2,15 +2,13 @@ package com.airtransfer.rest.vo;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * User: Sergey
  * Date: 19.11.11 16:32
  */
-@XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
-public class AbstractResponse {
+public abstract class AbstractResponse {
 
     private Boolean success;
     private String message;

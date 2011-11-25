@@ -21,6 +21,7 @@ public class UserService {
     private UserVO vo;
 
     @GET
+    @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     public BaseResponse<UserVO> get() {
         User delegate = new User();
