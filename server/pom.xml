@@ -242,6 +242,22 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>1.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-xc</artifactId>
+            <version>1.9.0</version>
+        </dependency>
         <!--
                 <dependency>
                     <groupId>com.sun.jersey.contribs</groupId>
@@ -299,7 +315,7 @@
                     <stopKey>foo</stopKey>
                     <stopPort>9999</stopPort>
                     <!--<scanIntervalSeconds>10</scanIntervalSeconds>-->
-                    <contextPath>/airtransfer</contextPath>
+                    <contextPath>/</contextPath>
                 </configuration>
             </plugin>
             <plugin>

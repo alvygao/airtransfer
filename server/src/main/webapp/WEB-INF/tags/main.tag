@@ -20,14 +20,15 @@
     </title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
-    <base href="${baseUrl}"/>
-    <link rel="stylesheet" href="${baseUrl}/css/style.css" type="text/css"/>
+    <base href="${baseAppUrl}"/>
+    <link rel="stylesheet" href="${baseAppUrl}/css/style.css" type="text/css"/>
     <script type="text/javascript">
-        APP_BASE_URL = '${baseUrl}';
+        APP_BASE_URL = '${baseAppUrl}';
     </script>
-    <script type="text/javascript" src="${baseUrl}/js/jquery.js"></script>
-    <script type="text/javascript" src="${baseUrl}/js/json2.js"></script>
+    <script type="text/javascript" src="${baseAppUrl}/js/jquery.js"></script>
+    <script type="text/javascript" src="${baseAppUrl}/js/json2.js"></script>
     <jsp:invoke fragment="head"/>
+
 </head>
 <body>
 <div id="wrapper">

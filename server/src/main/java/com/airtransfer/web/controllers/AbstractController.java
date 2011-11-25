@@ -1,31 +1,45 @@
 package com.airtransfer.web.controllers;
 
+import com.sun.jersey.api.json.JSONConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ModelAttribute;
+
+import javax.annotation.Resource;
+import java.io.File;
 
 /**
  * User: Sergey
  * Date: 14.11.11 23:19
  */
 
-@Component
 public abstract class AbstractController {
 
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
+
     protected AbstractController() {
-        System.out.println("boo");
     }
 
-//    @Value("${serverUrl}")
     private String baseUrl;
 
-    @ModelAttribute("baseUrl")
+    @ModelAttribute("baseAppUrl")
     public String getBaseUrl() {
-        return "http://127.0.0.1:8080/airtransfer";
+        return baseUrl;
     }
 
+    @Value("${serverUrl}")
     public void setBaseUrl(String baseUrl) {
-//        this.baseUrl = baseUrl;
+        logger.error("setBaseUrl", baseUrl);
+        this.baseUrl = baseUrl;
     }
+
+
+    public String getUrl() {
+        logger.error("getBaseUrl", baseUrl);
+        return baseUrl;
+    }
+
 }

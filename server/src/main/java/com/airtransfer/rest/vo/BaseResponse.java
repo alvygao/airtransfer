@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlSeeAlso({AbstractVO.class, UserVO.class})
+@XmlSeeAlso({AbstractResponse.class, AbstractVO.class, UserVO.class})
 public class BaseResponse<VO extends AbstractVO> extends AbstractResponse {
 
     public BaseResponse() {

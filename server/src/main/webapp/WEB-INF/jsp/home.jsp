@@ -6,9 +6,9 @@
 
     </jsp:attribute>
     <jsp:attribute name="header">
-        <span><a href="${baseUrl}/html/?locale=ru">RU<img id="ruLocale"></a></span>
-        <span><a href="${baseUrl}/html/?locale=de">DE<img id="deLocale"></a></span>
-        <span><a href="${baseUrl}/html/?locale=en">EN<img id="enLocale"></a></span>
+        <span><a href="${baseAppUrl}/html/?locale=ru">RU<img id="ruLocale"></a></span>
+        <span><a href="${baseAppUrl}/html/?locale=de">DE<img id="deLocale"></a></span>
+        <span><a href="${baseAppUrl}/html/?locale=en">EN<img id="enLocale"></a></span>
     </jsp:attribute>
     <jsp:attribute name="center">
 
@@ -17,28 +17,29 @@
         <script type="text/javascript">
             function onPostClick(cmp) {
                 var data = JSON.stringify({data:{id:1231, name: 'TestUSer'}});
-                $.ajax({ type: 'POST',
+
+                $.ajax({  url: APP_BASE_URL + '/rest/user',
+                            type: 'POST',
                             data: data,
-                            dataType: "json",
-                            contentType: 'application/json; ',
-                            url: APP_BASE_URL + '/rest/user',
-                            success:  onSuccess
+                            dataType: 'json',
+                            contentType: 'application/json',
+                            success: onSuccess
                         });
                 return true;
             }
             function onGetClick(cmp) {
                 var data = JSON.stringify({data:{id:1231, name: 'TestUSer'}});
-                $.ajax({ type: 'GET',
+                $.ajax({  url: APP_BASE_URL + '/rest/user',
+                            type: 'GET',
                             data: data,
-                            dataType: "json",
-                            contentType: 'application/json; ',
-                            url: APP_BASE_URL + '/rest/user',
+                            dataType: 'json',
+                            contentType: 'application/json',
                             success: onSuccess
                         });
                 return true;
             }
             function onSuccess(response) {
-                alert(response);
+                alert(response.data.name);
             }
         </script>
     </jsp:attribute>
