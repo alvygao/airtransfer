@@ -22,6 +22,7 @@ public abstract class AbstractController {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     private String baseUrl;
+    private Boolean isAuthorised = false;
 
     @ModelAttribute("baseAppUrl")
     public String getBaseUrl() {
@@ -30,7 +31,11 @@ public abstract class AbstractController {
 
     @ModelAttribute("isAuthorized")
     public Boolean isAuthorized() {
-        return Boolean.TRUE;
+        if (isAuthorised) {
+            return !(isAuthorised = false);
+        } else {
+            return !(isAuthorised = true);
+        }
     }
 
     @Value("${serverUrl}")
