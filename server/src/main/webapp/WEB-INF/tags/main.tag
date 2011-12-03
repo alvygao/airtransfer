@@ -34,12 +34,13 @@
 <div id="wrapper">
     <div id="header">
         <strong>Header:</strong>
+        <strong>Content: <f:message key="label.greetings"/></strong>
         <jsp:invoke fragment="header"/>
     </div>
     <div id="middle">
         <div id="container">
             <div id="content">
-                <strong>Content: <f:message key="label.greetings"/></strong>
+
                 <jsp:invoke fragment="center"/>
             </div>
         </div>

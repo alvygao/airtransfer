@@ -21,6 +21,8 @@
           p:defaultEncoding="windows-1251"
           p:cacheSeconds="0" p:basenames="WEB-INF/i18n/messages"/>
 
+    <bean id="i18n" class="com.airtransfer.web.utils.I18nHelper" scope="session"/>
+
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp"/>

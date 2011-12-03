@@ -15,7 +15,7 @@ import java.util.Map;
  */
 
 @Controller
-@RequestMapping(value = {"", "/", "/home"})
+@RequestMapping({"", "/", "/home"})
 public class HomeController extends AbstractController {
 
     @RequestMapping(method = RequestMethod.GET)

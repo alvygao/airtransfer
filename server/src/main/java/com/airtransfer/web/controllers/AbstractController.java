@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.annotation.Resource;
+import java.awt.print.Book;
 import java.io.File;
 
 /**
@@ -20,14 +21,16 @@ public abstract class AbstractController {
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-    protected AbstractController() {
-    }
-
     private String baseUrl;
 
     @ModelAttribute("baseAppUrl")
     public String getBaseUrl() {
         return baseUrl;
+    }
+
+    @ModelAttribute("isAuthorized")
+    public Boolean isAuthorized() {
+        return Boolean.TRUE;
     }
 
     @Value("${serverUrl}")
