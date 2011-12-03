@@ -20,8 +20,13 @@
     </title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
+    
     <base href="${baseAppUrl}"/>
+    <link rel="stylesheet" href="${baseAppUrl}/css/reset.css" type="text/css"/>
     <link rel="stylesheet" href="${baseAppUrl}/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="${baseAppUrl}/css/menu.css" type="text/css"/>
+    <link rel="stylesheet" href="${baseAppUrl}/css/smoothness/jquery-ui.css" type="text/css"/>
+    <link rel="stylesheet" href="${baseAppUrl}/css/redmond/jquery.ui.selectmenu.css" type="text/css"/>
     <script type="text/javascript">
         APP_BASE_URL = '${baseAppUrl}';
     </script>
@@ -31,12 +36,84 @@
 
 </head>
 <body>
-<div id="wrapper">
-    <div id="header">
-        <strong>Header:</strong>
-        <strong>Content: <f:message key="label.greetings"/></strong>
-        <jsp:invoke fragment="header"/>
+<div id="vert_bg">	
+<div id="content_bg">	
+<div id="main_container">
+    <div id="menu">
+        <div class="bm_button">
+            <a href="javascript:void(0)" id="b_home"  class="highlight">
+                <div class="bm_left">
+                </div>
+                <div class="bm_body">					
+                        HOME					 
+                </div>
+                <div class="bm_right">
+                </div>
+            </a>
+        </div>
+
+        <div  class="bm_button">
+            <a href="javascript:void(0)" id="b_search"  class="highlight">
+                <div class="bm_left">
+                </div>
+                <div class="bm_body">					
+                        SEARCH					
+                </div>
+                <div class="bm_right">
+                </div>
+            </a> 
+        </div>
+
+        <div class="bm_button">
+            <a href="javascript:void(0)" id="b_about" class="highlight">
+                <div class="bm_left">
+                </div>
+                <div class="bm_body">					
+                        ABOUT US					
+                </div>
+                <div class="bm_right">
+                </div>
+            </a> 
+        </div>
+
+        <div class="bm_button">
+            <a href="javascript:void(0)" id="b_feed"  class="highlight">
+                <div class="bm_left">
+                </div>
+                <div class="bm_body">					
+                        FEED BACK					
+                </div>
+                <div class="bm_right">
+                </div>
+            </a> 
+        </div>
+
+        <div class="bm_button">
+            <a href="javascript:void(0)" id="b_adv"  class="highlight">
+                <div class="bm_left">
+                </div>
+                <div class="bm_body">					
+                        advertisement					
+                </div>
+                <div class="bm_right">
+                </div>
+            </a> 
+        </div>
+
+        <div class="bm_button f_right" >
+        <a href="javascript:void(0)"  class="highlight">
+            <div class="bm_left">
+            </div>
+            <div class="bm_body">					
+                    LOGOUT					
+            </div>
+            <div class="bm_right">
+            </div>
+        </a> 
+        </div>
+            <jsp:invoke fragment="header"/>
     </div>
+    
     <div id="middle">
         <div id="container">
             <div id="content">
@@ -44,19 +121,17 @@
                 <jsp:invoke fragment="center"/>
             </div>
         </div>
+        
         <div class="sidebar" id="sideLeft">
-            <strong>Left Sidebar:</strong>
             <jsp:invoke fragment="left"/>
         </div>
         <div class="sidebar" id="sideRight">
-            <strong>Right Sidebar:</strong>
             <jsp:invoke fragment="right"/>
         </div>
     </div>
 </div>
-<div id="footer">
-    <strong>Footer:</strong>
-    <jsp:invoke fragment="footer"/>
 </div>
+</div>
+
 </body>
 </html>

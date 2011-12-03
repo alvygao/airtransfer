@@ -3,68 +3,41 @@
 <tags:main>
 
     <jsp:attribute name="title">
-        <strong>Home page</strong>
+        Home page
     </jsp:attribute>
     <jsp:attribute name="header">
-        <span><a href="${baseAppUrl}/html/?locale=ru">RU<img id="ruLocale"></a></span>
+        <!-- <span><a href="${baseAppUrl}/html/?locale=ru">RU<img id="ruLocale"></a></span>
         <span><a href="${baseAppUrl}/html/?locale=de">DE<img id="deLocale"></a></span>
-        <span><a href="${baseAppUrl}/html/?locale=en">EN<img id="enLocale"></a></span>
+        <span><a href="${baseAppUrl}/html/?locale=en">EN<img id="enLocale"></a></span> -->
     </jsp:attribute>
     <jsp:attribute name="left">
-        <div>
-            <a href="${baseAppUrl}/html/profile"><f:message key="profile_page.link"/> </a>
-        </div>
-        <div>
-            <a href="${baseAppUrl}/html/profile/friends">friends </a>
-        </div>
-        <div>
-            <a href="${baseAppUrl}/html/profile/flights">flights</a>
-        </div>
-        <div>
-            <a href="${baseAppUrl}/html/profile/albums">albums</a>
-        </div>
-
     </jsp:attribute>
     <jsp:attribute name="center">
-
-        <input type="button" onclick="onPostClick(this);" value="Post">
-        <input type="button" onclick="onGetClick(this);" value="Get">
-        <script type="text/javascript">
-            function onPostClick(cmp) {
-                var data = JSON.stringify({data:{id:1231, name: 'TestUSer'}});
-
-                $.ajax({  url: APP_BASE_URL + '/rest/user',
-                            type: 'POST',
-                            data: data,
-                            dataType: 'json',
-                            contentType: 'application/json',
-                            success: onSuccess
-                        });
-                return true;
-            }
-            function onGetClick(cmp) {
-                var data = JSON.stringify({data:{id:1231, name: 'TestUSer'}});
-                $.ajax({  url: APP_BASE_URL + '/rest/user',
-                            type: 'GET',
-                            data: data,
-                            dataType: 'json',
-                            contentType: 'application/json',
-                            success: onSuccess
-                        });
-                return true;
-            }
-            function onSuccess(response) {
-                alert(response.data.name);
-            }
-        </script>
+        <div id="content_main_page">
+            <div id="login_block">
+                <form action="/login" method="POST" name="form_login" id="form_login">
+                    <div id="form_input" class="left">
+                        <input name="l_email" class="ui-selectmenu-status ui-corner-all ui-widget" style="background-color:#c5d5ef; font-size:14px; height:16px !important; width:230px; border: 1px solid white" type="text" /> <br/>
+                        <input name="l_password" class="ui-selectmenu-status ui-corner-all ui-widget" style="background-color:#c5d5ef; font-size:14px; height:16px !important; width:230px; border: 1px solid white" type="password" /><br>
+                        <input type="hidden" name="form" value="login" />
+                        <div id="info" style="padding-left: 0; padding-top : 15px; display : inline;">  
+                            <a href="javascript:void(0)"  class="signup_link">
+                                Registration
+                            </a>
+                            <a href="#" onclick="" class="forgot_link">
+                                Forgot Password?
+                            </a>											
+                        </div>
+                    </div>
+                    <div id="form_button" class="left">
+                        <input type="submit" name="enter_login" id="submit" value="" />
+                    </div>
+                </form>
+            </div>	
+            <div style="clear:both;"></div>
     </jsp:attribute>
     <jsp:attribute name="right">
-        <div>
-            <a href="${baseAppUrl}/html/registration"><f:message key="label.registration.link_title"/></a>
-        </div>
-        <div>
-            <a href="${baseAppUrl}/html/forgetpassword"><f:message key="forget_password.link.label"/></a>
-        </div>
+        
     </jsp:attribute>
 </tags:main>
 
