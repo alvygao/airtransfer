@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  * Date: 14.11.11 22:48
  */
 @Controller
-@RequestMapping("/registration")
+@RequestMapping("registration")
 public class RegistrationController extends AbstractController {
 
     @Autowired

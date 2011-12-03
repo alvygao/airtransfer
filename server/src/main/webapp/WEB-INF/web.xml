@@ -62,20 +62,6 @@
                 com.airtransfer.rest.vo.user;
             </param-value>
         </init-param>
-        <!--
-                <init-param>
-                    <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-                    <param-value>true</param-value>
-                </init-param>
-        -->
-
-
-        <!--
-                <init-param>
-                    <param-name>com.sun.jersey.config.property.packages</param-name>
-                    <param-value>com.airtransfer.rest.services</param-value>
-                </init-param>
-        -->
         <load-on-startup>2</load-on-startup>
     </servlet>
 

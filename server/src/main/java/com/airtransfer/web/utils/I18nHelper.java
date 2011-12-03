@@ -1,17 +1,23 @@
 package com.airtransfer.web.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
-import javax.print.DocFlavor;
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * User: Sergey
  * Date: 02.12.11 17:18
  */
 public class I18nHelper implements Map<String, String> {
+
+    private static final Logger logger = LoggerFactory.getLogger(I18nHelper.class);
 
     @Autowired
     protected ReloadableResourceBundleMessageSource messageSource;
@@ -34,8 +40,12 @@ public class I18nHelper implements Map<String, String> {
     }
 
     public String get(Object key) {
-        System.out.println("public String get(Object key) => " + messageSource.getMessage(String.valueOf(key), null, LocaleContextHolder.getLocale()));
-        return messageSource.getMessage(String.valueOf(key), null, LocaleContextHolder.getLocale());
+        String message = messageSource.getMessage(String.valueOf(key), null, LocaleContextHolder.getLocale());
+        if (message == null) {
+            message = "";
+            logger.warn("Can't find message for key " + key);
+        }
+        return message;
     }
 
     public String put(String key, String value) {
