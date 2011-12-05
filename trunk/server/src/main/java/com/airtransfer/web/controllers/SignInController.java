@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * Date: 3:36 PM 12/3/11
  */
 @Controller
-@RequestMapping("/sign")
+@RequestMapping("sign")
 public class SignInController extends AbstractController {
 
     @RequestMapping(method = RequestMethod.POST)

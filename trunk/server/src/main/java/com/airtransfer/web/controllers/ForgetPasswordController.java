@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Date: 02.12.11 17:57
  */
 @Controller()
-@RequestMapping("/forgetpassword")
+@RequestMapping("forgetpassword")
 public class ForgetPasswordController extends AbstractController {
 
     @RequestMapping(method = RequestMethod.GET)
