@@ -20,11 +20,7 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <base href="${baseAppUrl}"/>
-    <link rel="stylesheet" href="${baseAppUrl}/css/reset.css" type="text/css"/>
     <link rel="stylesheet" href="${baseAppUrl}/css/style.css" type="text/css"/>
-    <link rel="stylesheet" href="${baseAppUrl}/css/menu.css" type="text/css"/>
-    <link rel="stylesheet" href="${baseAppUrl}/css/smoothness/jquery-ui.css" type="text/css"/>
-    <link rel="stylesheet" href="${baseAppUrl}/css/redmond/jquery.ui.selectmenu.css" type="text/css"/>
     <script type="text/javascript">
         APP_BASE_URL = '${baseAppUrl}';
     </script>
@@ -33,28 +29,33 @@
     <jsp:invoke fragment="head"/>
 
 </head>
-<body>
-<div id="vert_bg">
-    <div id="content_bg">
-        <div id="main_container">
-            <jsp:include page="/WEB-INF/jsp/includes/menu.jsp"/>
-            <jsp:invoke fragment="header"/>
-            <div id="middle">
-                <div id="container">
-                    <jsp:invoke fragment="center"/>
-                </div>
+<body style=" height: 100%; background: url(/images/background.jpg) no-repeat center; background-color: #5c9ccc; ">
 
-                <div class="sidebar" id="sideLeft">
-                    <jsp:invoke fragment="left"/>
-                </div>
+<div style="  width: 100%; height: 20px;">
+    <jsp:invoke fragment="header"/>
+</div>
 
-                <div class="sidebar" id="sideRight">
-                    <jsp:invoke fragment="right"/>
-                </div>
-            </div>
+<div style=" height: 90%;">
+    <div id="leftBox" style="width: 20%; float: left; height:100%; ">
+        <b>left</b>
+        <jsp:invoke fragment="left"/>
+    </div>
+    <div id="centerBox" style="width: 60%; margin: 0; float: left; height:100%; ">
+        <jsp:include page="/WEB-INF/jsp/includes/menu.jsp"/>
+        <div style="width: 100%; height: 100%; ">
+            <jsp:invoke fragment="center"/>
         </div>
     </div>
+    <div id="rightBox" style="width: 20%; float: right; height:100%; ">
+        <b>right</b>
+        <jsp:invoke fragment="right"/>
+    </div>
 </div>
+
+<div style="  width: 100%; height: 40px;">
+    <jsp:invoke fragment="footer"/>
+</div>
+
 
 </body>
 </html>

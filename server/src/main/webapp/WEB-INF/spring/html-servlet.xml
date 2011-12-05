@@ -22,7 +22,7 @@
           p:cacheSeconds="0"
           p:basenames="WEB-INF/i18n/messages"/>
 
-    <bean id="i18n" class="com.airtransfer.web.utils.I18nHelper" scope="session"/>
+    <bean id="i18n" class="com.airtransfer.web.utils.I18nHelper" scope="request"/>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>

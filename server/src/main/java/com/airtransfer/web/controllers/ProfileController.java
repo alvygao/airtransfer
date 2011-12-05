@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Date: 03.12.11 11:27
  */
 @Controller
-@RequestMapping("/profile")
+@RequestMapping("profile")
 public class ProfileController extends AbstractController {
 
     @RequestMapping(method = RequestMethod.GET)

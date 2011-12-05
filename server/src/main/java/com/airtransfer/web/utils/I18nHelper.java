@@ -22,7 +22,6 @@ public class I18nHelper implements Map<String, String> {
     @Autowired
     protected ReloadableResourceBundleMessageSource messageSource;
 
-
     public int size() {
         return 0;
     }

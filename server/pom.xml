@@ -314,6 +314,7 @@
                 <configuration>
                     <stopKey>foo</stopKey>
                     <stopPort>9999</stopPort>
+                    <!--<jettyConfig-->
                     <!--<scanIntervalSeconds>10</scanIntervalSeconds>-->
                     <contextPath>/</contextPath>
                 </configuration>
