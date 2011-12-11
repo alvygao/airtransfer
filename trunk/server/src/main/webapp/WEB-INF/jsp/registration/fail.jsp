@@ -3,7 +3,7 @@
 <tags:main>
     <jsp:attribute name="center">
         <div>
-                ${warning}
+            ${warning}
         </div>
     </jsp:attribute>
 </tags:main>
