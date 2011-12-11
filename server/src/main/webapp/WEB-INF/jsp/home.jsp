@@ -4,22 +4,36 @@
 <tags:main>
 
     <jsp:attribute name="center">
-        <div style="width: 300px; height: 250px; margin-left: 300px; margin-top: 400px;">
-            <form action="${baseAppUrl}/html/singin">
-                <div align="left" style=" ">
-                    <label><input type="text"/></label>
-                    <input type="button" value="${i18n['label.registration.link_title']}"/>
-                </div>
-                <div align="left" style=" ">
-                    <label><input type="text"/></label>
-                </div>
-                <div align="left" style=" ">
-                    <span><a href="">${i18n['label.registration.link_title']}</a></span>
-                    <span><a href="">${i18n['forget_password.link.label']}</a></span>
-
-                </div>
-
-            </form>
+        <div class="cSlogans">
+            <div class="cSlogan">
+                ${i18n['label.main.slogan.find_airline_companion']}
+            </div>
+            <div class="cSlogan">
+                ${i18n['label.main.slogan.find_friend']}
+            </div>
+            <div class="cSlogan">
+                ${i18n['label.main.slogan.choose_fly']}
+            </div>
+        </div>
+        <div class="cClear"></div>
+        <div class="cMain">
+            <div class="cLoginForm">
+                <form action="" method="POST">
+                    <div class="cLoginField">
+                        <input type="text" name="email" value="" />
+                        <input type="password" name="pass" value="" />
+                        <a class="cRegistration jDialog" href="${baseUrl}/html/registration" title="${i18n['label.registration.link_title']}">
+                            ${i18n['label.main.login.registration_link']}
+                        </a>&nbsp;&nbsp;&nbsp;
+                        <a class="cForgotPassword jDialog" href="${baseUrl}/html/forgetpassword" title="${i18n['label.forgot_password.link_title']}">
+                            ${i18n['label.main.login.forgotPassword']}
+                        </a>
+                    </div>
+                    <div class="cLoginButton">
+                        <input type="button" value="${i18n['label.main.login.loginBtn']}" />
+                    </div>
+                </form>
+            </div>
         </div>
     </jsp:attribute>
 

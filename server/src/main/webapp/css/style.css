@@ -1,20 +1,294 @@
-html {
+@font-face {
+    font-family: "Gothic";
+    src: url("/css/font.eot");
+}
+@font-face {
+    font-family: "Gothic";
+    src: url("/css/font.ttf");
+}
+
+.cClear {
+    clear: both;
+}
+.cRight {
+    float: right;
+}
+.cLeft {
+    float: left;
+}
+
+html, body {
     height: 100%;
+    width: 100%;
+    background: #64A5D3 url('/images/body-background.png') left top repeat-x;
+    
+}
+
+#cContentainer {
+    position: relative;
+    width: 1256px;
+    
+    margin: 0 auto;
+    background: url('/images/content-background.png') left top no-repeat;
+}
+/****************************** HEADER *******************************/
+#cHeader {
+    position: relative;
+    width: 830px;
+    margin-left: 230px;
+    height: 150px;
+    padding-top: 20px;
+}
+
+#cHeader .cMenu {
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+
+#cHeader .cMenu .cButton {
+    float: left;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+#cHeader .cMenu .cButton.cRight {
+    float: right;
+}
+
+#cHeader .cMenu .cButton a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#cHeader .cMenu .cButton .cButtonBody {
+    background: url("/images/menu/bt-body.png") repeat-x scroll 0 -33px transparent;
+    float: left;
+    height: 26px;
+    min-width: 10px;
+    padding-top: 6px;
+}
+
+#cHeader .cMenu .cButton .cButtonLeft {
+    background: url("/images/menu/bt-left.png") no-repeat scroll 0 -33px transparent;
+    float: left;
+    height: 32px;
+    width: 10px;
+}
+
+#cHeader .cMenu .cButton .cButtonRight {
+    background: url("/images/menu/bt-right.png") repeat scroll 0 -33px transparent;
+    float: left;
+    height: 32px;
+    width: 10px;
+}
+
+#cHeader .cMenu .cButton .cButtonBody.cHover,
+#cHeader .cMenu .cButton .cButtonLeft.cHover,
+#cHeader .cMenu .cButton .cButtonRight.cHover{
+    background-position: 0px 0px;
+}
+
+#cHeader .cMenu .cLanguages {
+    position: absolute;
+    bottom: -3px;
+    right: 0px;
+    width: 100px;
+    height: 17px;
+}
+
+#cHeader .cMenu .cLanguages a {
     display: block;
+    text-decoration: none;
+    margin-left: 10px;
+    width: 25px;
+    height: 17px;
+    float: right;
 }
 
-* {
+#cHeader .cMenu .cLanguages a.cRu {
+    background: url('/images/lang-ru.png') left top no-repeat;
+}
+#cHeader .cMenu .cLanguages a.cEn {
+    background: url('/images/lang-en.png') left top no-repeat;
+}
+
+#cHeader .cLogoText {
+    position: relative;
+    width: 100%;
+    height: 67px;
+    padding-top: 30px;
+    margin-top: 3px;
+    background: url('/images/menu/menu-bg.png') left top repeat-x;
+}
+/****************************** CONTENT ******************************/
+#cContent {
+    position: relative;
+    float: left;
+    width: 830px;
+}
+
+#cContent .cSlogans {
+    position: relative;
+    float: right;
+}
+
+#cContent .cSlogans .cSlogan {
+    text-align: center;
+    width: 405px;
+    height: 37px;
+    font-family: Arial;
+    font-size: 24px;
+    color: #6190b8;
+    background: #bccfea;
+    margin-bottom: 7px;
+    border: solid 3px #e1eaf5;
+    border-radius: 10px;
+    padding-top: 8px;
+}
+
+#cContent .cMain {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    background: url('/images/main.png') right top no-repeat;
+    margin-top: -70px;
+}
+
+#cContent .cMain .cLoginForm {
+    position: absolute;
+    right: 25px;
+    top: 135px;
+    height: 120px;
+    width: 385px;
+}
+
+#cContent .cMain .cLoginForm .cLoginField input {
+    background-color: #C5D5EF;
+    border: 1px solid white;
+    font-size: 14px;
+    height: 16px;
+    width: 230px;
+    border-radius: 4px 4px 4px 4px;
+    display: block;
+    padding: 0.405em 1em;
+     margin-bottom: 10px;
+}
+
+#cContent .cMain .cLoginForm .cLoginField a {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#cContent .cMain .cLoginForm .cLoginField a.cRegistration {
+    color: #898F97;
+}
+#cContent .cMain .cLoginForm .cLoginField a.cForgotPassword {
+    color: #4673A7;
+}
+#cContent .cMain .cLoginForm .cLoginButton {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 95px;
+    height: 30px;
+}
+#cContent .cMain .cLoginForm .cLoginButton input[type=button] {
+    border: none;
+    background: url('/images/login-btn.png') left top no-repeat;
+    width: 94px;
+    height: 30px;
+    font-size: 16px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+/****************************** LEFT COLUMN ******************************/
+#cLeftBar {
+    position: relative;
+    float: left;
+    width: 230px;
+}
+
+#cLeftBar .cLogo {
+    width: 117px;
+    height: 114px;
+    background: url('/images/logo.png') left top no-repeat;
+    margin: -90px auto 0px auto;
+}
+
+/******************* DIALOG FROM ***********/
+.cRegistration {
+    height: 400px;
+}
+
+.cDialogForm {
+    margin-top: 5px;
+}
+
+.cDialogForm div  {
+    position: relative;
+    margin: 5px 5px 0px 10px;
+}
+.cDialogForm label {
+    display: block;
+    font-size: 14px;
+    color: #5f5f5f;
+}
+
+.cDialogForm input[type=password],
+.cDialogForm input[type=text]{
+    background-color: #a8b3bb;
+    border: 1px solid white;
+    border-radius: 4px 4px 4px 4px;
+    display: block;
+    font-size: 14px;
+    height: 16px;
+    margin-bottom: 10px;
+    padding: 0.405em 1em;
+    width: 230px;
+}
+
+.cDialogForm a.cSubmit{
+    background: url('/images/blue-btn-bg.png') left top repeat-x;
+    height: 24px;
+    border: solid 2px #ffffff;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 3px 15px 3px 15px;
+    text-decoration: none;
+}
+/******************************** FOOTER ********************************/
+#cFooter {
+    margin-top: -200px;
+    height: 397px;
+    background: url(/images/footer-background.png) left top no-repeat;
+}
+
+/******************************* JQUERY UI OVERWRITE ****************************/
+.ui-widget-header {
+    background: url("/images/grey-btn-bg.png") left top repeat-x;
+    border: medium none;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    padding: 0.2em 1em;
+}
+
+.ui-state-hover {
+    background: none;
+}
+
+.ui-dialog {
+    background: #c4d7ef;
+    border: solid 3px #ffffff;
     padding: 0px;
-    margin: 0px;
-}
-
-body {
-    /*
-        background: rgb(106, 175, 212);
-        color: #353535;
-    */
-}
-
-#main_container {
-    background: url(/images/background.jpg) no-repeat;
 }

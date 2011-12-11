@@ -1,29 +1,19 @@
-<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jstl/fmt" %>
-<tags:main>
-    <jsp:attribute name="center">
+<div id="cDialogForm" class="cRegistration cDialogForm">
+    <form action="${appBaseUrl}/html/registration" method="POST">
         <div>
-            <form action="${appBaseUrl}/html/registration" method="POST" style="width: 160px; height: 240px;">
-                <span>
-                    <label><f:message key="label.registration.form.emailTitle"/>
-                        <input type="text" name="email"></label>
-                </span>
-                <span>
-                    <label><f:message key="label.registration.form.password"/>
-                        <input type="text" name="password"></label>
-                </span>
-                <span>
-                    <label><f:message key="label.registration.form.password_repeat"/>
-                        <input type="text" name="password_repeat">
-                    </label>
-                </span>
-                <span>
-                    <label>
-                        <f:message key="label.registration.form.submit_btn" var="btn_text"/>
-                        <input type="submit" value="${btn_text}">
-                    </label>
-                </span>
-            </form>
+            <label for="cEmail">${i18n['label.registration.form.emailTitle']}</label>
+            <input id="cEmail" type="text" name="email">
         </div>
-    </jsp:attribute>
-</tags:main>
+        <div>
+            <label for="cPasswoed">${i18n['label.registration.form.password']}</label>
+            <input id="cPasswoed" type="password" name="password" />
+        </div>
+        <div>
+            <label for="cRepeatPassword">${i18n['label.registration.form.password_repeat']}</label>
+            <input id="cRepeatPassword" type="password" name="password_repeat" />
+        </div>
+        <div>
+            <a href="" class="cSubmit">${i18n['label.registration.form.submit_btn']}</a>
+        </div>
+    </form>
+</div>
