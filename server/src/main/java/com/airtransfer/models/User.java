@@ -1,15 +1,25 @@
 package com.airtransfer.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * User: Sergey
  * Date: 19.11.11 16:53
  */
-public class User extends AbstractEntity {
+@Entity
+@Table(name = "users")
+public class User extends BaseEntity {
 
-    private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "email")
     private String email;
+    @Column(name = "password")
     private String password;
+    @Column(name = "approved", columnDefinition = "BIT")
+    private Boolean approved = Boolean.FALSE;
 
     public User() {
     }
@@ -35,19 +45,19 @@ public class User extends AbstractEntity {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
     }
 }

@@ -221,7 +221,7 @@ html, body {
 
 /******************* DIALOG FROM ***********/
 .cRegistration {
-    height: 400px;
+    height: 600px;
 }
 
 .cDialogForm {
@@ -252,6 +252,17 @@ html, body {
 }
 
 .cDialogForm a.cSubmit{
+    background: url('/images/blue-btn-bg.png') left top repeat-x;
+    height: 24px;
+    border: solid 2px #ffffff;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 3px 15px 3px 15px;
+    text-decoration: none;
+}
+
+.cDialogForm input.cSubmit{
     background: url('/images/blue-btn-bg.png') left top repeat-x;
     height: 24px;
     border: solid 2px #ffffff;

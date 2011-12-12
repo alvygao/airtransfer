@@ -5,11 +5,15 @@ import com.airtransfer.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
+import java.util.Date;
 
 /**
  * User: Sergey
@@ -33,9 +37,12 @@ public class RegistrationController extends AbstractController {
             User user = userService.findUserByEmail(email);
             if (user != null) {
                 view.setViewName("registration/fail");
-                return view.addObject("warning", "User with email already exists");
+                return view.addObject("warning", "User with such email already exists");
             }
-            userService.create(new User(email, password));
+            final User newUser = new User(email, password);
+            newUser.setCreated(new Date());
+            userService.create(newUser);
+            view.addObject("warning", "User was created, please check your email for registration email");
             view.setViewName("registration/successful");
         } else {
             view.setViewName("registration/fail");
@@ -46,7 +53,20 @@ public class RegistrationController extends AbstractController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView processGet(HttpServletRequest request, ModelAndView view) {
         logger.debug("processGet;");
-        view.setViewName("registration");
+        view.setViewName("registration/registration");
+        return view;
+    }
+
+    @RequestMapping(value = "/authorize/{hash}", method = RequestMethod.GET)
+    public ModelAndView authorizeByHash(HttpServletRequest request, ModelAndView view, @PathVariable("hash") String hash) {
+        logger.debug("authorizeByHash; hash={}", hash);
+        if (userService.updateUserStatusByHash(hash)) {
+            view.addObject("warning", "User has been approved");
+            view.setViewName("registration/successful");
+        } else {
+            view.addObject("warning", "Can't find authentication request");
+            view.setViewName("redirect:/");
+        }
         return view;
     }
 
@@ -56,7 +76,6 @@ public class RegistrationController extends AbstractController {
             view.addObject("warning", "Invalid email");
             return false;
         }
-
         if (!StringUtils.hasText(password)) {
             view.addObject("warning", "Invalid password");
             return false;

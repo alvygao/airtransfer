@@ -19,7 +19,7 @@ public class SignInController extends AbstractController {
     public ModelAndView processGet(HttpServletRequest request, ModelAndView view) {
         String email = (String) request.getAttribute("email");
         String password = (String) request.getAttribute("password");
-        view.setViewName("home");
+        view.setViewName("registration/registration");
         return view;
     }
 
