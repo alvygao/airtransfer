@@ -12,6 +12,7 @@ $(document).ready(function(){
         })
     });
     
+/*
     $('.jDialog').click(function(){
         var url = this.href, title = this.title;
         var dialog = $('<div class="cDialog" style="display:none"></div>').appendTo('body');
@@ -32,4 +33,5 @@ $(document).ready(function(){
         );
         return false;
     });
+*/
 });

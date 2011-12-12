@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-
-<!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
@@ -19,7 +20,7 @@
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
-            scope="singleton"
+          scope="singleton"
           destroy-method="destroy">
         <property name="packagesToScan" value="com.airtransfer.models"/>
         <property name="dataSource" ref="dataSource"/>
@@ -27,18 +28,18 @@
             <props>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl}</prop>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                &lt;!&ndash;DEBUG_SQL&ndash;&gt;
+                <!--DEBUG_SQL-->
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                 <prop key="hibernate.use_sql_comments">${hibernate.sql_comments}</prop>
-                &lt;!&ndash;C3PO&ndash;&gt;
+                <!--C3PO-->
                 <prop key="hibernate.c3p0.timeout">${jdbc.pool.timeout}</prop>
                 <prop key="hibernate.c3p0.max_size">${jdbc.pool.max_size}</prop>
                 <prop key="hibernate.c3p0.min_size">${jdbc.pool.init_size}</prop>
-                <prop key="hibernate.c3p0.idle_test_period">${jdbc.pool.idle_test_period}</prop>
+                <prop key="hibernate.c3p0.idle_test_period">1</prop>
                 <prop key="hibernate.c3p0.max_statements">${jdbc.pool.max_statements}</prop>
-                <prop key="hibernate.c3p0.acquire_increment">${jdbc.pool .acquire_increment}</prop>
-                &lt;!&ndash;OPTIMIZATION&ndash;&gt;
+                <prop key="hibernate.c3p0.acquire_increment">1</prop>
+                <!--OPTIMIZATION-->
                 <prop key="hibernate.bytecode.provider">javassist</prop>
                 <prop key="hibernate.order_updates">${hibernate.order_updates}</prop>
                 <prop key="hibernate.generate_statistics">${hibernate.statistics}</prop>
@@ -48,5 +49,11 @@
         </property>
     </bean>
 
-    -->
+    <tx:annotation-driven/>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
 </beans>

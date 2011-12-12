@@ -1,5 +1,7 @@
 package com.airtransfer.services;
 
+import com.airtransfer.models.AuthenticationRequest;
+import com.airtransfer.models.ResetPasswordLink;
 import com.airtransfer.models.User;
 
 /**
@@ -8,8 +10,15 @@ import com.airtransfer.models.User;
  */
 public interface UserService {
 
-    public User findUserByEmail(String email);
+    User findUserByEmail(String email);
 
-    public User create(User user);
+    User create(User user);
 
+    AuthenticationRequest generateRequest(User user);
+
+    void createResetPasswordLink(User user);
+
+    ResetPasswordLink findResetPasswordLink(String uid);
+
+    boolean updateUserStatusByHash(String hash);
 }

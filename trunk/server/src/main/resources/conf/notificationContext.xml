@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath" value="/WEB-INF/i18n"/>
+    </bean>
+
+
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${smtp.server}"/>
+        <property name="username" value="${smtp.login}"/>
+        <property name="password" value="${smtp.password}"/>
+        <!--
+                <property name="javaMailProperties">
+                    <props>
+                        <prop key="mail.smtp.auth">true</prop>
+                        <prop key="mail.smtp.starttls.enable">true</prop>
+                    </props>
+                </property>
+        -->
+    </bean>
+
+</beans>
