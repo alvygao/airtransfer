@@ -13,7 +13,7 @@
             </div>
             <div>
                     <%--<a href="" class="cSubmit">${i18n['label.forgot_password.send_btn']}</a>--%>
-                <input type="submit" class="cSubmit">${i18n['label.forgot_password.send_btn']}</input>
+                <input type="submit" class="cSubmit"></input>
             </div>
         </form>
     </div>
