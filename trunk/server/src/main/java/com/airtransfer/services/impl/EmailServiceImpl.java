@@ -27,6 +27,7 @@ public class EmailServiceImpl extends BaseService implements EmailService {
     public void sendEmail(User user, Template template) {
         final Template processedMsg = templateEngine.getTemplate(template);
         SimpleMailMessage email = new SimpleMailMessage();
+        email.setFrom("noreply@j2eeblogger.ru");
         email.setSubject(template.getMessageType().getSubject());
         email.setTo(user.getEmail());
         email.setText(processedMsg.getBody());
