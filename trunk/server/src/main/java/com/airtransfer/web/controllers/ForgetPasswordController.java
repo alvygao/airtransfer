@@ -31,9 +31,10 @@ public class ForgetPasswordController extends AbstractController {
 
     @RequestMapping(value = "/reset/{hash}", method = RequestMethod.GET)
     public ModelAndView processResetPassword(ModelAndView view, @PathVariable(value = "hash") String hash) {
-        if (StringUtils.hasText(hash)) {
-            ResetPasswordLink link = userService.findResetPasswordLink(hash);
-            view.addObject("hideUid", link.getUid());
+        ResetPasswordLink link = userService.findResetPasswordLink(hash);
+        if (StringUtils.hasText(hash) && link != null) {
+            view.addObject("hiddenUid", link.getUid());
+            view.setViewName("forgetpassword/reset");
         } else {
             view.setViewName("home");
         }
@@ -42,13 +43,15 @@ public class ForgetPasswordController extends AbstractController {
 
     @RequestMapping(value = "/reset/{hash}", method = RequestMethod.POST)
     public ModelAndView updatePassword(HttpServletRequest request, ModelAndView view, @PathVariable(value = "hash") String hash) {
-        final String newPassword = (String) request.getAttribute("new_password");
-        final String newPassword2 = (String) request.getAttribute("new_password_again");
-        final String hiddenUid = (String) request.getAttribute("hiddenUid");
+        final String newPassword = request.getParameter("new_password");
+        final String newPassword2 = request.getParameter("new_password_again");
+        final String hiddenUid = request.getParameter("hiddenUid");
 
         if (validate(hash, hiddenUid, newPassword, newPassword2, view)) {
             ResetPasswordLink link = userService.findResetPasswordLink(hash);
-            view.addObject("hiddenUid", link.getUid());
+            userService.updateUserPasswordByLink(newPassword, link);
+            view.addObject("warning", "Password updated");
+            view.setViewName("forgetpassword/fail");
         } else {
             view.setViewName("home");
         }
@@ -57,17 +60,18 @@ public class ForgetPasswordController extends AbstractController {
 
     @RequestMapping(value = "/reset", method = RequestMethod.POST)
     public ModelAndView processResetPassword(HttpServletRequest request, ModelAndView view) {
-        String email = (String) request.getAttribute("email");
+        final String email = request.getParameter("email");
         if (email != null) {
             User user = userService.findUserByEmail(email);
-            if (user != null) {
+            if (user != null && user.getApproved()) {
                 userService.createResetPasswordLink(user);
                 view.addObject("warning", "Please, check your email box for new incoming message");
                 view.setViewName("forgetpassword/waitforemail");
+                return view;
             }
         }
         view.addObject("warning", "Invalid data");
-        view.setViewName("home");
+        view.setViewName("forgetpassword/fail");
         return view;
     }
 

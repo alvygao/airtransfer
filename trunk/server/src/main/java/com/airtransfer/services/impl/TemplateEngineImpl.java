@@ -7,6 +7,7 @@ import com.airtransfer.services.BaseService;
 import com.airtransfer.services.TemplateEngine;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 import org.springframework.ui.velocity.VelocityEngineUtils;
@@ -24,12 +25,17 @@ public class TemplateEngineImpl extends BaseService implements TemplateEngine {
     @Autowired
     protected VelocityEngineFactoryBean engineFactory;
 
+    @Value("${serverUrl}")
+    private String serverUrl;
+
+
     @SuppressWarnings("unchecked")
     public Template getTemplate(Template template) {
         try {
             VelocityEngine engine = engineFactory.getObject();
             final String path = getPath(template);
             final Map<String, String> model = template.getModel() != null ? template.getModel() : Collections.EMPTY_MAP;
+            model.put("URL", serverUrl);
             final String body = VelocityEngineUtils.mergeTemplateIntoString(engine, path, model);
             template.setBody(body);
         } catch (Throwable e) {
@@ -51,4 +57,5 @@ public class TemplateEngineImpl extends BaseService implements TemplateEngine {
 
         return builder.toString();
     }
+
 }
