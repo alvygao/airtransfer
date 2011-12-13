@@ -6,6 +6,7 @@ import com.airtransfer.services.BaseService;
 import com.airtransfer.services.EmailService;
 import com.airtransfer.services.TemplateEngine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.scheduling.annotation.Async;
@@ -19,9 +20,9 @@ import org.springframework.stereotype.Component;
 public class EmailServiceImpl extends BaseService implements EmailService {
 
     @Autowired
-    protected JavaMailSenderImpl mailSender;
+    private JavaMailSenderImpl mailSender;
     @Autowired
-    protected TemplateEngine templateEngine;
+    private TemplateEngine templateEngine;
 
     @Async
     public void sendEmail(User user, Template template) {

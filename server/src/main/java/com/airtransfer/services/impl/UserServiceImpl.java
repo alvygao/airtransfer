@@ -47,32 +47,29 @@ public class UserServiceImpl extends BaseService implements UserService {
         user.setCreated(new Date());
         user.setApproved(false);
         userDao.save(user);
+
         Locale locale = LocaleContextHolder.getLocale();
-        AuthenticationRequest request = generateRequest(user);
+        AuthenticationRequest request = createRegistrationRequest(user);
         HashMap<String, String> model = new HashMap<String, String>(1);
         model.put("UID", request.getUid());
+
         Template template = new Template(locale, TemplateType.EMAIL, model);
         template.setMessageType(MessageType.REGISTRATION);
         emailService.sendEmail(user, template);
-        logger.warn("User created;");
         return user;
     }
 
-    public AuthenticationRequest generateRequest(User user) {
-        logger.debug("generateRequest; {}", user.toString());
+    public AuthenticationRequest createRegistrationRequest(User user) {
+        logger.debug("createRegistrationRequest; {}", user.toString());
         final AuthenticationRequest request = new AuthenticationRequest();
         request.setUser(user);
         request.setProcessed(false);
-        final Date now = new Date();
-        request.setCreated(now);
+        request.setCreated(new Date());
 
-        final DateFormat format = DateFormat.getDateInstance(DateFormat.LONG);
-        final String currentDate = format.format(now);
         final StringBuilder builder = new StringBuilder();
-
         builder.append(user.getId())
                 .append(user.getEmail())
-                .append(currentDate)
+                .append(System.currentTimeMillis())
                 .append("registration");
 
         final String hash = DigestUtils.md5DigestAsHex(builder.toString().getBytes());
@@ -88,22 +85,25 @@ public class UserServiceImpl extends BaseService implements UserService {
         link.setUser(user);
         final Date now = new Date();
         link.setCreated(now);
+        link.setProcessed(false);
 
-        final DateFormat format = DateFormat.getDateInstance(DateFormat.LONG);
-        final String currentDate = format.format(now);
+
         final StringBuilder builder = new StringBuilder();
 
         builder.append(user.getId())
                 .append(user.getEmail())
-                .append(currentDate)
+                .append(System.currentTimeMillis())
                 .append("resetpassword");
+
 
         final String hash = DigestUtils.md5DigestAsHex(builder.toString().getBytes());
         link.setUid(hash);
 
         resetPasswordLinkDao.save(link);
-        HashMap<String, String> model = new HashMap<String, String>();
+        HashMap<String, String> model = new HashMap<String, String>(1);
+        model.put("UID", hash);
         Template email = new Template(LocaleContextHolder.getLocale(), TemplateType.EMAIL, model);
+        email.setMessageType(MessageType.RESET_PASSWORD);
         emailService.sendEmail(user, email);
     }
 
@@ -122,5 +122,16 @@ public class UserServiceImpl extends BaseService implements UserService {
         } else {
             return false;
         }
+    }
+
+    public void updateUserPasswordByLink(String newPassword, ResetPasswordLink link) {
+        link.getUser().setPassword(newPassword);
+        userDao.update(link.getUser());
+        link.setProcessed(true);
+        resetPasswordLinkDao.update(link);
+    }
+
+    public User findUserByEmailAndPassword(String email, String password) {
+        return userDao.findByEmailAndPassword(email, password);
     }
 }

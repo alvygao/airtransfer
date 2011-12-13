@@ -14,11 +14,15 @@ public interface UserService {
 
     User create(User user);
 
-    AuthenticationRequest generateRequest(User user);
+    AuthenticationRequest createRegistrationRequest(User user);
 
     void createResetPasswordLink(User user);
 
     ResetPasswordLink findResetPasswordLink(String uid);
 
     boolean updateUserStatusByHash(String hash);
+
+    void updateUserPasswordByLink(String password, ResetPasswordLink link);
+
+    User findUserByEmailAndPassword(String email, String password);
 }

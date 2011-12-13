@@ -15,6 +15,7 @@
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
+                <value>classpath:conf/application.properties</value>
                 <value>classpath:conf/hibernate.properties</value>
                 <value>classpath:conf/smtp.properties</value>
             </list>

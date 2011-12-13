@@ -3,7 +3,7 @@
 <tags:main>
     <jsp:attribute name="center">
         <div style="height: 600px;">
-            <form action="/html/forgetpassword/reset/${hiddenUid}">
+            <form action="${appBaseUrl}/html/forgetpassword/reset/${hiddenUid}" method="POST" >
                 <div>
                     <label for="cPassword1">${i18n['label.registration.form.password']}</label>
                     <input id="cPassword1" type="password" name="new_password"/>
@@ -11,7 +11,7 @@
                 <div>
                     <label for="cPassword2"></label>
                     <input id="cPassword2" type="password" name="new_password_again"/>
-                    <input type="hidden" name="hiddenUid"/>
+                    <input type="hidden" name="hiddenUid" value="${hiddenUid}"/>
                 </div>
                 <div><input type="submit" class="cSubmit" value="${i18n['label.registration.form.submit_btn']}"></a>
                 </div>

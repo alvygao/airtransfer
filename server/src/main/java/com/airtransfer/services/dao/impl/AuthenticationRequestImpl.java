@@ -26,8 +26,9 @@ public class AuthenticationRequestImpl extends BaseDao<AuthenticationRequest, Lo
         return (AuthenticationRequest) getHibernateTemplate().execute(new HibernateCallback<Object>() {
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 return session.createQuery(" SELECT ar FROM AuthenticationRequest as ar " +
-                        " INNER JOIN ar.user " +
-                        " WHERE ar.uid = :uid ")
+                        " INNER JOIN FETCH ar.user " +
+                        " WHERE ar.uid = :uid " +
+                        " AND ar.processed = false " )
                         .setString("uid", hash)
                         .uniqueResult();
             }

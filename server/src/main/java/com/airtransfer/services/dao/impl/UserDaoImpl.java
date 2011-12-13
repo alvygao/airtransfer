@@ -43,4 +43,17 @@ public class UserDaoImpl extends BaseDao<User, Long> implements UserDao {
             }
         });
     }
+
+    public User findByEmailAndPassword(final String email, final String password) {
+        return getHibernateTemplate().execute(new HibernateCallback<User>() {
+            public User doInHibernate(Session session) throws HibernateException, SQLException {
+                return (User) session.createQuery(" SELECT u FROM User as u " +
+                        " WHERE u.email = :email " +
+                        " AND u.password = :password ")
+                        .setString("email", email)
+                        .setString("password", password)
+                        .uniqueResult();
+            }
+        });
+    }
 }

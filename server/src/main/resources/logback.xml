@@ -6,6 +6,6 @@
         </encoder>
     </appender>
     <root level="${profile.logger.level}">
-        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="STDOUT,FILE"/>
     </root>
 </configuration>

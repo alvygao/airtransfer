@@ -26,7 +26,7 @@ public class ResetPasswordLinkDaoImpl extends BaseDao<ResetPasswordLink, Long> i
             public ResetPasswordLink doInHibernate(Session session) throws HibernateException, SQLException {
                 return (ResetPasswordLink) session.createQuery(" SELECT rpl " +
                         " FROM ResetPasswordLink as rpl " +
-                        " INNER JOIN rpl.user as u" +
+                        " INNER JOIN FETCH rpl.user as u" +
                         " WHERE rpl.uid = :hash " +
                         " AND rpl.processed = false")
                         .setString("hash", uid)

@@ -11,4 +11,6 @@ public interface UserDao extends AbstractDao<User, Long> {
     User findByEmail(String email);
 
     User findByRegUid(String hash);
+
+    User findByEmailAndPassword(String email, String password);
 }

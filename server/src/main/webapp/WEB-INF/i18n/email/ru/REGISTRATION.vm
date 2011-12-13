@@ -1,6 +1,7 @@
-Dear user
+Уважаемый пользователь,
 
-in order to complete registaration You have visit this
-<a href="j2eeblogger.ru/html/registration/authorize/${UID}">link</a>.
+для того чтобы закончить регистрацию в системе вы должны пройти по этой
+<a href="${URL}/html/registration/authorize/${UID}">ссылке</a>.
 
-With best regards.
+С уважением,
+Администрация

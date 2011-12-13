@@ -72,7 +72,7 @@ public class RegistrationController extends AbstractController {
 
 
     protected boolean validate(ModelAndView view, String email, String password, String repeat) {
-        if (!StringUtils.hasText(email)) {
+        if (!StringUtils.hasText(email) || email.contains("@")) {
             view.addObject("warning", "Invalid email");
             return false;
         }

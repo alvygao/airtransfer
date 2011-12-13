@@ -20,7 +20,7 @@
                 <form action="${baseAppUrl}/html/signin" method="POST">
                     <div class="cLoginField">
                         <input type="text" name="email" value=""/>
-                        <input type="password" name="pass" value=""/>
+                        <input type="password" name="password" value=""/>
                         <a class="cRegistration jDialog" href="${baseUrl}/html/registration"
                            title="${i18n['label.registration.link_title']}">
                                 ${i18n['label.main.login.registration_link']}
@@ -30,11 +30,11 @@
                                 ${i18n['label.main.login.forgotPassword']}
                         </a>
                     </div>
-                    <a href="${baseUrl}/html/forgetpassword">
+
                         <div class="cLoginButton">
-                            <input type="button" value="${i18n['label.main.login.loginBtn']}"/>
+                            <input type="submit" value="${i18n['label.main.login.loginBtn']}"/>
                         </div>
-                    </a>
+
                 </form>
             </div>
         </div>
