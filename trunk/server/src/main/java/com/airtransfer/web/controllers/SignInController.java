@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.image.ImagingOpException;
+import java.io.IOException;
 
 /**
  * User: sergey
@@ -22,17 +25,14 @@ public class SignInController extends AbstractController {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView processGet(HttpServletRequest request, ModelAndView view) {
+    public ModelAndView processGet(HttpServletRequest request, HttpServletResponse response, ModelAndView view) throws IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        view.setViewName("registration/successful");
-        if (email != null && password != null) {
-            User user = userService.findUserByEmailAndPassword(email, password);
-            if (user != null) {
-                view.addObject("warning", "User password is " + user.getPassword() + " email " + user.getEmail());
-            }
+        User user = userService.findUserByEmailAndPassword(email, password);
+        if (user != null) {
+            view.setViewName("profile/profile");
         } else {
-            view.addObject("warning", "Invalid data");
+            view.setViewName("redirect:/");
         }
         return view;
     }

@@ -26,14 +26,6 @@ public class UserVO extends AbstractVO<User> {
         super(delegate);
     }
 
-    public Long getId() {
-        return delegate.getId();
-    }
-
-    public void setId(Long id) {
-        this.delegate.setId(id);
-    }
-
     public String getName() {
         return delegate.getName();
     }
