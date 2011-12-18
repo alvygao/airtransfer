@@ -1,7 +1,6 @@
 package com.airtransfer.services.dao.impl;
 
 import com.airtransfer.models.AuthenticationRequest;
-import com.airtransfer.models.User;
 import com.airtransfer.services.dao.AuthenticationRequestDao;
 import com.airtransfer.services.dao.BaseDao;
 import org.hibernate.HibernateException;

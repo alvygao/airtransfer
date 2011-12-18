@@ -22,11 +22,15 @@ public class AbstractEntityVO<E extends AbstractEntity> {
         this.entity = entity;
     }
 
-    public Object getRealId() {
-        return entity.getId();
+    public Long getRealId() {
+        return (Long) entity.getId();
     }
 
-    public void setRealId(Object id) {
-        entity.setId((Serializable)id);
+    public void setRealId(Long id) {
+        entity.setId(id);
+    }
+
+    public E model() {
+        return entity;
     }
 }

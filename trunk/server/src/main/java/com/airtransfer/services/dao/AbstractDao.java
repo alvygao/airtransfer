@@ -18,6 +18,8 @@ public interface AbstractDao<E extends AbstractEntity, ID extends Serializable> 
 
     E save(E e);
 
+    void persist(E e);
+
     void delete(E id);
 
     void delete(ID id);

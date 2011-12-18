@@ -65,10 +65,12 @@ public class I18nHelper implements Map<String, String> {
         return Collections.emptySet();
     }
 
+    @SuppressWarnings("unchecked")
     public Collection<String> values() {
         return Collections.EMPTY_SET;
     }
 
+    @SuppressWarnings("unchecked")
     public Set<Entry<String, String>> entrySet() {
         return Collections.EMPTY_SET;
     }
