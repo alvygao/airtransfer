@@ -1,16 +1,13 @@
 package com.airtransfer.web.controllers;
 
-import com.sun.jersey.api.json.JSONConfiguration;
+import com.airtransfer.web.utils.WebConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import javax.annotation.Resource;
-import java.awt.print.Book;
-import java.io.File;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * User: Sergey
@@ -44,10 +41,17 @@ public abstract class AbstractController {
         this.baseUrl = baseUrl;
     }
 
-
     public String getUrl() {
         logger.error("getBaseUrl", baseUrl);
         return baseUrl;
     }
 
+    public String getSessionId(HttpServletRequest request) {
+        for (Cookie cookie : request.getCookies()) {
+            if (cookie.getName().equalsIgnoreCase(WebConstants.JSESSIONID)) {
+                return cookie.getValue();
+            }
+        }
+        return null;
+    }
 }

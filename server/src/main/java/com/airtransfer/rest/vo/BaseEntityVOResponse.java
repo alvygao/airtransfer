@@ -12,7 +12,9 @@ import javax.xml.bind.annotation.XmlSeeAlso;
  */
 @XmlRootElement
 @XmlSeeAlso({
-        UserProfileVO.class
+        UserProfileVO.class,
+        Long.class
+
 })
 public class BaseEntityVOResponse<E extends AbstractEntityVO> extends AbstractVOResponse<E> {
 

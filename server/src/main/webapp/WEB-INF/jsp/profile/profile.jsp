@@ -3,35 +3,41 @@
 <tags:main>
     <jsp:attribute name="center">
         <div style="height: 600px;">
-            <input type="submit" value="${i18n['label.main.login.loginBtn']}" onclick="return onClick(this)"/>
+            <a href="${baseAppUrl}/html/profile">Profile</a>
+            <input type="submit" value="GET" onclick="return onClick(this)"/>
+            <input type="submit" value="PUT" onclick="return onPutClick(this)"/>
             <script type="text/javascript">
                 function onClick(e) {
-
                     $.ajax({
-                        type:'get',
-                        url: APP_BASE_URL + '/rest/user/profile',
-                        error: function(request, error) {
-                            alert(request);
-                        },
-                        success: function(request) {
-                            alert(request);
-                        }
-                    });
+                                type:'get',
+                                url: APP_BASE_URL + '/rest/user/profile',
+                                contentType: "application/json; charset=utf-8",
+                                error: function(request, error) {
+                                    alert(request);
+                                },
+                                success: function(request) {
+                                    alert(request);
+                                }
+                            });
 
-                    /*        var data = JSON.stringify({'data':{'name':'ASDASDds'}});
-                     $.ajax({
-                     type:'post',
-                     url: APP_BASE_URL + '/rest/user',
-                     data: data,
-                     contentType: 'application/json',
-                     error: function(request, error) {
-                     alert(request.data);
-                     },
-                     success: function(request) {
-                     var test = request.data;
-                     alert(request);
-                     }
-                     });*/
+                    return false;
+                }
+                function onPutClick(e) {
+                    var requestData = {"data":{"aboutMe":"aboutMe123","appearance":"appearance123","birthDay":"20.12.2011","body":"body123","books":"books123","cellPhone":"cellPhone","city":"city","country":"country","currentCity":"current city","currentCountry":"current country","familyStatus":"family status","firstLanguage":"first language","fistName":"first name","height":"175.4","interest":"interest","lastName":"last name","lifeGoals":"goals","male":"true","movies":"movies","music":"music","occupation":"occupation","phone":"phone","secondLanguage":"secondLanguage","siteUrl":"site url","skypeId":"skype id","thirdLanguage":"third language","width":"75.5"}};
+                    requestData = JSON.stringify(requestData);
+                    $.ajax({
+                                type:'put',
+                                url: APP_BASE_URL + '/rest/user/profile',
+                                contentType: "application/json; charset=utf-8",
+                                data: requestData,
+                                error: function(request, error) {
+                                    alert(request);
+                                },
+                                success: function(request) {
+                                    alert(request);
+                                }
+                            });
+
                     return false;
                 }
             </script>

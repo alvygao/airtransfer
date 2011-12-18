@@ -9,13 +9,12 @@
     </bean>
 
 
-
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="127.0.0.1"/>
-<!--
-        <property name="username" value="${smtp.login}"/>
-        <property name="password" value="${smtp.password}"/>
--->
+        <!--
+                <property name="username" value="${smtp.login}"/>
+                <property name="password" value="${smtp.password}"/>
+        -->
         <!--
                 <property name="javaMailProperties">
                     <props>

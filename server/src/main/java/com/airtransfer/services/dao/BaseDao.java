@@ -22,6 +22,11 @@ public abstract class BaseDao<E extends AbstractEntity, ID extends Serializable>
         this.clazz = clazz;
     }
 
+    @Transactional()
+    public void persist(E e) {
+        getHibernateTemplate().saveOrUpdate(e);
+    }
+
     @Autowired
     public void setFactory(SessionFactory factory) {
         this.setSessionFactory(factory);

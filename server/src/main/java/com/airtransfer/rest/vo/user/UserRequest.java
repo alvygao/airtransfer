@@ -2,7 +2,6 @@ package com.airtransfer.rest.vo.user;
 
 import com.airtransfer.models.User;
 import com.airtransfer.rest.vo.AbstractVO;
-import com.airtransfer.rest.vo.BaseRequest;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
