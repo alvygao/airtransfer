@@ -317,7 +317,7 @@
                     <!--<jettyConfig-->
                     <!--<scanIntervalSeconds>10</scanIntervalSeconds>-->
                     <contextPath>/</contextPath>
-                    <webDefaultXml>./src/main/resources/webdefault.xml</webDefaultXml>
+                    <webDefaultXml>./etc/webdefault.xml</webDefaultXml>
                 </configuration>
             </plugin>
             <plugin>
