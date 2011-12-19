@@ -29,7 +29,9 @@ public class AuthenticationFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         String sessionId = getSessionId((HttpServletRequest) request);
-        SessionTokensHolder.getInstance().put(sessionId);
+        if (sessionId != null) {
+            SessionTokensHolder.getInstance().put(sessionId);
+        }
         chain.doFilter(request, response);
     }
 
@@ -38,9 +40,11 @@ public class AuthenticationFilter implements Filter {
     }
 
     public String getSessionId(HttpServletRequest request) {
-        for (Cookie cookie : request.getCookies()) {
-            if (cookie.getName().equalsIgnoreCase(WebConstants.JSESSIONID)) {
-                return cookie.getValue();
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if (cookie.getName().equalsIgnoreCase(WebConstants.JSESSIONID)) {
+                    return cookie.getValue();
+                }
             }
         }
         return null;
