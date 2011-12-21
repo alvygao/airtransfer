@@ -4,7 +4,7 @@
     <jsp:attribute name="center">
         <jsp:include page="/WEB-INF/jsp/includes/topmenu.jsp"/>
         <div class="cPage">
-            <form action="" name="">
+            <form action="" name="profileForm" id="jProfileForm">
                 <div class="cColumn">
                     <h3>${i18n['label.profile_page.personalData']}</h3>
                     <div class="cFormBlock">
@@ -12,35 +12,34 @@
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.personalData.name']}:</td>
                                 <td>
-                                    <input type="text" name="first_name" maxlength="255" />
+                                    <input type="text" name="fistName" maxlength="255" />
                                 </td>
                             </tr>
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.personalData.lastName']}:</td>
                                 <td>
-                                    <input type="text" name="last_name" maxlength="255" />
+                                    <input type="text" name="lastName" maxlength="255" />
                                 </td>
                             </tr>
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.personalData.gender']}:</td>
                                 <td>
                                     <select name="sex"  style="float:left;" class="jSelect">
-										<option value="X">re</option>
-										<option value="M">dsds</option>
-										<option value="F">dasda</option>
+										<option value="0">${i18n['label.profile_page.personalData.gender.male']}</option>
+										<option value="1">${i18n['label.profile_page.personalData.gender.female']}</option>
 									</select>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.personalData.site']}:</td>
                                 <td>
-                                    <input type="text" name="user_site" maxlength="255" />
+                                    <input type="text" name="siteUrl" maxlength="255" />
                                 </td>
                             </tr>
                             <tr class="cLast">
                                 <td class="cLabel">${i18n['label.profile_page.personalData.birthday']}:</td>
                                 <td>
-                                    <input type="text" name="birthday" maxlength="255" />
+                                    <input type="text" name="bithday" maxlength="255" />
                                 </td>
                             </tr>
                         </table>
@@ -49,7 +48,7 @@
                                 <tr>
                                     <td class="cLabel">${i18n['label.profile_page.personalData.skype']}:</td>
                                     <td>
-                                        <input type="text" name="user_skype" maxlength="255" />
+                                        <input type="text" name="skypeId" maxlength="255" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,13 +60,13 @@
                                 <tr>
                                     <td class="cLabel">${i18n['label.profile_page.personalData.phone']}:</td>
                                     <td>
-                                        <input type="text" name="user_phone" maxlength="255" />
+                                        <input type="text" name="phone" maxlength="255" />
                                     </td>
                                 </tr>
                                 <tr class="cLast">
                                     <td class="cLabel">${i18n['label.profile_page.personalData.mobilePhone']}:</td>
                                     <td>
-                                        <input type="text" name="user_mobile" maxlength="255" />
+                                        <input type="text" name="cellPhone" maxlength="255" />
                                     </td>
                                 </tr>
                                 
@@ -80,7 +79,7 @@
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.locations.country']}:</td>
                                 <td>
-                                    <select name="residence_country"  style="float:left;" class="jSelect">
+                                    <select name="country"  style="float:left;" class="jSelect">
 										
 									</select>
                                 </td>
@@ -88,7 +87,7 @@
                             <tr class="cLast">
                                 <td class="cLabel">${i18n['label.profile_page.locations.city']}:</td>
                                 <td>
-                                    <input type="text" name="residence_city" maxlength="255" />
+                                    <input type="text" name="city" maxlength="255" />
                                 </td>
                             </tr>
                         </table>
@@ -99,7 +98,7 @@
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.location.country']}:</td>
                                 <td>
-                                    <select name="current_country"  style="float:left;" class="jSelect">
+                                    <select name="currentCountry"  style="float:left;" class="jSelect">
 										
 									</select>
                                 </td>
@@ -107,7 +106,7 @@
                             <tr class="cLast">
                                 <td class="cLabel">${i18n['label.profile_page.location.city']}:</td>
                                 <td>
-                                    <input type="text" name="current_city" maxlength="255" />
+                                    <input type="text" name="currentCity" maxlength="255" />
                                 </td>
                             </tr>
                         </table>
@@ -119,21 +118,21 @@
                         <table border="0">
                             <tr>
                                 <td colspan="2">
-                                    <select name="language"  style="float:left;" class="jSelect">
+                                    <select name="firstLanguage"  style="float:left;" class="jSelect">
 										
 									</select>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <select name="language"  style="float:left;" class="jSelect">
+                                    <select name="secondLanguage"  style="float:left;" class="jSelect">
 										
 									</select>
                                 </td>
                             </tr>
                             <tr class="cLast">
                                 <td colspan="2">
-                                    <select name="language"  style="float:left;" class="jSelect">
+                                    <select name="thirdLanguage"  style="float:left;" class="jSelect">
 										
 									</select>
                                 </td>
@@ -146,7 +145,7 @@
                              <tr>
                                 <td class="cLabel">${i18n['label.profile_page.more.profession']}:</td>
                                 <td colspan="3">
-                                    <select name="profession"  style="float:left;" class="jSelect">
+                                    <select name="occupation"  style="float:left;" class="jSelect">
 										
 									</select>
                                 </td>
@@ -154,114 +153,125 @@
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.more.aboutMe']}:</td>
                                 <td colspan="3">
-                                    <textarea name="about"></textarea>
+                                    <textarea name="aboutMe"></textarea>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="cLabel">${i18n['label.profile_page.more.physique']}:</td>
+                                <td class="cLabel">${i18n['label.profile_page.more.familyStatus']}:</td>
                                 <td colspan="3">
-                                    <select name="user_family_status"  style="float:left;" class="jSelect">
-										
-									</select>
+                                    <input type="text" name="familyStatus" maxlength="255" />
                                 </td>
                             </tr>
                             <tr>
-                                <td class="cLabel">${i18n['label.profile_page.more.physique']}:</td>
+                                <td class="cLabel">${i18n['label.profile_page.more.body']}:</td>
                                 <td colspan="3">
-                                    <input type="text" name="user_body_complection" maxlength="255" />
+                                    <input type="text" name="body" maxlength="255" />
                                 </td>
                             </tr>
                             <tr>
-                                <td class="cLabel">${i18n['label.profile_page.more.growth']}:</td>
+                                <td class="cLabel">${i18n['label.profile_page.more.height']}:</td>
                                 <td style="width: 40px;">
-                                    <input type="text" name="user_height" maxlength="255" />
+                                    <input type="text" name="height" maxlength="255" />
                                 </td>
                                 <td class="cLabel">${i18n['label.profile_page.more.weight']}:</td>
                                 <td style="width: 40px;">
-                                    <input type="text" name="user_weight" maxlength="255" />
+                                    <input type="text" name="width" maxlength="255" />
                                 </td>
                             </tr>
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.more.appearance']}:</td>
                                 <td colspan="3">
-                                    <input type="text" name="user_look" maxlength="255" />
+                                    <input type="text" name="appearance" maxlength="255" />
                                 </td>
                             </tr>
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.more.lifePriorities']}:</td>
                                 <td colspan="3">
-                                    <input type="text" name="user_priority" maxlength="255" />
+                                    <input type="text" name="lifeGoals" maxlength="255" />
                                 </td>
                             </tr>
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.more.interest']}:</td>
                                 <td colspan="3">
-                                    <input type="text" name="user_interests" maxlength="255" />
+                                    <input type="text" name="interest" maxlength="255" />
                                 </td>
                             </tr>
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.more.music']}:</td>
                                 <td colspan="3">
-                                    <input type="text" name="user_music" maxlength="255" />
+                                    <input type="text" name="music" maxlength="255" />
                                 </td>
                             </tr>
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.more.movies']}:</td>
                                 <td colspan="3">
-                                    <input type="text" name="user_movies" maxlength="255" />
+                                    <input type="text" name="movies" maxlength="255" />
                                 </td>
                             </tr>
                             <tr>
                                 <td class="cLabel">${i18n['label.profile_page.more.books']}:</td>
                                 <td colspan="3">
-                                    <input type="text" name="user_books" maxlength="255" />
+                                    <input type="text" name="books" maxlength="255" />
                                 </td>
                             </tr>                           
                         </table>
                     </div>
                 </div>
+                <input type="submit" value="Save" onclick="return onPutClick(this)" />
                 <div class="cClear"></div>
             </form>
         </div>
         
-        <div style="height: 600px;">
+        <div style="height: 20px; display: none;">
             <a href="${baseAppUrl}/html/profile">Profile</a>
             <input type="submit" value="GET" onclick="return onClick(this)"/>
             <input type="submit" value="PUT" onclick="return onPutClick(this)"/>
             <script type="text/javascript">
                 jQuery(document).ready(function(){
-                    $('select.jSelect').selectmenu();	
+                    $('select.jSelect').selectmenu();
                 });
-                function onClick(e) {
+                
+                
+                function onClick() {
                     $.ajax({
-                                type:'get',
-                                url: APP_BASE_URL + '/rest/user/profile',
-                                contentType: "application/json; charset=utf-8",
-                                error: function(request, error) {
-                                    alert(request);
-                                },
-                                success: function(request) {
-                                    alert(request);
-                                }
-                            });
+                        type:'get',
+                        url: APP_BASE_URL + '/rest/user/profile',
+                        contentType: "application/json; charset=utf-8",
+                        error: function(request, error) {
+                            alert(request);
+                        },
+                        success: function(request) {
+                            var objResult = $.parseJSON(request)
+                            console.log(request);
+                        }
+                    });
 
                     return false;
                 }
+                
+                
                 function onPutClick(e) {
-                    var requestData = {"data":{"aboutMe":"aboutMe123","appearance":"appearance123","birthDay":"20.12.2011","body":"body123","books":"books123","cellPhone":"cellPhone","city":"city","country":"country","currentCity":"current city","currentCountry":"current country","familyStatus":"family status","firstLanguage":"first language","fistName":"first name","height":"175.4","interest":"interest","lastName":"last name","lifeGoals":"goals","male":"true","movies":"movies","music":"music","occupation":"occupation","phone":"phone","secondLanguage":"secondLanguage","siteUrl":"site url","skypeId":"skype id","thirdLanguage":"third language","width":"75.5"}};
-                    requestData = JSON.stringify(requestData);
+                    //var requestData = {"data":{"aboutMe":"aboutMe123","appearance":"appearance123","birthDay":"20.12.2011","body":"body123","books":"books123","cellPhone":"cellPhone","city":"city","country":"country","currentCity":"current city","currentCountry":"current country","familyStatus":"family status","firstLanguage":"first language","fistName":"first name","height":"175.4","interest":"interest","lastName":"last name","lifeGoals":"goals","male":"true","movies":"movies","music":"music","occupation":"occupation","phone":"phone","secondLanguage":"secondLanguage","siteUrl":"site url","skypeId":"skype id","thirdLanguage":"third language","width":"75.5"}};
+                    var requestData = '{"data":{';
+                    $('#jProfileForm input, select, texarea').each(function(n, element){
+                        if( $(element).attr('type') != 'button'); {
+                            requestData += '"' + $(element).attr('name') +'": "'+$(element).val()+'",';
+                        }
+                    });
+                    requestData += '}}';
+                    //requestData = JSON.stringify(requestData);
                     $.ajax({
-                                type:'put',
-                                url: APP_BASE_URL + '/rest/user/profile',
-                                contentType: "application/json; charset=utf-8",
-                                data: requestData,
-                                error: function(request, error) {
-                                    alert(request);
-                                },
-                                success: function(request) {
-                                    alert(request);
-                                }
-                            });
+                        type:'put',
+                        url: APP_BASE_URL + '/rest/user/profile',
+                        contentType: "application/json; charset=utf-8",
+                        data: requestData,
+                        error: function(request, error) {
+                            alert(request);
+                        },
+                        success: function(request) {
+                            console.log(request);
+                        }
+                    });
 
                     return false;
                 }
