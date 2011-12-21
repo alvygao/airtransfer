@@ -178,12 +178,60 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         entity.setFamilyStatus(familyStatus);
     }
 
-    public String getBody() {
-        return entity.getBody();
+    public Long getBodyId() {
+        return 123l;
     }
 
-    public void setBody(String body) {
-        entity.setBody(body);
+    public void setBodyId(Long body) {
+
+    }
+
+    public Long getCountryId() {
+        return 123l;
+    }
+
+    public void setCountryId(Long body) {
+
+    }
+
+    public Long getCurrentCountryId() {
+        return 123l;
+    }
+
+    public void setCurrentCountryId(Long body) {
+
+    }
+
+    public Long getFirstLanguageId() {
+        return 123l;
+    }
+
+    public void setFirstLanguageId(Long body) {
+
+    }
+
+    public Long getSecondLanguageId() {
+        return 123l;
+    }
+
+    public void setSecondLanguageId(Long body) {
+
+    }
+
+    public Long getThirdLanguageId() {
+        return 123l;
+    }
+
+    public void setThirdLanguageId(Long body) {
+
+    }
+
+    public Long getOccupationId() {
+        return 123l;
+    }
+
+    public void setOccupationId(Long body) {
+
     }
 
     public Float getHeight() {
