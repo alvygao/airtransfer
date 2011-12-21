@@ -1,10 +1,8 @@
-@font-face {
-    font-family: "Gothic";
-    src: url("/css/font.eot");
-}
-@font-face {
-    font-family: "Gothic";
-    src: url("/css/font.ttf");
+html, body {
+    height: 100%;
+    width: 100%;
+    background: #64A5D3 url('/images/body-background.png') left top repeat-x;
+    
 }
 
 .cClear {
@@ -15,13 +13,6 @@
 }
 .cLeft {
     float: left;
-}
-
-html, body {
-    height: 100%;
-    width: 100%;
-    background: #64A5D3 url('/images/body-background.png') left top repeat-x;
-    
 }
 
 #cContentainer {
@@ -130,6 +121,118 @@ html, body {
     float: left;
     width: 830px;
 }
+#cContent .cTopMenu {
+    position: relative;
+    height: 31px;
+    width: 100%;
+    z-index: 10;
+}
+#cContent .cTopMenu a {
+    display: block;
+    float: left;
+    width: 197px;
+    height: 25px;
+    padding-top: 6px;
+    background: url('/images/menu-btn.png') 0px -31px no-repeat;
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: serif;
+    font-weight: bold;
+}
+#cContent .cTopMenu a.cFisrt {
+    background: url('/images/menu-btn-first.png') 0px -31px no-repeat;
+    width: 201px;
+}
+#cContent .cTopMenu a.cLast {
+    background: url('/images/menu-btn-last.png') 0px -31px no-repeat;
+    width: 222px;
+}
+#cContent .cTopMenu a:hover {
+    background-position: 0px 0px;
+}
+#cContent .cTopMenu a.cActive {
+    background-position: 0px 0px;
+}
+
+#cContent .cPage {
+    position: relative;
+    width: 100%;
+    background: url('/images/page-bg.png') left top repeat-y;
+    margin-top: -5px;
+    padding-bottom: 20px; 
+    border-bottom: solid 2px #B8D8ED;
+    border-radius: 0px 0px 5px 5px;
+}
+
+#cContent .cColumn {
+    position: relative;
+    float: left;
+    min-height: 200px;
+    width: 385px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+#cContent .cColumn h3 {
+    color: #4c7ead;
+    font-size: 16px;
+    padding: 0px;
+    margin: 0px;
+    padding-left: 10px;
+}
+#cContent .cColumn .cFormBlock {
+    position: relative;
+    background: #c3d4ef;
+    border: solid 2px #ffffff;
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 20px;
+}
+#cContent .cColumn .cFormBlock tr {
+     border-bottom: 1px solid #E8E8E8;
+     width: 100%;
+}
+#cContent .cColumn .cFormBlock tr.cLast {
+     border-bottom: none;
+}
+#cContent .cColumn .cFormBlock td {
+     padding: 5px 0px;
+     width: 230px;
+     padding-right: 50px;
+}
+#cContent .cColumn .cFormBlock .cLabel {
+    width: 70px;
+    padding: 0px;
+    color: #353535;
+}
+#cContent .cColumn .cFormBlock input,
+#cContent .cColumn .cFormBlock textarea {
+    padding: 0.405em 1em;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #FFFFFF;
+    background: #ADADAD;
+    color: #FFFFFF;
+    width: 100%;
+    padding-right: 30px;
+}
+
+#cContent .cColumn .cFormBlock .cDottet {
+    border: 1px dashed white;
+    padding: 0.7em;
+    width: 330px;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 10px;
+}
+
+#cContent .cTopMenu .cDevider {
+    float: left;
+    height: 31px;
+    width: 4px;
+    background: url('/images/menu-devider.png') left top no-repeat;
+}
 
 #cContent .cSlogans {
     position: relative;
@@ -165,7 +268,6 @@ html, body {
     height: 120px;
     width: 385px;
 }
-
 #cContent .cMain .cLoginForm .cLoginField input {
     background-color: #C5D5EF;
     border: 1px solid white;
@@ -302,4 +404,39 @@ html, body {
     background: #c4d7ef;
     border: solid 3px #ffffff;
     padding: 0px;
+}
+
+.ui-widget .ui-widget {
+    font-size: 1em;
+}
+.ui-state-default {
+    padding-right: 30px;
+}
+.ui-selectmenu {
+    background: #ADADAD;
+    display: inline-block;
+    height: 2em;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.ui-selectmenu-open {
+    background: #717476;
+     border: 1px solid #FFFFFF;
+}
+
+.ui-selectmenu-open li.ui-selectmenu-item-focus a {
+    background: #ADADAD;
+}
+
+.ui-widget-content {
+    background: #717476;
+    border: 1px solid #FFFFFF;
+    color: #EEEEEE;
+}
+
+.ui-state-default {
+    border: 1px solid #FFFFFF;
 }
