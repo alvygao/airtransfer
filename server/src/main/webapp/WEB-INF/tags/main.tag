@@ -21,8 +21,12 @@
     <meta name="description" content=""/>
     <base href="${baseAppUrl}"/>
     <link rel="stylesheet" href="${baseAppUrl}/css/jquery-ui/jquery-ui.css" type="text/css"/>
+    <link rel="stylesheet" href="${baseAppUrl}/css/jquery.ui.selectmenu.css" type="text/css"/>
     <link rel="stylesheet" href="${baseAppUrl}/css/reset.css" type="text/css"/>
     <link rel="stylesheet" href="${baseAppUrl}/css/style.css" type="text/css"/>
+    
+    
+    
     
     <script type="text/javascript">
         APP_BASE_URL = '${baseAppUrl}';
@@ -30,6 +34,8 @@
     <script type="text/javascript" src="${baseAppUrl}/js/jquery.js"></script>
     <script type="text/javascript" src="${baseAppUrl}/js/json2.js"></script>
     <script type="text/javascript" src="${baseAppUrl}/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="${baseAppUrl}/js/jquery.ui.selectmenu.js"></script>
+    
     <script type="text/javascript" src="${baseAppUrl}/js/main.js"></script>
     <jsp:invoke fragment="head"/>
 
