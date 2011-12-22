@@ -20,8 +20,8 @@ public class UserProfile extends BaseEntity {
     private String fistName;
     @Column
     private String lastName;
-    @Column(name = "is_male", columnDefinition = "BIT")
-    private Boolean isMale;
+    @Column(name = "is_female", columnDefinition = "BIT")
+    private Boolean isFemale;
     @Column
     private String siteUrl;
     @Column(name = "birthday", columnDefinition = "DATETIME")
@@ -32,30 +32,32 @@ public class UserProfile extends BaseEntity {
     private String phone;
     @Column
     private String cellPhone;
-    @Column
-    private String country;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Country country;
     @Column
     private String city;
 
-    @Column
-    private String currentCountry;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Country currentCountry;
     @Column
     private String currentCity;
-    @Column
-    private String firstLanguage;
-    @Column
-    private String secondLanguage;
-    @Column
-    private String thirdLanguage;
 
-    @Column
-    private String occupation;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private UserLanguage firstLanguage;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private UserLanguage secondLanguage;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private UserLanguage thirdLanguage;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Profession occupation;
     @Column(columnDefinition = "TEXT")
     private String aboutMe;
     @Column
     private String familyStatus;
-    @Column
-    private String body;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Body body;
     @Column
     private Float height;
     @Column
@@ -90,12 +92,12 @@ public class UserProfile extends BaseEntity {
         this.lastName = lastName;
     }
 
-    public Boolean getMale() {
-        return isMale;
+    public Boolean getFemale() {
+        return isFemale;
     }
 
-    public void setMale(Boolean male) {
-        isMale = male;
+    public void setFemale(Boolean female) {
+        isFemale = female;
     }
 
     public String getSiteUrl() {
@@ -138,14 +140,6 @@ public class UserProfile extends BaseEntity {
         this.cellPhone = cellPhone;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public String getCity() {
         return city;
     }
@@ -154,52 +148,12 @@ public class UserProfile extends BaseEntity {
         this.city = city;
     }
 
-    public String getCurrentCountry() {
-        return currentCountry;
-    }
-
-    public void setCurrentCountry(String currentCountry) {
-        this.currentCountry = currentCountry;
-    }
-
     public String getCurrentCity() {
         return currentCity;
     }
 
     public void setCurrentCity(String currentCity) {
         this.currentCity = currentCity;
-    }
-
-    public String getFirstLanguage() {
-        return firstLanguage;
-    }
-
-    public void setFirstLanguage(String firstLanguage) {
-        this.firstLanguage = firstLanguage;
-    }
-
-    public String getSecondLanguage() {
-        return secondLanguage;
-    }
-
-    public void setSecondLanguage(String secondLanguage) {
-        this.secondLanguage = secondLanguage;
-    }
-
-    public String getThirdLanguage() {
-        return thirdLanguage;
-    }
-
-    public void setThirdLanguage(String thirdLanguage) {
-        this.thirdLanguage = thirdLanguage;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
     }
 
     public String getAboutMe() {
@@ -216,14 +170,6 @@ public class UserProfile extends BaseEntity {
 
     public void setFamilyStatus(String familyStatus) {
         this.familyStatus = familyStatus;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
     }
 
     public Float getHeight() {
@@ -296,5 +242,61 @@ public class UserProfile extends BaseEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public Country getCurrentCountry() {
+        return currentCountry;
+    }
+
+    public void setCurrentCountry(Country currentCountry) {
+        this.currentCountry = currentCountry;
+    }
+
+    public UserLanguage getFirstLanguage() {
+        return firstLanguage;
+    }
+
+    public void setFirstLanguage(UserLanguage firstLanguage) {
+        this.firstLanguage = firstLanguage;
+    }
+
+    public UserLanguage getSecondLanguage() {
+        return secondLanguage;
+    }
+
+    public void setSecondLanguage(UserLanguage secondLanguage) {
+        this.secondLanguage = secondLanguage;
+    }
+
+    public UserLanguage getThirdLanguage() {
+        return thirdLanguage;
+    }
+
+    public void setThirdLanguage(UserLanguage thirdLanguage) {
+        this.thirdLanguage = thirdLanguage;
+    }
+
+    public Profession getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(Profession occupation) {
+        this.occupation = occupation;
+    }
+
+    public Body getBody() {
+        return body;
+    }
+
+    public void setBody(Body body) {
+        this.body = body;
     }
 }

@@ -1,6 +1,7 @@
 package com.airtransfer.rest.vo;
 
 import com.airtransfer.rest.vo.vos.AbstractEntityVO;
+import com.airtransfer.rest.vo.vos.PairVO;
 import com.airtransfer.rest.vo.vos.UserProfileVO;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -13,8 +14,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlRootElement
 @XmlSeeAlso({
         UserProfileVO.class,
-        Long.class
-
+        PairVO.class
 })
 public class BaseEntityVOResponse<E extends AbstractEntityVO> extends AbstractVOResponse<E> {
 

@@ -8,6 +8,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: sergey
@@ -43,7 +44,11 @@ public abstract class BaseDao<E extends AbstractEntity, ID extends Serializable>
 
     @SuppressWarnings("unchecked")
     public E get(ID id) {
-        return (E) getHibernateTemplate().get(clazz, id);
+        if (id == null) {
+            return null;
+        } else {
+            return (E) getHibernateTemplate().get(clazz, id);
+        }
     }
 
     @Transactional()
@@ -62,6 +67,11 @@ public abstract class BaseDao<E extends AbstractEntity, ID extends Serializable>
     @Transactional()
     public void delete(ID id) {
         getHibernateTemplate().delete(get(id));
+    }
+
+    @SuppressWarnings("unchecked")
+    public List listAll() {
+        return getHibernateTemplate().loadAll(clazz);
     }
 
     @Transactional()

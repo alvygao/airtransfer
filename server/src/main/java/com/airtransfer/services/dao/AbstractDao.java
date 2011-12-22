@@ -3,6 +3,7 @@ package com.airtransfer.services.dao;
 import com.airtransfer.models.AbstractEntity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: sergey
@@ -23,5 +24,7 @@ public interface AbstractDao<E extends AbstractEntity, ID extends Serializable> 
     void delete(E id);
 
     void delete(ID id);
+
+    List listAll();
 
 }
