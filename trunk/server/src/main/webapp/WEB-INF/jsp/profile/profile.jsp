@@ -13,7 +13,7 @@
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.personalData.name']}:</td>
                         <td>
-                            <input type="text" name="fistName" maxlength="255"/>
+                            <input type="text" name="firstName" maxlength="255"/>
                         </td>
                     </tr>
                     <tr>
@@ -237,6 +237,46 @@
             <script type="text/javascript">
                 jQuery(document).ready(function() {
                     $('select.jSelect').selectmenu();
+
+                    try {
+                        $.ajax({type:'get',
+                                    url: APP_BASE_URL + '/rest/user/profile',
+                                    contentType: "application/json; charset=utf-8",
+                                    error: function(request, error) {
+                                        alert("Error: " + request);
+                                    },
+                                    success: function(request) {
+                                        $('input[name=aboutMe]').val(request.data.aboutMe);
+                                        $('input[name=birthDay]').val(request.data.birthDay);
+                                        $('input[name=appearance]').val(request.data.appearance);
+                                        $('input[name=books]').val(request.data.books);
+                                        $('input[name=cellPhone]').val(request.data.cellPhone);
+                                        $('input[name=city]').val(request.data.city);
+                                        $('input[name=countryId]').val(request.data.countryId);
+                                        $('input[name=currentCity]').val(request.data.currentCity);
+                                        $('input[name=currentCountryId]').val(request.data.currentCountryId);
+                                        $('input[name=familyStatus]').val(request.data.familyStatus);
+                                        $('input[name=firstLanguageId]').val(request.data.firstLanguageId);
+                                        $('input[name=firstName]').val(request.data.firstName);
+                                        $('input[name=height]').val(request.data.height);
+                                        $('input[name=interest]').val(request.data.interest);
+                                        $('input[name=lastName]').val(request.data.lastName);
+                                        $('input[name=movies]').val(request.data.movies);
+                                        $('input[name=music]').val(request.data.music);
+                                        $('input[name=occupationId]').val(request.data.occupationId);
+                                        $('input[name=phone]').val(request.data.phone);
+                                        $('input[name=secondLanguageId]').val(request.data.secondLanguageId);
+                                        $('input[name=siteUrl]').val(request.data.siteUrl);
+                                        $('input[name=skypeId]').val(request.data.skypeId);
+                                        $('input[name=thirdLanguageId]').val(request.data.thirdLanguageId);
+                                        $('input[name=width]').val(request.data.width);
+                                        $('input[name=lifeGoals]').val(request.data.lifeGoals);
+
+//                                        console.log(request);
+                                    }});
+                    } catch(e) {
+                        alert(e);
+                    }
                 });
 
 
@@ -263,7 +303,7 @@
                     var requestData = {"data":{
                         "aboutMe": $('input[name=aboutMe]').val(),
                         "appearance": $('input[name=appearance]').val(),
-                        "birthDay": $('input[name=appearance]').val(),
+                        "birthDay": $('input[name=birthDay]').val(),
                         "books": $('input[name=books]').val(),
                         "cellPhone": $('input[name=cellPhone]').val(),
                         "city": $('input[name=city]').val(),
@@ -284,7 +324,8 @@
                         "siteUrl":  $('input[name=siteUrl]').val(),
                         "skypeId":  $('input[name=skypeId]').val(),
                         "thirdLanguageId":  $('input[name=thirdLanguageId]').val(),
-                        "width":  $('input[name=width]').val()
+                        "width":  $('input[name=width]').val(),
+                        "lifeGoals":  $('input[name=lifeGoals]').val()
                     }};
                     var textData = JSON.stringify(requestData);
 

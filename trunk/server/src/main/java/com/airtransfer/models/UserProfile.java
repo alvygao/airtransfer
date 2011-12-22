@@ -17,7 +17,7 @@ public class UserProfile extends BaseEntity {
     private User user;
 
     @Column
-    private String fistName;
+    private String firstName;
     @Column
     private String lastName;
     @Column(name = "is_female", columnDefinition = "BIT")
@@ -76,12 +76,12 @@ public class UserProfile extends BaseEntity {
     private String books;
 
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
