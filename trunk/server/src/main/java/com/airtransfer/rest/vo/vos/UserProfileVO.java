@@ -1,5 +1,6 @@
 package com.airtransfer.rest.vo.vos;
 
+import com.airtransfer.models.BaseEntity;
 import com.airtransfer.models.UserProfile;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -16,6 +17,15 @@ import java.util.Date;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class UserProfileVO extends AbstractEntityVO<UserProfile> {
+
+    private Long bodyId;
+    private Long countryId;
+    private Long currentCountryId;
+    private Long firstLanguageId;
+    private Long secondLanguageId;
+    private Long thirdLanguageId;
+    private Long professionId;
+
 
     public UserProfileVO() {
     }
@@ -40,12 +50,12 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         entity.setLastName(lastName);
     }
 
-    public Boolean getMale() {
-        return entity.getMale();
+    public Boolean getFemale() {
+        return entity.getFemale();
     }
 
-    public void setMale(Boolean male) {
-        entity.setMale(male);
+    public void setFemale(Boolean male) {
+        entity.setFemale(male);
     }
 
     public String getSiteUrl() {
@@ -98,14 +108,6 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         entity.setCellPhone(cellPhone);
     }
 
-    public String getCountry() {
-        return entity.getCountry();
-    }
-
-    public void setCountry(String country) {
-        entity.setCountry(country);
-    }
-
     public String getCity() {
         return entity.getCity();
     }
@@ -114,52 +116,12 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         entity.setCity(city);
     }
 
-    public String getCurrentCountry() {
-        return entity.getCurrentCountry();
-    }
-
-    public void setCurrentCountry(String currentCountry) {
-        entity.setCurrentCountry(currentCountry);
-    }
-
     public String getCurrentCity() {
         return entity.getCurrentCity();
     }
 
     public void setCurrentCity(String currentCity) {
         entity.setCurrentCity(currentCity);
-    }
-
-    public String getFirstLanguage() {
-        return entity.getFirstLanguage();
-    }
-
-    public void setFirstLanguage(String firstLanguage) {
-        entity.setFirstLanguage(firstLanguage);
-    }
-
-    public String getSecondLanguage() {
-        return entity.getSecondLanguage();
-    }
-
-    public void setSecondLanguage(String secondLanguage) {
-        entity.setSecondLanguage(secondLanguage);
-    }
-
-    public String getThirdLanguage() {
-        return entity.getThirdLanguage();
-    }
-
-    public void setThirdLanguage(String thirdLanguage) {
-        entity.setThirdLanguage(thirdLanguage);
-    }
-
-    public String getOccupation() {
-        return entity.getOccupation();
-    }
-
-    public void setOccupation(String occupation) {
-        entity.setOccupation(occupation);
     }
 
     public String getAboutMe() {
@@ -179,7 +141,7 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
     }
 
     public Long getBodyId() {
-        return 123l;
+        return extractId(entity.getBody());
     }
 
     public void setBodyId(Long body) {
@@ -296,5 +258,21 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
     public void setBooks(String books) {
         entity.setBooks(books);
+    }
+
+    protected Long extractId(BaseEntity entity) {
+        if (entity != null) {
+            return entity.getId();
+        } else {
+            return null;
+        }
+    }
+
+    public Long getProfessionId() {
+        return professionId;
+    }
+
+    public void setProfessionId(Long professionId) {
+        this.professionId = professionId;
     }
 }
