@@ -48,7 +48,7 @@ public class UserProfileManager extends BaseManager {
             userProfile.setCity("city");
             userProfile.setCurrentCity("current city");
             userProfile.setFamilyStatus("family status");
-            userProfile.setFistName("first name");
+            userProfile.setFirstName("first name");
             userProfile.setHeight(175.40f);
             userProfile.setInterest("interest");
             userProfile.setLastName("last name");
@@ -102,7 +102,7 @@ public class UserProfileManager extends BaseManager {
         UserLanguage language = languageDao.get(vo.getFirstLanguageId());
         userProfile.setFirstLanguage(language);
 
-        userProfile.setFistName(vo.getFistName());
+        userProfile.setFirstName(vo.getFirstName());
         userProfile.setHeight(vo.getHeight());
 
         userProfile.setInterest(vo.getInterest());

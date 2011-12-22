@@ -34,12 +34,12 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         super(profile);
     }
 
-    public String getFistName() {
-        return entity.getFistName();
+    public String getFirstName() {
+        return entity.getFirstName();
     }
 
-    public void setFistName(String fistName) {
-        entity.setFistName(fistName);
+    public void setFirstName(String fistName) {
+        entity.setFirstName(fistName);
     }
 
     public String getLastName() {
