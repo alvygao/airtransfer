@@ -12,6 +12,11 @@ $(document).ready(function(){
         })
     });
     
+    $('.cSubmit').click(function(){
+        $(this).closest('form').submit();
+        return false;
+    });
+    
 /*
     $('.jDialog').click(function(){
         var url = this.href, title = this.title;

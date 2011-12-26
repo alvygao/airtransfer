@@ -166,13 +166,23 @@ html, body {
     border-bottom: solid 2px #B8D8ED;
     border-radius: 0px 0px 5px 5px;
 }
-
+#cContent .cPage.cWithoutMenu {
+    margin-top: 0px;
+    padding-top: 20px;
+    border-top: solid 2px #B8D8ED;
+    border-radius: 5px 5px 5px 5px;
+}
+#cContent .cPage.cWithoutMenu h1 {
+    color: #4c7ead;
+    margin-left: 10px;
+    font-size: 18px;
+}
 #cContent .cColumn {
     position: relative;
     float: left;
     min-height: 200px;
-    width: 385px;
-    margin-left: 20px;
+    width: 375px;
+    margin-left: 30px;
     margin-top: 30px;
 }
 
@@ -200,12 +210,15 @@ html, body {
 }
 #cContent .cColumn .cFormBlock td {
      padding: 5px 0px;
-     width: 230px;
+     width: 210px;
      padding-right: 50px;
+     position: relative;
+     float: left;
 }
 #cContent .cColumn .cFormBlock .cLabel {
     width: 70px;
     padding: 0px;
+    padding-top: 15px;
     color: #353535;
 }
 #cContent .cColumn .cFormBlock input,
@@ -218,6 +231,15 @@ html, body {
     width: 100%;
     padding-right: 30px;
 }
+#cContent .cColumn .cFormBlock textarea {
+    padding: 0px;
+    width: 260px;
+    height: 70px;
+    max-height: 150px;
+    max-width: 250px;
+    min-height: 70px;
+    min-width: 250px;
+}
 
 #cContent .cColumn .cFormBlock .cDottet {
     border: 1px dashed white;
@@ -225,6 +247,25 @@ html, body {
     width: 330px;
     border-radius: 5px 5px 5px 5px;
     margin-top: 10px;
+}
+
+#cContent .cColumn .cFormBlock span.cClearBtn {
+    cursor: pointer;
+    height: 20px;
+    width: 26px;
+    position: absolute;
+    top: 9px;
+    right: 9px;
+}
+#cContent .cColumn .cFormBlock span.cClearBtn img {
+    width: 20px;
+    display: none;
+}
+#cContent .cColumn .cFormBlock span.cCalendar img {
+    display: inline;
+}
+#cContent .cColumn .cFormBlock span.cClearBtn:hover {
+    color: #cccccc;
 }
 
 #cContent .cTopMenu .cDevider {
@@ -298,14 +339,15 @@ html, body {
     width: 95px;
     height: 30px;
 }
-#cContent .cMain .cLoginForm .cLoginButton input[type=button] {
-    border: none;
-    background: url('/images/login-btn.png') left top no-repeat;
-    width: 94px;
-    height: 30px;
-    font-size: 16px;
+#cContent .cMain .cLoginForm .cLoginButton a {
+    background: url('/images/blue-btn-bg.png') left top repeat-x;
+    height: 24px;
+    border: solid 2px #ffffff;
     color: #ffffff;
-    text-transform: uppercase;
+    font-size: 16px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 3px 15px 3px 15px;
+    text-decoration: none;
 }
 /****************************** LEFT COLUMN ******************************/
 #cLeftBar {
@@ -323,7 +365,10 @@ html, body {
 
 /******************* DIALOG FROM ***********/
 .cRegistration {
-    height: 600px;
+    height: 300px;
+}
+.cForgot {
+    height: 300px;
 }
 
 .cDialogForm {
@@ -373,6 +418,21 @@ html, body {
     border-radius: 5px 5px 5px 5px;
     padding: 3px 15px 3px 15px;
     text-decoration: none;
+}
+
+.cDialogForm b.cError {
+    color: red;
+    margin-left: 10px;
+}
+.cDialogForm b.cSuccess {
+    margin-left: 10px;
+    color: green;
+}
+
+.cDialogForm a.cBackLink {
+    color: #4673A7;
+    text-decoration: none;
+    padding-left: 10px;
 }
 /******************************** FOOTER ********************************/
 #cFooter {
@@ -439,4 +499,12 @@ html, body {
 
 .ui-state-default {
     border: 1px solid #FFFFFF;
+}
+
+.ui-selectmenu-menu li {
+    width: 100%;
+}
+
+.ui-selectmenu-menu {
+    width: 100%;
 }

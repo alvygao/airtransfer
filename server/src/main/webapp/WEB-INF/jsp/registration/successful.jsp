@@ -2,14 +2,13 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jstl/fmt" %>
 <tags:main>
     <jsp:attribute name="center">
-        <div id="cDialogForm" class="cRegistration cDialogForm">
-            <span>
-            <b>${warning}</b>
-            </span>
-            <p/>
-            <span style="width: 100%; padding-left: 100px;">
-                <a href="/" title="${i18n['label.home.link']}">${i18n['label.home.link']}</a>
-            </span>
+        <div class="cPage cWithoutMenu">
+            <h1>${i18n['label.registration.title']}</h1>
+            <div id="cDialogForm" class="cRegistration cDialogForm">
+                <b class="cSuccess">${warning}</b>
+                <br /><br />
+                <a href="/" class="cBackLink">${i18n['label.registration.home']}</a>
+            </div>
         </div>
     </jsp:attribute>
 </tags:main>
