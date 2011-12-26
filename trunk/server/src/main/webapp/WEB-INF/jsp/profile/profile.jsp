@@ -13,19 +13,25 @@
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.personalData.name']}:</td>
                         <td>
-                            <input type="text" class="jSaveData" name="fistName" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="fistName" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.personalData.lastName']}:</td>
                         <td>
-                            <input type="text" class="jSaveData" name="lastName" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="lastName" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.personalData.gender']}:</td>
                         <td>
-                            <select  class="jSaveData" name="female" style="float:left;" class="jSelect">
+                            <select  class="jSaveData jSelect" name="is_male" style="float:left;">
                                 <option value="0">${i18n['label.profile_page.personalData.gender.male']}</option>
                                 <option value="1">${i18n['label.profile_page.personalData.gender.female']}</option>
                             </select>
@@ -34,13 +40,19 @@
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.personalData.site']}:</td>
                         <td>
-                            <input type="text" class="jSaveData" name="siteUrl" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="siteUrl" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.personalData.birthday']}:</td>
                         <td>
-                            <input type="text" class="jSaveData" name="birthday" maxlength="255"/>
+                            <input type="text" class="jSaveData jCalendar" readonly="readonly" name="birthday" />
+                            <span class="cClearBtn cCalendar">
+                                <img src="/images/calendar.gif" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                 </table>
@@ -49,19 +61,28 @@
                         <tr>
                             <td class="cLabel">${i18n['label.profile_page.personalData.skype']}:</td>
                             <td>
-                                <input type="text" class="jSaveData" name="skypeId" maxlength="255"/>
+                                <input type="text" class="jSaveData" name="skypeId" maxlength="255" />
+                                <span class="cClearBtn jClearBtn">
+                                    <img src="/images/clear-button.png" alt="clear" />
+                                </span>
                             </td>
                         </tr>
                         <tr>
                             <td class="cLabel">${i18n['label.profile_page.personalData.phone']}:</td>
                             <td>
-                                <input type="text" class="jSaveData" name="phone" maxlength="255"/>
+                                <input type="text" class="jSaveData" name="phone" maxlength="255" />
+                                <span class="cClearBtn jClearBtn">
+                                    <img src="/images/clear-button.png" alt="clear" />
+                                </span>
                             </td>
                         </tr>
                         <tr class="cLast">
                             <td class="cLabel">${i18n['label.profile_page.personalData.mobilePhone']}:</td>
                             <td>
-                                <input type="text" class="jSaveData" name="cellPhone" maxlength="255"/>
+                                <input type="text" class="jSaveData" name="cellPhone" maxlength="255" />
+                                <span class="cClearBtn jClearBtn">
+                                    <img src="/images/clear-button.png" alt="clear" />
+                                </span>
                             </td>
                         </tr>
 
@@ -75,7 +96,7 @@
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.locations.country']}:</td>
                         <td>
-                            <select name="countryId" class="jSaveData" style="float:left;" class="jSelect">
+                            <select name="countryId" class="jSaveData jSelect" style="float:left;">
 
                             </select>
                         </td>
@@ -83,7 +104,10 @@
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.locations.city']}:</td>
                         <td>
-                            <input type="text" class="jSaveData" name="city" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="city" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                 </table>
@@ -95,7 +119,7 @@
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.location.country']}:</td>
                         <td>
-                            <select name="currentCountryId" class="jSaveData" style="float:left;" class="jSelect">
+                            <select name="currentCountryId" class="jSaveData jSelect" style="float:left;">
 
                             </select>
                         </td>
@@ -103,7 +127,10 @@
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.location.city']}:</td>
                         <td>
-                            <input type="text" class="jSaveData" name="currentCity" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="currentCity" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                 </table>
@@ -115,23 +142,23 @@
             <div class="cFormBlock">
                 <table border="0">
                     <tr>
-                        <td colspan="2">
-                            <select name="firstLanguageId" class="jSaveData" style="float:left;" class="jSelect">
-
+                        <td class="cLabel"></td>
+                        <td>
+                            <select name="firstLanguageId" class="jSaveData jSelect" style="float:left;">
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
-                            <select name="secondLanguageId" class="jSaveData" style="float:left;" class="jSelect">
-
+                        <td class="cLabel"></td>
+                        <td>
+                            <select name="secondLanguageId" class="jSaveData jSelect" style="float:left;">
                             </select>
                         </td>
                     </tr>
                     <tr class="cLast">
-                        <td colspan="2">
-                            <select name="thirdLanguageId" class="jSaveData" style="float:left;" class="jSelect">
-
+                        <td class="cLabel"></td>
+                        <td>
+                            <select name="thirdLanguageId" class="jSaveData jSelect" style="float:left;">
                             </select>
                         </td>
                     </tr>
@@ -144,7 +171,7 @@
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.profession']}:</td>
                         <td colspan="3">
-                            <select name="occupationId" class="jSaveData" style="float:left;" class="jSelect">
+                            <select name="occupationId" class="jSaveData jSelect" style="float:left;">
 
                             </select>
                         </td>
@@ -158,59 +185,89 @@
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.familyStatus']}:</td>
                         <td colspan="3">
-                            <input type="text" class="jSaveData" name="familyStatus" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="familyStatus" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.body']}:</td>
                         <td colspan="3">
-                            <input type="text" class="jSaveData" name="bodyId" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="bodyId" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.height']}:</td>
                         <td style="width: 40px;">
-                            <input type="text" class="jSaveData" name="height" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="height" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                         <td class="cLabel">${i18n['label.profile_page.more.weight']}:</td>
                         <td style="width: 40px;">
-                            <input type="text" class="jSaveData" name="width" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="width" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.appearance']}:</td>
                         <td colspan="3">
-                            <input type="text" class="jSaveData" name="appearance" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="appearance" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.lifePriorities']}:</td>
                         <td colspan="3">
-                            <input type="text" class="jSaveData" name="lifeGoals" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="lifeGoals" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.interest']}:</td>
                         <td colspan="3">
-                            <input type="text" class="jSaveData" name="interest" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="interest" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.music']}:</td>
                         <td colspan="3">
-                            <input type="text" class="jSaveData" name="music" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="music" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.movies']}:</td>
                         <td colspan="3">
-                            <input type="text" class="jSaveData" name="movies" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="movies" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr  class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.more.books']}:</td>
                         <td colspan="3">
-                            <input type="text" class="jSaveData" name="books" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="books" maxlength="255" />
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear" />
+                            </span>
                         </td>
                     </tr>
                 </table>
@@ -227,16 +284,19 @@
             <input type="submit" value="GET" onclick="return onClick(this)"/>
             <input type="submit" value="PUT" onclick="return onPutClick(this)"/>
             <script type="text/javascript">
+                window.onload = getProfile();
+               
+                $('select[name=is_male]').selectmenu();
                 jQuery(document).ready(function() {
-                    
                     $.getJSON('/rest/search/countries', function(objJson) {
                         var items = [];
                         $.each(objJson.data, function(key, val) {
                             items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
                         });
                         
-                        $('select[name=countryId]').html(items.join(''));
-                        $('select[name=currentCountryId]').html(items.join(''));
+                        $('select[name=countryId]').html(items.join('')).selectmenu();
+                        $('select[name=currentCountryId]').html(items.join('')).selectmenu();
+                        
                     });
                     $.getJSON('/rest/search/language', function(objJson) {
                         var items = [];
@@ -244,7 +304,7 @@
                             items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
                         });
                         
-                        $('select[name=bodyId]').html(items.join(''));
+                        $('select[name=bodyId]').html(items.join('')).selectmenu();
                     });
                     $.getJSON('/rest/search/body', function(objJson) {
                         var items = [];
@@ -252,9 +312,9 @@
                             items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
                         });
                         
-                        $('select[name=firstLanguageId]').html(items.join(''));
-                        $('select[name=secondLanguageId]').html(items.join(''));
-                        $('select[name=thirdLanguageId]').html(items.join(''));
+                        $('select[name=firstLanguageId]').html(items.join('')).selectmenu();
+                        $('select[name=secondLanguageId]').html(items.join('')).selectmenu();
+                        $('select[name=thirdLanguageId]').html(items.join('')).selectmenu();
                     });
                     $.getJSON('/rest/search/profession', function(objJson) {
                         var items = [];
@@ -262,17 +322,39 @@
                             items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
                         });
                         
-                        $('select[name=occupationId]').html(items.join(''));
+                        $('select[name=occupationId]').html(items.join('')).selectmenu();
                     });
                     $(".jSaveData").focusout(function() {
                         saveProfile();
                     });
-                    getProfile();
-                    //$('select.jSelect').selectmenu();
+                    $('select[name!=is_male]').change(function(){
+                        saveProfile();
+                    });
+                    
+                    $('span.jClearBtn')
+                        .hover(
+                            function(){
+                                $(this).find('img').css('display', 'inline');
+                            }, 
+                            function(){
+                                $(this).find('img').css('display', 'none');
+                            }
+                        )
+                        .click(function(){
+                            $(this).siblings('input').val('');
+                            saveProfile();
+                        });
+                        
+                        
+                    $('.jCalendar').datepicker({
+                        yearRange: '1930:2000',
+                        showAnim: 'slideDown'
+                    });
                 });
-
+                
 
                 function getProfile() {
+                    
                     $.ajax({
                         type:'get',
                         url: APP_BASE_URL + '/rest/user/profile',
@@ -282,6 +364,7 @@
                         },
                         success: function(request) {
                             $('input[textarea=aboutMe]').val(request.data.aboutMe);
+                            $('select[name=is_male]').val(request.data.is_male);
                             $('input[select=bodyId]').val(request.data.bodyId);
                             $('input[name=appearance]').val(request.data.appearance);
                             $('input[name=birthDay]').val(request.data.birthDay);
@@ -306,6 +389,8 @@
                             $('input[name=skypeId]').val(request.data.skypeId);
                             $('input[select=thirdLanguageId]').val(request.data.thirdLanguageId);
                             $('input[name=width]').val(request.data.width);
+                            
+                            
                         }
                     });
 
@@ -316,6 +401,7 @@
                 function saveProfile() {
                     var requestData = {"data":{
                         "aboutMe": $('textarea[name=aboutMe]').val(),
+                        "is_male": $('select[name=is_male]').val(),
                         "bodyId": $('select[name=bodyId]').val(),
                         "appearance": $('input[name=appearance]').val(),
                         "birthDay": $('input[name=appearance]').val(),
@@ -344,17 +430,16 @@
                     var textData = JSON.stringify(requestData);
 
                     $.ajax({
-                                type:'put',
-                                url: APP_BASE_URL + '/rest/user/profile',
-                                contentType: "application/json; charset=utf-8",
-                                data:  textData,
-                                error: function(request, error) {
-                                    alert("Error: " + request);
-                                },
-                                success: function(request) {
-                                    console.log(request);
-                                }
-                            });
+                        type:'put',
+                        url: APP_BASE_URL + '/rest/user/profile',
+                        contentType: "application/json; charset=utf-8",
+                        data:  textData,
+                        error: function(request, error) {
+                            alert("Error: " + request);
+                        },
+                        success: function(request) {
+                        }
+                    });
                     return false;
                 }
             </script>
