@@ -21,6 +21,8 @@ public class UserSession extends BaseEntity {
     private User user;
     @Column(columnDefinition = "TEXT")
     private String headers;
+    @Column(columnDefinition = "BIT")
+    private Boolean expired = Boolean.FALSE;
 
     public String getToken() {
         return token;
@@ -68,5 +70,13 @@ public class UserSession extends BaseEntity {
 
     public void setJSessionId(String JSessionId) {
         this.JSessionId = JSessionId;
+    }
+
+    public Boolean getExpired() {
+        return expired;
+    }
+
+    public void setExpired(Boolean expired) {
+        this.expired = expired;
     }
 }
