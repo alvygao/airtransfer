@@ -44,6 +44,10 @@ public class SignInController extends AbstractController {
             userSession.setJSessionId(session.getId());
             userSession.setUser(user);
             userSession.setExpired(Boolean.FALSE);
+            UserSession byToken = sessionDao.findByToken(session.getId());
+            if (byToken != null) {
+                userSession.setId(byToken.getId());
+            }
             sessionDao.persist(userSession);
             UserSessionManager.getInstance().grant(session);
             view.addObject("msg", "ok");

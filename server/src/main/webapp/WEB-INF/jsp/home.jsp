@@ -32,66 +32,35 @@
                     </div>
 
                     <div class="cLoginButton">
-		      <input type="button" value="${i18n['label.main.login.loginBtn']}" onclick="return onLogin(this);"/>
-                        <!--a href="${baseAppUrl}/html/signin" class="jLogin"
-                           onclick="return onLogin(e);">${i18n['label.main.login.loginBtn']}</a-->
+                        <a href="" class="jLogin">${i18n['label.main.login.loginBtn']}</a>
                     </div>
-
-                    <script type="text/javascript">
-                        function onLogin(e) {
-
-                            var dataString = 'email=' + $('input[name=email]').val()
-                                    + '&password=' + $('input[name=password]').val();
-
-                            var surl = APP_BASE_URL + "/html/signin";
-
-                            $.ajax({
-                                        type: 'POST',
-                                        url: surl,
-                                        data: dataString,
-                                        dataType: dataString,
-                                        success: function(request) {
-                                            if (request.responseText == "ok") {
-                                                document.location = APP_BASE_URL + "/html/profile";
-                                            }
-                                        },
-                                        error: function(request, error) {
-                                            if (request.responseText == "ok") {
-                                                document.location = APP_BASE_URL + "/html/profile";
-                                            }
-                                        }
-                                    });
-                        }
-                    </script>
+                </form>
             </div>
+            <script>
+                jQuery(document).ready(function() {
+                    $('a.jLogin').click(function() {
+                        $.ajax({
+                                    type: 'POST',
+                                    url: APP_BASE_URL + '/html/signin',
+                                    data: 'email=' +
+                                            $('input[name=email]').val() +
+                                            '&password=' +
+                                            $('input[name=password]').val()
+                                    ,
+                                    success: function(objResponce) {
+                                        console.log(objResponce);
+                                        document.location = APP_BASE_URL + "/html/profile";
+                                    },
+                                    error: function() {
+                                        alert('Please enter correct data');
+                                    }
+                                });
+                        return false;
+                    });
+                });
+            </script>
 
-            </form>
-        </div>
         </div>
     </jsp:attribute>
-
 </tags:main>
-<!--script>
-    jQuery(document).ready(function() {
-        $('a.jLogin').click(function() {
-            $.ajax({
-                        type: 'POST',
-                        url: $(this).attr('href'),
-                        contentType: "application/json; charset=utf-8",
-                        data: {
-                            email: $('input[name=email]').val(),
-                            password: $('input[name=password]').val()
-                        },
-                        success: function(objResponce) {
-                            console.log(objResponce);
-                            window.location.href = '/html/profile';
-                        },
-                        error: function() {
-                            alert('Please enter correct data');
-                        }
-                    });
-            return false;
-        });
-    });
-</script-->
 
