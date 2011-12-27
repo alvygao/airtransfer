@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * Date: 02.12.11 17:57
  */
 @Controller()
-@RequestMapping("forgetpassword")
+@RequestMapping("/forgetpassword")
 public class ForgetPasswordController extends AbstractController {
     @Autowired
     UserService userService;
