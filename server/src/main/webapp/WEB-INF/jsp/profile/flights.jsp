@@ -42,6 +42,7 @@
                                             $.ajax({
                                                         url: '/rest/search/airports?term=' + request.term + '&limit=' + 15,
                                                         dataType: "json",
+                                                        type:"GET",
                                                         contentType: "application/json; charset=utf-8",
                                                         headers: {
                                                             "Content-Type": "application/json",

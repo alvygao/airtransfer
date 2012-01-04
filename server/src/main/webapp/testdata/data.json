@@ -1,20 +1,25 @@
-{"data":
-        [
-            {
-                "itemId":122,
-                "itemName":"appearance123"
-            },
-            {
-                "itemId":123,
-                "itemName":"appearance123"
-            },
-            {
-                "itemId":124,
-                "itemName":"appearance124"
-            },
-            {
-                "itemId":1225,
-                "itemName":"appearance125"
-            }
-        ]
-}
+{"data":{
+    "@type":"userProfileVO",
+    "aboutMe":"test",
+    "appearance":"test",
+    "books":"test",
+    "cellPhone":"test",
+    "cityId":"-1",
+    "currentCityId":"-1",
+    "currentCountryId":"1",
+    "familyStatus":"test",
+    "firstLanguageId":"1",
+    "firstName":"test",
+    "height":"12312.0",
+    "interest":"test",
+    "lastName":"test",
+    "movies":"test",
+    "music":"music",
+    "phone":"test",
+    "realId":"2",
+    "secondLanguageId":"1",
+    "siteUrl":"asfsa",
+    "skypeId":"asfsa",
+    "thirdLanguageId":"1",
+    "width":"123.0"
+},"success":"true"}

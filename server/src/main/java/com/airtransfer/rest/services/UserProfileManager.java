@@ -40,26 +40,6 @@ public class UserProfileManager extends BaseManager {
         UserProfile userProfile = profileDao.findProfileByUser(user.getId());
         if (userProfile == null) {
             userProfile = new UserProfile();
-            userProfile.setUser(user);
-            userProfile.setAboutMe("aboutMe");
-            userProfile.setAppearance("appearance");
-            userProfile.setBooks("books");
-            userProfile.setCellPhone("cellPhone");
-            userProfile.setCity("city");
-            userProfile.setCurrentCity("current city");
-            userProfile.setFamilyStatus("family status");
-            userProfile.setFirstName("first name");
-            userProfile.setHeight(175.40f);
-            userProfile.setInterest("interest");
-            userProfile.setLastName("last name");
-            userProfile.setLifeGoals("goals");
-            userProfile.setFemale(true);
-            userProfile.setMovies("movies");
-            userProfile.setMusic("music");
-            userProfile.setPhone("phone");
-            userProfile.setSiteUrl("site url");
-            userProfile.setSkypeId("skype id");
-            userProfile.setWidth(75.5f);
             profileDao.save(userProfile);
         }
         return new BaseEntityVOResponse<UserProfileVO>(new UserProfileVO(userProfile));
@@ -70,8 +50,7 @@ public class UserProfileManager extends BaseManager {
     @Produces({MediaType.APPLICATION_JSON})
     public BaseEntityVOResponse<UserProfileVO> update(BaseEntityVORequest<UserProfileVO> request) {
 
-        final UserProfileVO entity = new UserProfileVO(new UserProfile());
-        UserProfileVO vo = this.convert(UserProfileVO.class, entity, (Element) request.getData());
+        UserProfileVO vo = convert(UserProfileVO.class, new UserProfileVO(), (Element) request.getData());
 
         final UserSession session = getSession();
         final User user = session.getUser();
@@ -86,12 +65,9 @@ public class UserProfileManager extends BaseManager {
 
         userProfile.setBooks(vo.getBooks());
         userProfile.setCellPhone(vo.getCellPhone());
-        userProfile.setCity(vo.getCity());
 
         Country country = countryDao.get(vo.getCountryId());
         userProfile.setCountry(country);
-
-        userProfile.setCurrentCity(vo.getCurrentCity());
 
         Country country1 = countryDao.get(vo.getCurrentCountryId());
         userProfile.setCurrentCountry(country1);
