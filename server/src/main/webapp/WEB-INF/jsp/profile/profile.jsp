@@ -104,10 +104,9 @@
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.locations.city']}:</td>
                         <td>
-                            <input type="text" class="jSaveData" name="city" maxlength="255"/>
-                            <span class="cClearBtn jClearBtn">
-                                <img src="/images/clear-button.png" alt="clear"/>
-                            </span>
+                            <select name="city" class="jSaveData jSelect" style="float:left;">
+
+                            </select>
                         </td>
                     </tr>
                 </table>
@@ -127,10 +126,9 @@
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.location.city']}:</td>
                         <td>
-                            <input type="text" class="jSaveData" name="currentCity" maxlength="255"/>
-                            <span class="cClearBtn jClearBtn">
-                                <img src="/images/clear-button.png" alt="clear"/>
-                            </span>
+                            <select name="currentCity" class="jSaveData jSelect" style="float:left;">
+
+                            </select>
                         </td>
                     </tr>
                 </table>
@@ -296,6 +294,16 @@
 
                         $('select[name=countryId]').html(items.join('')).selectmenu();
                         $('select[name=currentCountryId]').html(items.join('')).selectmenu();
+
+                    });
+                    $.getJSON('/rest/search/countries', function(objJson) {
+                        var items = [];
+                        $.each(objJson.data, function(key, val) {
+                            items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                        });
+
+                        $('select[name=city]').html(items.join('')).selectmenu();
+                        $('select[name=currentCity]').html(items.join('')).selectmenu();
 
                     });
                     $.getJSON('/rest/search/language', function(objJson) {
