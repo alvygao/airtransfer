@@ -37,12 +37,12 @@ public abstract class AbstractController {
 
     @Value("${serverUrl}")
     public void setBaseUrl(String baseUrl) {
-        logger.error("setBaseUrl", baseUrl);
+        logger.debug("setBaseUrl", baseUrl);
         this.baseUrl = baseUrl;
     }
 
     public String getUrl() {
-        logger.error("getBaseUrl", baseUrl);
+        logger.debug("getBaseUrl", baseUrl);
         return baseUrl;
     }
 

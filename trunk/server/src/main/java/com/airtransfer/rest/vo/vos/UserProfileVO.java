@@ -1,13 +1,14 @@
 package com.airtransfer.rest.vo.vos;
 
-import com.airtransfer.models.BaseEntity;
 import com.airtransfer.models.UserProfile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -18,57 +19,118 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
+    private Long realId;
     private Long bodyId;
     private Long countryId;
+    private Long cityId;
+    private Long currentCityId;
     private Long currentCountryId;
     private Long firstLanguageId;
     private Long secondLanguageId;
     private Long thirdLanguageId;
     private Long professionId;
 
+    private String firstName;
+    private String lastName;
+    private Boolean isFemale;
+
+    private String siteUrl;
+    private Date birthDay;
+    private String skypeId;
+    private String phone;
+    private String cellPhone;
+    private String aboutMe;
+    private String familyStatus;
+
+    private Float height;
+    private Float width;
+    private String appearance;
+    private String lifeGoals;
+    private String interest;
+    private String music;
+    private String movies;
+    private String books;
+
+    public UserProfileVO(UserProfile entity) {
+        realId = entity.getId();
+        bodyId = entity.getBody() != null ? entity.getBody().getId() : null;
+
+        countryId = entity.getCountry() != null ? entity.getCountry().getId() : null;
+        cityId = -1l;
+        currentCityId = -1l;
+        currentCountryId = entity.getCurrentCountry() != null ? entity.getCurrentCountry().getId() : null;
+        firstLanguageId = entity.getFirstLanguage() != null ? entity.getFirstLanguage().getId() : null;
+        secondLanguageId = entity.getSecondLanguage() != null ? entity.getSecondLanguage().getId() : null;
+        thirdLanguageId = entity.getThirdLanguage() != null ? entity.getThirdLanguage().getId() : null;
+        professionId = entity.getOccupation() != null ? entity.getOccupation().getId() : null;
+
+        firstName = entity.getFirstName();
+        lastName = entity.getLastName();
+        isFemale = entity.getFemale();
+
+        siteUrl = entity.getSiteUrl();
+        birthDay = entity.getBirthDay();
+        skypeId = entity.getSiteUrl();
+        phone = entity.getPhone();
+        cellPhone = entity.getCellPhone();
+        aboutMe = entity.getAboutMe();
+        familyStatus = entity.getFamilyStatus();
+
+        height = entity.getHeight();
+        width = entity.getWidth();
+        appearance = entity.getAppearance();
+        lifeGoals = entity.getLifeGoals();
+        interest = entity.getInterest();
+        music = entity.getMusic();
+        movies = entity.getMovies();
+        books = entity.getBooks();
+    }
 
     public UserProfileVO() {
     }
 
-    public UserProfileVO(UserProfile profile) {
-        super(profile);
-    }
+    public UserProfile model() {
 
-    public String getFirstName() {
-        return entity.getFirstName();
-    }
+        UserProfile entity = new UserProfile();
 
-    public void setFirstName(String fistName) {
-        entity.setFirstName(fistName);
-    }
-
-    public String getLastName() {
-        return entity.getLastName();
-    }
-
-    public void setLastName(String lastName) {
+        entity.setId(realId);
+        entity.setFirstName(firstName);
         entity.setLastName(lastName);
-    }
+        entity.setFemale(isFemale);
 
-    public Boolean getFemale() {
-        return entity.getFemale();
-    }
-
-    public void setFemale(Boolean male) {
-        entity.setFemale(male);
-    }
-
-    public String getSiteUrl() {
-        return entity.getSiteUrl();
-    }
-
-    public void setSiteUrl(String siteUrl) {
         entity.setSiteUrl(siteUrl);
+
+        entity.setBirthDay(birthDay);
+        entity.setSkypeId(skypeId);
+        entity.setPhone(phone);
+        entity.setCellPhone(cellPhone);
+        entity.setAboutMe(aboutMe);
+        entity.setFamilyStatus(familyStatus);
+
+        entity.setHeight(height);
+        entity.setWidth(width);
+        entity.setAboutMe(appearance);
+        entity.setLifeGoals(lifeGoals);
+        entity.setInterest(interest);
+        entity.setMusic(music);
+        entity.setMovies(movies);
+        entity.setBooks(books);
+        height = entity.getHeight();
+        width = entity.getWidth();
+        appearance = entity.getAppearance();
+        lifeGoals = entity.getLifeGoals();
+        interest = entity.getInterest();
+        music = entity.getMusic();
+        movies = entity.getMovies();
+        books = entity.getBooks();
+        return entity;
     }
 
     public String getBirthDay() {
-        if (entity.getBirthDay() != null) {
-            return DateFormat.getDateInstance().format(entity.getBirthDay());
+        if (birthDay != null) {
+            return SimpleDateFormat.getDateInstance().format(birthDay);
         }
         return null;
     }
@@ -76,196 +138,83 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
     public void setBirthDay(String birthDay) {
         if (birthDay != null) {
             try {
-                Date date = DateFormat.getDateInstance().parse(birthDay);
-                entity.setBirthDay(date);
+                this.birthDay = SimpleDateFormat.getDateInstance().parse(birthDay.replace('/', '.'));
             } catch (ParseException e) {
-                e.printStackTrace();
+                logger.warn(e.getMessage());
             }
         }
     }
 
-    public String getSkypeId() {
-        return entity.getSkypeId();
-    }
-
-    public void setSkypeId(String skypeId) {
-        entity.setSkypeId(skypeId);
-    }
-
-    public String getPhone() {
-        return entity.getPhone();
-    }
-
-    public void setPhone(String phone) {
-        entity.setPhone(phone);
-    }
-
-    public String getCellPhone() {
-        return entity.getCellPhone();
-    }
-
-    public void setCellPhone(String cellPhone) {
-        entity.setCellPhone(cellPhone);
-    }
-
-    public String getCity() {
-        return entity.getCity();
-    }
-
-    public void setCity(String city) {
-        entity.setCity(city);
-    }
-
-    public String getCurrentCity() {
-        return entity.getCurrentCity();
-    }
-
-    public void setCurrentCity(String currentCity) {
-        entity.setCurrentCity(currentCity);
-    }
-
-    public String getAboutMe() {
-        return entity.getAboutMe();
-    }
-
-    public void setAboutMe(String aboutMe) {
-        entity.setAboutMe(aboutMe);
-    }
-
-    public String getFamilyStatus() {
-        return entity.getFamilyStatus();
-    }
-
-    public void setFamilyStatus(String familyStatus) {
-        entity.setFamilyStatus(familyStatus);
-    }
-
     public Long getBodyId() {
-        return extractId(entity.getBody());
+        return bodyId;
     }
 
-    public void setBodyId(Long body) {
+    public void setBodyId(Long bodyId) {
+        this.bodyId = bodyId;
+    }
 
+    public Long getRealId() {
+        return realId;
+    }
+
+    public void setRealId(Long id) {
+        this.realId = id;
     }
 
     public Long getCountryId() {
-        return 123l;
+        return countryId;
     }
 
-    public void setCountryId(Long body) {
+    public void setCountryId(Long countryId) {
+        this.countryId = countryId;
+    }
 
+    public Long getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
+    }
+
+    public Long getCurrentCityId() {
+        return currentCityId;
+    }
+
+    public void setCurrentCityId(Long currentCityId) {
+        this.currentCityId = currentCityId;
     }
 
     public Long getCurrentCountryId() {
-        return 123l;
+        return currentCountryId;
     }
 
-    public void setCurrentCountryId(Long body) {
-
+    public void setCurrentCountryId(Long currentCountryId) {
+        this.currentCountryId = currentCountryId;
     }
 
     public Long getFirstLanguageId() {
-        return 123l;
+        return firstLanguageId;
     }
 
-    public void setFirstLanguageId(Long body) {
-
+    public void setFirstLanguageId(Long firstLanguageId) {
+        this.firstLanguageId = firstLanguageId;
     }
 
     public Long getSecondLanguageId() {
-        return 123l;
+        return secondLanguageId;
     }
 
-    public void setSecondLanguageId(Long body) {
-
+    public void setSecondLanguageId(Long secondLanguageId) {
+        this.secondLanguageId = secondLanguageId;
     }
 
     public Long getThirdLanguageId() {
-        return 123l;
+        return thirdLanguageId;
     }
 
-    public void setThirdLanguageId(Long body) {
-
-    }
-
-    public Long getOccupationId() {
-        return 123l;
-    }
-
-    public void setOccupationId(Long body) {
-
-    }
-
-    public Float getHeight() {
-        return entity.getHeight();
-    }
-
-    public void setHeight(Float height) {
-        entity.setHeight(height);
-    }
-
-    public Float getWidth() {
-        return entity.getWidth();
-    }
-
-    public void setWidth(Float width) {
-        entity.setWidth(width);
-    }
-
-    public String getAppearance() {
-        return entity.getAppearance();
-    }
-
-    public void setAppearance(String appearance) {
-        entity.setAppearance(appearance);
-    }
-
-    public String getLifeGoals() {
-        return entity.getLifeGoals();
-    }
-
-    public void setLifeGoals(String lifeGoals) {
-        entity.getLifeGoals();
-    }
-
-    public String getInterest() {
-        return entity.getInterest();
-    }
-
-    public void setInterest(String interest) {
-        entity.setInterest(interest);
-    }
-
-    public String getMusic() {
-        return entity.getMusic();
-    }
-
-    public void setMusic(String music) {
-        entity.setMusic(music);
-    }
-
-    public String getMovies() {
-        return entity.getMovies();
-    }
-
-    public void setMovies(String movies) {
-        entity.setMovies(movies);
-    }
-
-    public String getBooks() {
-        return entity.getBooks();
-    }
-
-    public void setBooks(String books) {
-        entity.setBooks(books);
-    }
-
-    protected Long extractId(BaseEntity entity) {
-        if (entity != null) {
-            return entity.getId();
-        } else {
-            return null;
-        }
+    public void setThirdLanguageId(Long thirdLanguageId) {
+        this.thirdLanguageId = thirdLanguageId;
     }
 
     public Long getProfessionId() {
@@ -274,5 +223,141 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
     public void setProfessionId(Long professionId) {
         this.professionId = professionId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Boolean getFemale() {
+        return isFemale;
+    }
+
+    public void setFemale(Boolean female) {
+        isFemale = female;
+    }
+
+    public String getSiteUrl() {
+        return siteUrl;
+    }
+
+    public void setSiteUrl(String siteUrl) {
+        this.siteUrl = siteUrl;
+    }
+
+    public String getSkypeId() {
+        return skypeId;
+    }
+
+    public void setSkypeId(String skypeId) {
+        this.skypeId = skypeId;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCellPhone() {
+        return cellPhone;
+    }
+
+    public void setCellPhone(String cellPhone) {
+        this.cellPhone = cellPhone;
+    }
+
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
+    }
+
+    public String getFamilyStatus() {
+        return familyStatus;
+    }
+
+    public void setFamilyStatus(String familyStatus) {
+        this.familyStatus = familyStatus;
+    }
+
+    public Float getHeight() {
+        return height;
+    }
+
+    public void setHeight(Float height) {
+        this.height = height;
+    }
+
+    public Float getWidth() {
+        return width;
+    }
+
+    public void setWidth(Float width) {
+        this.width = width;
+    }
+
+    public String getAppearance() {
+        return appearance;
+    }
+
+    public void setAppearance(String appearance) {
+        this.appearance = appearance;
+    }
+
+    public String getLifeGoals() {
+        return lifeGoals;
+    }
+
+    public void setLifeGoals(String lifeGoals) {
+        this.lifeGoals = lifeGoals;
+    }
+
+    public String getInterest() {
+        return interest;
+    }
+
+    public void setInterest(String interest) {
+        this.interest = interest;
+    }
+
+    public String getMusic() {
+        return music;
+    }
+
+    public void setMusic(String music) {
+        this.music = music;
+    }
+
+    public String getMovies() {
+        return movies;
+    }
+
+    public void setMovies(String movies) {
+        this.movies = movies;
+    }
+
+    public String getBooks() {
+        return books;
+    }
+
+    public void setBooks(String books) {
+        this.books = books;
     }
 }

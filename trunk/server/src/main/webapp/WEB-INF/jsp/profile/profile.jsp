@@ -13,7 +13,7 @@
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.personalData.name']}:</td>
                         <td>
-                            <input type="text" class="jSaveData" name="fistName" maxlength="255"/>
+                            <input type="text" class="jSaveData" name="firstName" maxlength="255"/>
                             <span class="cClearBtn jClearBtn">
                                 <img src="/images/clear-button.png" alt="clear"/>
                             </span>
@@ -49,7 +49,7 @@
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.personalData.birthday']}:</td>
                         <td>
-                            <input type="text" class="jSaveData jCalendar" readonly="readonly" name="birthday"/>
+                            <input type="text" class="jSaveData jCalendar" readonly="readonly" name="birthDay"/>
                             <span class="cClearBtn cCalendar">
                                 <img src="/images/calendar.gif" alt="clear"/>
                             </span>
@@ -372,7 +372,7 @@
                                 },
                                 success: function(request) {
                                     $('input[textarea=aboutMe]').val(request.data.aboutMe);
-                                    $('select[name=is_male]').val(request.data.is_male);
+                                    $('select[name=is_male]').val(request.data.female);
                                     $('input[select=bodyId]').val(request.data.bodyId);
                                     $('input[name=appearance]').val(request.data.appearance);
                                     $('input[name=birthDay]').val(request.data.birthDay);
@@ -397,8 +397,6 @@
                                     $('input[name=skypeId]').val(request.data.skypeId);
                                     $('input[select=thirdLanguageId]').val(request.data.thirdLanguageId);
                                     $('input[name=width]').val(request.data.width);
-
-
                                 }
                             });
 
@@ -409,10 +407,10 @@
                 function saveProfile() {
                     var requestData = {"data":{
                         "aboutMe": $('textarea[name=aboutMe]').val(),
-                        "is_male": $('select[name=is_male]').val(),
+                        "female": $('select[name=is_male]').val(),
                         "bodyId": $('select[name=bodyId]').val(),
                         "appearance": $('input[name=appearance]').val(),
-                        "birthDay": $('input[name=appearance]').val(),
+                        "birthDay": $('input[name=birthDay]').val(),
                         "books": $('input[name=books]').val(),
                         "cellPhone": $('input[name=cellPhone]').val(),
                         "city": $('input[name=city]').val(),

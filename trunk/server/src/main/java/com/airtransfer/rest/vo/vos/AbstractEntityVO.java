@@ -13,24 +13,7 @@ import java.io.Serializable;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class AbstractEntityVO<E extends AbstractEntity> {
 
-    protected E entity;
-
     public AbstractEntityVO() {
     }
 
-    public AbstractEntityVO(E entity) {
-        this.entity = entity;
-    }
-
-    public Long getRealId() {
-        return (Long) entity.getId();
-    }
-
-    public void setRealId(Long id) {
-        entity.setId(id);
-    }
-
-    public E model() {
-        return entity;
-    }
 }

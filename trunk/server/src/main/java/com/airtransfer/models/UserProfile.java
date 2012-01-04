@@ -16,7 +16,7 @@ import java.util.Date;
 @Table(name = "profiles")
 public class UserProfile extends BaseEntity {
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne()
     private User user;
 
     @Column
@@ -36,24 +36,25 @@ public class UserProfile extends BaseEntity {
     @Column
     private String cellPhone;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     private Country country;
     @Column
     private String city;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     private Country currentCountry;
     @Column
     private String currentCity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
+
     private UserLanguage firstLanguage;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     private UserLanguage secondLanguage;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     private UserLanguage thirdLanguage;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     private Profession occupation;
     @Column(columnDefinition = "TEXT")
     private String aboutMe;
