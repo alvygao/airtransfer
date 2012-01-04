@@ -4,7 +4,7 @@ import com.airtransfer.models.User;
 import com.airtransfer.models.UserSession;
 import com.airtransfer.services.UserService;
 import com.airtransfer.services.dao.UserSessionDao;
-import com.airtransfer.web.utils.UserSessionManager;
+import com.airtransfer.web.utils.SessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,24 +37,27 @@ public class SignInController extends AbstractController {
         String password = request.getParameter("password");
 
         User user = userService.findUserByEmailAndPassword(email, password);
-        if (user != null) {
-            HttpSession session = request.getSession();
-            final UserSession userSession = new UserSession();
-            userSession.setCreated(new Date());
-            userSession.setJSessionId(session.getId());
-            userSession.setUser(user);
-            userSession.setExpired(Boolean.FALSE);
-            UserSession byToken = sessionDao.findByToken(session.getId());
-            if (byToken != null) {
-                userSession.setId(byToken.getId());
+        if (user != null && user.getApproved()) {
+            final HttpSession httpSession = request.getSession();
+            final String token = httpSession.getId();
+            UserSession session = sessionDao.findBySessionId(token);
+            if (session != null) {
+                logger.warn("User with such token already logged in; {}", token);
+                session.setExpired(true);
+                sessionDao.persist(session);
+                SessionManager.remove(token);
             }
-            sessionDao.persist(userSession);
-            UserSessionManager.getInstance().grant(session);
+            session = new UserSession();
+            session.setCreated(new Date());
+            session.setJSessionId(token);
+            session.setUser(user);
+            sessionDao.persist(session);
+            SessionManager.add(token);
+            logger.info("User session created; {}", token);
             view.addObject("msg", "ok");
         } else {
             view.addObject("msg", "error");
         }
-
         view.setViewName("empty");
         return view;
     }

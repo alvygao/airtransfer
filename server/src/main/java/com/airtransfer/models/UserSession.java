@@ -9,8 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user_sessions")
 public class UserSession extends BaseEntity {
-    @Column
-    private String token;
+
     @Column(name = "jsession_id")
     private String JSessionId;
     @Column
@@ -23,14 +22,6 @@ public class UserSession extends BaseEntity {
     private String headers;
     @Column(columnDefinition = "BIT")
     private Boolean expired = Boolean.FALSE;
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     public Integer getTimeToLive() {
         return timeToLive;

@@ -19,6 +19,12 @@ public class ProfileController extends AbstractController {
         return view;
     }
 
+    @RequestMapping(value = "/messages", method = RequestMethod.GET)
+    public ModelAndView processMessages(ModelAndView view) {
+        view.setViewName("profile/messages");
+        return view;
+    }
+
     @RequestMapping(value = "/friends", method = RequestMethod.GET)
     public ModelAndView processFriends(ModelAndView view) {
         view.setViewName("profile/friends");
@@ -36,4 +42,5 @@ public class ProfileController extends AbstractController {
         view.setViewName("profile/albums");
         return view;
     }
+
 }

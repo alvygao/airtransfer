@@ -7,5 +7,5 @@ import com.airtransfer.models.UserSession;
  * Date: 18.12.11 14:53
  */
 public interface UserSessionDao extends AbstractDao<UserSession, Long> {
-    UserSession findByToken(String token);
+    UserSession findBySessionId(String token);
 }

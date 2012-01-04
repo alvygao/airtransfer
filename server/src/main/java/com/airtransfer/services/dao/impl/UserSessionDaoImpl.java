@@ -20,12 +20,12 @@ public class UserSessionDaoImpl extends BaseDao<UserSession, Long> implements Us
         super(UserSession.class);
     }
 
-    public UserSession findByToken(final String token) {
+    public UserSession findBySessionId(final String token) {
         return (UserSession) getHibernateTemplate().execute(new HibernateCallback<Object>() {
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 return session.createQuery("SELECT us FROM UserSession us " +
                         " INNER JOIN FETCH us.user " +
-                        " WHERE us.JSessionId = :token ")
+                        " WHERE us.JSessionId = :token AND us.expired = FALSE ")
                         .setString("token", token)
                         .uniqueResult();
             }
