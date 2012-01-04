@@ -10,11 +10,12 @@ profile.database.username=airtrans
 profile.database.password=_airtrans_
 # Log level
 profile.logger.level=debug
-profile.sql.debug=true
+profile.sql.debug=false
 # SMTP settings
 profile.smtp.host=j2eeblogger.ru
 profile.smtp.login=noreply
 profile.smtp.password=
-
+# Index
+profile.index.base.dir=d:/projects/java/airtransfer/server/indexes
 
 

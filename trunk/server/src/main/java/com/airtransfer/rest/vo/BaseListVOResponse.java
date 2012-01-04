@@ -1,5 +1,7 @@
 package com.airtransfer.rest.vo;
 
+import com.airtransfer.models.Airport;
+import com.airtransfer.rest.vo.vos.AirportVO;
 import com.airtransfer.rest.vo.vos.PairVO;
 import com.airtransfer.rest.vo.vos.UserProfileVO;
 
@@ -14,7 +16,8 @@ import java.util.ArrayList;
 @XmlRootElement
 @XmlSeeAlso({
         UserProfileVO.class,
-        PairVO.class
+        PairVO.class,
+        AirportVO.class
 })
 public class BaseListVOResponse {
 

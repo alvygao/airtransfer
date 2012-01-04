@@ -13,10 +13,15 @@
         <property name="password" value="${jdbc.password}"/>
         <property name="defaultAutoCommit" value="false"/>
         <property name="validationQuery" value="${jdbc.validation_query}"/>
-        <property name="initialSize" value="1"/>
-        <property name="maxActive" value="15"/>
-        <property name="maxIdle" value="5"/>
-        <property name="maxWait" value="5"/>
+        <property name="initialSize" value="${jdbc.pool.init_size}"/>
+        <property name="maxActive" value="${jdbc.pool.max_size}"/>
+        <property name="minIdle" value="${jdbc.pool.min_idle}"/>
+        <property name="maxIdle" value="${jdbc.pool.max_idle}"/>
+        <property name="maxWait" value="${jdbc.pool.max_wait}"/>
+        <property name="logAbandoned" value="true"/>
+        <property name="testOnReturn" value="true"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="numTestsPerEvictionRun" value="3"/>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
@@ -33,18 +38,28 @@
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                 <prop key="hibernate.use_sql_comments">${hibernate.sql_comments}</prop>
                 <!--C3PO-->
-                <prop key="hibernate.c3p0.timeout">${jdbc.pool.timeout}</prop>
-                <prop key="hibernate.c3p0.max_size">${jdbc.pool.max_size}</prop>
-                <prop key="hibernate.c3p0.min_size">${jdbc.pool.init_size}</prop>
-                <prop key="hibernate.c3p0.idle_test_period">1</prop>
-                <prop key="hibernate.c3p0.max_statements">${jdbc.pool.max_statements}</prop>
-                <prop key="hibernate.c3p0.acquire_increment">1</prop>
+                <!--
+                                <prop key="hibernate.c3p0.timeout">${jdbc.pool.timeout}</prop>
+                                <prop key="hibernate.c3p0.max_size">${jdbc.pool.max_size}</prop>
+                                <prop key="hibernate.c3p0.min_size">${jdbc.pool.init_size}</prop>
+                                <prop key="hibernate.c3p0.idle_test_period">1</prop>
+                                <prop key="hibernate.c3p0.max_statements">${jdbc.pool.max_statements}</prop>
+                                <prop key="hibernate.c3p0.acquire_increment">1</prop>
+                -->
                 <!--OPTIMIZATION-->
                 <prop key="hibernate.bytecode.provider">javassist</prop>
                 <prop key="hibernate.order_updates">${hibernate.order_updates}</prop>
                 <prop key="hibernate.generate_statistics">${hibernate.statistics}</prop>
                 <prop key="transaction.auto_close_session">true</prop>
                 <prop key="hibernate.bytecode.use_reflection_optimizer">true</prop>
+                <prop key="hibernate.search.default.directory_provider">${hibernate.search.default.directory_provider}
+                </prop>
+                <prop key="hibernate.search.default.indexBase">${hibernate.search.default.indexBase}</prop>
+                <prop key="hibernate.search.Rules.directory_provider">${hibernate.search.Rules.directory_provider}
+                </prop>
+                <prop key="hibernate.search.Actions.directory_provider">${hibernate.search.Actions.directory_provider}
+                </prop>
+
             </props>
         </property>
     </bean>
@@ -54,6 +69,5 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
 
 </beans>

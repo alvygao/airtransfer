@@ -1,5 +1,7 @@
 package com.airtransfer.models;
 
+import org.hibernate.search.annotations.DocumentId;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,6 +13,7 @@ import java.util.Date;
 public abstract class BaseEntity implements AbstractEntity<Long> {
 
     @Id
+    @DocumentId
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
     @Column(name = "created", columnDefinition = "DATETIME")

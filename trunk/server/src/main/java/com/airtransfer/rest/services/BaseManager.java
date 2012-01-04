@@ -2,7 +2,7 @@ package com.airtransfer.rest.services;
 
 import com.airtransfer.models.UserSession;
 import com.airtransfer.services.dao.UserSessionDao;
-import com.airtransfer.web.utils.SessionTokensHolder;
+import com.airtransfer.web.utils.SessionManager;
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +12,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import javax.ws.rs.Path;
-
 /**
  * User: Sergey
  * Date: 18.12.11 14:21
@@ -21,21 +19,19 @@ import javax.ws.rs.Path;
 @Component
 public abstract class BaseManager {
 
+
     @Autowired
     protected UserSessionDao sessionDao;
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     protected UserSession getSession() {
-        final String token = SessionTokensHolder.getInstance().get();
-        if (token != null) {
-            System.out.println("token=" + token);
-            UserSession session = sessionDao.findByToken(token);
-            if (session != null) {
-                return session;
-            }
+        String sessionId = SessionManager.getCurrentSession();
+        UserSession userSession = sessionDao.findBySessionId(sessionId);
+        if (userSession == null) {
+            throw new IllegalArgumentException("Session doesn't exist");
         }
-        throw new IllegalArgumentException("Session doesn't exist");
+        return userSession;
     }
 
     public <T> T convert(Class<T> clazz, T entity, Element container) {

@@ -48,11 +48,15 @@
                                             $('input[name=password]').val()
                                     ,
                                     success: function(objResponce) {
-                                        console.log(objResponce);
-                                        document.location = APP_BASE_URL + "/html/profile";
+
+                                        if (objResponce == 'ok') {
+                                            window.location = APP_BASE_URL + "/html/profile";
+                                        } else {
+                                            alert("Invalid login or password");
+                                        }
                                     },
                                     error: function() {
-                                        alert('Please enter correct data');
+                                        alert("Invalid login or password");
                                     }
                                 });
                         return false;
