@@ -13,7 +13,8 @@ public abstract class AbstractVOResponse<DATA> {
 
     private DATA data;
     private boolean success = true;
-    private String error;
+    private String message;
+    private String code;
 
     protected AbstractVOResponse() {
     }
@@ -38,11 +39,19 @@ public abstract class AbstractVOResponse<DATA> {
         this.success = success;
     }
 
-    public String getError() {
-        return error;
+    public String getMessage() {
+        return message;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

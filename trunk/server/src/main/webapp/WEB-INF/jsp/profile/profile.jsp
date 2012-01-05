@@ -97,7 +97,6 @@
                         <td class="cLabel">${i18n['label.profile_page.locations.country']}:</td>
                         <td>
                             <select name="countryId" class="jSaveData jSelect" style="float:left;">
-
                             </select>
                         </td>
                     </tr>
@@ -192,7 +191,7 @@
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.body']}:</td>
                         <td colspan="3">
-                            <input type="text" class="jSaveData" name="bodyId" maxlength="255"/>
+                            <select name="bodyId" class="jSaveData jSelect" style="float:left;"/>
                             <span class="cClearBtn jClearBtn">
                                 <img src="/images/clear-button.png" alt="clear"/>
                             </span>
@@ -312,7 +311,9 @@
                             items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
                         });
 
-                        $('select[name=bodyId]').html(items.join('')).selectmenu();
+                        $('select[name=firstLanguageId]').html(items.join('')).selectmenu();
+                        $('select[name=secondLanguageId]').html(items.join('')).selectmenu();
+                        $('select[name=thirdLanguageId]').html(items.join('')).selectmenu();
                     });
                     $.getJSON('/rest/search/body', function(objJson) {
                         var items = [];
@@ -320,9 +321,7 @@
                             items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
                         });
 
-                        $('select[name=firstLanguageId]').html(items.join('')).selectmenu();
-                        $('select[name=secondLanguageId]').html(items.join('')).selectmenu();
-                        $('select[name=thirdLanguageId]').html(items.join('')).selectmenu();
+                        $('select[name=bodyId]').html(items.join('')).selectmenu();
                     });
                     $.getJSON('/rest/search/profession', function(objJson) {
                         var items = [];
@@ -365,38 +364,43 @@
 
                     $.ajax({
                                 type:'get',
-                                url: APP_BASE_URL + '/rest/user/profile',
+                                url: '/rest/user/profile',
                                 contentType: "application/json; charset=utf-8",
                                 error: function(request, error) {
-//                            alert(request);
+                                    alert("Error: " + error);
                                 },
                                 success: function(request) {
-                                    $('input[textarea=aboutMe]').val(request.data.aboutMe);
-                                    $('select[name=is_male]').val(request.data.female);
-                                    $('input[select=bodyId]').val(request.data.bodyId);
-                                    $('input[name=appearance]').val(request.data.appearance);
-                                    $('input[name=birthDay]').val(request.data.birthDay);
-                                    $('input[name=books]').val(request.data.books);
-                                    $('input[name=cellPhone]').val(request.data.cellPhone);
-                                    $('input[name=city]').val(request.data.city);
-                                    $('input[select=countryId]').val(request.data.countryId);
-                                    $('input[name=currentCity]').val(request.data.currentCity);
-                                    $('input[select=currentCountryId]').val(request.data.currentCountryId);
-                                    $('input[name=familyStatus]').val(request.data.familyStatus);
-                                    $('input[select=firstLanguageId]').val(request.data.firstLanguageId);
-                                    $('input[name=firstName]').val(request.data.firstName);
-                                    $('input[name=height]').val(request.data.height);
-                                    $('input[name=interest]').val(request.data.interest);
-                                    $('input[name=lastName]').val(request.data.lastName);
-                                    $('input[name=movies]').val(request.data.movies);
-                                    $('input[name=music]').val(request.data.music);
-                                    $('input[select=occupationId]').val(request.data.occupationId);
-                                    $('input[name=phone]').val(request.data.phone);
-                                    $('input[select=secondLanguageId]').val(request.data.secondLanguageId);
-                                    $('input[name=siteUrl]').val(request.data.siteUrl);
-                                    $('input[name=skypeId]').val(request.data.skypeId);
-                                    $('input[select=thirdLanguageId]').val(request.data.thirdLanguageId);
-                                    $('input[name=width]').val(request.data.width);
+                                    if (request.success == 'true') {
+                                        $('textarea[name=aboutMe]').val(request.data.aboutMe);
+                                        $('select[name=is_male]').val(request.data.female);
+                                        $('input[select=bodyId]').val(request.data.bodyId);
+                                        $('input[name=appearance]').val(request.data.appearance);
+                                        $('input[name=birthDay]').val(request.data.birthDay);
+                                        $('input[name=books]').val(request.data.books);
+                                        $('input[name=cellPhone]').val(request.data.cellPhone);
+                                        $('input[name=city]').val(request.data.city);
+                                        $('select[name=countryId]').val(request.data.countryId);
+                                        $('input[name=currentCity]').val(request.data.currentCity);
+                                        $('select[name=currentCountryId]').val(request.data.currentCountryId);
+                                        $('input[name=familyStatus]').val(request.data.familyStatus);
+                                        $('select[name=firstLanguageId]').val(request.data.firstLanguageId);
+                                        $('input[name=firstName]').val(request.data.firstName);
+                                        $('input[name=height]').val(request.data.height);
+                                        $('input[name=interest]').val(request.data.interest);
+                                        $('input[name=lastName]').val(request.data.lastName);
+                                        $('input[name=lifeGoals]').val(request.data.lastName);
+                                        $('input[name=movies]').val(request.data.movies);
+                                        $('input[name=music]').val(request.data.music);
+                                        $('select[name=occupationId]').val(request.data.occupationId);
+                                        $('input[name=phone]').val(request.data.phone);
+                                        $('select[name=secondLanguageId]').val(request.data.secondLanguageId);
+                                        $('input[name=siteUrl]').val(request.data.siteUrl);
+                                        $('input[name=skypeId]').val(request.data.skypeId);
+                                        $('select[name=thirdLanguageId]').val(request.data.thirdLanguageId);
+                                        $('input[name=width]').val(request.data.width);
+                                    } else {
+                                        return onServerError(request);
+                                    }
                                 }
                             });
 
@@ -414,7 +418,7 @@
                         "books": $('input[name=books]').val(),
                         "cellPhone": $('input[name=cellPhone]').val(),
                         "city": $('input[name=city]').val(),
-                        "countryId": $('input[name=countryId]').val(),
+                        "countryId": $('select[name=countryId]').val(),
                         "currentCity": $('input[name=currentCity]').val(),
                         "currentCountryId": $('select[name=currentCountryId]').val(),
                         "familyStatus": $('input[name=familyStatus]').val(),
@@ -423,6 +427,7 @@
                         "height":  $('input[name=height]').val(),
                         "interest":  $('input[name=interest]').val(),
                         "lastName":  $('input[name=lastName]').val(),
+                        "lifeGoals":  $('input[name=lifeGoals]').val(),
                         "movies":  $('input[name=movies]').val(),
                         "music":  $('input[name=music]').val(),
                         "occupationId":  $('select[name=occupationId]').val(),
@@ -437,13 +442,16 @@
 
                     $.ajax({
                                 type:'put',
-                                url: APP_BASE_URL + '/rest/user/profile',
+                                url: '/rest/user/profile',
                                 contentType: "application/json; charset=utf-8",
                                 data:  textData,
                                 error: function(request, error) {
-//                                    alert("Error: " + request);
+                                    alert("Error: " + request);
                                 },
                                 success: function(request) {
+                                    if (request.success != 'true') {
+                                        return onServerError(request);
+                                    }
                                 }
                             });
                     return false;

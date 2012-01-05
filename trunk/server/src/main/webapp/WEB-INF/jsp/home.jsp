@@ -41,7 +41,7 @@
                     $('a.jLogin').click(function() {
                         $.ajax({
                                     type: 'POST',
-                                    url: APP_BASE_URL + '/html/signin',
+                                    url: '/html/signin',
                                     data: 'email=' +
                                             $('input[name=email]').val() +
                                             '&password=' +

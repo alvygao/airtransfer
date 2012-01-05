@@ -24,51 +24,58 @@
     <link rel="stylesheet" href="${baseAppUrl}/css/jquery.ui.selectmenu.css" type="text/css"/>
     <link rel="stylesheet" href="${baseAppUrl}/css/reset.css" type="text/css"/>
     <link rel="stylesheet" href="${baseAppUrl}/css/style.css" type="text/css"/>
-    
-    
-    
-    
+
+
     <script type="text/javascript">
         APP_BASE_URL = '${baseAppUrl}';
+        function onServerError(err) {
+            if (err.code == 'SESSION_DOESNT_EXIST') {
+                window.location.reload();
+            } else {
+                window.location = '/';
+            }
+
+            return false;
+        }
     </script>
     <script type="text/javascript" src="${baseAppUrl}/js/jquery.js"></script>
     <script type="text/javascript" src="${baseAppUrl}/js/json2.js"></script>
     <script type="text/javascript" src="${baseAppUrl}/js/jquery-ui.js"></script>
     <script type="text/javascript" src="${baseAppUrl}/js/jquery.ui.selectmenu.js"></script>
-    
+
     <script type="text/javascript" src="${baseAppUrl}/js/main.js"></script>
     <jsp:invoke fragment="head"/>
 
 </head>
 <body>
-    <div id="cContentainer">
-        <div id="cHeader">
-            <jsp:include page="/WEB-INF/jsp/includes/menu.jsp"/>
-            <div class="cLogoText">
-                <a href="/">
-                    <img src="/images/air-transfer.png" alt="Air-Transfer.com" />
-                </a>
-            </div>
-            <jsp:invoke fragment="header"/>
+<div id="cContentainer">
+    <div id="cHeader">
+        <jsp:include page="/WEB-INF/jsp/includes/menu.jsp"/>
+        <div class="cLogoText">
+            <a href="/">
+                <img src="/images/air-transfer.png" alt="Air-Transfer.com"/>
+            </a>
         </div>
-
-        <div id="cLeftBar">
-            <div class="cLogo"></div>
-            <jsp:invoke fragment="left"/>
-        </div>
-
-        <div id="cContent">
-            <jsp:invoke fragment="center"/>
-        </div>
-        <div class="cClear"></div>
-
-        <div id="cRightBar">
-            <jsp:invoke fragment="right"/>
-        </div>
-
-        <div id="cFooter">
-            <jsp:invoke fragment="footer"/>
-        </div>
+        <jsp:invoke fragment="header"/>
     </div>
+
+    <div id="cLeftBar">
+        <div class="cLogo"></div>
+        <jsp:invoke fragment="left"/>
+    </div>
+
+    <div id="cContent">
+        <jsp:invoke fragment="center"/>
+    </div>
+    <div class="cClear"></div>
+
+    <div id="cRightBar">
+        <jsp:invoke fragment="right"/>
+    </div>
+
+    <div id="cFooter">
+        <jsp:invoke fragment="footer"/>
+    </div>
+</div>
 </body>
 </html>
