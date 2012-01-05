@@ -34,15 +34,19 @@ public class UserProfileManager extends BaseManager {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     public BaseEntityVOResponse<UserProfileVO> get() {
-        final UserSession session = getSession();
-        final User user = session.getUser();
+        try {
+            final UserSession session = getSession();
+            final User user = session.getUser();
 
-        UserProfile userProfile = profileDao.findProfileByUser(user.getId());
-        if (userProfile == null) {
-            userProfile = new UserProfile();
-            profileDao.save(userProfile);
+            UserProfile userProfile = profileDao.findProfileByUser(user.getId());
+            if (userProfile == null) {
+                userProfile = new UserProfile();
+                profileDao.save(userProfile);
+            }
+            return new BaseEntityVOResponse<UserProfileVO>(new UserProfileVO(userProfile));
+        } catch (Exception e) {
+            return onError(e, new BaseEntityVOResponse<UserProfileVO>());
         }
-        return new BaseEntityVOResponse<UserProfileVO>(new UserProfileVO(userProfile));
     }
 
     @PUT
@@ -52,7 +56,12 @@ public class UserProfileManager extends BaseManager {
 
         UserProfileVO vo = convert(UserProfileVO.class, new UserProfileVO(), (Element) request.getData());
 
-        final UserSession session = getSession();
+        final UserSession session;
+        try {
+            session = getSession();
+        } catch (Exception e) {
+            return onError(e, new BaseEntityVOResponse<UserProfileVO>());
+        }
         final User user = session.getUser();
 
         UserProfile userProfile = profileDao.findProfileByUser(user.getId());
@@ -107,3 +116,4 @@ public class UserProfileManager extends BaseManager {
         return new BaseEntityVOResponse<UserProfileVO>(new UserProfileVO(userProfile));
     }
 }
+

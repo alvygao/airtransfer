@@ -23,6 +23,7 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
     private Long realId;
     private Long bodyId;
+    private String bodyType;
     private Long countryId;
     private Long cityId;
     private Long currentCityId;
@@ -359,5 +360,13 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
     public void setBooks(String books) {
         this.books = books;
+    }
+
+    public String getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(String bodyType) {
+        this.bodyType = bodyType;
     }
 }

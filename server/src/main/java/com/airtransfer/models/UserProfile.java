@@ -1,9 +1,6 @@
 package com.airtransfer.models;
 
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -60,7 +57,7 @@ public class UserProfile extends BaseEntity {
     private String aboutMe;
     @Column
     private String familyStatus;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Body body;
     @Column
     private Float height;
