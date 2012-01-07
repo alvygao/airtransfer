@@ -139,21 +139,21 @@
             <div class="cFormBlock">
                 <table border="0">
                     <tr>
-                        <td class="cLabel"></td>
+                        <td class="cLabel">${i18n['label.profile_page.languages.firstLang']}:</td>
                         <td>
                             <select name="firstLanguageId" class="jSaveData jSelect" style="float:left;">
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td class="cLabel"></td>
+                        <td class="cLabel">${i18n['label.profile_page.languages.secondLang']}:</td>
                         <td>
                             <select name="secondLanguageId" class="jSaveData jSelect" style="float:left;">
                             </select>
                         </td>
                     </tr>
                     <tr class="cLast">
-                        <td class="cLabel"></td>
+                        <td class="cLabel">${i18n['label.profile_page.languages.thirdLang']}:</td>
                         <td>
                             <select name="thirdLanguageId" class="jSaveData jSelect" style="float:left;">
                             </select>
