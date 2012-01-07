@@ -367,7 +367,8 @@
                                 url: '/rest/user/profile',
                                 contentType: "application/json; charset=utf-8",
                                 error: function(request, error) {
-                                    alert("Error: " + error);
+                                    console.log(request);
+                                    console.log.apply(error);
                                 },
                                 success: function(request) {
                                     if (request.success == 'true') {
@@ -388,7 +389,7 @@
                                         $('input[name=height]').val(request.data.height);
                                         $('input[name=interest]').val(request.data.interest);
                                         $('input[name=lastName]').val(request.data.lastName);
-                                        $('input[name=lifeGoals]').val(request.data.lastName);
+                                        $('input[name=lifeGoals]').val(request.data.lifeGoals);
                                         $('input[name=movies]').val(request.data.movies);
                                         $('input[name=music]').val(request.data.music);
                                         $('select[name=occupationId]').val(request.data.occupationId);
@@ -445,8 +446,9 @@
                                 url: '/rest/user/profile',
                                 contentType: "application/json; charset=utf-8",
                                 data:  textData,
-                                error: function(request, error) {
-                                    alert("Error: " + request);
+                                error: function(response, error) {
+                                    console.log(request);
+                                    console.log(error);
                                 },
                                 success: function(request) {
                                     if (request.success != 'true') {

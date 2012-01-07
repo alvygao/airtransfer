@@ -73,7 +73,7 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
         siteUrl = entity.getSiteUrl();
         birthDay = entity.getBirthDay();
-        skypeId = entity.getSiteUrl();
+        skypeId = entity.getSkypeId();
         phone = entity.getPhone();
         cellPhone = entity.getCellPhone();
         aboutMe = entity.getAboutMe();
