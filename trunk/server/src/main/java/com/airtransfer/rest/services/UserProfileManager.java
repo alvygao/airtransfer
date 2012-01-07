@@ -41,6 +41,7 @@ public class UserProfileManager extends BaseManager {
             UserProfile userProfile = profileDao.findProfileByUser(user.getId());
             if (userProfile == null) {
                 userProfile = new UserProfile();
+                userProfile.setUser(user);
                 profileDao.save(userProfile);
             }
             return new BaseEntityVOResponse<UserProfileVO>(new UserProfileVO(userProfile));
@@ -59,61 +60,60 @@ public class UserProfileManager extends BaseManager {
         final UserSession session;
         try {
             session = getSession();
+            final User user = session.getUser();
+
+            UserProfile userProfile = profileDao.findProfileByUser(user.getId());
+            userProfile.setAboutMe(vo.getAboutMe());
+            userProfile.setAppearance(vo.getAppearance());
+            userProfile.setBirthDay(vo.model().getBirthDay());
+
+            Body body = bodyDao.get(vo.getBodyId());
+            userProfile.setBody(body);
+
+            userProfile.setBooks(vo.getBooks());
+            userProfile.setCellPhone(vo.getCellPhone());
+
+            Country country = countryDao.get(vo.getCountryId());
+            userProfile.setCountry(country);
+
+            Country country1 = countryDao.get(vo.getCurrentCountryId());
+            userProfile.setCurrentCountry(country1);
+
+            userProfile.setFamilyStatus(vo.getFamilyStatus());
+            userProfile.setFemale(vo.getFemale());
+
+            UserLanguage language = languageDao.get(vo.getFirstLanguageId());
+            userProfile.setFirstLanguage(language);
+
+            userProfile.setFirstName(vo.getFirstName());
+            userProfile.setHeight(vo.getHeight());
+
+            userProfile.setInterest(vo.getInterest());
+            userProfile.setLastName(vo.getLastName());
+            userProfile.setLifeGoals(vo.getLifeGoals());
+            userProfile.setMovies(vo.getMovies());
+            userProfile.setMusic(vo.getMusic());
+
+            Profession profession = professionDao.get(vo.getProfessionId());
+            userProfile.setOccupation(profession);
+
+            userProfile.setPhone(vo.getPhone());
+
+            Long secondLanguageId = vo.getSecondLanguageId();
+            UserLanguage language2 = languageDao.get(secondLanguageId);
+            userProfile.setSecondLanguage(language2);
+            userProfile.setSiteUrl(vo.getSiteUrl());
+
+            userProfile.setSkypeId(vo.getSkypeId());
+            UserLanguage language3 = languageDao.get(vo.getThirdLanguageId());
+            userProfile.setThirdLanguage(language3);
+            userProfile.setWidth(vo.getWidth());
+
+            profileDao.persist(userProfile);
+            return new BaseEntityVOResponse<UserProfileVO>(new UserProfileVO(userProfile));
         } catch (Exception e) {
             return onError(e, new BaseEntityVOResponse<UserProfileVO>());
         }
-        final User user = session.getUser();
-
-        UserProfile userProfile = profileDao.findProfileByUser(user.getId());
-        userProfile.setAboutMe(vo.getAboutMe());
-        userProfile.setAppearance(vo.getAppearance());
-        userProfile.setBirthDay(vo.model().getBirthDay());
-
-        Body body = bodyDao.get(vo.getBodyId());
-        userProfile.setBody(body);
-
-        userProfile.setBooks(vo.getBooks());
-        userProfile.setCellPhone(vo.getCellPhone());
-
-        Country country = countryDao.get(vo.getCountryId());
-        userProfile.setCountry(country);
-
-        Country country1 = countryDao.get(vo.getCurrentCountryId());
-        userProfile.setCurrentCountry(country1);
-
-        userProfile.setFamilyStatus(vo.getFamilyStatus());
-        userProfile.setFemale(vo.getFemale());
-
-        UserLanguage language = languageDao.get(vo.getFirstLanguageId());
-        userProfile.setFirstLanguage(language);
-
-        userProfile.setFirstName(vo.getFirstName());
-        userProfile.setHeight(vo.getHeight());
-
-        userProfile.setInterest(vo.getInterest());
-        userProfile.setLastName(vo.getLastName());
-        userProfile.setLifeGoals(vo.getLifeGoals());
-        userProfile.setMovies(vo.getMovies());
-        userProfile.setMovies(vo.getMusic());
-
-        Profession profession = professionDao.get(vo.getProfessionId());
-        userProfile.setOccupation(profession);
-
-        userProfile.setPhone(vo.getPhone());
-
-        Long secondLanguageId = vo.getSecondLanguageId();
-        UserLanguage language2 = languageDao.get(secondLanguageId);
-        userProfile.setSecondLanguage(language2);
-        userProfile.setSiteUrl(vo.getSiteUrl());
-
-        userProfile.setSkypeId(vo.getSkypeId());
-        UserLanguage language3 = languageDao.get(vo.getThirdLanguageId());
-        userProfile.setThirdLanguage(language3);
-        userProfile.setWidth(vo.getWidth());
-
-        profileDao.persist(userProfile);
-
-        return new BaseEntityVOResponse<UserProfileVO>(new UserProfileVO(userProfile));
     }
 }
 

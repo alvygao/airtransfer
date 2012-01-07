@@ -2,7 +2,6 @@ package com.airtransfer.web.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
 import javax.servlet.*;
@@ -25,8 +24,6 @@ public class SecurityFilter implements Filter {
 //        WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(filterConfig.getServletContext());
         this.localeResolver = new CookieLocaleResolver();
         this.localeResolver.setDefaultLocale(Locale.ENGLISH);
-//        this.localeResolver.setCookieName("locale");
-
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -37,7 +34,7 @@ public class SecurityFilter implements Filter {
             httpResponse.sendRedirect("/html/");
             logger.error("Unauthorized request: " + httpRequest.getRequestURI());
         } else {
-            setLocale(httpRequest, httpResponse);
+            setHeaders(httpRequest, httpResponse);
         }
 
         chain.doFilter(request, response);
@@ -46,23 +43,13 @@ public class SecurityFilter implements Filter {
     }
 
     private void eraseLocale(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
-        LocaleContextHolder.resetLocaleContext();
+
     }
 
-    protected void setLocale(HttpServletRequest request, HttpServletResponse response) {
-        String header = request.getHeader("X-Requested-With");
-        if (header != null && header.equals("XMLHttpRequest")) {
+    protected void setHeaders(HttpServletRequest request, HttpServletResponse response) {
+        String ajaxHeader = request.getHeader("X-Requested-With");
 
-            Locale locale = localeResolver.resolveLocale(request);
-            LocaleContextHolder.setLocale(locale);
-/*
-            LocaleEditor localeEditor = new LocaleEditor();
-            localeEditor.setAsText("locale");
-            localeResolver.setLocale(request, response, (Locale) localeEditor.getValue());
-*/
-
-            System.out.println(locale);
-//            LocaleContextHolder.setLocale(locale);
+        if (ajaxHeader != null && ajaxHeader.equals("XMLHttpRequest")) {
 
         }
     }
