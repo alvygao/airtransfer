@@ -503,8 +503,18 @@ html, body {
 
 .ui-selectmenu-menu li {
     width: 100%;
+    height: 29px;
 }
 
 .ui-selectmenu-menu {
     width: 100%;
+}
+
+.ui-selectmenu {
+    height: 29px;
+    width: 220px !important;
+}
+
+.ui-selectmenu-menu {
+    width: 250px !important;
 }

@@ -354,9 +354,11 @@
 
 
                     $('.jCalendar').datepicker({
-                                yearRange: '1930:2000',
-                                showAnim: 'slideDown'
-                            });
+                        yearRange: '1930:2000',
+                        showAnim: 'slideDown',
+                        changeMonth: true,
+                        changeYear: true
+                    });
                 });
 
 
