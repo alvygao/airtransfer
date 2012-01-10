@@ -37,6 +37,10 @@
 
             return false;
         }
+
+        function isEmpty(obj) {
+            return obj == null || obj == undefined || obj == "";
+        }
     </script>
     <script type="text/javascript" src="${baseAppUrl}/js/jquery.js"></script>
     <script type="text/javascript" src="${baseAppUrl}/js/json2.js"></script>

@@ -2,15 +2,17 @@ html, body {
     height: 100%;
     width: 100%;
     background: #2CA5D6 url('/images/body-background.png') left top repeat-x;
-    
+
 }
 
 .cClear {
     clear: both;
 }
+
 .cRight {
     float: right;
 }
+
 .cLeft {
     float: left;
 }
@@ -18,10 +20,11 @@ html, body {
 #cContentainer {
     position: relative;
     width: 1256px;
-    
+
     margin: 0 auto;
     background: url('/images/content-background.png') left top no-repeat;
 }
+
 /****************************** HEADER *******************************/
 #cHeader {
     position: relative;
@@ -44,6 +47,7 @@ html, body {
     margin-top: 8px;
     text-transform: uppercase;
 }
+
 #cHeader .cMenu .cButton.cRight {
     float: right;
 }
@@ -79,7 +83,7 @@ html, body {
 
 #cHeader .cMenu .cButton .cButtonBody.cHover,
 #cHeader .cMenu .cButton .cButtonLeft.cHover,
-#cHeader .cMenu .cButton .cButtonRight.cHover{
+#cHeader .cMenu .cButton .cButtonRight.cHover {
     background-position: 0px 0px;
 }
 
@@ -103,6 +107,7 @@ html, body {
 #cHeader .cMenu .cLanguages a.cRu {
     background: url('/images/lang-ru.png') left top no-repeat;
 }
+
 #cHeader .cMenu .cLanguages a.cEn {
     background: url('/images/lang-en.png') left top no-repeat;
 }
@@ -115,18 +120,21 @@ html, body {
     margin-top: 3px;
     background: url('/images/menu/menu-bg.png') left top repeat-x;
 }
+
 /****************************** CONTENT ******************************/
 #cContent {
     position: relative;
     float: left;
     width: 830px;
 }
+
 #cContent .cTopMenu {
     position: relative;
     height: 31px;
     width: 100%;
     z-index: 10;
 }
+
 #cContent .cTopMenu a {
     display: block;
     float: left;
@@ -142,17 +150,21 @@ html, body {
     font-family: serif;
     font-weight: bold;
 }
+
 #cContent .cTopMenu a.cFisrt {
     background: url('/images/menu-btn-first.png') 0px -31px no-repeat;
     width: 201px;
 }
+
 #cContent .cTopMenu a.cLast {
     background: url('/images/menu-btn-last.png') 0px -31px no-repeat;
     width: 222px;
 }
+
 #cContent .cTopMenu a:hover {
     background-position: 0px 0px;
 }
+
 #cContent .cTopMenu a.cActive {
     background-position: 0px 0px;
 }
@@ -162,21 +174,24 @@ html, body {
     width: 100%;
     background: url('/images/page-bg.png') left top repeat-y;
     margin-top: -5px;
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
     border-bottom: solid 2px #B8D8ED;
     border-radius: 0px 0px 5px 5px;
 }
+
 #cContent .cPage.cWithoutMenu {
     margin-top: 0px;
     padding-top: 20px;
     border-top: solid 2px #B8D8ED;
     border-radius: 5px 5px 5px 5px;
 }
+
 #cContent .cPage.cWithoutMenu h1 {
     color: #4c7ead;
     margin-left: 10px;
     font-size: 18px;
 }
+
 #cContent .cColumn {
     position: relative;
     float: left;
@@ -193,6 +208,7 @@ html, body {
     margin: 0px;
     padding-left: 10px;
 }
+
 #cContent .cColumn .cFormBlock {
     position: relative;
     background: #c3d4ef;
@@ -201,26 +217,31 @@ html, body {
     padding: 10px 0px 10px 10px;
     margin-bottom: 20px;
 }
+
 #cContent .cColumn .cFormBlock tr {
-     border-bottom: 1px solid #E8E8E8;
-     width: 100%;
+    border-bottom: 1px solid #E8E8E8;
+    width: 100%;
 }
+
 #cContent .cColumn .cFormBlock tr.cLast {
-     border-bottom: none;
+    border-bottom: none;
 }
+
 #cContent .cColumn .cFormBlock td {
-     padding: 5px 0px;
-     width: 210px;
-     padding-right: 50px;
-     position: relative;
-     float: left;
+    padding: 5px 0px;
+    width: 210px;
+    padding-right: 50px;
+    position: relative;
+    float: left;
 }
+
 #cContent .cColumn .cFormBlock .cLabel {
     width: 70px;
     padding: 0px;
     padding-top: 15px;
     color: #353535;
 }
+
 #cContent .cColumn .cFormBlock input,
 #cContent .cColumn .cFormBlock textarea {
     padding: 0.405em 1em;
@@ -231,6 +252,7 @@ html, body {
     width: 100%;
     padding-right: 30px;
 }
+
 #cContent .cColumn .cFormBlock textarea {
     padding: 0px;
     width: 260px;
@@ -257,13 +279,16 @@ html, body {
     top: 9px;
     right: 9px;
 }
+
 #cContent .cColumn .cFormBlock span.cClearBtn img {
     width: 20px;
     display: none;
 }
+
 #cContent .cColumn .cFormBlock span.cCalendar img {
     display: inline;
 }
+
 #cContent .cColumn .cFormBlock span.cClearBtn:hover {
     color: #cccccc;
 }
@@ -309,6 +334,7 @@ html, body {
     height: 120px;
     width: 385px;
 }
+
 #cContent .cMain .cLoginForm .cLoginField input {
     background-color: #C5D5EF;
     border: 1px solid white;
@@ -318,7 +344,7 @@ html, body {
     border-radius: 4px 4px 4px 4px;
     display: block;
     padding: 0.405em 1em;
-     margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #cContent .cMain .cLoginForm .cLoginField a {
@@ -329,9 +355,11 @@ html, body {
 #cContent .cMain .cLoginForm .cLoginField a.cRegistration {
     color: #898F97;
 }
+
 #cContent .cMain .cLoginForm .cLoginField a.cForgotPassword {
     color: #4673A7;
 }
+
 #cContent .cMain .cLoginForm .cLoginButton {
     position: absolute;
     right: 0px;
@@ -339,6 +367,7 @@ html, body {
     width: 95px;
     height: 30px;
 }
+
 #cContent .cMain .cLoginForm .cLoginButton a {
     background: url('/images/blue-btn-bg.png') left top repeat-x;
     height: 24px;
@@ -349,6 +378,7 @@ html, body {
     padding: 3px 15px 3px 15px;
     text-decoration: none;
 }
+
 /****************************** LEFT COLUMN ******************************/
 #cLeftBar {
     position: relative;
@@ -367,6 +397,7 @@ html, body {
 .cRegistration {
     height: 300px;
 }
+
 .cForgot {
     height: 300px;
 }
@@ -375,10 +406,11 @@ html, body {
     margin-top: 5px;
 }
 
-.cDialogForm div  {
+.cDialogForm div {
     position: relative;
     margin: 5px 5px 0px 10px;
 }
+
 .cDialogForm label {
     display: block;
     font-size: 14px;
@@ -386,7 +418,7 @@ html, body {
 }
 
 .cDialogForm input[type=password],
-.cDialogForm input[type=text]{
+.cDialogForm input[type=text] {
     background-color: #a8b3bb;
     border: 1px solid white;
     border-radius: 4px 4px 4px 4px;
@@ -398,7 +430,7 @@ html, body {
     width: 230px;
 }
 
-.cDialogForm a.cSubmit{
+.cDialogForm a.cSubmit {
     background: url('/images/blue-btn-bg.png') left top repeat-x;
     height: 24px;
     border: solid 2px #ffffff;
@@ -409,7 +441,7 @@ html, body {
     text-decoration: none;
 }
 
-.cDialogForm input.cSubmit{
+.cDialogForm input.cSubmit {
     background: url('/images/blue-btn-bg.png') left top repeat-x;
     height: 24px;
     border: solid 2px #ffffff;
@@ -424,6 +456,7 @@ html, body {
     color: red;
     margin-left: 10px;
 }
+
 .cDialogForm b.cSuccess {
     margin-left: 10px;
     color: green;
@@ -434,6 +467,7 @@ html, body {
     text-decoration: none;
     padding-left: 10px;
 }
+
 /******************************** FOOTER ********************************/
 #cFooter {
     margin-top: -200px;
@@ -469,9 +503,11 @@ html, body {
 .ui-widget .ui-widget {
     font-size: 1em;
 }
+
 .ui-state-default {
     padding-right: 30px;
 }
+
 .ui-selectmenu {
     background: #ADADAD;
     display: inline-block;
@@ -484,7 +520,7 @@ html, body {
 
 .ui-selectmenu-open {
     background: #717476;
-     border: 1px solid #FFFFFF;
+    border: 1px solid #FFFFFF;
 }
 
 .ui-selectmenu-open li.ui-selectmenu-item-focus a {
@@ -517,4 +553,12 @@ html, body {
 
 .ui-selectmenu-menu {
     width: 250px !important;
+}
+
+.flight-div {
+    width: 350px;
+    height: 45px;
+    border-bottom-color: #212121;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
 }
