@@ -12,48 +12,13 @@
                     <div class="ui-widget" style="float: left;">
                         <label for="fromCity">From:</label>
                         <input id="fromCity"/>
-                        <input id="fromCityHidden"/>
-                        <script type="text/javascript">
-                            $(document).ready(function() {
-                                $('#fromCity').autocomplete({
-                                            source: function(request, response) {
-                                                $.ajax({
-                                                            url: "/rest/search/findairports?term=" + request.term,
-                                                            success: function(data) {
-                                                                if (data.data instanceof Array) {
-                                                                    response(data.data);
-                                                                } else {
-                                                                    response([
-                                                                        {
-                                                                            id :  data.data.id ,
-                                                                            label: data.data.label,
-                                                                            value: data.data.label
-                                                                        }
-                                                                    ]);
-                                                                }
-                                                                return;
-                                                            }
-                                                        });
-                                            },
-                                            minChars:2,
-                                            maxHeight:400,
-                                            width:300,
-                                            zIndex: 9999,
-                                            deferRequestBy: 0, //miliseconds
-                                            noCache: false, //default is false, set to true to disable caching
-                                            // callback function:
-                                            select: function(value, data) {
-                                                $('#fromCityHidden').val(data.item.id);
-                                                return;
-                                            }
-                                        });
-                            });
-                        </script>
+                        <input id="fromCityHidden" type="hidden"/>
                     </div>
 
                     <div class="ui-widget" style="float: left;">
                         <label for="toCity">To:</label>
-                        <input id="toCity"/> <input id="toCityHidden" type="hidden"/>
+                        <input id="toCity"/>
+                        <input id="toCityHidden" type="hidden"/>
                     </div>
                     <div style="width: 200px; clear: left; float: left;">
                         <label for="departureDate">DepartureDate:</label>
@@ -69,8 +34,101 @@
                             <img src="/images/calendar.gif" alt="clear"/>
                         </span>
                     </div>
+                    <div style="width: 200px;">
+                        <input id="submitFlight" type="text" value="Create Flight"/>
+                    </div>
+
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $('#fromCity').autocomplete({
+                                source: function(request, response) {
+                                    $.ajax({
+                                        url: "/rest/search/findairports?term=" + request.term,
+                                        success: function(data) {
+                                            if (data.data instanceof Array) {
+                                                response(data.data);
+                                            } else {
+                                                response([
+                                                    {
+                                                        id :  data.data.id ,
+                                                        label: data.data.label,
+                                                        value: data.data.label
+                                                    }
+                                                ]);
+                                            }
+                                            return;
+                                        }
+                                    });
+                                },
+                                minChars:2,
+                                maxHeight:400,
+                                width:300,
+                                zIndex: 9999,
+                                deferRequestBy: 0, //miliseconds
+                                noCache: false, //default is false, set to true to disable caching
+                                // callback function:
+                                select: function(value, data) {
+                                    $('#fromCityHidden').val(data.item.id);
+                                    return;
+                                }
+                            });
+
+                            $('#toCity').autocomplete({
+                                source: function(request, response) {
+                                    $.ajax({
+                                        url: "/rest/search/findairports?term=" + request.term,
+                                        success: function(data) {
+                                            if (data.data instanceof Array) {
+                                                response(data.data);
+                                            } else {
+                                                response([
+                                                    {
+                                                        id :  data.data.id ,
+                                                        label: data.data.label,
+                                                        value: data.data.label
+                                                    }
+                                                ]);
+                                            }
+                                            return;
+                                        }
+                                    });
+                                },
+                                minChars:2,
+                                maxHeight:400,
+                                width:300,
+                                zIndex: 9999,
+                                deferRequestBy: 0, //miliseconds
+                                noCache: false, //default is false, set to true to disable caching
+                                // callback function:
+                                select: function(value, data) {
+                                    $('#toCityHidden').val(data.item.id);
+                                    return;
+                                }
+                            });
+
+                            $('#submitFlight').click(function() {
+                                var flight = {
+                                    departureDate:$('#fromCityHidden').val(),
+                                    arriveDate:$('#fromCityHidden').val(),
+                                    fromAirport:$('#fromCityHidden').val(),
+                                    toAirport:$('#fromCityHidden').val()
+                                };
+                                $.ajax({
+                                    type: 'post',
+                                    url: "/rest/flights" + request.term,
+                                    data : JSON.stringify(flight)
+                                });
+
+                            });
+
+                        });
+                    </script>
 
                 </div>
+            </div>
+            <div style="width: 400px; height: 600px;">
+
+
             </div>
         </div>
     </jsp:attribute>

@@ -11,10 +11,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public abstract class AbstractVOResponse<DATA> {
 
-    private DATA data;
-    private boolean success = true;
-    private String message;
-    private String code;
+    protected DATA data;
+    protected boolean success = true;
+    protected String message;
+    protected String code;
 
     protected AbstractVOResponse() {
     }

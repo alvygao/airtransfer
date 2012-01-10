@@ -1,10 +1,6 @@
 package com.airtransfer.rest.vo;
 
-import com.airtransfer.models.Airport;
-import com.airtransfer.rest.vo.vos.AirportVO;
-import com.airtransfer.rest.vo.vos.PairVO;
-import com.airtransfer.rest.vo.vos.TrinityVO;
-import com.airtransfer.rest.vo.vos.UserProfileVO;
+import com.airtransfer.rest.vo.vos.*;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -19,42 +15,48 @@ import java.util.ArrayList;
         UserProfileVO.class,
         PairVO.class,
         AirportVO.class,
-        TrinityVO.class
+        TrinityVO.class,
+        FlightVO.class
 })
 public class BaseListVOResponse {
 
-    private ArrayList data;
-    private boolean success = true;
-    private String error;
+   private ArrayList data;
+   private boolean success = true;
+   private String error;
 
-    public BaseListVOResponse() {
-    }
+   public BaseListVOResponse(boolean success, String error) {
+      this.success = success;
+      this.error = error;
+   }
 
-    public BaseListVOResponse(ArrayList data) {
-        this.data = data;
-    }
+   public BaseListVOResponse() {
+   }
 
-    public ArrayList getData() {
-        return data;
-    }
+   public BaseListVOResponse(ArrayList data) {
+      this.data = data;
+   }
 
-    public void setData(ArrayList data) {
-        this.data = data;
-    }
+   public ArrayList getData() {
+      return data;
+   }
 
-    public boolean isSuccess() {
-        return success;
-    }
+   public void setData(ArrayList data) {
+      this.data = data;
+   }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
+   public boolean isSuccess() {
+      return success;
+   }
 
-    public String getError() {
-        return error;
-    }
+   public void setSuccess(boolean success) {
+      this.success = success;
+   }
 
-    public void setError(String error) {
-        this.error = error;
-    }
+   public String getError() {
+      return error;
+   }
+
+   public void setError(String error) {
+      this.error = error;
+   }
 }
