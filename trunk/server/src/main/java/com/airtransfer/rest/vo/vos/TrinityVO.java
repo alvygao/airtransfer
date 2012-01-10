@@ -23,7 +23,9 @@ public class TrinityVO {
     public TrinityVO(Airport airport) {
         id = String.valueOf(airport.getId());
         label = airport.getEngName();
-        value = airport.getIataCode();
+        StringBuilder builder = new StringBuilder();
+        builder.append(airport.getEngName()).append(" [").append(airport.getIataCode()).append("]");
+        value = builder.toString();
     }
 
     public TrinityVO(String id, String label, String value) {
