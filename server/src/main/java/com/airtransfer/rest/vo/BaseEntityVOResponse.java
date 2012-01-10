@@ -18,11 +18,16 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 })
 public class BaseEntityVOResponse<E extends AbstractEntityVO> extends AbstractVOResponse<E> {
 
-    public BaseEntityVOResponse() {
-    }
+   public BaseEntityVOResponse() {
+   }
 
-    public BaseEntityVOResponse(E e) {
-        super(e);
-    }
+   public BaseEntityVOResponse(boolean success, String errorCode) {
+      this.success = success;
+      this.code = errorCode;
+   }
+
+   public BaseEntityVOResponse(E e) {
+      super(e);
+   }
 
 }
