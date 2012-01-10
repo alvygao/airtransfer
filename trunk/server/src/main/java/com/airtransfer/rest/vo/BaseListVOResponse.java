@@ -3,6 +3,7 @@ package com.airtransfer.rest.vo;
 import com.airtransfer.models.Airport;
 import com.airtransfer.rest.vo.vos.AirportVO;
 import com.airtransfer.rest.vo.vos.PairVO;
+import com.airtransfer.rest.vo.vos.TrinityVO;
 import com.airtransfer.rest.vo.vos.UserProfileVO;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -17,13 +18,21 @@ import java.util.ArrayList;
 @XmlSeeAlso({
         UserProfileVO.class,
         PairVO.class,
-        AirportVO.class
+        AirportVO.class,
+        TrinityVO.class
 })
 public class BaseListVOResponse {
 
     private ArrayList data;
     private boolean success = true;
     private String error;
+
+    public BaseListVOResponse() {
+    }
+
+    public BaseListVOResponse(ArrayList data) {
+        this.data = data;
+    }
 
     public ArrayList getData() {
         return data;

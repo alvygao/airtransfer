@@ -11,7 +11,44 @@
 
                     <div class="ui-widget" style="float: left;">
                         <label for="fromCity">From:</label>
-                        <input id="fromCity"/> <input id="fromCityHidden" type="hidden"/>
+                        <input id="fromCity"/>
+                        <input id="fromCityHidden"/>
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                $('#fromCity').autocomplete({
+                                            source: function(request, response) {
+                                                $.ajax({
+                                                            url: "/rest/search/findairports?term=" + request.term,
+                                                            success: function(data) {
+                                                                if (data.data instanceof Array) {
+                                                                    response(data.data);
+                                                                } else {
+                                                                    response([
+                                                                        {
+                                                                            id :  data.data.id ,
+                                                                            label: data.data.label,
+                                                                            value: data.data.label
+                                                                        }
+                                                                    ]);
+                                                                }
+                                                                return;
+                                                            }
+                                                        });
+                                            },
+                                            minChars:2,
+                                            maxHeight:400,
+                                            width:300,
+                                            zIndex: 9999,
+                                            deferRequestBy: 0, //miliseconds
+                                            noCache: false, //default is false, set to true to disable caching
+                                            // callback function:
+                                            select: function(value, data) {
+                                                $('#fromCityHidden').val(data.item.id);
+                                                return;
+                                            }
+                                        });
+                            });
+                        </script>
                     </div>
 
                     <div class="ui-widget" style="float: left;">
@@ -32,103 +69,6 @@
                             <img src="/images/calendar.gif" alt="clear"/>
                         </span>
                     </div>
-
-
-                    <script>
-                        $(function() {
-
-                            $("#fromCity").autocomplete({
-                                        source: function(request, response) {
-                                            $.ajax({
-                                                        url: '/rest/search/airports?term=' + request.term + '&limit=' + 15,
-                                                        dataType: "json",
-                                                        type:"GET",
-                                                        contentType: "application/json; charset=utf-8",
-                                                        headers: {
-                                                            "Content-Type": "application/json",
-                                                            "Accept":"application/json"
-                                                        },
-                                                        success: function(data) {
-                                                            try {
-                                                                response($.map(data.data, function(item) {
-                                                                    return {
-                                                                        label: item.name + " (" + item.countryCode + ") " ,
-                                                                        value: item.iataCode,
-                                                                        iataCode: item.iataCode
-                                                                    }
-                                                                }));
-                                                            } catch(e) {
-                                                                alert(e);
-                                                            }
-                                                        },
-                                                        error: function(data) {
-                                                            response({});
-                                                        }
-
-                                                    });
-                                        },
-                                        minLength
-                                                :
-                                                2,
-                                        select
-                                                :
-                                                function(event, ui) {
-                                                    $('#fromCity').val(ui.item.label);
-                                                    $('#fromCityHidden').val(ui.item.value);
-//                                            alert(ui.item.iataCode);
-                                                }
-                                        ,
-                                        open: function() {
-                                            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
-                                        }
-                                        ,
-                                        close: function() {
-                                            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
-                                        }
-                                    })
-                                    ;
-                            $("#toCity").autocomplete({
-                                        source: function(request, response) {
-                                            $.ajax({
-                                                        url: '/rest/search/airports?term=' + request.term + '&limit=' + 15,
-                                                        dataType: "json",
-                                                        contentType: "application/json; charset=utf-8",
-                                                        success: function(data) {
-                                                            try {
-                                                                response($.map(data.data, function(item) {
-                                                                    return {
-                                                                        label: item.name + " (" + item.countryCode + ") " ,
-                                                                        value: item.iataCode,
-                                                                        iataCode: item.iataCode
-                                                                    }
-                                                                }));
-                                                            } catch(e) {
-                                                                alert(e);
-                                                            }
-                                                        },
-                                                        error: function(data) {
-                                                            response({});
-                                                        }
-
-                                                    });
-                                        },
-                                        minLength: 2,
-                                        select: function(event, ui) {
-                                            $('#fromCity').val(ui.item.label);
-                                            $('#fromCityHidden').val(ui.item.value);
-//                                            alert(ui.item.iataCode);
-                                        },
-                                        open: function() {
-                                            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
-                                        },
-                                        close: function() {
-                                            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
-                                        }
-                                    });
-                        })
-                                ;
-                    </script>
-
 
                 </div>
             </div>
