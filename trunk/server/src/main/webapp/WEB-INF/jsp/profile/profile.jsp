@@ -355,7 +355,7 @@
                                             $('select[name=currentCountryId]').html(items.join('')).val(request.data.currentCountryId).selectmenu();
                                         });
                                         
-                                        $.getJSON('/rest/search/countries', function(objJson) {
+                                        $.getJSON('/rest/search/cities', function(objJson) {
                                             var items = [];
                                             $.each(objJson.data, function(key, val) {
                                                 items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
