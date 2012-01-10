@@ -282,55 +282,8 @@
             <input type="submit" value="PUT" onclick="return onPutClick(this)"/>
             <script type="text/javascript">
                 window.onload = getProfile();
-
                 $('select[name=is_male]').selectmenu();
                 jQuery(document).ready(function() {
-                    $.getJSON('/rest/search/countries', function(objJson) {
-                        var items = [];
-                        $.each(objJson.data, function(key, val) {
-                            items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                        });
-
-                        $('select[name=countryId]').html(items.join('')).selectmenu();
-                        $('select[name=currentCountryId]').html(items.join('')).selectmenu();
-
-                    });
-                    $.getJSON('/rest/search/countries', function(objJson) {
-                        var items = [];
-                        $.each(objJson.data, function(key, val) {
-                            items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                        });
-
-                        $('select[name=city]').html(items.join('')).selectmenu();
-                        $('select[name=currentCity]').html(items.join('')).selectmenu();
-
-                    });
-                    $.getJSON('/rest/search/language', function(objJson) {
-                        var items = [];
-                        $.each(objJson.data, function(key, val) {
-                            items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                        });
-
-                        $('select[name=firstLanguageId]').html(items.join('')).selectmenu();
-                        $('select[name=secondLanguageId]').html(items.join('')).selectmenu();
-                        $('select[name=thirdLanguageId]').html(items.join('')).selectmenu();
-                    });
-                    $.getJSON('/rest/search/body', function(objJson) {
-                        var items = [];
-                        $.each(objJson.data, function(key, val) {
-                            items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                        });
-
-                        $('select[name=bodyId]').html(items.join('')).selectmenu();
-                    });
-                    $.getJSON('/rest/search/profession', function(objJson) {
-                        var items = [];
-                        $.each(objJson.data, function(key, val) {
-                            items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                        });
-
-                        $('select[name=occupationId]').html(items.join('')).selectmenu();
-                    });
                     $(".jSaveData").focusout(function() {
                         saveProfile();
                     });
@@ -339,18 +292,18 @@
                     });
 
                     $('span.jClearBtn')
-                            .hover(
-                            function() {
-                                $(this).find('img').css('display', 'inline');
-                            },
-                            function() {
-                                $(this).find('img').css('display', 'none');
-                            }
+                        .hover(
+                        function() {
+                            $(this).find('img').css('display', 'inline');
+                        },
+                        function() {
+                            $(this).find('img').css('display', 'none');
+                        }
                     )
-                            .click(function() {
-                                $(this).siblings('input').val('');
-                                saveProfile();
-                            });
+                    .click(function() {
+                        $(this).siblings('input').val('');
+                        saveProfile();
+                    });
 
 
                     $('.jCalendar').datepicker({
@@ -376,17 +329,11 @@
                                     if (request.success == 'true') {
                                         $('textarea[name=aboutMe]').val(request.data.aboutMe);
                                         $('select[name=is_male]').val(request.data.female);
-                                        $('input[select=bodyId]').val(request.data.bodyId);
                                         $('input[name=appearance]').val(request.data.appearance);
                                         $('input[name=birthDay]').val(request.data.birthDay);
                                         $('input[name=books]').val(request.data.books);
                                         $('input[name=cellPhone]').val(request.data.cellPhone);
-                                        $('input[name=city]').val(request.data.city);
-                                        $('select[name=countryId]').val(request.data.countryId);
-                                        $('input[name=currentCity]').val(request.data.currentCity);
-                                        $('select[name=currentCountryId]').val(request.data.currentCountryId);
-                                        $('input[name=familyStatus]').val(request.data.familyStatus);
-                                        $('select[name=firstLanguageId]').val(request.data.firstLanguageId);
+                                        $('input[name=familyStatus]').val(request.data.familyStatus);                                        $('select[name=firstLanguageId]').val(request.data.firstLanguageId);
                                         $('input[name=firstName]').val(request.data.firstName);
                                         $('input[name=height]').val(request.data.height);
                                         $('input[name=interest]').val(request.data.interest);
@@ -394,13 +341,57 @@
                                         $('input[name=lifeGoals]').val(request.data.lifeGoals);
                                         $('input[name=movies]').val(request.data.movies);
                                         $('input[name=music]').val(request.data.music);
-                                        $('select[name=occupationId]').val(request.data.occupationId);
                                         $('input[name=phone]').val(request.data.phone);
-                                        $('select[name=secondLanguageId]').val(request.data.secondLanguageId);
                                         $('input[name=siteUrl]').val(request.data.siteUrl);
                                         $('input[name=skypeId]').val(request.data.skypeId);
-                                        $('select[name=thirdLanguageId]').val(request.data.thirdLanguageId);
                                         $('input[name=width]').val(request.data.width);
+                                        
+                                        $.getJSON('/rest/search/countries', function(objJson) {
+                                            var items = [];
+                                            $.each(objJson.data, function(key, val) {
+                                                items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                            });
+                                            $('select[name=countryId]').html(items.join('')).val(request.data.countryId).selectmenu();
+                                            $('select[name=currentCountryId]').html(items.join('')).val(request.data.currentCountryId).selectmenu();
+                                        });
+                                        
+                                        $.getJSON('/rest/search/countries', function(objJson) {
+                                            var items = [];
+                                            $.each(objJson.data, function(key, val) {
+                                                items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                            });
+
+                                            $('select[name=city]').html(items.join('')).val(request.data.city).selectmenu();
+                                            $('select[name=currentCity]').html(items.join('')).val(request.data.currentCity).selectmenu();
+
+                                        });
+                                        $.getJSON('/rest/search/language', function(objJson) {
+                                            var items = [];
+                                            $.each(objJson.data, function(key, val) {
+                                                items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                            });
+
+                                            $('select[name=firstLanguageId]').html(items.join('')).val(request.data.firstLanguageId).selectmenu();
+                                            $('select[name=secondLanguageId]').html(items.join('')).val(request.data.secondLanguageId).selectmenu();
+                                            $('select[name=thirdLanguageId]').html(items.join('')).val(request.data.thirdLanguageId).selectmenu();
+                                        });
+                                        $.getJSON('/rest/search/body', function(objJson) {
+                                            var items = [];
+                                            $.each(objJson.data, function(key, val) {
+                                                items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                            });
+
+                                            $('select[name=bodyId]').html(items.join('')).val(request.data.bodyId).selectmenu();
+                                        });
+                                        $.getJSON('/rest/search/profession', function(objJson) {
+                                            var items = [];
+                                            $.each(objJson.data, function(key, val) {
+                                                items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                            });
+
+                                            $('select[name=occupationId]').html(items.join('')).val(request.data.occupationId).selectmenu();
+                                        });
+                                        
                                     } else {
                                         return onServerError(request);
                                     }
