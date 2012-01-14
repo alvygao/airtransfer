@@ -177,6 +177,9 @@
                         <td class="cLabel">${i18n['label.profile_page.more.aboutMe']}:</td>
                         <td colspan="3">
                             <textarea name="aboutMe" class="jSaveData"></textarea>
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear"/>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -199,14 +202,14 @@
                     </tr>
                     <tr>
                         <td class="cLabel">${i18n['label.profile_page.more.height']}:</td>
-                        <td style="width: 40px;">
+                        <td style="width: 43px;">
                             <input type="text" class="jSaveData" name="height" maxlength="255"/>
                             <span class="cClearBtn jClearBtn">
                                 <img src="/images/clear-button.png" alt="clear"/>
                             </span>
                         </td>
                         <td class="cLabel">${i18n['label.profile_page.more.weight']}:</td>
-                        <td style="width: 40px;">
+                        <td style="width: 45px;">
                             <input type="text" class="jSaveData" name="width" maxlength="255"/>
                             <span class="cClearBtn jClearBtn">
                                 <img src="/images/clear-button.png" alt="clear"/>
@@ -302,6 +305,7 @@
                     )
                     .click(function() {
                         $(this).siblings('input').val('');
+                        $(this).siblings('textarea').val('');
                         saveProfile();
                     });
 
@@ -310,7 +314,8 @@
                         yearRange: '1930:2000',
                         showAnim: 'slideDown',
                         changeMonth: true,
-                        changeYear: true
+                        changeYear: true,
+                        dateFormat: 'dd.mm.yy'
                     });
                 });
 
