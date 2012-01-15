@@ -295,28 +295,28 @@
                     });
 
                     $('span.jClearBtn')
-                        .hover(
-                        function() {
-                            $(this).find('img').css('display', 'inline');
-                        },
-                        function() {
-                            $(this).find('img').css('display', 'none');
-                        }
+                            .hover(
+                            function() {
+                                $(this).find('img').css('display', 'inline');
+                            },
+                            function() {
+                                $(this).find('img').css('display', 'none');
+                            }
                     )
-                    .click(function() {
-                        $(this).siblings('input').val('');
-                        $(this).siblings('textarea').val('');
-                        saveProfile();
-                    });
+                            .click(function() {
+                                $(this).siblings('input').val('');
+                                $(this).siblings('textarea').val('');
+                                saveProfile();
+                            });
 
 
                     $('.jCalendar').datepicker({
-                        yearRange: '1930:2000',
-                        showAnim: 'slideDown',
-                        changeMonth: true,
-                        changeYear: true,
-                        dateFormat: 'dd.mm.yy'
-                    });
+                                yearRange: '1930:2000',
+                                showAnim: 'slideDown',
+                                changeMonth: true,
+                                changeYear: true,
+                                dateFormat: 'dd.mm.yy'
+                            });
                 });
 
 
@@ -338,7 +338,8 @@
                                         $('input[name=birthDay]').val(request.data.birthDay);
                                         $('input[name=books]').val(request.data.books);
                                         $('input[name=cellPhone]').val(request.data.cellPhone);
-                                        $('input[name=familyStatus]').val(request.data.familyStatus);                                        $('select[name=firstLanguageId]').val(request.data.firstLanguageId);
+                                        $('input[name=familyStatus]').val(request.data.familyStatus);
+                                        $('select[name=firstLanguageId]').val(request.data.firstLanguageId);
                                         $('input[name=firstName]').val(request.data.firstName);
                                         $('input[name=height]').val(request.data.height);
                                         $('input[name=interest]').val(request.data.interest);
@@ -350,7 +351,19 @@
                                         $('input[name=siteUrl]').val(request.data.siteUrl);
                                         $('input[name=skypeId]').val(request.data.skypeId);
                                         $('input[name=width]').val(request.data.width);
-                                        
+
+                                        if (!isEmpty(request.data.cityId)) {
+                                            $('select[name=city]').html('<option value="' + request.data.cityId + '">' + request.data.cityName + '</option>')
+                                                    .val(request.data.cityId)
+                                                    .selectmenu();
+                                        }
+
+                                        if (!isEmpty(request.data.currentCityId)) {
+                                            $('select[name=city]').html('<option value="' + request.data.currentCityId + '">' + request.data.currentCityName + '</option>')
+                                                    .val(request.data.cityId)
+                                                    .selectmenu();
+                                        }
+
                                         $.getJSON('/rest/search/countries', function(objJson) {
                                             var items = [];
                                             $.each(objJson.data, function(key, val) {
@@ -359,17 +372,19 @@
                                             $('select[name=countryId]').html(items.join('')).val(request.data.countryId).selectmenu();
                                             $('select[name=currentCountryId]').html(items.join('')).val(request.data.currentCountryId).selectmenu();
                                         });
-                                        
-                                        $.getJSON('/rest/search/cities', function(objJson) {
-                                            var items = [];
-                                            $.each(objJson.data, function(key, val) {
-                                                items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                                            });
 
-                                            $('select[name=city]').html(items.join('')).val(request.data.city).selectmenu();
-                                            $('select[name=currentCity]').html(items.join('')).val(request.data.currentCity).selectmenu();
+                                        /*
+                                         $.getJSON('/rest/search/countries', function(objJson) {
+                                         var items = [];
+                                         $.each(objJson.data, function(key, val) {
+                                         items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                         });
 
-                                        });
+                                         $('select[name=city]').html(items.join('')).val(request.data.city).selectmenu();
+                                         $('select[name=currentCity]').html(items.join('')).val(request.data.currentCity).selectmenu();
+
+                                         });
+                                         */
                                         $.getJSON('/rest/search/language', function(objJson) {
                                             var items = [];
                                             $.each(objJson.data, function(key, val) {
@@ -396,7 +411,7 @@
 
                                             $('select[name=occupationId]').html(items.join('')).val(request.data.occupationId).selectmenu();
                                         });
-                                        
+
                                     } else {
                                         return onServerError(request);
                                     }
@@ -445,7 +460,7 @@
                                 contentType: "application/json; charset=utf-8",
                                 data:  textData,
                                 error: function(response, error) {
-                                    console.log(request);
+                                    console.log(response);
                                     console.log(error);
                                 },
                                 success: function(request) {

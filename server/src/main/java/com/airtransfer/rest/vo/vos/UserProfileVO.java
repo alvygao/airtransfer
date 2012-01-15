@@ -26,7 +26,9 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
     private String bodyType;
     private Long countryId;
     private Long cityId;
+    private String cityName;
     private Long currentCityId;
+    private String currentCityName;
     private Long currentCountryId;
     private Long firstLanguageId;
     private Long secondLanguageId;
@@ -59,8 +61,10 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         bodyId = entity.getBody() != null ? entity.getBody().getId() : null;
 
         countryId = entity.getCountry() != null ? entity.getCountry().getId() : null;
-        cityId = -1l;
-        currentCityId = -1l;
+        cityId = entity.getCity() != null ? entity.getCity().getId() : null;
+        currentCityId = entity.getCurrentCity() != null ? entity.getCurrentCity().getId() : null;
+        cityName = entity.getCity() != null ? entity.getCity().getEngName() : null;
+        currentCityName = entity.getCurrentCity() != null ? entity.getCurrentCity().getEngName() : null;
         currentCountryId = entity.getCurrentCountry() != null ? entity.getCurrentCountry().getId() : null;
         firstLanguageId = entity.getFirstLanguage() != null ? entity.getFirstLanguage().getId() : null;
         secondLanguageId = entity.getSecondLanguage() != null ? entity.getSecondLanguage().getId() : null;

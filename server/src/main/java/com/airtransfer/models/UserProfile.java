@@ -1,6 +1,8 @@
 package com.airtransfer.models;
 
 
+import org.hibernate.search.annotations.*;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,6 +12,7 @@ import java.util.Date;
  */
 
 @Entity
+@Indexed
 @Table(name = "profiles")
 public class UserProfile extends BaseEntity {
 
@@ -17,63 +20,103 @@ public class UserProfile extends BaseEntity {
     private User user;
 
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String firstName;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String lastName;
+
     @Column(name = "is_female", columnDefinition = "BIT")
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private Boolean isFemale;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String siteUrl;
+
     @Column(name = "birthday", columnDefinition = "DATETIME")
+    @Field(index = Index.UN_TOKENIZED)
+    @DateBridge(resolution = Resolution.DAY)
     private Date birthDay;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String skypeId;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String phone;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String cellPhone;
 
     @ManyToOne()
     private Country country;
-    @Column
-    private String city;
+
+    @ManyToOne()
+    private City city;
 
     @ManyToOne()
     private Country currentCountry;
-    @Column
-    private String currentCity;
 
     @ManyToOne()
+    private City currentCity;
 
+    @ManyToOne()
     private UserLanguage firstLanguage;
+
     @ManyToOne()
     private UserLanguage secondLanguage;
+
     @ManyToOne()
     private UserLanguage thirdLanguage;
 
     @ManyToOne()
     private Profession occupation;
+
     @Column(columnDefinition = "TEXT")
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String aboutMe;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String familyStatus;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Body body;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private Float height;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private Float width;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String appearance;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String lifeGoals;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String interest;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String music;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String movies;
+
     @Column
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String books;
 
 
@@ -141,19 +184,11 @@ public class UserProfile extends BaseEntity {
         this.cellPhone = cellPhone;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCurrentCity() {
+    public City getCurrentCity() {
         return currentCity;
     }
 
-    public void setCurrentCity(String currentCity) {
+    public void setCurrentCity(City currentCity) {
         this.currentCity = currentCity;
     }
 
@@ -299,5 +334,13 @@ public class UserProfile extends BaseEntity {
 
     public void setBody(Body body) {
         this.body = body;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 }

@@ -13,58 +13,129 @@ import javax.persistence.*;
 @Table(name = "flights")
 public class Flight extends BaseEntity {
 
-   @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
-   @JoinColumn(name = "user_id")
-   private User owner;
-   @Column
-   private String departureDate;
-   @Column
-   private String arriveDate;
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User owner;
+    @Column
+    private String departureDate;
+    @Column
+    private String arriveDate;
+    @Column(columnDefinition = "BIT DEFAULT FALSE")
+    private Boolean oneWay;
 
-   @ManyToOne(targetEntity = Airport.class, fetch = FetchType.EAGER)
-   @Fetch(FetchMode.JOIN)
-   private Airport fromAirport;
-   @ManyToOne(targetEntity = Airport.class, fetch = FetchType.EAGER)
-   @Fetch(FetchMode.JOIN)
-   private Airport toAirport;
+    @Column
+    private String flightCompanyFrom;
+    @Column
+    private String flightCompanyTo;
+    @Column
+    private String seatFrom;
+    @Column
+    private String seatTo;
+    @Column
+    private String terminalFrom;
+    @Column
+    private String terminalTo;
 
-   public User getOwner() {
-      return owner;
-   }
+    @ManyToOne(targetEntity = Airport.class, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    private Airport fromAirport;
+    @ManyToOne(targetEntity = Airport.class, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    private Airport toAirport;
 
-   public void setOwner(User owner) {
-      this.owner = owner;
-   }
+    public Boolean getOneWay() {
+        return oneWay;
+    }
 
-   public String getDepartureDate() {
-      return departureDate;
-   }
+    public void setOneWay(Boolean oneWay) {
+        this.oneWay = oneWay;
+    }
 
-   public void setDepartureDate(String departureDate) {
-      this.departureDate = departureDate;
-   }
+    public String getFlightCompanyFrom() {
+        return flightCompanyFrom;
+    }
 
-   public String getArriveDate() {
-      return arriveDate;
-   }
+    public void setFlightCompanyFrom(String flightCompanyFrom) {
+        this.flightCompanyFrom = flightCompanyFrom;
+    }
 
-   public void setArriveDate(String arriveDate) {
-      this.arriveDate = arriveDate;
-   }
+    public String getFlightCompanyTo() {
+        return flightCompanyTo;
+    }
 
-   public Airport getFromAirport() {
-      return fromAirport;
-   }
+    public void setFlightCompanyTo(String flightCompanyTo) {
+        this.flightCompanyTo = flightCompanyTo;
+    }
 
-   public void setFromAirport(Airport fromAirport) {
-      this.fromAirport = fromAirport;
-   }
+    public String getSeatFrom() {
+        return seatFrom;
+    }
 
-   public Airport getToAirport() {
-      return toAirport;
-   }
+    public void setSeatFrom(String seatFrom) {
+        this.seatFrom = seatFrom;
+    }
 
-   public void setToAirport(Airport toAirport) {
-      this.toAirport = toAirport;
-   }
+    public String getSeatTo() {
+        return seatTo;
+    }
+
+    public void setSeatTo(String seatTo) {
+        this.seatTo = seatTo;
+    }
+
+    public String getTerminalFrom() {
+        return terminalFrom;
+    }
+
+    public void setTerminalFrom(String terminalFrom) {
+        this.terminalFrom = terminalFrom;
+    }
+
+    public String getTerminalTo() {
+        return terminalTo;
+    }
+
+    public void setTerminalTo(String terminalTo) {
+        this.terminalTo = terminalTo;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public String getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public String getArriveDate() {
+        return arriveDate;
+    }
+
+    public void setArriveDate(String arriveDate) {
+        this.arriveDate = arriveDate;
+    }
+
+    public Airport getFromAirport() {
+        return fromAirport;
+    }
+
+    public void setFromAirport(Airport fromAirport) {
+        this.fromAirport = fromAirport;
+    }
+
+    public Airport getToAirport() {
+        return toAirport;
+    }
+
+    public void setToAirport(Airport toAirport) {
+        this.toAirport = toAirport;
+    }
 }
