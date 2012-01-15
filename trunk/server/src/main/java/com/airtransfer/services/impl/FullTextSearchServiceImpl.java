@@ -1,7 +1,10 @@
 package com.airtransfer.services.impl;
 
 import com.airtransfer.models.Airport;
+import com.airtransfer.models.City;
+import com.airtransfer.models.UserProfile;
 import com.airtransfer.services.FullTextSearchService;
+import com.airtransfer.services.dao.UserProfileDao;
 import org.apache.lucene.search.Query;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -38,20 +41,29 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
 
     private static final String[] symbols = new String[]{"+", "&", "|", "!", "(", ")", "{", "}", "[", "]", "^", "\"", "~", "*", "?", ":", "\\", "/"};
 
+    private static final Class[] clazz;
+
+    static {
+        clazz = new Class[]{
+                Airport.class,
+                City.class,
+                UserProfile.class
+        };
+    }
+
     @Value("${indexBaseDirectory}")
     protected String indexBaseDirectory = ".";
 
     @Transactional(readOnly = true)
-
     public void createIndex() {
         File file = new File(indexBaseDirectory);
-        if (file.exists()) {
+        if (false && file.exists()) {
             getHibernateTemplate().execute(new HibernateCallback<Object>() {
                 public Object doInHibernate(Session session) throws HibernateException, SQLException {
                     FullTextSession fullTextSession = Search.getFullTextSession(session);
                     try {
                         logger.warn("Start indexing ..");
-                        MassIndexer indexer = fullTextSession.createIndexer(Airport.class);
+                        MassIndexer indexer = fullTextSession.createIndexer(clazz);
                         indexer.batchSizeToLoadObjects(100)
                                 .threadsToLoadObjects(5)
                                 .threadsForIndexWriter(3)
@@ -83,42 +95,14 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
 
     @SuppressWarnings("unchecked")
     public List<Airport> findAirports(Locale locale, final String term, final Integer limit) {
-        final String key = eraseSpecialCharacters(term);
-//        final String key = term;
+        final String key = removeSpecialCharacters(term);
 
         return (List<Airport>) getHibernateTemplate().executeFind(new HibernateCallback<Object>() {
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 FullTextSession textSession = Search.getFullTextSession(session);
-/*
-                Analyzer analyzer = textSession.getSearchFactory().getAnalyzer(Airport.class);
-                QueryParser parser = new MultiFieldQueryParser(Version.LUCENE_31, new String[]{"rusName"}, analyzer);
-                try {
-                    Query parse = parser.parse("rusName:Сан\\-Фр*");
-                    System.out.println(parse);
-                    return textSession.createFullTextQuery(parse, Airport.class).list();
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                return Collections.emptyList();
-*/
                 QueryBuilder builder = textSession.getSearchFactory().buildQueryBuilder().forEntity(Airport.class).get();
 
                 Query query = builder.bool()
-/*
-                        .should(builder.phrase()
-                                .onField("rusName")
-                                .andField("engName")
-                                .andField("countryCode")
-                                .andField("iataCode")
-                                .sentence(key).createQuery())
-                        .should(builder.phrase()
-                                .onField("rusName")
-                                .andField("engName")
-                                .andField("countryCode")
-                                .andField("iataCode")
-                                .sentence(key.toLowerCase()).createQuery())
-*/
                         .should(builder.keyword().wildcard()
                                 .onField("rusName")
                                 .andField("engName")
@@ -133,7 +117,6 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
                                 .matching(key.toLowerCase() + "*").createQuery())
                         .createQuery();
                 logger.debug("Lucene query: " + query);
-                System.out.println("Lucene query: " + query);
                 List result = textSession.createFullTextQuery(query, Airport.class)
                         .setMaxResults(limit)
                         .list();
@@ -142,23 +125,116 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
         });
     }
 
-    public static String eraseSpecialCharacters(String s) {
+    @SuppressWarnings("unchecked")
+    public List<City> findCities(Locale locale, String term, final Integer limit) {
+        final String key = removeSpecialCharacters(term);
+        return getHibernateTemplate().executeFind(new HibernateCallback<Object>() {
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                FullTextSession fullTextSession = Search.getFullTextSession(session);
+                QueryBuilder builder = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(City.class).get();
+                Query query = builder.bool()
+                        .should(builder.keyword().wildcard()
+                                .onField("rusName")
+                                .andField("engName")
+                                .andField("countryCode")
+                                .andField("code")
+                                .matching(key + "*").createQuery())
+                        .should(builder.keyword().wildcard()
+                                .onField("rusName")
+                                .andField("engName")
+                                .andField("countryCode")
+                                .andField("code")
+                                .matching(key.toLowerCase() + "*").createQuery())
+                        .createQuery();
+
+                logger.debug("Lucene query: " + query);
+                List list = fullTextSession.createFullTextQuery(query, City.class).setMaxResults(limit).list();
+                return list == null ? Collections.EMPTY_LIST : list;
+            }
+        });
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<UserProfile> findProfiles(Locale locale, String term, final Integer limit) {
+        final String key = removeSpecialCharacters(term);
+        return getHibernateTemplate().executeFind(new HibernateCallback<Object>() {
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                FullTextSession fullTextSession = Search.getFullTextSession(session);
+                QueryBuilder builder = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(UserProfile.class).get();
+                Query query = builder.bool()
+                        .should(builder.keyword().wildcard()
+                                .onField("firstName")
+                                .andField("lastName")
+                                .andField("isFemale")
+                                .andField("siteUrl")
+                                .andField("skypeId")
+                                .andField("phone")
+                                .andField("cellPhone")
+                                .andField("city")
+                                .andField("aboutMe")
+                                .andField("familyStatus")
+                                .andField("height")
+                                .andField("width")
+                                .andField("appearance")
+                                .andField("lifeGoals")
+                                .andField("interest")
+                                .andField("music")
+                                .andField("movies")
+                                .andField("books")
+                                .matching(key + "*").createQuery())
+                        .should(builder.keyword().wildcard()
+                                .onField("firstName")
+                                .andField("lastName")
+                                .andField("isFemale")
+                                .andField("siteUrl")
+                                .andField("skypeId")
+                                .andField("phone")
+                                .andField("cellPhone")
+                                .andField("city")
+                                .andField("aboutMe")
+                                .andField("familyStatus")
+                                .andField("height")
+                                .andField("width")
+                                .andField("appearance")
+                                .andField("lifeGoals")
+                                .andField("interest")
+                                .andField("music")
+                                .andField("movies")
+                                .andField("books")
+                                .matching(key.toLowerCase() + "*").createQuery())
+                        .createQuery();
+
+                logger.debug("Lucene query: " + query);
+                List list = fullTextSession.createFullTextQuery(query, UserProfile.class).setMaxResults(limit).list();
+                return list == null ? Collections.EMPTY_LIST : list;
+            }
+        });
+    }
+
+    public static String removeSpecialCharacters(String s) {
         for (String i : symbols) {
             s = s.replace(i, "");
         }
-        return s.replace("-", "\\-");
+        return s.replace("-", " ");
     }
 
 
-/*
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("conf/applicationContext.xml");
         FullTextSearchService bean = context.getBean(FullTextSearchService.class);
-        List<Airport> list = bean.findAirports(Locale.US, "Сан", 10);
-        for (Airport airport : list) {
-            System.out.println(airport.getIataCode() + " " + airport.getEngName() + " " + airport.getRusName() + " " + airport.getCountryCode());
+        List<UserProfile> list = bean.findProfiles(Locale.US, "werw", 100);
+
+        for (UserProfile profile : list) {
+            System.out.println(profile.getId() + " " + profile.getFirstName());
+            profile.setFirstName("sergey");
+            UserProfileDao profileDao = context.getBean(UserProfileDao.class);
+            profileDao.persist(profile);
+        }
+        System.out.println("---");
+        list = bean.findProfiles(Locale.US, "sergey", 100);
+        for (UserProfile profile : list) {
+            System.out.println(profile.getId() + " " + profile.getFirstName());
         }
     }
 
-*/
 }

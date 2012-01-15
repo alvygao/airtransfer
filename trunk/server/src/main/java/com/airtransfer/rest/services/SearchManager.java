@@ -2,7 +2,7 @@ package com.airtransfer.rest.services;
 
 import com.airtransfer.models.*;
 import com.airtransfer.rest.vo.BaseListVOResponse;
-import com.airtransfer.rest.vo.BaseResponse;
+import com.airtransfer.rest.vo.vos.AirportSearchVO;
 import com.airtransfer.rest.vo.vos.AirportVO;
 import com.airtransfer.rest.vo.vos.PairVO;
 import com.airtransfer.rest.vo.vos.TrinityVO;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -117,45 +116,23 @@ public class SearchManager extends BaseManager {
     @Path("/cities")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public BaseListVOResponse getCountries() {
-        final Locale locale = LocaleContextHolder.getLocale();
-        final List<City> list = cityDao.listAll();
-
-        BaseListVOResponse response = new BaseListVOResponse();
-        response.setData(new ArrayList(list.size()));
-        for (City city : list) {
-            response.getData().add(new PairVO(city.getId(), city.getEngName()));
-        }
-        return response;
-    }
-
-/*
-    @GET
-    @Path("/findairports")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces({MediaType.APPLICATION_JSON})
-    public SearchResponse findAirportsByName(@QueryParam("term") String term, @QueryParam("limit") Integer limit) {
+    public BaseListVOResponse getCities(@QueryParam("term") String term, @QueryParam("limit") Integer limit) {
         final Locale locale = LocaleContextHolder.getLocale();
         if (term == null) {
-            System.out.println("EMPTY request ");
-            return new SearchResponse(term);
+            logger.warn("getCities; empty search term");
+            return new BaseListVOResponse();
         }
         List<Airport> list = textSearchService.findAirports(locale, term, limit != null ? limit : 10);
-        final SearchResponse response = new SearchResponse();
-        response.setQuery(term);
         if (!list.isEmpty()) {
-            ArrayList<String> names = new ArrayList<String>(list.size());
-            ArrayList<String> values = new ArrayList<String>(list.size());
+            ArrayList<TrinityVO> response = new ArrayList<TrinityVO>();
             for (Airport airport : list) {
-                names.add(airport.getEngName());
-                values.add(airport.getIataCode());
+                response.add(new TrinityVO(airport));
             }
-            response.setData(values.toArray(new String[list.size()]));
-            response.setSuggestions(names.toArray(new String[list.size()]));
+            return new BaseListVOResponse(response);
         }
-        return response;
+        return new BaseListVOResponse();
     }
-*/
+
 
     @GET
     @Path("/findairports")
@@ -171,7 +148,7 @@ public class SearchManager extends BaseManager {
         if (!list.isEmpty()) {
             ArrayList<TrinityVO> response = new ArrayList<TrinityVO>();
             for (Airport airport : list) {
-                response.add(new TrinityVO(airport));
+                response.add(new AirportSearchVO(airport));
             }
             return new BaseListVOResponse(response);
         }

@@ -38,6 +38,14 @@ public class Airport extends BaseEntity {
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private String countryCode;
 
+    @Column(name = "country_name_eng")
+    @Field(index = Index.TOKENIZED, store = Store.NO)
+    private String countryNameEng;
+
+    @Column(name = "country_name_rus")
+    @Field(index = Index.TOKENIZED, store = Store.NO)
+    private String countryNameRus;
+
     public String getIataCode() {
         return iataCode;
     }
@@ -76,5 +84,21 @@ public class Airport extends BaseEntity {
 
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
+    }
+
+    public String getCountryNameEng() {
+        return countryNameEng;
+    }
+
+    public void setCountryNameEng(String countryNameEng) {
+        this.countryNameEng = countryNameEng;
+    }
+
+    public String getCountryNameRus() {
+        return countryNameRus;
+    }
+
+    public void setCountryNameRus(String countryNameRus) {
+        this.countryNameRus = countryNameRus;
     }
 }

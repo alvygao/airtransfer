@@ -25,67 +25,134 @@ import java.util.List;
 @Path("/flights")
 public class FlightManager extends BaseManager {
 
-   @Autowired
-   protected FlightDao flightDao;
-   @Autowired
-   protected AirportDao airportDao;
+    @Autowired
+    protected FlightDao flightDao;
+    @Autowired
+    protected AirportDao airportDao;
 
-   @POST
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
-   public BaseEntityVOResponse createFlight(FlightCreationRequest request) {
-      try {
-         if (!validate(request)) {
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public BaseEntityVOResponse createFlight(FlightCreationRequest request) {
+        try {
+            if (!validate(request)) {
+                return new BaseEntityVOResponse();
+            }
+
+            Flight flight = new Flight();
+            flight.setArriveDate(request.getArriveDate());
+            flight.setDepartureDate(request.getDepartureDate());
+
+            Airport from = airportDao.load(request.getFromAirport());
+            Airport to = airportDao.load(request.getToAirport());
+
+            flight.setFromAirport(from);
+            flight.setToAirport(to);
+            flight.setFlightCompanyFrom(request.getFlightCompanyFrom());
+            flight.setFlightCompanyTo(request.getFlightCompanyTo());
+            flight.setSeatFrom(request.getSeatFrom());
+            flight.setSeatTo(request.getSeatTo());
+            flight.setTerminalFrom(request.getTerminalFrom());
+            flight.setTerminalTo(request.getTerminalTo());
+            flight.setOneWay(request.getOneWay());
+
+            UserSession session = getSession();
+            flight.setOwner(session.getUser());
+
+            flightDao.persist(flight);
+
             return new BaseEntityVOResponse();
-         }
+        } catch (Exception e) {
+            return onError(e, new BaseEntityVOResponse());
+        }
 
-         Flight flight = new Flight();
-         flight.setArriveDate(request.getArriveDate());
-         flight.setDepartureDate(request.getDepartureDate());
+    }
 
-         Airport from = airportDao.load(request.getFromAirport());
-         Airport to = airportDao.load(request.getToAirport());
+    @GET
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public BaseListVOResponse getFlightsOfUser() {
+        try {
+            UserSession session = getSession();
+            List<Flight> flights = flightDao.getFlightsByUser(session.getUser());
+            BaseListVOResponse response = new BaseListVOResponse();
+            ArrayList<FlightVO> list = new ArrayList<FlightVO>(flights.size());
+            response.setData(list);
+            for (Flight flight : flights) {
+                list.add(new FlightVO(flight));
+            }
+            response.setData(list);
+            return response;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return new BaseListVOResponse(false, e.getMessage());
+        }
+    }
 
-         flight.setFromAirport(from);
-         flight.setToAirport(to);
+    @GET
+    @Path("/current")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public BaseListVOResponse getCurrentFlights() {
+        try {
+            List<Flight> list = flightDao.getFlightsByUser(getSession().getUser());
+            BaseListVOResponse response = new BaseListVOResponse();
+            ArrayList<FlightVO> flights = new ArrayList<FlightVO>(list.size());
+            for (Flight flight : list) {
+                flights.add(new FlightVO(flight));
+            }
+            response.setData(flights);
+            return response;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return new BaseListVOResponse(false, e.getMessage());
+        }
+    }
 
-         UserSession session = getSession();
-         flight.setOwner(session.getUser());
+    @GET
+    @Path("/removed")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public BaseListVOResponse getRemovedFlights() {
+        try {
+            List<Flight> list = flightDao.getFlightsByUser(getSession().getUser());
+            BaseListVOResponse response = new BaseListVOResponse();
+            ArrayList<FlightVO> flights = new ArrayList<FlightVO>(list.size());
+            for (Flight flight : list) {
+                flights.add(new FlightVO(flight));
+            }
+            response.setData(flights);
+            return response;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return new BaseListVOResponse(false, e.getMessage());
+        }
+    }
 
-         flightDao.persist(flight);
-
-         return new BaseEntityVOResponse();
-      } catch (Exception e) {
-         return onError(e, new BaseEntityVOResponse());
-      }
-
-   }
-
-   @GET
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
-   public BaseListVOResponse getFlightsOfUser() {
-      try {
-         UserSession session = getSession();
-         List<Flight> flights = flightDao.getFlightsByUser(session.getUser());
-         BaseListVOResponse response = new BaseListVOResponse();
-         ArrayList<FlightVO> list = new ArrayList<FlightVO>(flights.size());
-         response.setData(list);
-         for (Flight flight : flights) {
-            list.add(new FlightVO(flight));
-         }
-         response.setData(list);
-         return response;
-      } catch (Exception e) {
-         logger.error(e.getMessage(), e);
-         return new BaseListVOResponse(false, e.getMessage());
-      }
-   }
+    @GET
+    @Path("/future")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public BaseListVOResponse getFutureFlights() {
+        try {
+            List<Flight> list = flightDao.getFlightsByUser(getSession().getUser());
+            BaseListVOResponse response = new BaseListVOResponse();
+            ArrayList<FlightVO> flights = new ArrayList<FlightVO>(list.size());
+            for (Flight flight : list) {
+                flights.add(new FlightVO(flight));
+            }
+            response.setData(flights);
+            return response;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return new BaseListVOResponse(false, e.getMessage());
+        }
+    }
 
 
-   private boolean validate(FlightCreationRequest request) {
-      return (request.getArriveDate() != null && request.getDepartureDate() != null
-              && request.getFromAirport() != null && request.getToAirport() != null);
-   }
+    private boolean validate(FlightCreationRequest request) {
+        return (request.getArriveDate() != null && request.getDepartureDate() != null
+                && request.getFromAirport() != null && request.getToAirport() != null);
+    }
 
 }

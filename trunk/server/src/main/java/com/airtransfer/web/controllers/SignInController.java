@@ -51,6 +51,7 @@ public class SignInController extends AbstractController {
             session.setCreated(new Date());
             session.setJSessionId(token);
             session.setUser(user);
+            session.setIp(request.getRemoteAddr());
             sessionDao.persist(session);
             SessionManager.add(token);
             logger.info("User session created; {}", token);

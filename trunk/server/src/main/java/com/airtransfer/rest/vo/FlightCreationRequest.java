@@ -1,5 +1,6 @@
 package com.airtransfer.rest.vo;
 
+import javax.persistence.Column;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -12,43 +13,109 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class FlightCreationRequest {
 
-   private String departureDate;
-   private String arriveDate;
-   private Long fromAirport;
-   private Long toAirport;
+    private String departureDate;
+    private String arriveDate;
+    private Long fromAirport;
+    private Long toAirport;
 
-   public FlightCreationRequest() {
-   }
+    private Boolean oneWay;
 
-   public String getDepartureDate() {
-      return departureDate;
-   }
+    private String flightCompanyFrom;
+    private String flightCompanyTo;
+    private String seatFrom;
+    private String seatTo;
+    private String terminalFrom;
+    private String terminalTo;
 
-   public void setDepartureDate(String departureDate) {
-      this.departureDate = departureDate;
-   }
 
-   public String getArriveDate() {
-      return arriveDate;
-   }
+    public FlightCreationRequest() {
+    }
 
-   public void setArriveDate(String arriveDate) {
-      this.arriveDate = arriveDate;
-   }
+    public String getDepartureDate() {
+        return departureDate;
+    }
 
-   public Long getFromAirport() {
-      return fromAirport;
-   }
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
 
-   public void setFromAirport(Long fromAirport) {
-      this.fromAirport = fromAirport;
-   }
+    public String getArriveDate() {
+        return arriveDate;
+    }
 
-   public Long getToAirport() {
-      return toAirport;
-   }
+    public void setArriveDate(String arriveDate) {
+        this.arriveDate = arriveDate;
+    }
 
-   public void setToAirport(Long toAirport) {
-      this.toAirport = toAirport;
-   }
+    public Long getFromAirport() {
+        return fromAirport;
+    }
+
+    public void setFromAirport(Long fromAirport) {
+        this.fromAirport = fromAirport;
+    }
+
+    public Long getToAirport() {
+        return toAirport;
+    }
+
+    public void setToAirport(Long toAirport) {
+        this.toAirport = toAirport;
+    }
+
+    public Boolean getOneWay() {
+        return oneWay;
+    }
+
+    public void setOneWay(Boolean oneWay) {
+        this.oneWay = oneWay;
+    }
+
+    public String getFlightCompanyFrom() {
+        return flightCompanyFrom;
+    }
+
+    public void setFlightCompanyFrom(String flightCompanyFrom) {
+        this.flightCompanyFrom = flightCompanyFrom;
+    }
+
+    public String getFlightCompanyTo() {
+        return flightCompanyTo;
+    }
+
+    public void setFlightCompanyTo(String flightCompanyTo) {
+        this.flightCompanyTo = flightCompanyTo;
+    }
+
+    public String getSeatFrom() {
+        return seatFrom;
+    }
+
+    public void setSeatFrom(String seatFrom) {
+        this.seatFrom = seatFrom;
+    }
+
+    public String getSeatTo() {
+        return seatTo;
+    }
+
+    public void setSeatTo(String seatTo) {
+        this.seatTo = seatTo;
+    }
+
+    public String getTerminalFrom() {
+        return terminalFrom;
+    }
+
+    public void setTerminalFrom(String terminalFrom) {
+        this.terminalFrom = terminalFrom;
+    }
+
+    public String getTerminalTo() {
+        return terminalTo;
+    }
+
+    public void setTerminalTo(String terminalTo) {
+        this.terminalTo = terminalTo;
+    }
 }
