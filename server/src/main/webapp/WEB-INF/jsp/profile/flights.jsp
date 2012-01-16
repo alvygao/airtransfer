@@ -4,7 +4,74 @@
 <jsp:attribute name="center">
         <jsp:include page="/WEB-INF/jsp/includes/topmenu.jsp"/>
         <div class="cPage">
-
+            <div class="cBlock"></div>
+            <h1>${i18n['label.flight.myFlight']}</h1>
+            <div class="cFlight">
+                <div class="cFlightActions">
+                    <a href="/html/flights/create" title="${i18n['label.flight.link.add']}">
+                        <div class="cFlightActionAdd">
+                            <div class="cFlightActionsTitle">${i18n['label.flight.link.add']}</div>
+                        </div>
+                    </a>
+                    <a href="/html/flights/current" title="${i18n['label.flight.link.current']}">
+                        <div class="cFlightActionCurrent">
+                            <div class="cFlightActionsTitle">${i18n['label.flight.link.current']}</div>
+                        </div>
+                    </a>
+                    <a href="/html/flights/future" title="${i18n['label.flight.link.future']}">
+                        <div class="cFlightActionFuture">
+                            <div class="cFlightActionsTitle">${i18n['label.flight.link.future']}</div>
+                        </div>
+                    </a>
+                    <a href="/html/flights/removed" title="${i18n['label.flight.link.past']}">
+                        <div class="cFlightActionPast">
+                            <div class="cFlightActionsTitle">${i18n['label.flight.link.past']}</div>
+                        </div>
+                    </a>
+                </div>    
+            </div>
+        </div>
+            
+            <%-- <div class="cFlight">
+                <table>
+                    <tr>
+                        <td><label for="fromCity">${i18n['label.flight.form.from']}:</label></td>
+                        <td style="width: 40px;">&nbsp;</td>
+                        <td><label for="fromCity">${i18n['label.flight.form.to']}:</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="fromCity" type="text" name="fromCity" />
+                            <input id="fromCityHidden" type="hidden"/>
+                        </td>
+                        <td style="width: 40px;">&nbsp;</td>
+                        <td>
+                            <input id="toCity" type="text" name="toCity" />
+                            <input id="toCityHidden" type="hidden"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="fromCity">${i18n['label.flight.form.departureDate']}:</label></td>
+                        <td style="width: 40px;">&nbsp;</td>
+                        <td><label for="fromCity">${i18n['label.flight.form.arriveDate']}:</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input name="departureDate" type="text" id="departureDate" class="jCalendar" />
+                            <span class="cClearBtn cCalendar">
+                                <img alt="clear" src="/images/calendar.gif" />
+                            </span>
+                        </td>
+                        <td style="width: 40px;">&nbsp;</td>
+                        <td>
+                            <input name="arriveDate" type="text" id="arriveDate" class="jCalendar" />
+                            <span class="cClearBtn cCalendar">
+                                <img alt="clear" src="/images/calendar.gif" />
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         <div class="home" id="searchcontrols"
              style="margin: auto; width: 670px; height: 200px; background: url('${appBaseUrl}/images/flightspanel/panel.png') left top  no-repeat">
         <div style="width: 650px; height: 300px; padding: 20px;">
@@ -34,6 +101,7 @@
                             <img src="/images/calendar.gif" alt="clear"/>
                         </span>
         </div>
+
 
         <div style="width: 350px; clear: left; float: left;">
             <label for="fltCompanyFrom">Flight.Company(From):</label>
@@ -66,10 +134,18 @@
             <label for="termTo">Return:</label>
             <input type="checkbox" checked="true" value="Return" id="oneWay"/>
             <input id="submitFlight" type="button" value="Create Flight"/>
-        </div>
+        </div> --%>
 
         <script type="text/javascript">
             $(document).ready(function() {
+                $('.jCalendar').datepicker({
+                    yearRange: '1930:2000',
+                    showAnim: 'slideDown',
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: 'dd.mm.yy'
+                });
+
                 $('#fromCity').autocomplete({
                             source: function(request, response) {
                                 $.ajax({
@@ -217,23 +293,11 @@
 
                 }
 
-                loadFlights();
+                //loadFlights();
 
             });
         </script>
 
-        </div>
-        </div>
-        <div style="width: 500px; height: 300px; margin: auto;" id="currentFlights">
-
-
-        </div>
-        <div style="width: 500px; height: 200px;">
-            <a href="/html/flights/create">Create Flight</a>
-            <a href="/html/flights/current">Current Flight</a>
-            <a href="/html/flights/future">Future Flight</a>
-            <a href="/html/flights/removed">Removed Flight</a>
-        </div>
-        </div>
+        
     </jsp:attribute>
 </tags:main>
