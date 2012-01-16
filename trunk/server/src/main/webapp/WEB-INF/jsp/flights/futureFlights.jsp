@@ -4,9 +4,12 @@
 <jsp:attribute name="center">
         <jsp:include page="/WEB-INF/jsp/includes/topmenu.jsp"/>
         <div class="cPage">
-
-            Future Flights
-                        <script type="text/javascript">
+            <div class="cBlock"></div>
+            <h1>${i18n['label.flight.futureFlights']}</h1>
+            <div class="cFlight" id="currentFlights">
+                
+            </div>
+            <script type="text/javascript">
                 function loadFlights() {
                     $.ajax({
                                 type: 'get',

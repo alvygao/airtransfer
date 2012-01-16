@@ -16,6 +16,6 @@ profile.smtp.host=j2eeblogger.ru
 profile.smtp.login=noreply
 profile.smtp.password=
 # Index
-profile.index.base.dir=d:/projects/java/airtransfer/server/indexes
+profile.index.base.dir=d:/work/java/airtransfer/server/indexes
 
 

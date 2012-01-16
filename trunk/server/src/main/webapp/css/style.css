@@ -179,6 +179,16 @@ html, body {
     border-radius: 0px 0px 5px 5px;
 }
 
+#cContent .cPage .cBlock {
+    height: 15px;
+    width: 100%;
+}
+#cContent .cPage h1 {
+    color: #4c7ead;
+    margin-left: 20px;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
 #cContent .cPage.cWithoutMenu {
     margin-top: 0px;
     padding-top: 20px;
@@ -382,6 +392,120 @@ html, body {
     padding: 3px 15px 3px 15px;
     text-decoration: none;
 }
+
+/******************************* FLIGHT ***********************************/
+#cContent .cPage .cFlight {
+    background: none repeat scroll 0 0 #C3D4EF;
+    border: 2px solid #FFFFFF;
+    margin: 15px auto;
+    min-height: 100px;
+    padding: 15px;
+    width: 760px;
+    border-radius: 5px 5px 5px 5px;
+}
+.cFlight label {
+    color: #5F5F5F;
+    font-size: 14px;
+}
+.cFlight table {
+    width: 100%;
+}
+.cFlight td {
+    position: relative;
+    float: left;
+    width: 230px;
+    padding-top: 0px;
+}
+.cFlight input[type=text] {
+    padding: 4px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #FFFFFF;
+    background: #FFFFFF;
+    color: #000000;
+    width: 90%;
+}
+.cFlight input[type=button] {
+    float: right;
+    background: url('/images/blue-btn-bg.png') left top repeat-x;
+    height: 28px;
+    border: solid 2px #ffffff;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 0px 15px;
+    text-decoration: none;
+}
+.cFlight span.cCalendar {
+    cursor: pointer;
+    height: 20px;
+    width: 26px;
+    position: absolute;
+    top: 6px;
+    right: 9px;
+}
+
+.cFlight .cFlightFrom {
+    background: url(/images/flight/flight-from.png) left top no-repeat;
+    width: 43px;
+    height: 43px;
+}
+
+.cFlight .cFlightTo {
+    background: url(/images/flight/flight-to.png) left top no-repeat;
+    width: 43px;
+    height: 43px;
+}
+
+.cFlight .cFlightActions {
+    margin-left: 70px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.cFlight .cFlightActions a {
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.cFlight .cFlightActions .cFlightActionAdd {
+    background: url("/images/flight/flight-link.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    height: 45px;
+    text-align: center;
+    width: 317px;
+}
+
+.cFlight .cFlightActions .cFlightActionCurrent {
+    background: url("/images/flight/flight-link.png") no-repeat scroll 0 -51px transparent;
+    color: #FFFFFF;
+    height: 45px;
+    text-align: center;
+    width: 317px;
+}
+.cFlight .cFlightActions .cFlightActionFuture {
+    background: url("/images/flight/flight-link.png") no-repeat scroll 0 -103px transparent;
+    color: #FFFFFF;
+    height: 45px;
+    text-align: center;
+    width: 317px;
+}
+.cFlight .cFlightActions .cFlightActionPast {
+    background: url("/images/flight/flight-link.png") no-repeat scroll 0 -156px transparent;
+    color: #FFFFFF;
+    height: 45px;
+    text-align: center;
+    width: 317px;
+}
+
+.cFlight .cFlightActions .cFlightActionsTitle {
+    margin-top: 10px;
+    padding-left: 45px;
+    padding-top: 13px;
+    text-transform: uppercase;
+}
+
 
 /****************************** LEFT COLUMN ******************************/
 #cLeftBar {
