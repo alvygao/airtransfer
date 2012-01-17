@@ -39,22 +39,11 @@ public class FlightManager extends BaseManager {
                 return new BaseEntityVOResponse();
             }
 
-            Flight flight = new Flight();
-            flight.setArriveDate(request.getArriveDate());
-            flight.setDepartureDate(request.getDepartureDate());
-
+            Flight flight = request.model();
             Airport from = airportDao.load(request.getFromAirport());
             Airport to = airportDao.load(request.getToAirport());
-
             flight.setFromAirport(from);
             flight.setToAirport(to);
-            flight.setFlightCompanyFrom(request.getFlightCompanyFrom());
-            flight.setFlightCompanyTo(request.getFlightCompanyTo());
-            flight.setSeatFrom(request.getSeatFrom());
-            flight.setSeatTo(request.getSeatTo());
-            flight.setTerminalFrom(request.getTerminalFrom());
-            flight.setTerminalTo(request.getTerminalTo());
-            flight.setOneWay(request.getOneWay());
 
             UserSession session = getSession();
             flight.setOwner(session.getUser());

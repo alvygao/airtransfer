@@ -57,7 +57,7 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
     @Transactional(readOnly = true)
     public void createIndex() {
         File file = new File(indexBaseDirectory);
-        if (false && file.exists()) {
+        if (file.exists()) {
             getHibernateTemplate().execute(new HibernateCallback<Object>() {
                 public Object doInHibernate(Session session) throws HibernateException, SQLException {
                     FullTextSession fullTextSession = Search.getFullTextSession(session);
@@ -65,8 +65,8 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
                         logger.warn("Start indexing ..");
                         MassIndexer indexer = fullTextSession.createIndexer(clazz);
                         indexer.batchSizeToLoadObjects(100)
-                                .threadsToLoadObjects(5)
-                                .threadsForIndexWriter(3)
+                                .threadsToLoadObjects(2)
+                                .threadsForIndexWriter(2)
                                 .threadsForSubsequentFetching(2)
                                 .optimizeOnFinish(true)
                                 .progressMonitor(new SimpleIndexingProgressMonitor())

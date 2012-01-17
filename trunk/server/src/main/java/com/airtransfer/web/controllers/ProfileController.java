@@ -19,6 +19,11 @@ public class ProfileController extends AbstractController {
         return view;
     }
 
+    @RequestMapping(value = "/settings", method = RequestMethod.GET)
+    public ModelAndView processSettings(ModelAndView view) {
+        view.setViewName("profile/settings");
+        return view;
+    }
     @RequestMapping(value = "/messages", method = RequestMethod.GET)
     public ModelAndView processMessages(ModelAndView view) {
         view.setViewName("profile/messages");

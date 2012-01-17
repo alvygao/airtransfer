@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.text.SimpleDateFormat;
 
 /**
  * User: sergey
@@ -32,8 +33,8 @@ public class FlightVO {
     }
 
     public FlightVO(Flight flight) {
-        departureDate = flight.getDepartureDate();
-        arriveDate = flight.getArriveDate();
+        departureDate = SimpleDateFormat.getDateInstance().format(flight.getDepartureDate());
+        arriveDate = SimpleDateFormat.getDateInstance().format(flight.getArriveDate());
         fromAirport = flight.getFromAirport().getEngName();
         toAirport = flight.getToAirport().getEngName();
         oneWay = flight.getOneWay();
