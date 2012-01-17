@@ -1,9 +1,16 @@
 package com.airtransfer.rest.vo;
 
-import javax.persistence.Column;
+import com.airtransfer.models.Flight;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * User: sergey
@@ -13,12 +20,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class FlightCreationRequest {
 
-    private String departureDate;
-    private String arriveDate;
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
+    private Date departureDate;
+    private Date arriveDate;
     private Long fromAirport;
     private Long toAirport;
 
-    private Boolean oneWay;
+    private Boolean twoWays;
 
     private String flightCompanyFrom;
     private String flightCompanyTo;
@@ -27,24 +36,50 @@ public class FlightCreationRequest {
     private String terminalFrom;
     private String terminalTo;
 
+    public Flight model() {
+        Flight flight = new Flight();
+        flight.setArriveDate(arriveDate);
+        flight.setDepartureDate(departureDate);
+        flight.setFlightCompanyFrom(flightCompanyFrom);
+        flight.setFlightCompanyTo(flightCompanyTo);
+        flight.setSeatFrom(seatFrom);
+        flight.setSeatTo(seatTo);
+        flight.setTerminalFrom(terminalFrom);
+        flight.setTerminalTo(terminalTo);
+        flight.setOneWay(twoWays);
+
+        return flight;
+    }
 
     public FlightCreationRequest() {
     }
 
     public String getDepartureDate() {
-        return departureDate;
+        return (departureDate != null) ? SimpleDateFormat.getDateInstance().format(departureDate) : null;
     }
 
     public void setDepartureDate(String departureDate) {
-        this.departureDate = departureDate;
+        if (StringUtils.isNotBlank(departureDate)) {
+            try {
+                this.departureDate = SimpleDateFormat.getDateInstance().parse(departureDate);
+            } catch (ParseException e) {
+                logger.warn(e.getMessage());
+            }
+        }
     }
 
     public String getArriveDate() {
-        return arriveDate;
+        return (arriveDate != null) ? SimpleDateFormat.getDateInstance().format(arriveDate) : null;
     }
 
     public void setArriveDate(String arriveDate) {
-        this.arriveDate = arriveDate;
+        if (StringUtils.isNotBlank(arriveDate)) {
+            try {
+                this.arriveDate = SimpleDateFormat.getDateInstance().parse(arriveDate);
+            } catch (ParseException e) {
+                logger.warn(e.getMessage());
+            }
+        }
     }
 
     public Long getFromAirport() {
@@ -63,12 +98,12 @@ public class FlightCreationRequest {
         this.toAirport = toAirport;
     }
 
-    public Boolean getOneWay() {
-        return oneWay;
+    public Boolean getTwoWays() {
+        return twoWays;
     }
 
-    public void setOneWay(Boolean oneWay) {
-        this.oneWay = oneWay;
+    public void setTwoWays(Boolean twoWays) {
+        this.twoWays = twoWays;
     }
 
     public String getFlightCompanyFrom() {

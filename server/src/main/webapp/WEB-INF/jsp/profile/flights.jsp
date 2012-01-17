@@ -6,6 +6,7 @@
         <div class="cPage">
             <div class="cBlock"></div>
             <h1>${i18n['label.flight.myFlight']}</h1>
+
             <div class="cFlight">
                 <div class="cFlightActions">
                     <a href="/html/flights/create" title="${i18n['label.flight.link.add']}">
@@ -28,123 +29,19 @@
                             <div class="cFlightActionsTitle">${i18n['label.flight.link.past']}</div>
                         </div>
                     </a>
-                </div>    
+                </div>
             </div>
         </div>
-            
-            <%-- <div class="cFlight">
-                <table>
-                    <tr>
-                        <td><label for="fromCity">${i18n['label.flight.form.from']}:</label></td>
-                        <td style="width: 40px;">&nbsp;</td>
-                        <td><label for="fromCity">${i18n['label.flight.form.to']}:</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input id="fromCity" type="text" name="fromCity" />
-                            <input id="fromCityHidden" type="hidden"/>
-                        </td>
-                        <td style="width: 40px;">&nbsp;</td>
-                        <td>
-                            <input id="toCity" type="text" name="toCity" />
-                            <input id="toCityHidden" type="hidden"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label for="fromCity">${i18n['label.flight.form.departureDate']}:</label></td>
-                        <td style="width: 40px;">&nbsp;</td>
-                        <td><label for="fromCity">${i18n['label.flight.form.arriveDate']}:</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input name="departureDate" type="text" id="departureDate" class="jCalendar" />
-                            <span class="cClearBtn cCalendar">
-                                <img alt="clear" src="/images/calendar.gif" />
-                            </span>
-                        </td>
-                        <td style="width: 40px;">&nbsp;</td>
-                        <td>
-                            <input name="arriveDate" type="text" id="arriveDate" class="jCalendar" />
-                            <span class="cClearBtn cCalendar">
-                                <img alt="clear" src="/images/calendar.gif" />
-                            </span>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        <div class="home" id="searchcontrols"
-             style="margin: auto; width: 670px; height: 200px; background: url('${appBaseUrl}/images/flightspanel/panel.png') left top  no-repeat">
-        <div style="width: 650px; height: 300px; padding: 20px;">
-
-        <div class="ui-widget" style="float: left; width: 350px;">
-            <label for="fromCity">From:</label>
-            <input id="fromCity"/>
-            <input id="fromCityHidden" type="hidden"/>
-        </div>
-
-        <div class="ui-widget" style="float: left;">
-            <label for="toCity">To:</label>
-            <input id="toCity"/>
-            <input id="toCityHidden" type="hidden"/>
-        </div>
-        <div style="width: 350px; clear: left; float: left;">
-            <label for="departureDate">DepartureDate:</label>
-            <input type="text" id="departureDate"/>
-                        <span class="cClearBtn cCalendar">
-                            <img src="/images/calendar.gif" alt="clear"/>
-                        </span>
-        </div>
-        <div style="width: 300px; float: left;">
-            <label for="arriveDate">ArriveDate:</label>
-            <input type="text" id="arriveDate"/>
-                        <span class="cClearBtn cCalendar">
-                            <img src="/images/calendar.gif" alt="clear"/>
-                        </span>
-        </div>
-
-
-        <div style="width: 350px; clear: left; float: left;">
-            <label for="fltCompanyFrom">Flight.Company(From):</label>
-            <input type="text" id="fltCompanyFrom"/>
-        </div>
-        <div style="width: 300px; float: left;">
-            <label for="fltCompanyTo">Flight.Company(To):</label>
-            <input type="text" id="fltCompanyTo"/>
-        </div>
-
-        <div style="width: 350px; clear: left; float: left;">
-            <label for="seatFrom">Seat:</label>
-            <input type="text" id="seatFrom"/>
-        </div>
-        <div style="width: 300px; float:left; ">
-            <label for="seatTo">Seat:</label>
-            <input type="text" id="seatTo"/>
-        </div>
-
-        <div style="width: 350px; clear: left; float: left;">
-            <label for="termFrom">Term.:</label>
-            <input type="text" id="termFrom"/>
-        </div>
-        <div style="width: 300px; float:left; ">
-            <label for="termTo">Term.:</label>
-            <input type="text" id="termTo"/>
-        </div>
-
-        <div style="width: 200px; clear: left; float: left;">
-            <label for="termTo">Return:</label>
-            <input type="checkbox" checked="true" value="Return" id="oneWay"/>
-            <input id="submitFlight" type="button" value="Create Flight"/>
-        </div> --%>
 
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.jCalendar').datepicker({
-                    yearRange: '1930:2000',
-                    showAnim: 'slideDown',
-                    changeMonth: true,
-                    changeYear: true,
-                    dateFormat: 'dd.mm.yy'
-                });
+                            yearRange: '2000:2100',
+                            showAnim: 'slideDown',
+                            changeMonth: true,
+                            changeYear: true,
+                            dateFormat: 'dd.mm.yy'
+                        });
 
                 $('#fromCity').autocomplete({
                             source: function(request, response) {
@@ -241,7 +138,7 @@
                         seatFrom:$('#seatFrom').val(),
                         terminalFrom:$('#termFrom').val(),
                         terminalTo:$('#termTo').val(),
-                        oneWay:$('#oneWay:checked').val() == 'true' ? true : false
+                        twoWays:$('#oneWay:checked').val() == 'true' ? true : false
                     };
                     $.ajax({
                                 type: 'post',
@@ -292,9 +189,6 @@
                             });
 
                 }
-
-                //loadFlights();
-
             });
         </script>
 

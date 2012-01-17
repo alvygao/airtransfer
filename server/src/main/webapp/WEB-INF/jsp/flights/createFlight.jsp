@@ -6,8 +6,8 @@
         <div class="cPage">
             <div class="cBlock"></div>
             <h1>${i18n['label.flight.addFlight']}</h1>
-            
-            
+
+
             <div class="cFlight">
                 <table>
                     <tr>
@@ -106,8 +106,7 @@ $(document).ready(function() {
                             response([
                                 {
                                     id :  data.data.id,
-                                    label: data.data.label,
-//                                                                value: data.data.value,
+                                    label: data.data.label + " " + data.data.country,
                                     country: data.data.country
                                 }
                             ]);
@@ -120,10 +119,9 @@ $(document).ready(function() {
         minChars:2,
         maxHeight:400,
         width:300,
-        zIndex: 9999,
-        deferRequestBy: 0, //miliseconds
-        noCache: false, //default is false, set to true to disable caching
-        // callback function:
+        zIndex: 1,
+        deferRequestBy: 0,
+        noCache: false,
         select: function(value, data) {
             $('#fromCityHidden').val(data.item.id);
             return;
@@ -142,8 +140,8 @@ $(document).ready(function() {
                                     response([
                                         {
                                             id :  data.data.id,
-                                            label: data.data.label,
-                                            value: data.data.label
+                                            label: data.data.label + " " + data.data.country,
+                                            country: data.data.country
                                         }
                                     ]);
                                 } else {
@@ -157,9 +155,9 @@ $(document).ready(function() {
         minChars:2,
         maxHeight:400,
         width:300,
-        zIndex: 9999,
-        deferRequestBy: 0, //miliseconds
-        noCache: false, //default is false, set to true to disable caching
+        zIndex: 1,
+        deferRequestBy: 0,
+        noCache: false,
         // callback function:
         select: function(value, data) {
             $('#toCityHidden').val(data.item.id);

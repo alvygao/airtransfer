@@ -4,6 +4,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * User: sergey
@@ -17,9 +18,9 @@ public class Flight extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User owner;
     @Column
-    private String departureDate;
+    private Date departureDate;
     @Column
-    private String arriveDate;
+    private Date arriveDate;
     @Column(columnDefinition = "BIT DEFAULT FALSE")
     private Boolean oneWay;
 
@@ -107,19 +108,19 @@ public class Flight extends BaseEntity {
         this.owner = owner;
     }
 
-    public String getDepartureDate() {
+    public Date getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(String departureDate) {
+    public void setDepartureDate(Date departureDate) {
         this.departureDate = departureDate;
     }
 
-    public String getArriveDate() {
+    public Date getArriveDate() {
         return arriveDate;
     }
 
-    public void setArriveDate(String arriveDate) {
+    public void setArriveDate(Date arriveDate) {
         this.arriveDate = arriveDate;
     }
 
@@ -138,4 +139,6 @@ public class Flight extends BaseEntity {
     public void setToAirport(Airport toAirport) {
         this.toAirport = toAirport;
     }
+
+
 }

@@ -39,9 +39,10 @@
             <script>
                 jQuery(document).ready(function() {
                     $('a.jLogin').click(function() {
+                        var date = new Date();
                         $.ajax({
                                     type: 'POST',
-                                    url: '/html/signin',
+                                    url: '/html/signin?id='+date.getMilliseconds(),
                                     data: 'email=' +
                                             $('input[name=email]').val() +
                                             '&password=' +
