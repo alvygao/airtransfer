@@ -16,6 +16,8 @@ public class Country extends BaseEntity {
     private String rusName;
     @Column(name = "country_eng")
     private String engName;
+    @Column(name = "code")
+    private String code;
 
     public String getRusName() {
         return rusName;
@@ -31,5 +33,13 @@ public class Country extends BaseEntity {
 
     public void setEngName(String engName) {
         this.engName = engName;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

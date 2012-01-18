@@ -17,7 +17,7 @@ public class HomeController extends AbstractController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView processGet(ModelAndView view) {
         logger.warn("processGet;");
-        logger.warn("baseUrl=${};", getUrl());
+        logger.warn("baseUrl={};", getUrl());
         view.setViewName("home");
         return view;
     }

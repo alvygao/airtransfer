@@ -1,7 +1,5 @@
 # Server name
-profile.server.host=127.0.0.1
-profile.server.port=8080
-profile.server.context=
+profile.server.url=http://127.0.0.1:8080
 # Database
 profile.database.host=127.0.0.1
 profile.database.port=3306
