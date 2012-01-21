@@ -49,7 +49,7 @@
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.personalData.birthday']}:</td>
                         <td>
-                            <input type="text" class="jSaveData jCalendar" readonly="readonly" name="birthDay"/>
+                            <input id="birthDay" type="text" class=" jCalendar" readonly="readonly" name="birthDay"/>
                             <span class="cClearBtn cCalendar">
                                 <img src="/images/calendar.gif" alt="clear"/>
                             </span>
@@ -103,9 +103,8 @@
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.locations.city']}:</td>
                         <td>
-                            <select name="city" class="jSaveData jSelect" style="float:left;">
-
-                            </select>
+                            <input name="city" id="city" class="jSaveData jSelect" style="float:left;"/>
+                            <input name="cityId" id="cityId" type="hidden"/>
                         </td>
                     </tr>
                 </table>
@@ -125,9 +124,8 @@
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.location.city']}:</td>
                         <td>
-                            <select name="currentCity" class="jSaveData jSelect" style="float:left;">
-
-                            </select>
+                            <input name="currentCity" id="currentCity" class="jSaveData jSelect" style="float:left;"/>
+                            <input name="currentCityId" id="currentCityId" type="hidden"/>
                         </td>
                     </tr>
                 </table>
@@ -273,205 +271,285 @@
                 </table>
             </div>
         </div>
-            <%-- <input type="button" value="Save" onclick="return onPutClick(this)"/> --%>
 
         <div class="cClear"></div>
         </form>
         </div>
         
         <div style="height: 20px; display: none;">
-            <a href="${baseAppUrl}/html/profile">Profile</a>
-            <input type="submit" value="GET" onclick="return onClick(this)"/>
-            <input type="submit" value="PUT" onclick="return onPutClick(this)"/>
-            <script type="text/javascript">
-                window.onload = getProfile();
-                $('select[name=is_male]').selectmenu();
-                jQuery(document).ready(function() {
-                    $(".jSaveData").focusout(function() {
-                        saveProfile();
+        <a href="${baseAppUrl}/html/profile">Profile</a>
+        <input type="submit" value="GET" onclick="return onClick(this)"/>
+        <input type="submit" value="PUT" onclick="return onPutClick(this)"/>
+        <script type="text/javascript">
+        window.onload = getProfile();
+        jQuery(document).ready(function() {
+
+            $('#currentCity').autocomplete({
+                        source: function (request, response) {
+                            $.ajax({
+                                        url: "/rest/search/cities?term=" + request.term,
+                                        success: function(data) {
+                                            if (data.data instanceof Array) {
+                                                response(data.data);
+                                            } else {
+                                                if (!isEmpty(data.data) && data.data.id != undefined && data.data.id != null) {
+                                                    response([
+                                                        {
+                                                            id :  data.data.id,
+                                                            label: data.data.label,
+                                                            value: data.data.value
+                                                        }
+                                                    ]);
+                                                } else {
+                                                    response([]);
+                                                }
+                                            }
+
+                                        }
+                                    });
+                        },
+                        minChars:2,
+                        maxHeight:400,
+                        width:300,
+                        zIndex: 9999,
+                        deferRequestBy: 0,
+                        noCache: false,
+
+                        select: function(value, data) {
+                            $('#currentCityId').val(data.item.id);
+                            return;
+                        }
                     });
-                    $('select[name!=is_male]').change(function() {
+
+            $('#city').autocomplete({
+                        source: function (request, response) {
+                            $.ajax({
+                                        url: "/rest/search/cities?term=" + request.term,
+                                        success: function(data) {
+                                            if (data.data instanceof Array) {
+                                                response(data.data);
+                                            } else {
+                                                if (!isEmpty(data.data) && data.data.id != undefined && data.data.id != null) {
+                                                    response([
+                                                        {
+                                                            id :  data.data.id,
+                                                            label: data.data.label,
+                                                            value: data.data.value
+                                                        }
+                                                    ]);
+                                                } else {
+                                                    response([]);
+                                                }
+                                            }
+
+                                        }
+                                    });
+                        },
+                        minChars:2,
+                        maxHeight:400,
+                        width:300,
+                        zIndex: 9999,
+                        deferRequestBy: 0,
+                        noCache: false,
+
+                        select: function(value, data) {
+                            $('#cityId').val(data.item.id);
+                            return;
+                        }
+                    });
+
+
+            $('select[name=is_male]').selectmenu();
+            $(".jSaveData").focusout(function() {
+                saveProfile();
+            });
+            $('select[name!=is_male]').change(function() {
+                saveProfile();
+            });
+
+            $('span.jClearBtn')
+                    .hover(
+                    function() {
+                        $(this).find('img').css('display', 'inline');
+                    },
+                    function() {
+                        $(this).find('img').css('display', 'none');
+                    }
+            )
+                    .click(function() {
+                        $(this).siblings('input').val('');
+                        $(this).siblings('textarea').val('');
                         saveProfile();
                     });
 
-                    $('span.jClearBtn')
-                            .hover(
-                            function() {
-                                $(this).find('img').css('display', 'inline');
-                            },
-                            function() {
-                                $(this).find('img').css('display', 'none');
+
+            $('.jCalendar').datepicker({
+                        yearRange: '1950:2100',
+                        showAnim: 'slideDown',
+                        changeMonth: true,
+                        changeYear: true,
+                        dateFormat:'yy.mm.dd',
+                        onSelect: function(dateText, inst) {
+                            saveProfile();
+                        }
+                    });
+        });
+
+
+        function getProfile() {
+
+            $.ajax({
+                        type:'get',
+                        url: '/rest/user/profile',
+                        contentType: "application/json; charset=utf-8",
+                        error: function(request, error) {
+                            console.log(request);
+                            console.log.apply(error);
+                        },
+                        success: function(request) {
+                            if (request.success == 'true') {
+                                $('textarea[name=aboutMe]').val(request.data.aboutMe);
+                                $('select[name=is_male]').val(request.data.female);
+                                $('input[name=appearance]').val(request.data.appearance);
+                                $('input[name=books]').val(request.data.books);
+                                $('input[name=cellPhone]').val(request.data.cellPhone);
+                                $('input[name=familyStatus]').val(request.data.familyStatus);
+                                $('select[name=firstLanguageId]').val(request.data.firstLanguageId);
+                                $('input[name=firstName]').val(request.data.firstName);
+                                $('input[name=height]').val(request.data.height);
+                                $('input[name=interest]').val(request.data.interest);
+                                $('input[name=lastName]').val(request.data.lastName);
+                                $('input[name=lifeGoals]').val(request.data.lifeGoals);
+                                $('input[name=movies]').val(request.data.movies);
+                                $('input[name=music]').val(request.data.music);
+                                $('input[name=phone]').val(request.data.phone);
+                                $('input[name=siteUrl]').val(request.data.siteUrl);
+                                $('input[name=skypeId]').val(request.data.skypeId);
+                                $('input[name=width]').val(request.data.width);
+
+
+                                if (request.data.birthDay != undefined && request.data.birthDay != null) {
+                                    var date = new Date(request.data.birthDay);
+                                    $('#birthDay').datepicker('setDate', date);
+                                }
+                                if (!isEmpty(request.data.cityId)) {
+                                    $('#city').val(request.data.cityName);
+                                    $('#cityId').val(request.data.cityId);
+                                }
+
+                                if (!isEmpty(request.data.currentCityId)) {
+                                    $('#currentCity').val(request.data.currentCityName);
+                                    $('#currentCityId').val(request.data.currentCityId);
+                                }
+
+                                $.getJSON('/rest/search/countries', function(objJson) {
+                                    var items = [];
+                                    $.each(objJson.data, function(key, val) {
+                                        items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                    });
+                                    $('select[name=countryId]').html(items.join('')).val(request.data.countryId).selectmenu();
+                                    $('select[name=currentCountryId]').html(items.join('')).val(request.data.currentCountryId).selectmenu();
+                                });
+
+                                /*
+                                 $.getJSON('/rest/search/countries', function(objJson) {
+                                 var items = [];
+                                 $.each(objJson.data, function(key, val) {
+                                 items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                 });
+
+                                 $('select[name=city]').html(items.join('')).val(request.data.city).selectmenu();
+                                 $('select[name=currentCity]').html(items.join('')).val(request.data.currentCity).selectmenu();
+
+                                 });
+                                 */
+                                $.getJSON('/rest/search/language', function(objJson) {
+                                    var items = [];
+                                    $.each(objJson.data, function(key, val) {
+                                        items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                    });
+
+                                    $('select[name=firstLanguageId]').html(items.join('')).val(request.data.firstLanguageId).selectmenu();
+                                    $('select[name=secondLanguageId]').html(items.join('')).val(request.data.secondLanguageId).selectmenu();
+                                    $('select[name=thirdLanguageId]').html(items.join('')).val(request.data.thirdLanguageId).selectmenu();
+                                });
+                                $.getJSON('/rest/search/body', function(objJson) {
+                                    var items = [];
+                                    $.each(objJson.data, function(key, val) {
+                                        items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                    });
+
+                                    $('select[name=bodyId]').html(items.join('')).val(request.data.bodyId).selectmenu();
+                                });
+                                $.getJSON('/rest/search/profession', function(objJson) {
+                                    var items = [];
+                                    $.each(objJson.data, function(key, val) {
+                                        items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
+                                    });
+
+                                    $('select[name=occupationId]').html(items.join('')).val(request.data.occupationId).selectmenu();
+                                });
+
+                            } else {
+                                return onServerError(request);
                             }
-                    )
-                            .click(function() {
-                                $(this).siblings('input').val('');
-                                $(this).siblings('textarea').val('');
-                                saveProfile();
-                            });
+                        }
+                    });
+
+            return false;
+        }
 
 
-                    $('.jCalendar').datepicker({
-                                yearRange: '1930:2000',
-                                showAnim: 'slideDown',
-                                changeMonth: true,
-                                changeYear: true,
-                                dateFormat: 'dd.mm.yy'
-                            });
-                });
+        function saveProfile() {
+            var requestData = {"data":{
+                "aboutMe": $('textarea[name=aboutMe]').val(),
+                "female": $('select[name=is_male]').val(),
+                "bodyId": $('select[name=bodyId]').val(),
+                "appearance": $('input[name=appearance]').val(),
+                "birthDay": $('#birthDay').datepicker('getDate'),
+                "books": $('input[name=books]').val(),
+                "cellPhone": $('input[name=cellPhone]').val(),
+                "cityId": $('#cityId').val(),
+                "countryId": $('select[name=countryId]').val(),
+                "currentCityId": $('#currentCityId').val(),
+                "currentCountryId": $('select[name=currentCountryId]').val(),
+                "familyStatus": $('input[name=familyStatus]').val(),
+                "firstLanguageId": $('select[name=firstLanguageId]').val(),
+                "firstName":  $('input[name=firstName]').val(),
+                "height":  $('input[name=height]').val(),
+                "interest":  $('input[name=interest]').val(),
+                "lastName":  $('input[name=lastName]').val(),
+                "lifeGoals":  $('input[name=lifeGoals]').val(),
+                "movies":  $('input[name=movies]').val(),
+                "music":  $('input[name=music]').val(),
+                "occupationId":  $('select[name=occupationId]').val(),
+                "phone":  $('input[name=phone]').val(),
+                "secondLanguageId":  $('select[name=secondLanguageId]').val(),
+                "siteUrl":  $('input[name=siteUrl]').val(),
+                "skypeId":  $('input[name=skypeId]').val(),
+                "thirdLanguageId":  $('select[name=thirdLanguageId]').val(),
+                "width":  $('input[name=width]').val()
+            }};
+            var textData = JSON.stringify(requestData);
 
-
-                function getProfile() {
-
-                    $.ajax({
-                                type:'get',
-                                url: '/rest/user/profile',
-                                contentType: "application/json; charset=utf-8",
-                                error: function(request, error) {
-                                    console.log(request);
-                                    console.log.apply(error);
-                                },
-                                success: function(request) {
-                                    if (request.success == 'true') {
-                                        $('textarea[name=aboutMe]').val(request.data.aboutMe);
-                                        $('select[name=is_male]').val(request.data.female);
-                                        $('input[name=appearance]').val(request.data.appearance);
-                                        $('input[name=birthDay]').val(request.data.birthDay);
-                                        $('input[name=books]').val(request.data.books);
-                                        $('input[name=cellPhone]').val(request.data.cellPhone);
-                                        $('input[name=familyStatus]').val(request.data.familyStatus);
-                                        $('select[name=firstLanguageId]').val(request.data.firstLanguageId);
-                                        $('input[name=firstName]').val(request.data.firstName);
-                                        $('input[name=height]').val(request.data.height);
-                                        $('input[name=interest]').val(request.data.interest);
-                                        $('input[name=lastName]').val(request.data.lastName);
-                                        $('input[name=lifeGoals]').val(request.data.lifeGoals);
-                                        $('input[name=movies]').val(request.data.movies);
-                                        $('input[name=music]').val(request.data.music);
-                                        $('input[name=phone]').val(request.data.phone);
-                                        $('input[name=siteUrl]').val(request.data.siteUrl);
-                                        $('input[name=skypeId]').val(request.data.skypeId);
-                                        $('input[name=width]').val(request.data.width);
-
-                                        if (!isEmpty(request.data.cityId)) {
-                                            $('select[name=city]').html('<option value="' + request.data.cityId + '">' + request.data.cityName + '</option>')
-                                                    .val(request.data.cityId)
-                                                    .selectmenu();
-                                        }
-
-                                        if (!isEmpty(request.data.currentCityId)) {
-                                            $('select[name=city]').html('<option value="' + request.data.currentCityId + '">' + request.data.currentCityName + '</option>')
-                                                    .val(request.data.cityId)
-                                                    .selectmenu();
-                                        }
-
-                                        $.getJSON('/rest/search/countries', function(objJson) {
-                                            var items = [];
-                                            $.each(objJson.data, function(key, val) {
-                                                items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                                            });
-                                            $('select[name=countryId]').html(items.join('')).val(request.data.countryId).selectmenu();
-                                            $('select[name=currentCountryId]').html(items.join('')).val(request.data.currentCountryId).selectmenu();
-                                        });
-
-                                        /*
-                                         $.getJSON('/rest/search/countries', function(objJson) {
-                                         var items = [];
-                                         $.each(objJson.data, function(key, val) {
-                                         items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                                         });
-
-                                         $('select[name=city]').html(items.join('')).val(request.data.city).selectmenu();
-                                         $('select[name=currentCity]').html(items.join('')).val(request.data.currentCity).selectmenu();
-
-                                         });
-                                         */
-                                        $.getJSON('/rest/search/language', function(objJson) {
-                                            var items = [];
-                                            $.each(objJson.data, function(key, val) {
-                                                items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                                            });
-
-                                            $('select[name=firstLanguageId]').html(items.join('')).val(request.data.firstLanguageId).selectmenu();
-                                            $('select[name=secondLanguageId]').html(items.join('')).val(request.data.secondLanguageId).selectmenu();
-                                            $('select[name=thirdLanguageId]').html(items.join('')).val(request.data.thirdLanguageId).selectmenu();
-                                        });
-                                        $.getJSON('/rest/search/body', function(objJson) {
-                                            var items = [];
-                                            $.each(objJson.data, function(key, val) {
-                                                items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                                            });
-
-                                            $('select[name=bodyId]').html(items.join('')).val(request.data.bodyId).selectmenu();
-                                        });
-                                        $.getJSON('/rest/search/profession', function(objJson) {
-                                            var items = [];
-                                            $.each(objJson.data, function(key, val) {
-                                                items.push('<option value="' + val.itemId + '">' + val.itemName + '</option>');
-                                            });
-
-                                            $('select[name=occupationId]').html(items.join('')).val(request.data.occupationId).selectmenu();
-                                        });
-
-                                    } else {
-                                        return onServerError(request);
-                                    }
-                                }
-                            });
-
-                    return false;
-                }
-
-
-                function saveProfile() {
-                    var requestData = {"data":{
-                        "aboutMe": $('textarea[name=aboutMe]').val(),
-                        "female": $('select[name=is_male]').val(),
-                        "bodyId": $('select[name=bodyId]').val(),
-                        "appearance": $('input[name=appearance]').val(),
-                        "birthDay": $('input[name=birthDay]').val(),
-                        "books": $('input[name=books]').val(),
-                        "cellPhone": $('input[name=cellPhone]').val(),
-                        "city": $('input[name=city]').val(),
-                        "countryId": $('select[name=countryId]').val(),
-                        "currentCity": $('input[name=currentCity]').val(),
-                        "currentCountryId": $('select[name=currentCountryId]').val(),
-                        "familyStatus": $('input[name=familyStatus]').val(),
-                        "firstLanguageId": $('select[name=firstLanguageId]').val(),
-                        "firstName":  $('input[name=firstName]').val(),
-                        "height":  $('input[name=height]').val(),
-                        "interest":  $('input[name=interest]').val(),
-                        "lastName":  $('input[name=lastName]').val(),
-                        "lifeGoals":  $('input[name=lifeGoals]').val(),
-                        "movies":  $('input[name=movies]').val(),
-                        "music":  $('input[name=music]').val(),
-                        "occupationId":  $('select[name=occupationId]').val(),
-                        "phone":  $('input[name=phone]').val(),
-                        "secondLanguageId":  $('select[name=secondLanguageId]').val(),
-                        "siteUrl":  $('input[name=siteUrl]').val(),
-                        "skypeId":  $('input[name=skypeId]').val(),
-                        "thirdLanguageId":  $('select[name=thirdLanguageId]').val(),
-                        "width":  $('input[name=width]').val()
-                    }};
-                    var textData = JSON.stringify(requestData);
-
-                    $.ajax({
-                                type:'put',
-                                url: '/rest/user/profile',
-                                contentType: "application/json; charset=utf-8",
-                                data:  textData,
-                                error: function(response, error) {
-                                    console.log(response);
-                                    console.log(error);
-                                },
-                                success: function(request) {
-                                    if (request.success != 'true') {
-                                        return onServerError(request);
-                                    }
-                                }
-                            });
-                    return false;
-                }
-            </script>
+            $.ajax({
+                        type:'put',
+                        url: '/rest/user/profile',
+                        contentType: "application/json; charset=utf-8",
+                        data:  textData,
+                        error: function(response, error) {
+                            console.log(response);
+                            console.log(error);
+                        },
+                        success: function(request) {
+                            if (request.success != 'true') {
+                                return onServerError(request);
+                            }
+                        }
+                    });
+            return false;
+        }
+        </script>
         </div>
     </jsp:attribute>
 </tags:main>

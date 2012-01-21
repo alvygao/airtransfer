@@ -1,6 +1,7 @@
 package com.airtransfer.rest.vo.vos;
 
 import com.airtransfer.models.Airport;
+import com.airtransfer.models.City;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,6 +26,14 @@ public class TrinityVO {
         label = airport.getEngName();
         StringBuilder builder = new StringBuilder();
         builder.append(airport.getEngName()).append(" [").append(airport.getIataCode()).append("]");
+        value = builder.toString();
+    }
+
+    public TrinityVO(City city) {
+        id = String.valueOf(city.getId());
+        label = city.getEngName();
+        StringBuilder builder = new StringBuilder();
+        builder.append(city.getEngName()).append(" [").append(city.getCountryCode()).append("]");
         value = builder.toString();
     }
 
