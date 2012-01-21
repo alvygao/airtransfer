@@ -26,6 +26,8 @@ public class UserProfileManager extends BaseManager {
     @Autowired
     private CountryDao countryDao;
     @Autowired
+    private CityDao cityDao;
+    @Autowired
     private UserLanguageDao languageDao;
     @Autowired
     private ProfessionDao professionDao;
@@ -84,6 +86,11 @@ public class UserProfileManager extends BaseManager {
 
             UserLanguage language = languageDao.get(vo.getFirstLanguageId());
             userProfile.setFirstLanguage(language);
+
+            City city = cityDao.get(vo.getCityId());
+            City currentCity = cityDao.get(vo.getCurrentCityId());
+            userProfile.setCity(city);
+            userProfile.setCurrentCity(currentCity);
 
             userProfile.setFirstName(vo.getFirstName());
             userProfile.setHeight(vo.getHeight());

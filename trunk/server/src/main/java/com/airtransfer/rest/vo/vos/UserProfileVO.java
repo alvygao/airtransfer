@@ -135,7 +135,8 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
     public String getBirthDay() {
         if (birthDay != null) {
-            return SimpleDateFormat.getDateInstance().format(birthDay);
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            return format.format(birthDay);
         }
         return null;
     }
@@ -143,7 +144,8 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
     public void setBirthDay(String birthDay) {
         if (birthDay != null) {
             try {
-                this.birthDay = SimpleDateFormat.getDateInstance().parse(birthDay.replace('/', '.'));
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+                this.birthDay = format.parse(birthDay);
             } catch (ParseException e) {
                 logger.warn(e.getMessage());
             }
@@ -372,5 +374,21 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
     public void setBodyType(String bodyType) {
         this.bodyType = bodyType;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getCurrentCityName() {
+        return currentCityName;
+    }
+
+    public void setCurrentCityName(String currentCityName) {
+        this.currentCityName = currentCityName;
     }
 }

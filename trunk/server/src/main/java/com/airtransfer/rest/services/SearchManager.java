@@ -122,11 +122,11 @@ public class SearchManager extends BaseManager {
             logger.warn("getCities; empty search term");
             return new BaseListVOResponse();
         }
-        List<Airport> list = textSearchService.findAirports(locale, term, limit != null ? limit : 10);
+        List<City> list = textSearchService.findCities(locale, term, limit != null ? limit : 10);
         if (!list.isEmpty()) {
             ArrayList<TrinityVO> response = new ArrayList<TrinityVO>();
-            for (Airport airport : list) {
-                response.add(new TrinityVO(airport));
+            for (City item : list) {
+                response.add(new TrinityVO(item));
             }
             return new BaseListVOResponse(response);
         }
