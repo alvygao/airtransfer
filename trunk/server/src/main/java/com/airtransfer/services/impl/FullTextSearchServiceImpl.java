@@ -217,24 +217,4 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
         }
         return s.replace("-", " ");
     }
-
-
-    public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("conf/applicationContext.xml");
-        FullTextSearchService bean = context.getBean(FullTextSearchService.class);
-        List<UserProfile> list = bean.findProfiles(Locale.US, "werw", 100);
-
-        for (UserProfile profile : list) {
-            System.out.println(profile.getId() + " " + profile.getFirstName());
-            profile.setFirstName("sergey");
-            UserProfileDao profileDao = context.getBean(UserProfileDao.class);
-            profileDao.persist(profile);
-        }
-        System.out.println("---");
-        list = bean.findProfiles(Locale.US, "sergey", 100);
-        for (UserProfile profile : list) {
-            System.out.println(profile.getId() + " " + profile.getFirstName());
-        }
-    }
-
 }
