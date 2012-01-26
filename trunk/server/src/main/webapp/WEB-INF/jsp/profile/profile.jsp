@@ -37,15 +37,7 @@
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="cLabel">${i18n['label.profile_page.personalData.site']}:</td>
-                        <td>
-                            <input type="text" class="jSaveData" name="siteUrl" maxlength="255"/>
-                            <span class="cClearBtn jClearBtn">
-                                <img src="/images/clear-button.png" alt="clear"/>
-                            </span>
-                        </td>
-                    </tr>
+                    
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.personalData.birthday']}:</td>
                         <td>
@@ -58,6 +50,15 @@
                 </table>
                 <div class="cDottet">
                     <table border="0">
+                        <tr>
+                            <td class="cLabel">${i18n['label.profile_page.personalData.site']}:</td>
+                            <td>
+                                <input type="text" class="jSaveData" name="siteUrl" maxlength="255"/>
+                                <span class="cClearBtn jClearBtn">
+                                    <img src="/images/clear-button.png" alt="clear"/>
+                                </span>
+                            </td>
+                        </tr>
                         <tr>
                             <td class="cLabel">${i18n['label.profile_page.personalData.skype']}:</td>
                             <td>
@@ -85,6 +86,25 @@
                                 </span>
                             </td>
                         </tr>
+                        <tr>
+                            <td class="cLabel">${i18n['label.profile_page.personalData.facebook']}:</td>
+                            <td>
+                                <input type="text" class="jSaveData" name="facebook" maxlength="255"/>
+                                <span class="cClearBtn jClearBtn">
+                                    <img src="/images/clear-button.png" alt="clear"/>
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="cLabel">${i18n['label.profile_page.personalData.twetter']}:</td>
+                            <td>
+                                <input type="text" class="jSaveData" name="twetter" maxlength="255"/>
+                                <span class="cClearBtn jClearBtn">
+                                    <img src="/images/clear-button.png" alt="clear"/>
+                                </span>
+                            </td>
+                        </tr>
 
                     </table>
                 </div>
@@ -103,7 +123,10 @@
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.locations.city']}:</td>
                         <td>
-                            <input name="city" id="city" class="jSaveData jSelect" style="float:left;"/>
+                            <input type="text" name="city" id="city" class="jSaveData" style="float:left;"/>
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear"/>
+                            </span>
                             <input name="cityId" id="cityId" type="hidden"/>
                         </td>
                     </tr>
@@ -124,7 +147,10 @@
                     <tr class="cLast">
                         <td class="cLabel">${i18n['label.profile_page.location.city']}:</td>
                         <td>
-                            <input name="currentCity" id="currentCity" class="jSaveData jSelect" style="float:left;"/>
+                            <input type="text" name="currentCity" id="currentCity" class="jSaveData" style="float:left;"/>
+                            <span class="cClearBtn jClearBtn">
+                                <img src="/images/clear-button.png" alt="clear"/>
+                            </span>
                             <input name="currentCityId" id="currentCityId" type="hidden"/>
                         </td>
                     </tr>
@@ -426,6 +452,9 @@
                                 $('input[name=siteUrl]').val(request.data.siteUrl);
                                 $('input[name=skypeId]').val(request.data.skypeId);
                                 $('input[name=width]').val(request.data.width);
+                                
+                                $('input[name=facebook]').val(request.data.facebook);
+                                $('input[name=twetter]').val(request.data.twetter);
 
 
                                 if (request.data.birthDay != undefined && request.data.birthDay != null) {
@@ -528,7 +557,9 @@
                 "siteUrl":  $('input[name=siteUrl]').val(),
                 "skypeId":  $('input[name=skypeId]').val(),
                 "thirdLanguageId":  $('select[name=thirdLanguageId]').val(),
-                "width":  $('input[name=width]').val()
+                "width":  $('input[name=width]').val(),
+                "facebook": $('input[name=facebook]').val(),
+                "twetter": $('input[name=twetter]').val()
             }};
             var textData = JSON.stringify(requestData);
 
