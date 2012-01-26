@@ -41,7 +41,7 @@
                     </tr>
                 </table>
                 <div class="cBlock"></div>
-                <table>
+                <table id="jFlightTo">
                     <tr>
                         <th rowspan="4" style="width: 60px; vertical-align: middle; padding-top: 10px;"><div class="cFlightTo"></div></th>
                         <td><label for="fromCity">${i18n['label.flight.form.to']}:</label></td>
@@ -89,7 +89,23 @@ $(document).ready(function() {
         showAnim: 'slideDown',
         changeMonth: true,
         changeYear: true,
-        dateFormat: 'dd.mm.yy'
+        dateFormat: 'dd.mm.yy',
+        yearRange: '2000:2100'
+    });
+    
+    if ( $('#oneWay').is(':checked')) {
+        $('#jFlightTo').css('display', 'inline');
+    } else {
+        $('#jFlightTo').css('display', 'none');
+    }
+    
+    $('#oneWay').click(function(){
+       if ($(this).is(':checked')) {
+           $('#jFlightTo').show(300);
+       } else {
+           $('#jFlightTo').hide(300);
+       }
+       
     });
 
     $('#fromCity').autocomplete({
@@ -167,9 +183,8 @@ $(document).ready(function() {
 
     $('#submitFlight').click(function() {
         if (isEmpty($('#fromCityHidden').val())
-                || isEmpty($('#toCityHidden').val())
                 || isEmpty($('#departureDate').val())
-                || isEmpty($('#arriveDate').val())
+                || isEmpty($('#fltCompanyFrom').val())
                 ) {
             alert("You have to specify all values!");
             return;
