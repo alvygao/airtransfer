@@ -456,6 +456,18 @@ html, body {
     height: 43px;
 }
 
+.cFlight .cFlightFromMin {
+    background: url(/images/flight/flight-from-min.png) left top no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+.cFlight .cFlightToMin {
+    background: url(/images/flight/flight-to-min.png) left top no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
 .cFlight .cFlightActions {
     margin-left: 70px;
     margin-top: 25px;
@@ -504,6 +516,120 @@ html, body {
     padding-left: 45px;
     padding-top: 13px;
     text-transform: uppercase;
+}
+
+/**************************** FLIGHT LIST ****************************/
+.cFlight th {
+    width: 32px;
+}
+.cFlight .cList td {
+    width: 348px;
+}
+
+.cFlight .cList td.cIcons {
+    width: 100%;
+    text-align: right;
+}
+.cFlight .cBlockF {
+    width: 140px;
+    height: 20px;
+    padding-top: 5px;
+    border: 2px solid #ffffff;
+    background: url(/images/flight/flight-bg.png) left top repeat-x;
+    border-radius: 5px 5px 5px 5px;
+    color: #ffffff;
+    margin-bottom: 2px;
+    padding-left: 20px;
+    float: left;
+    margin-right: 6px;
+}
+
+.cFlight .cBlockF.cDate {
+    width: 100px;
+    height: 18px;
+    padding-top: 2px;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+    padding-left: 0px;
+    margin-top: 20px;
+}
+.cFlight .cBlockF.cCountry {
+    width: 310px;
+    color: #5f5f5f;
+    margin-right: 0px;
+}
+
+.cFlight .cEdit {
+    background: url(/images/flight/flight-icon.png) 0px 0px no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    float: left;
+    margin-right: 2px;
+}
+.cFlight .cFinance {
+    background: url(/images/flight/flight-icon.png) -33px 0px no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    float: left;
+    margin-right: 2px;
+}
+.cFlight .cReturn {
+    background: url(/images/flight/flight-icon.png) -66px 0px no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    float: left;
+    margin-right: 2px;
+}
+.cFlight .cWeather {
+    background: url(/images/flight/flight-icon.png) 0px -33px no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    float: left;
+    margin-right: 2px;
+}
+.cFlight .cInfo {
+    background: url(/images/flight/flight-icon.png) -33px -33px no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    float: left;
+    margin-right: 2px;
+}
+.cFlight .cGPlus {
+    background: url(/images/flight/flight-icon.png) -66px -33px no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    float: left;
+    margin-right: 2px;
+}
+.cFlight .cTwitter {
+    background: url(/images/flight/flight-icon.png) 0px -66px no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    float: left;
+    margin-right: 2px;
+}
+.cFlight .cFacebook {
+    background: url(/images/flight/flight-icon.png) -32px -66px no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    float: left;
+    margin-right: 2px;
+}
+.cFlight .cVK {
+    background: url(/images/flight/flight-icon.png) -66px -66px no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    float: left;
+    margin-right: 2px;
 }
 
 
