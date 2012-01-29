@@ -1,0 +1,218 @@
+a.customicons { height: 2.8em;}
+.customicons li a, a.customicons span.ui-selectmenu-status { line-height: 2em; padding-left: 30px !important; }
+.ui-selectmenu-item-icon { height: 12px; width: 20px; }
+.ui-selectmenu-hasIcon { margin-left: 0px !important; }
+
+.c_100 .ui-selectmenu-item-icon { background: url("/images/flags/Australia.png") 0 0 no-repeat;}
+
+.c_AU .ui-selectmenu-item-icon { background: url("/images/flags/Australia.png") 0 0 no-repeat;}
+.c_AT .ui-selectmenu-item-icon { background: url("/images/flags/Austria.png") 0 0 no-repeat;}
+.c_AZ .ui-selectmenu-item-icon { background: url("/images/flags/Azerbaijan.png") 0 0 no-repeat;}
+.c_AL .ui-selectmenu-item-icon { background: url("/images/flags/Albania.png") 0 0 no-repeat;}
+.c_DZ .ui-selectmenu-item-icon { background: url("/images/flags/Algeria.png") 0 0 no-repeat;}
+.c_AS .ui-selectmenu-item-icon { background: url("/images/flags/American Samoa.png") 0 0 no-repeat;}
+.c_AO .ui-selectmenu-item-icon { background: url("/images/flags/Angola.png") 0 0 no-repeat;}
+.c_AI .ui-selectmenu-item-icon { background: url("/images/flags/Anguilla.png") 0 0 no-repeat;}
+.c_AD .ui-selectmenu-item-icon { background: url("/images/flags/Andorra.png") 0 0 no-repeat;}
+.c_NL .ui-selectmenu-item-icon { background: url("/images/flags/Netherlands.png") 0 0 no-repeat;}
+.c_AR .ui-selectmenu-item-icon { background: url("/images/flags/Argentina.png") 0 0 no-repeat;}
+.c_AM .ui-selectmenu-item-icon { background: url("/images/flags/Armenia.png") 0 0 no-repeat;}
+.c_AW .ui-selectmenu-item-icon { background: url("/images/flags/Aruba.png") 0 0 no-repeat;}
+.c_AF .ui-selectmenu-item-icon { background: url("/images/flags/Afghanistan.png") 0 0 no-repeat;}
+.c_BS .ui-selectmenu-item-icon { background: url("/images/flags/Bahamas.png") 0 0 no-repeat;}
+.c_BD .ui-selectmenu-item-icon { background: url("/images/flags/Bangladesh.png") 0 0 no-repeat;}
+.c_BB .ui-selectmenu-item-icon { background: url("/images/flags/Barbados.png") 0 0 no-repeat;}
+.c_BH .ui-selectmenu-item-icon { background: url("/images/flags/Bahrain.png") 0 0 no-repeat;}
+.c_BY .ui-selectmenu-item-icon { background: url("/images/flags/Belarus.png") 0 0 no-repeat;}
+.c_BZ .ui-selectmenu-item-icon { background: url("/images/flags/Belize.png") 0 0 no-repeat;}
+.c_BE .ui-selectmenu-item-icon { background: url("/images/flags/Belgium.png") 0 0 no-repeat;}
+.c_BJ .ui-selectmenu-item-icon { background: url("/images/flags/Benin.png") 0 0 no-repeat;}
+.c_BM .ui-selectmenu-item-icon { background: url("/images/flags/Bermuda.png") 0 0 no-repeat;}
+.c_BG .ui-selectmenu-item-icon { background: url("/images/flags/Bulgaria.png") 0 0 no-repeat;}
+.c_BO .ui-selectmenu-item-icon { background: url("/images/flags/Bolivia.png") 0 0 no-repeat;}
+.c_BW .ui-selectmenu-item-icon { background: url("/images/flags/Botswana.png") 0 0 no-repeat;}
+.c_BR .ui-selectmenu-item-icon { background: url("/images/flags/Brazil.png") 0 0 no-repeat;}
+.c_IN .ui-selectmenu-item-icon { background: url("/images/flags/India.png") 0 0 no-repeat;}
+.c_BN .ui-selectmenu-item-icon { background: url("/images/flags/Brunei Darussalam.png") 0 0 no-repeat;}
+.c_BF .ui-selectmenu-item-icon { background: url("/images/flags/Burkina Faso.png") 0 0 no-repeat;}
+.c_BI .ui-selectmenu-item-icon { background: url("/images/flags/Burundi.png") 0 0 no-repeat;}
+.c_BT .ui-selectmenu-item-icon { background: url("/images/flags/Bhutan.png") 0 0 no-repeat;}
+.c_VU .ui-selectmenu-item-icon { background: url("/images/flags/Vanuatu.png") 0 0 no-repeat;}
+.c_GB .ui-selectmenu-item-icon { background: url("/images/flags/United Kingdom.png") 0 0 no-repeat;}
+.c_HU .ui-selectmenu-item-icon { background: url("/images/flags/Hungary.png") 0 0 no-repeat;}
+.c_VE .ui-selectmenu-item-icon { background: url("/images/flags/Venezuela.png") 0 0 no-repeat;}
+.c_VN .ui-selectmenu-item-icon { background: url("/images/flags/Vietnam.png") 0 0 no-repeat;}
+.c_GA .ui-selectmenu-item-icon { background: url("/images/flags/Gabon.png") 0 0 no-repeat;}
+.c_HT .ui-selectmenu-item-icon { background: url("/images/flags/Haiti.png") 0 0 no-repeat;}
+.c_GY .ui-selectmenu-item-icon { background: url("/images/flags/Guyana.png") 0 0 no-repeat;}
+.c_GM .ui-selectmenu-item-icon { background: url("/images/flags/Gambia.png") 0 0 no-repeat;}
+.c_GH .ui-selectmenu-item-icon { background: url("/images/flags/Ghana.png") 0 0 no-repeat;}
+.c_GP .ui-selectmenu-item-icon { background: url("/images/flags/Guadeloupe.png") 0 0 no-repeat;}
+.c_GT .ui-selectmenu-item-icon { background: url("/images/flags/Guatemala.png") 0 0 no-repeat;}
+.c_GN .ui-selectmenu-item-icon { background: url("/images/flags/Guinea.png") 0 0 no-repeat;}
+.c_GN .ui-selectmenu-item-icon { background: url("/images/flags/Guinea.png") 0 0 no-repeat;}
+.c_DE .ui-selectmenu-item-icon { background: url("/images/flags/Germany.png") 0 0 no-repeat;}
+.c_GG .ui-selectmenu-item-icon { background: url("/images/flags/Guernsey.png") 0 0 no-repeat;}
+.c_GI .ui-selectmenu-item-icon { background: url("/images/flags/Gibraltar.png") 0 0 no-repeat;}
+.c_HN .ui-selectmenu-item-icon { background: url("/images/flags/Honduras.png") 0 0 no-repeat;}
+.c_HK .ui-selectmenu-item-icon { background: url("/images/flags/Hong Kong.png") 0 0 no-repeat;}
+.c_GD .ui-selectmenu-item-icon { background: url("/images/flags/Grenada.png") 0 0 no-repeat;}
+.c_GL .ui-selectmenu-item-icon { background: url("/images/flags/Greenland.png") 0 0 no-repeat;}
+.c_GR .ui-selectmenu-item-icon { background: url("/images/flags/Greece.png") 0 0 no-repeat;}
+.c_GE .ui-selectmenu-item-icon { background: url("/images/flags/Georgia.png") 0 0 no-repeat;}
+.c_DK .ui-selectmenu-item-icon { background: url("/images/flags/Denmark.png") 0 0 no-repeat;}
+.c_JE .ui-selectmenu-item-icon { background: url("/images/flags/Jersey.png") 0 0 no-repeat;}
+.c_DJ .ui-selectmenu-item-icon { background: url("/images/flags/Djibouti.png") 0 0 no-repeat;}
+.c_DM .ui-selectmenu-item-icon { background: url("/images/flags/Dominica.png") 0 0 no-repeat;}
+.c_DM .ui-selectmenu-item-icon { background: url("/images/flags/Dominica.png") 0 0 no-repeat;}
+.c_EG .ui-selectmenu-item-icon { background: url("/images/flags/Egypt.png") 0 0 no-repeat;}
+.c_ZM .ui-selectmenu-item-icon { background: url("/images/flags/Zambia.png") 0 0 no-repeat;}
+.c_ZW .ui-selectmenu-item-icon { background: url("/images/flags/Zimbabwe.png") 0 0 no-repeat;}
+.c_IL .ui-selectmenu-item-icon { background: url("/images/flags/Israel.png") 0 0 no-repeat;}
+.c_IN .ui-selectmenu-item-icon { background: url("/images/flags/India.png") 0 0 no-repeat;}
+.c_ID .ui-selectmenu-item-icon { background: url("/images/flags/Indonesia.png") 0 0 no-repeat;}
+.c_JO .ui-selectmenu-item-icon { background: url("/images/flags/Jordan.png") 0 0 no-repeat;}
+.c_IQ .ui-selectmenu-item-icon { background: url("/images/flags/Iraq.png") 0 0 no-repeat;}
+.c_IR .ui-selectmenu-item-icon { background: url("/images/flags/Iran.png") 0 0 no-repeat;}
+.c_IE .ui-selectmenu-item-icon { background: url("/images/flags/Ireland.png") 0 0 no-repeat;}
+.c_IS .ui-selectmenu-item-icon { background: url("/images/flags/Iceland.png") 0 0 no-repeat;}
+.c_ES .ui-selectmenu-item-icon { background: url("/images/flags/Spain.png") 0 0 no-repeat;}
+.c_IT .ui-selectmenu-item-icon { background: url("/images/flags/Italy.png") 0 0 no-repeat;}
+.c_YE .ui-selectmenu-item-icon { background: url("/images/flags/Yemen.png") 0 0 no-repeat;}
+.c_CV .ui-selectmenu-item-icon { background: url("/images/flags/Cape Verde.png") 0 0 no-repeat;}
+.c_KZ .ui-selectmenu-item-icon { background: url("/images/flags/Kazakhstan.png") 0 0 no-repeat;}
+.c_KY .ui-selectmenu-item-icon { background: url("/images/flags/Cayman Islands.png") 0 0 no-repeat;}
+.c_KH .ui-selectmenu-item-icon { background: url("/images/flags/Cambodia.png") 0 0 no-repeat;}
+.c_CM .ui-selectmenu-item-icon { background: url("/images/flags/Cameroon.png") 0 0 no-repeat;}
+.c_CA .ui-selectmenu-item-icon { background: url("/images/flags/Canada.png") 0 0 no-repeat;}
+.c_QA .ui-selectmenu-item-icon { background: url("/images/flags/Qatar.png") 0 0 no-repeat;}
+.c_KE .ui-selectmenu-item-icon { background: url("/images/flags/Kenya.png") 0 0 no-repeat;}
+.c_CY .ui-selectmenu-item-icon { background: url("/images/flags/Cyprus.png") 0 0 no-repeat;}
+.c_KI .ui-selectmenu-item-icon { background: url("/images/flags/Kiribati.png") 0 0 no-repeat;}
+.c_CN .ui-selectmenu-item-icon { background: url("/images/flags/China.png") 0 0 no-repeat;}
+.c_CO .ui-selectmenu-item-icon { background: url("/images/flags/Colombia.png") 0 0 no-repeat;}
+.c_KM .ui-selectmenu-item-icon { background: url("/images/flags/Comoros.png") 0 0 no-repeat;}
+.c_CG .ui-selectmenu-item-icon { background: url("/images/flags/Congo.png") 0 0 no-repeat;}
+.c_CG .ui-selectmenu-item-icon { background: url("/images/flags/Congo.png") 0 0 no-repeat;}
+.c_CR .ui-selectmenu-item-icon { background: url("/images/flags/Costa Rica.png") 0 0 no-repeat;}
+.c_CU .ui-selectmenu-item-icon { background: url("/images/flags/Cuba.png") 0 0 no-repeat;}
+.c_KW .ui-selectmenu-item-icon { background: url("/images/flags/Kuwait.png") 0 0 no-repeat;}
+.c_CK .ui-selectmenu-item-icon { background: url("/images/flags/Cook Islands.png") 0 0 no-repeat;}
+.c_KG .ui-selectmenu-item-icon { background: url("/images/flags/Kyrgyzstan.png") 0 0 no-repeat;}
+.c_LV .ui-selectmenu-item-icon { background: url("/images/flags/Latvia.png") 0 0 no-repeat;}
+.c_LS .ui-selectmenu-item-icon { background: url("/images/flags/Lesotho.png") 0 0 no-repeat;}
+.c_LR .ui-selectmenu-item-icon { background: url("/images/flags/Liberia.png") 0 0 no-repeat;}
+.c_LB .ui-selectmenu-item-icon { background: url("/images/flags/Lebanon.png") 0 0 no-repeat;}
+.c_LY .ui-selectmenu-item-icon { background: url("/images/flags/Libya.png") 0 0 no-repeat;}
+.c_LT .ui-selectmenu-item-icon { background: url("/images/flags/Lithuania.png") 0 0 no-repeat;}
+.c_LU .ui-selectmenu-item-icon { background: url("/images/flags/Luxembourg.png") 0 0 no-repeat;}
+.c_MU .ui-selectmenu-item-icon { background: url("/images/flags/Mauritius.png") 0 0 no-repeat;}
+.c_MR .ui-selectmenu-item-icon { background: url("/images/flags/Mauritania.png") 0 0 no-repeat;}
+.c_MG .ui-selectmenu-item-icon { background: url("/images/flags/Madagascar.png") 0 0 no-repeat;}
+.c_MO .ui-selectmenu-item-icon { background: url("/images/flags/Macau.png") 0 0 no-repeat;}
+.c_MK .ui-selectmenu-item-icon { background: url("/images/flags/Macedonia.png") 0 0 no-repeat;}
+.c_MW .ui-selectmenu-item-icon { background: url("/images/flags/Malawi.png") 0 0 no-repeat;}
+.c_MY .ui-selectmenu-item-icon { background: url("/images/flags/Malaysia.png") 0 0 no-repeat;}
+.c_ML .ui-selectmenu-item-icon { background: url("/images/flags/Mali.png") 0 0 no-repeat;}
+.c_MV .ui-selectmenu-item-icon { background: url("/images/flags/Maldives.png") 0 0 no-repeat;}
+.c_MT .ui-selectmenu-item-icon { background: url("/images/flags/Malta.png") 0 0 no-repeat;}
+.c_MA .ui-selectmenu-item-icon { background: url("/images/flags/Morocco.png") 0 0 no-repeat;}
+.c_MQ .ui-selectmenu-item-icon { background: url("/images/flags/Martinique.png") 0 0 no-repeat;}
+.c_MH .ui-selectmenu-item-icon { background: url("/images/flags/Marshall Islands.png") 0 0 no-repeat;}
+.c_MX .ui-selectmenu-item-icon { background: url("/images/flags/Mexico.png") 0 0 no-repeat;}
+.c_MZ .ui-selectmenu-item-icon { background: url("/images/flags/Mozambique.png") 0 0 no-repeat;}
+.c_MD .ui-selectmenu-item-icon { background: url("/images/flags/Moldova.png") 0 0 no-repeat;}
+.c_MC .ui-selectmenu-item-icon { background: url("/images/flags/Monaco.png") 0 0 no-repeat;}
+.c_MN .ui-selectmenu-item-icon { background: url("/images/flags/Mongolia.png") 0 0 no-repeat;}
+.c_MS .ui-selectmenu-item-icon { background: url("/images/flags/Montserrat.png") 0 0 no-repeat;}
+.c_MM .ui-selectmenu-item-icon { background: url("/images/flags/Myanmar.png") 0 0 no-repeat;}
+.c_IM .ui-selectmenu-item-icon { background: url("/images/flags/Isle of Man.png") 0 0 no-repeat;}
+.c_NA .ui-selectmenu-item-icon { background: url("/images/flags/Namibia.png") 0 0 no-repeat;}
+.c_NR .ui-selectmenu-item-icon { background: url("/images/flags/Nauru.png") 0 0 no-repeat;}
+.c_NP .ui-selectmenu-item-icon { background: url("/images/flags/Nepal.png") 0 0 no-repeat;}
+.c_NE .ui-selectmenu-item-icon { background: url("/images/flags/Niger.png") 0 0 no-repeat;}
+.c_NE .ui-selectmenu-item-icon { background: url("/images/flags/Niger.png") 0 0 no-repeat;}
+.c_NL .ui-selectmenu-item-icon { background: url("/images/flags/Netherlands.png") 0 0 no-repeat;}
+.c_NI .ui-selectmenu-item-icon { background: url("/images/flags/Nicaragua.png") 0 0 no-repeat;}
+.c_NU .ui-selectmenu-item-icon { background: url("/images/flags/Niue.png") 0 0 no-repeat;}
+.c_NZ .ui-selectmenu-item-icon { background: url("/images/flags/New Zealand.png") 0 0 no-repeat;}
+.c_NC .ui-selectmenu-item-icon { background: url("/images/flags/New Caledonia.png") 0 0 no-repeat;}
+.c_NO .ui-selectmenu-item-icon { background: url("/images/flags/Norway.png") 0 0 no-repeat;}
+.c_NF .ui-selectmenu-item-icon { background: url("/images/flags/Norfolk Island.png") 0 0 no-repeat;}
+.c_AE .ui-selectmenu-item-icon { background: url("/images/flags/United Arab Emirates.png") 0 0 no-repeat;}
+.c_OM .ui-selectmenu-item-icon { background: url("/images/flags/Oman.png") 0 0 no-repeat;}
+.c_PK .ui-selectmenu-item-icon { background: url("/images/flags/Pakistan.png") 0 0 no-repeat;}
+.c_PW .ui-selectmenu-item-icon { background: url("/images/flags/Palau.png") 0 0 no-repeat;}
+.c_PA .ui-selectmenu-item-icon { background: url("/images/flags/Panama.png") 0 0 no-repeat;}
+.c_GN .ui-selectmenu-item-icon { background: url("/images/flags/Guinea.png") 0 0 no-repeat;}
+.c_PY .ui-selectmenu-item-icon { background: url("/images/flags/Paraguay.png") 0 0 no-repeat;}
+.c_PE .ui-selectmenu-item-icon { background: url("/images/flags/Peru.png") 0 0 no-repeat;}
+.c_PL .ui-selectmenu-item-icon { background: url("/images/flags/Poland.png") 0 0 no-repeat;}
+.c_PT .ui-selectmenu-item-icon { background: url("/images/flags/Portugal.png") 0 0 no-repeat;}
+.c_PR .ui-selectmenu-item-icon { background: url("/images/flags/Puerto Rico.png") 0 0 no-repeat;}
+.c_RE .ui-selectmenu-item-icon { background: url("/images/flags/Reunion.png") 0 0 no-repeat;}
+.c_RU .ui-selectmenu-item-icon { background: url("/images/flags/Russian Federation.png") 0 0 no-repeat;}
+.c_RW .ui-selectmenu-item-icon { background: url("/images/flags/Rwanda.png") 0 0 no-repeat;}
+.c_RO .ui-selectmenu-item-icon { background: url("/images/flags/Romania.png") 0 0 no-repeat;}
+.c_SV .ui-selectmenu-item-icon { background: url("/images/flags/El Salvador.png") 0 0 no-repeat;}
+.c_WS .ui-selectmenu-item-icon { background: url("/images/flags/Samoa.png") 0 0 no-repeat;}
+.c_ST .ui-selectmenu-item-icon { background: url("/images/flags/Sao Tome and Principe.png") 0 0 no-repeat;}
+.c_SA .ui-selectmenu-item-icon { background: url("/images/flags/Saudi Arabia.png") 0 0 no-repeat;}
+.c_SZ .ui-selectmenu-item-icon { background: url("/images/flags/Swaziland.png") 0 0 no-repeat;}
+.c_LC .ui-selectmenu-item-icon { background: url("/images/flags/Saint Lucia.png") 0 0 no-repeat;}
+.c_MP .ui-selectmenu-item-icon { background: url("/images/flags/Northern Mariana Islands.png") 0 0 no-repeat;}
+.c_SC .ui-selectmenu-item-icon { background: url("/images/flags/Seychelles.png") 0 0 no-repeat;}
+.c_SN .ui-selectmenu-item-icon { background: url("/images/flags/Senegal.png") 0 0 no-repeat;}
+.c_KN .ui-selectmenu-item-icon { background: url("/images/flags/Saint Kitts and Nevis.png") 0 0 no-repeat;}
+.c_VC .ui-selectmenu-item-icon { background: url("/images/flags/Saint Vincent and the Grenadines.png") 0 0 no-repeat;}
+.c_RS .ui-selectmenu-item-icon { background: url("/images/flags/Serbia.png") 0 0 no-repeat;}
+.c_SG .ui-selectmenu-item-icon { background: url("/images/flags/Singapore.png") 0 0 no-repeat;}
+.c_SY .ui-selectmenu-item-icon { background: url("/images/flags/Syria.png") 0 0 no-repeat;}
+.c_SK .ui-selectmenu-item-icon { background: url("/images/flags/Slovakia.png") 0 0 no-repeat;}
+.c_SI .ui-selectmenu-item-icon { background: url("/images/flags/Slovenia.png") 0 0 no-repeat;}
+.c_SB .ui-selectmenu-item-icon { background: url("/images/flags/Solomon Islands.png") 0 0 no-repeat;}
+.c_SO .ui-selectmenu-item-icon { background: url("/images/flags/Somalia.png") 0 0 no-repeat;}
+.c_SD .ui-selectmenu-item-icon { background: url("/images/flags/Sudan.png") 0 0 no-repeat;}
+.c_SR .ui-selectmenu-item-icon { background: url("/images/flags/Suriname.png") 0 0 no-repeat;}
+.c_US .ui-selectmenu-item-icon { background: url("/images/flags/United States.png") 0 0 no-repeat;}
+.c_SL .ui-selectmenu-item-icon { background: url("/images/flags/Sierra Leone.png") 0 0 no-repeat;}
+.c_TJ .ui-selectmenu-item-icon { background: url("/images/flags/Tajikistan.png") 0 0 no-repeat;}
+.c_TH .ui-selectmenu-item-icon { background: url("/images/flags/Thailand.png") 0 0 no-repeat;}
+.c_TW .ui-selectmenu-item-icon { background: url("/images/flags/Taiwan.png") 0 0 no-repeat;}
+.c_TZ .ui-selectmenu-item-icon { background: url("/images/flags/Tanzania.png") 0 0 no-repeat;}
+.c_TG .ui-selectmenu-item-icon { background: url("/images/flags/Togo.png") 0 0 no-repeat;}
+.c_TO .ui-selectmenu-item-icon { background: url("/images/flags/Tonga.png") 0 0 no-repeat;}
+.c_TV .ui-selectmenu-item-icon { background: url("/images/flags/Tuvalu.png") 0 0 no-repeat;}
+.c_TN .ui-selectmenu-item-icon { background: url("/images/flags/Tunisia.png") 0 0 no-repeat;}
+.c_TM .ui-selectmenu-item-icon { background: url("/images/flags/Turkmenistan.png") 0 0 no-repeat;}
+.c_TC .ui-selectmenu-item-icon { background: url("/images/flags/Turks and Caicos Islands.png") 0 0 no-repeat;}
+.c_TR .ui-selectmenu-item-icon { background: url("/images/flags/Turkey.png") 0 0 no-repeat;}
+.c_UG .ui-selectmenu-item-icon { background: url("/images/flags/Uganda.png") 0 0 no-repeat;}
+.c_UZ .ui-selectmenu-item-icon { background: url("/images/flags/Uzbekistan.png") 0 0 no-repeat;}
+.c_UA .ui-selectmenu-item-icon { background: url("/images/flags/Ukraine.png") 0 0 no-repeat;}
+.c_UY .ui-selectmenu-item-icon { background: url("/images/flags/Uruguay.png") 0 0 no-repeat;}
+.c_FO .ui-selectmenu-item-icon { background: url("/images/flags/Faroe Islands.png") 0 0 no-repeat;}
+.c_FJ .ui-selectmenu-item-icon { background: url("/images/flags/Fiji.png") 0 0 no-repeat;}
+.c_PH .ui-selectmenu-item-icon { background: url("/images/flags/Philippines.png") 0 0 no-repeat;}
+.c_FI .ui-selectmenu-item-icon { background: url("/images/flags/Finland.png") 0 0 no-repeat;}
+.c_FK .ui-selectmenu-item-icon { background: url("/images/flags/Falkland Islands.png") 0 0 no-repeat;}
+.c_FR .ui-selectmenu-item-icon { background: url("/images/flags/France.png") 0 0 no-repeat;}
+.c_GF .ui-selectmenu-item-icon { background: url("/images/flags/French Guiana.png") 0 0 no-repeat;}
+.c_PF .ui-selectmenu-item-icon { background: url("/images/flags/French Polynesia.png") 0 0 no-repeat;}
+.c_HR .ui-selectmenu-item-icon { background: url("/images/flags/Croatia.png") 0 0 no-repeat;}
+.c_CF .ui-selectmenu-item-icon { background: url("/images/flags/Central African Republic.png") 0 0 no-repeat;}
+.c_TD .ui-selectmenu-item-icon { background: url("/images/flags/Chad.png") 0 0 no-repeat;}
+.c_ME .ui-selectmenu-item-icon { background: url("/images/flags/Montenegro.png") 0 0 no-repeat;}
+.c_CZ .ui-selectmenu-item-icon { background: url("/images/flags/Czech Republic.png") 0 0 no-repeat;}
+.c_CL .ui-selectmenu-item-icon { background: url("/images/flags/Chile.png") 0 0 no-repeat;}
+.c_CH .ui-selectmenu-item-icon { background: url("/images/flags/Switzerland.png") 0 0 no-repeat;}
+.c_SE .ui-selectmenu-item-icon { background: url("/images/flags/Sweden.png") 0 0 no-repeat;}
+.c_LK .ui-selectmenu-item-icon { background: url("/images/flags/Sri Lanka.png") 0 0 no-repeat;}
+.c_EC .ui-selectmenu-item-icon { background: url("/images/flags/Ecuador.png") 0 0 no-repeat;}
+.c_GQ .ui-selectmenu-item-icon { background: url("/images/flags/Equatorial Guinea.png") 0 0 no-repeat;}
+.c_ER .ui-selectmenu-item-icon { background: url("/images/flags/Eritrea.png") 0 0 no-repeat;}
+.c_EE .ui-selectmenu-item-icon { background: url("/images/flags/Estonia.png") 0 0 no-repeat;}
+.c_ET .ui-selectmenu-item-icon { background: url("/images/flags/Ethiopia.png") 0 0 no-repeat;}
+.c_ZA .ui-selectmenu-item-icon { background: url("/images/flags/South Africa.png") 0 0 no-repeat;}
+.c_JM .ui-selectmenu-item-icon { background: url("/images/flags/Jamaica.png") 0 0 no-repeat;}
+.c_JP .ui-selectmenu-item-icon { background: url("/images/flags/Japan.png") 0 0 no-repeat;}

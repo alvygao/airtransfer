@@ -19,7 +19,9 @@ import java.util.ArrayList;
         AirportVO.class,
         TrinityVO.class,
         FlightVO.class,
-        AirportSearchVO.class
+        AirportSearchVO.class,
+        CountryVO.class
+
 })
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class BaseListVOResponse {

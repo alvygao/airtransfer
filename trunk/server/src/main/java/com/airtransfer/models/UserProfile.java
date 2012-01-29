@@ -52,14 +52,16 @@ public class UserProfile extends BaseEntity {
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private String cellPhone;
 
-    @ManyToOne()
-    private Country country;
+    @Enumerated
+    @Column(name = "current_country_enum_id")
+    private CountryEnum currentCountry;
 
     @ManyToOne()
     private City city;
 
-    @ManyToOne()
-    private Country currentCountry;
+    @Enumerated
+    @Column(name = "country_enum_id")
+    private CountryEnum country;
 
     @ManyToOne()
     private City currentCity;
@@ -84,8 +86,9 @@ public class UserProfile extends BaseEntity {
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private String familyStatus;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Body body;
+    @Enumerated
+    @Column(name = "bodyenum_id")
+    private BodyEnum body;
 
     @Column
     @Field(index = Index.TOKENIZED, store = Store.NO)
@@ -95,13 +98,13 @@ public class UserProfile extends BaseEntity {
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private Float width;
 
-    @Column
-    @Field(index = Index.TOKENIZED, store = Store.NO)
-    private String appearance;
+    @Enumerated
+    @Column(name = "appearance_id")
+    private NationEnum appearance;
 
-    @Column
-    @Field(index = Index.TOKENIZED, store = Store.NO)
-    private String lifeGoals;
+    @Enumerated()
+    @Column(name = "lifegoals_id")
+    private LifeGoalsEnum lifeGoals;
 
     @Column
     @Field(index = Index.TOKENIZED, store = Store.NO)
@@ -118,6 +121,11 @@ public class UserProfile extends BaseEntity {
     @Column
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private String books;
+
+    @Column
+    private String twitter;
+    @Column
+    private String facebook;
 
 
     public String getFirstName() {
@@ -224,19 +232,19 @@ public class UserProfile extends BaseEntity {
         this.width = width;
     }
 
-    public String getAppearance() {
+    public NationEnum getAppearance() {
         return appearance;
     }
 
-    public void setAppearance(String appearance) {
+    public void setAppearance(NationEnum appearance) {
         this.appearance = appearance;
     }
 
-    public String getLifeGoals() {
+    public LifeGoalsEnum getLifeGoals() {
         return lifeGoals;
     }
 
-    public void setLifeGoals(String lifeGoals) {
+    public void setLifeGoals(LifeGoalsEnum lifeGoals) {
         this.lifeGoals = lifeGoals;
     }
 
@@ -280,19 +288,19 @@ public class UserProfile extends BaseEntity {
         this.user = user;
     }
 
-    public Country getCountry() {
+    public CountryEnum getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(CountryEnum country) {
         this.country = country;
     }
 
-    public Country getCurrentCountry() {
+    public CountryEnum getCurrentCountry() {
         return currentCountry;
     }
 
-    public void setCurrentCountry(Country currentCountry) {
+    public void setCurrentCountry(CountryEnum currentCountry) {
         this.currentCountry = currentCountry;
     }
 
@@ -328,11 +336,11 @@ public class UserProfile extends BaseEntity {
         this.occupation = occupation;
     }
 
-    public Body getBody() {
+    public BodyEnum getBody() {
         return body;
     }
 
-    public void setBody(Body body) {
+    public void setBody(BodyEnum body) {
         this.body = body;
     }
 
@@ -342,5 +350,21 @@ public class UserProfile extends BaseEntity {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
     }
 }
