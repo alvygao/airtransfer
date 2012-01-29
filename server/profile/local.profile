@@ -3,7 +3,7 @@ profile.server.url=http://127.0.0.1:8080
 # Database
 profile.database.host=127.0.0.1
 profile.database.port=3306
-profile.database.schema=air_transfer_db
+profile.database.schema=airtransfer
 profile.database.username=airtrans
 profile.database.password=_airtrans_
 # Log level

@@ -16,7 +16,7 @@ public class Country extends BaseEntity {
     private String rusName;
     @Column(name = "country_eng")
     private String engName;
-    @Column(name = "code")
+    @Column(name = "iso_code")
     private String code;
 
     public String getRusName() {

@@ -66,20 +66,26 @@ public class UserProfileManager extends BaseManager {
 
             UserProfile userProfile = profileDao.findProfileByUser(user.getId());
             userProfile.setAboutMe(vo.getAboutMe());
-            userProfile.setAppearance(vo.getAppearance());
             userProfile.setBirthDay(vo.model().getBirthDay());
 
-            Body body = bodyDao.get(vo.getBodyId());
-            userProfile.setBody(body);
+            Integer bodyId = vo.getBodyId();
+            if (bodyId != null) {
+                BodyEnum bodyEnum = BodyEnum.values()[bodyId];
+                userProfile.setBody(bodyEnum);
+            }
 
             userProfile.setBooks(vo.getBooks());
             userProfile.setCellPhone(vo.getCellPhone());
 
-            Country country = countryDao.get(vo.getCountryId());
-            userProfile.setCountry(country);
+            Integer countryId = vo.getCountryId();
+            if (countryId != null) {
+                userProfile.setCountry(CountryEnum.findById(countryId));
+            }
 
-            Country country1 = countryDao.get(vo.getCurrentCountryId());
-            userProfile.setCurrentCountry(country1);
+            Integer currentCountryId = vo.getCurrentCountryId();
+            if (currentCountryId != null) {
+                userProfile.setCurrentCountry(CountryEnum.findById(currentCountryId));
+            }
 
             userProfile.setFamilyStatus(vo.getFamilyStatus());
             userProfile.setFemale(vo.getFemale());
@@ -97,7 +103,18 @@ public class UserProfileManager extends BaseManager {
 
             userProfile.setInterest(vo.getInterest());
             userProfile.setLastName(vo.getLastName());
-            userProfile.setLifeGoals(vo.getLifeGoals());
+
+            Integer appearanceId = vo.getAppearanceId();
+            if (appearanceId != null) {
+                NationEnum anEnum = NationEnum.values()[appearanceId];
+                userProfile.setAppearance(anEnum);
+            }
+
+            Integer lifeGoalsId = vo.getLifeGoalsId();
+            if (lifeGoalsId != null) {
+                LifeGoalsEnum anEnum = LifeGoalsEnum.values()[lifeGoalsId];
+                userProfile.setLifeGoals(anEnum);
+            }
             userProfile.setMovies(vo.getMovies());
             userProfile.setMusic(vo.getMusic());
 
@@ -115,6 +132,8 @@ public class UserProfileManager extends BaseManager {
             UserLanguage language3 = languageDao.get(vo.getThirdLanguageId());
             userProfile.setThirdLanguage(language3);
             userProfile.setWidth(vo.getWidth());
+            userProfile.setTwitter(vo.getTwitter());
+            userProfile.setFacebook(vo.getFacebook());
 
             profileDao.persist(userProfile);
             return new BaseEntityVOResponse<UserProfileVO>(new UserProfileVO(userProfile));

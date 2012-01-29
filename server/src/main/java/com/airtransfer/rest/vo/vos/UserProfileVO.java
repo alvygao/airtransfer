@@ -22,14 +22,14 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     private Long realId;
-    private Long bodyId;
+    private Integer bodyId;
     private String bodyType;
-    private Long countryId;
+    private Integer countryId;
     private Long cityId;
     private String cityName;
     private Long currentCityId;
     private String currentCityName;
-    private Long currentCountryId;
+    private Integer currentCountryId;
     private Long firstLanguageId;
     private Long secondLanguageId;
     private Long thirdLanguageId;
@@ -49,17 +49,19 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
     private Float height;
     private Float width;
-    private String appearance;
-    private String lifeGoals;
+    private Integer appearanceId;
+    private Integer lifeGoalsId;
     private String interest;
     private String music;
     private String movies;
     private String books;
+    private String facebook;
+    private String twitter;
 
     public UserProfileVO(UserProfile entity) {
         realId = entity.getId();
-        bodyId = entity.getBody() != null ? entity.getBody().getId() : null;
-
+        bodyId = entity.getBody() != null ? entity.getBody().ordinal() : null;
+        lifeGoalsId = entity.getLifeGoals() != null ? entity.getLifeGoals().ordinal() : null;
         countryId = entity.getCountry() != null ? entity.getCountry().getId() : null;
         cityId = entity.getCity() != null ? entity.getCity().getId() : null;
         currentCityId = entity.getCurrentCity() != null ? entity.getCurrentCity().getId() : null;
@@ -70,6 +72,7 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         secondLanguageId = entity.getSecondLanguage() != null ? entity.getSecondLanguage().getId() : null;
         thirdLanguageId = entity.getThirdLanguage() != null ? entity.getThirdLanguage().getId() : null;
         professionId = entity.getOccupation() != null ? entity.getOccupation().getId() : null;
+        appearanceId = entity.getAppearance() != null ? entity.getAppearance().getId() : null;
 
         firstName = entity.getFirstName();
         lastName = entity.getLastName();
@@ -85,12 +88,13 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
         height = entity.getHeight();
         width = entity.getWidth();
-        appearance = entity.getAppearance();
-        lifeGoals = entity.getLifeGoals();
+
         interest = entity.getInterest();
         music = entity.getMusic();
         movies = entity.getMovies();
         books = entity.getBooks();
+        twitter = entity.getTwitter();
+        facebook = entity.getFacebook();
     }
 
     public UserProfileVO() {
@@ -116,20 +120,14 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
         entity.setHeight(height);
         entity.setWidth(width);
-        entity.setAboutMe(appearance);
-        entity.setLifeGoals(lifeGoals);
+        entity.setAboutMe(aboutMe);
         entity.setInterest(interest);
         entity.setMusic(music);
         entity.setMovies(movies);
         entity.setBooks(books);
-        height = entity.getHeight();
-        width = entity.getWidth();
-        appearance = entity.getAppearance();
-        lifeGoals = entity.getLifeGoals();
-        interest = entity.getInterest();
-        music = entity.getMusic();
-        movies = entity.getMovies();
-        books = entity.getBooks();
+        entity.setTwitter(twitter);
+        entity.setFacebook(facebook);
+
         return entity;
     }
 
@@ -152,11 +150,11 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         }
     }
 
-    public Long getBodyId() {
+    public Integer getBodyId() {
         return bodyId;
     }
 
-    public void setBodyId(Long bodyId) {
+    public void setBodyId(Integer bodyId) {
         this.bodyId = bodyId;
     }
 
@@ -168,11 +166,11 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         this.realId = id;
     }
 
-    public Long getCountryId() {
+    public Integer getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(Long countryId) {
+    public void setCountryId(Integer countryId) {
         this.countryId = countryId;
     }
 
@@ -192,11 +190,11 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         this.currentCityId = currentCityId;
     }
 
-    public Long getCurrentCountryId() {
+    public Integer getCurrentCountryId() {
         return currentCountryId;
     }
 
-    public void setCurrentCountryId(Long currentCountryId) {
+    public void setCurrentCountryId(Integer currentCountryId) {
         this.currentCountryId = currentCountryId;
     }
 
@@ -320,20 +318,20 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         this.width = width;
     }
 
-    public String getAppearance() {
-        return appearance;
+    public Integer getAppearanceId() {
+        return appearanceId;
     }
 
-    public void setAppearance(String appearance) {
-        this.appearance = appearance;
+    public void setAppearanceId(Integer appearanceId) {
+        this.appearanceId = appearanceId;
     }
 
-    public String getLifeGoals() {
-        return lifeGoals;
+    public Integer getLifeGoalsId() {
+        return lifeGoalsId;
     }
 
-    public void setLifeGoals(String lifeGoals) {
-        this.lifeGoals = lifeGoals;
+    public void setLifeGoalsId(Integer lifeGoalsId) {
+        this.lifeGoalsId = lifeGoalsId;
     }
 
     public String getInterest() {
@@ -390,5 +388,21 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
     public void setCurrentCityName(String currentCityName) {
         this.currentCityName = currentCityName;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
     }
 }

@@ -4,11 +4,12 @@ import com.airtransfer.models.Airport;
 import com.airtransfer.models.City;
 import com.airtransfer.models.UserProfile;
 import com.airtransfer.services.FullTextSearchService;
-import com.airtransfer.services.dao.UserProfileDao;
 import org.apache.lucene.search.Query;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.MassIndexer;
 import org.hibernate.search.Search;
@@ -19,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Service;
@@ -57,7 +57,7 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
     @Transactional(readOnly = true)
     public void createIndex() {
         File file = new File(indexBaseDirectory);
-        if (file.exists()) {
+        if (false && file.exists()) {
             getHibernateTemplate().execute(new HibernateCallback<Object>() {
                 public Object doInHibernate(Session session) throws HibernateException, SQLException {
                     FullTextSession fullTextSession = Search.getFullTextSession(session);
@@ -97,7 +97,7 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
     public List<Airport> findAirports(Locale locale, final String term, final Integer limit) {
         final String key = removeSpecialCharacters(term);
 
-        return (List<Airport>) getHibernateTemplate().executeFind(new HibernateCallback<Object>() {
+        List<Airport> result = (List<Airport>) getHibernateTemplate().executeFind(new HibernateCallback<Object>() {
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 FullTextSession textSession = Search.getFullTextSession(session);
                 QueryBuilder builder = textSession.getSearchFactory().buildQueryBuilder().forEntity(Airport.class).get();
@@ -123,12 +123,25 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
                 return result == null ? Collections.EMPTY_LIST : result;
             }
         });
+        if (result.isEmpty()) {
+            result = getHibernateTemplate().executeFind(new HibernateCallback<Object>() {
+                public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                    return session.createCriteria(Airport.class).add(
+                            Restrictions.or(
+                                    Restrictions.ilike("rusName", key, MatchMode.ANYWHERE),
+                                    Restrictions.ilike("engName", key, MatchMode.ANYWHERE))
+                    ).list();
+                }
+            });
+        }
+        return result;
     }
 
     @SuppressWarnings("unchecked")
     public List<City> findCities(Locale locale, String term, final Integer limit) {
         final String key = removeSpecialCharacters(term);
-        return getHibernateTemplate().executeFind(new HibernateCallback<Object>() {
+
+        List result = getHibernateTemplate().executeFind(new HibernateCallback<Object>() {
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 FullTextSession fullTextSession = Search.getFullTextSession(session);
                 QueryBuilder builder = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(City.class).get();
@@ -152,6 +165,20 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
                 return list == null ? Collections.EMPTY_LIST : list;
             }
         });
+
+        if (result.isEmpty()) {
+            result = getHibernateTemplate().executeFind(new HibernateCallback<Object>() {
+                public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                    return session.createCriteria(City.class).add(
+                            Restrictions.or(
+                                    Restrictions.ilike("rusName", key, MatchMode.ANYWHERE),
+                                    Restrictions.ilike("engName", key, MatchMode.ANYWHERE))
+                    ).list();
+                }
+            });
+        }
+
+        return result;
     }
 
     @SuppressWarnings("unchecked")

@@ -2,10 +2,7 @@ package com.airtransfer.rest.services;
 
 import com.airtransfer.models.*;
 import com.airtransfer.rest.vo.BaseListVOResponse;
-import com.airtransfer.rest.vo.vos.AirportSearchVO;
-import com.airtransfer.rest.vo.vos.AirportVO;
-import com.airtransfer.rest.vo.vos.PairVO;
-import com.airtransfer.rest.vo.vos.TrinityVO;
+import com.airtransfer.rest.vo.vos.*;
 import com.airtransfer.services.FullTextSearchService;
 import com.airtransfer.services.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,12 +42,12 @@ public class SearchManager extends BaseManager {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     public BaseListVOResponse get() {
-        List<Country> list = (List<Country>) countryDao.listAll();
+        CountryEnum[] list = CountryEnum.values();
         BaseListVOResponse response = new BaseListVOResponse();
         ArrayList data = new ArrayList();
         response.setData(data);
-        for (Country country : list) {
-            data.add(new PairVO(country.getId(), country.getEngName()));
+        for (CountryEnum country : list) {
+            data.add(new CountryVO(country.getId(), country.getEngName(), country.getIsoCode()));
         }
         return response;
     }
