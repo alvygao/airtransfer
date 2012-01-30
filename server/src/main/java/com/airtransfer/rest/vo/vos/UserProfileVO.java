@@ -45,7 +45,7 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
     private String phone;
     private String cellPhone;
     private String aboutMe;
-    private String familyStatus;
+    private Integer familyStatusId;
 
     private Float height;
     private Float width;
@@ -73,6 +73,7 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         thirdLanguageId = entity.getThirdLanguage() != null ? entity.getThirdLanguage().getId() : null;
         professionId = entity.getOccupation() != null ? entity.getOccupation().getId() : null;
         appearanceId = entity.getAppearance() != null ? entity.getAppearance().getId() : null;
+        familyStatusId = entity.getFamilyStatus() != null ? entity.getFamilyStatus().getId(): null ;
 
         firstName = entity.getFirstName();
         lastName = entity.getLastName();
@@ -84,7 +85,7 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         phone = entity.getPhone();
         cellPhone = entity.getCellPhone();
         aboutMe = entity.getAboutMe();
-        familyStatus = entity.getFamilyStatus();
+
 
         height = entity.getHeight();
         width = entity.getWidth();
@@ -116,7 +117,6 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         entity.setPhone(phone);
         entity.setCellPhone(cellPhone);
         entity.setAboutMe(aboutMe);
-        entity.setFamilyStatus(familyStatus);
 
         entity.setHeight(height);
         entity.setWidth(width);
@@ -294,12 +294,12 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         this.aboutMe = aboutMe;
     }
 
-    public String getFamilyStatus() {
-        return familyStatus;
+    public Integer getFamilyStatusId() {
+        return familyStatusId;
     }
 
-    public void setFamilyStatus(String familyStatus) {
-        this.familyStatus = familyStatus;
+    public void setFamilyStatusId(Integer familyStatusId) {
+        this.familyStatusId = familyStatusId;
     }
 
     public Float getHeight() {

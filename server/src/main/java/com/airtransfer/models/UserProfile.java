@@ -82,9 +82,9 @@ public class UserProfile extends BaseEntity {
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private String aboutMe;
 
-    @Column
-    @Field(index = Index.TOKENIZED, store = Store.NO)
-    private String familyStatus;
+    @Enumerated
+    @Column(name = "family_status_id")
+    private FamilyStatusEnum familyStatus;
 
     @Enumerated
     @Column(name = "bodyenum_id")
@@ -208,11 +208,11 @@ public class UserProfile extends BaseEntity {
         this.aboutMe = aboutMe;
     }
 
-    public String getFamilyStatus() {
+    public FamilyStatusEnum getFamilyStatus() {
         return familyStatus;
     }
 
-    public void setFamilyStatus(String familyStatus) {
+    public void setFamilyStatus(FamilyStatusEnum familyStatus) {
         this.familyStatus = familyStatus;
     }
 
