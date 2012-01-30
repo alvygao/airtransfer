@@ -87,7 +87,11 @@ public class UserProfileManager extends BaseManager {
                 userProfile.setCurrentCountry(CountryEnum.findById(currentCountryId));
             }
 
-            userProfile.setFamilyStatus(vo.getFamilyStatus());
+            Integer familyStatusId = vo.getFamilyStatusId();
+            if (familyStatusId != null) {
+                userProfile.setFamilyStatus(FamilyStatusEnum.values()[familyStatusId]);
+            }
+
             userProfile.setFemale(vo.getFemale());
 
             UserLanguage language = languageDao.get(vo.getFirstLanguageId());

@@ -57,7 +57,7 @@ public class FullTextSearchServiceImpl extends HibernateDaoSupport implements Fu
     @Transactional(readOnly = true)
     public void createIndex() {
         File file = new File(indexBaseDirectory);
-        if (false && file.exists()) {
+        if (file.exists()) {
             getHibernateTemplate().execute(new HibernateCallback<Object>() {
                 public Object doInHibernate(Session session) throws HibernateException, SQLException {
                     FullTextSession fullTextSession = Search.getFullTextSession(session);

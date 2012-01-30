@@ -754,10 +754,12 @@
                 <tr>
                     <td class="cLabel">${i18n['label.profile_page.more.familyStatus']}:</td>
                     <td colspan="3">
-                        <input type="text" class="jSaveData" name="familyStatus" maxlength="255"/>
-                            <span class="cClearBtn jClearBtn">
-                                <img src="/images/clear-button.png" alt="clear"/>
-                            </span>
+                        <select name="familyStatus" class="jSaveData jSelect" style="float:left;">
+                            <option value="0">Yes maried live together</option>
+                            <option value="1">Yes married don't live together</option>
+                            <option value="2">Yes fake marriage</option>
+                            <option value="3">Single</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
@@ -1011,7 +1013,6 @@
                                 $('select[name=is_male]').val(request.data.female);
                                 $('input[name=books]').val(request.data.books);
                                 $('input[name=cellPhone]').val(request.data.cellPhone);
-                                $('input[name=familyStatus]').val(request.data.familyStatus);
                                 $('select[name=firstLanguageId]').val(request.data.firstLanguageId);
                                 $('input[name=firstName]').val(request.data.firstName);
                                 $('input[name=height]').val(request.data.height);
@@ -1028,6 +1029,7 @@
                                 $('input[name=twitter]').val(request.data.twitter);
 
                                 $('select[name=appearance]').val(request.data.appearanceId).selectmenu();
+                                $('select[name=familyStatus]').val(request.data.familyStatusId).selectmenu();
 
                                 if (request.data.birthDay != undefined && request.data.birthDay != null) {
                                     var date = new Date(request.data.birthDay);
@@ -1560,7 +1562,7 @@
                 "countryId": $('select[name=countryId]').val(),
                 "currentCityId": $('#currentCityId').val(),
                 "currentCountryId": $('select[name=currentCountryId]').val(),
-                "familyStatus": $('input[name=familyStatus]').val(),
+                "familyStatusId": $('select[name=familyStatus]').val(),
                 "firstLanguageId": $('select[name=firstLanguageId]').val(),
                 "firstName":  $('input[name=firstName]').val(),
                 "height":  $('input[name=height]').val(),
