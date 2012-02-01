@@ -44,7 +44,8 @@
                 <tr class="cLast">
                     <td class="cLabel">${i18n['label.profile_page.personalData.birthday']}:</td>
                     <td>
-                        <input id="birthDay" type="text" class="jCalendar" readonly="readonly" name="birthDay"/>
+                        <!-- iPad datepicker fix ? -->
+                        <input onclick="" id="birthDay" type="text" class="jCalendar" readonly="readonly" name="birthDay"/>
                             <span class="cClearBtn cCalendar">
                                 <img src="/images/calendar.gif" alt="clear"/>
                             </span>
@@ -81,7 +82,7 @@
                         </td>
                     </tr>
                     <tr class="cLast">
-                        <td class="cLabel">${i18n['label.profile_page.personalData.mobilePhone']}:</td>
+                        <td class="cLabel">${i18n['label.profile_page.personalData.email']}:</td>
                         <td>
                             <input type="text" class="jSaveData" name="cellPhone" maxlength="255"/>
                                 <span class="cClearBtn jClearBtn">
@@ -630,33 +631,33 @@
                     <td class="cLabel">${i18n['label.profile_page.languages.firstLang']}:</td>
                     <td>
                         <select name="firstLanguageId" class="jSaveData jSelect" style="float:left;">
-                            <option value="1">Czech (CZ)</option>
-                            <option value="2">Dansk (DA)</option>
-                            <option value="3">Deutsch (DE)</option>
-                            <option value="4">English (EN)</option>
-                            <option value="5">Spanish (ES)</option>
-                            <option value="6">Finnish (FI)</option>
-                            <option value="7">French (FR)</option>
-                            <option value="8">Greek (GR)</option>
-                            <option value="9">Magyar (HU)</option>
-                            <option value="10">Bahasa Indonesia (ID)</option>
-                            <option value="11">Italiano (IT)</option>
-                            <option value="12">Japanese (JA)</option>
-                            <option value="13">Korean (KO)</option>
-                            <option value="14">Bahasa Malay (MS)</option>
-                            <option value="15">Nederlands (NL)</option>
-                            <option value="16">Norsk (NO)</option>
-                            <option value="17">Polski (PL)</option>
-                            <option value="18">Portuguese (PT)</option>
-                            <option value="19">Romance (RO)</option>
-                            <option value="20">Russian (RU)</option>
-                            <option value="21">Swedish (SV)</option>
-                            <option value="22">Thai (TH)</option>
-                            <option value="23">Turkish (TR)</option>
-                            <option value="24">Ukrainian (UK)</option>
-                            <option value="25">Vietnamese (VI)</option>
-                            <option value="26">Zhuang (ZH)</option>
-                            <option value="27">Chuang (ZW)</option>
+                            <option value="1" class="c_CZ">Czech (CZ)</option>
+                            <option value="2" class="c_DA">Dansk (DA)</option>
+                            <option value="3" class="c_DE">Deutsch (DE)</option>
+                            <option value="4" class="c_EN">English (EN)</option>
+                            <option value="5" class="c_EP">Spanish (ES)</option>
+                            <option value="6" class="c_FI">Finnish (FI)</option>
+                            <option value="7" class="c_FR">French (FR)</option>
+                            <option value="8" class="c_GR">Greek (GR)</option>
+                            <option value="9" class="c_HU">Magyar (HU)</option>
+                            <option value="10" class="c_ID">Bahasa Indonesia (ID)</option>
+                            <option value="11" class="c_IT">Italiano (IT)</option>
+                            <option value="12" class="c_JA">Japanese (JA)</option>
+                            <option value="13" class="c_KO">Korean (KO)</option>
+                            <option value="14" class="c_MS">Bahasa Malay (MS)</option>
+                            <option value="15" class="c_NL">Nederlands (NL)</option>
+                            <option value="16" class="c_NO">Norsk (NO)</option>
+                            <option value="17" class="c_PL">Polski (PL)</option>
+                            <option value="18" class="c_PT">Portuguese (PT)</option>
+                            <option value="19" class="c_RO">Romance (RO)</option>
+                            <option value="20" class="c_RU">Russian (RU)</option>
+                            <option value="21" class="c_SV">Swedish (SV)</option>
+                            <option value="22" class="c_TH">Thai (TH)</option>
+                            <option value="23" class="c_TR">Turkish (TR)</option>
+                            <option value="24" class="c_UA">Ukrainian (UK)</option>
+                            <option value="25" class="c_VI">Vietnamese (VI)</option>
+                            <option value="26" class="c_ZH">Zhuang (ZH)</option>
+                            <option value="27" class="c_ZW">Chuang (ZW)</option>
                         </select>
                     </td>
                 </tr>
@@ -664,33 +665,33 @@
                     <td class="cLabel">${i18n['label.profile_page.languages.secondLang']}:</td>
                     <td>
                         <select name="secondLanguageId" class="jSaveData jSelect" style="float:left;">
-                            <option value="1">Czech (CZ)</option>
-                            <option value="2">Dansk (DA)</option>
-                            <option value="3">Deutsch (DE)</option>
-                            <option value="4">English (EN)</option>
-                            <option value="5">Spanish (ES)</option>
-                            <option value="6">Finnish (FI)</option>
-                            <option value="7">French (FR)</option>
-                            <option value="8">Greek (GR)</option>
-                            <option value="9">Magyar (HU)</option>
-                            <option value="10">Bahasa Indonesia (ID)</option>
-                            <option value="11">Italiano (IT)</option>
-                            <option value="12">Japanese (JA)</option>
-                            <option value="13">Korean (KO)</option>
-                            <option value="14">Bahasa Malay (MS)</option>
-                            <option value="15">Nederlands (NL)</option>
-                            <option value="16">Norsk (NO)</option>
-                            <option value="17">Polski (PL)</option>
-                            <option value="18">Portuguese (PT)</option>
-                            <option value="19">Romance (RO)</option>
-                            <option value="20">Russian (RU)</option>
-                            <option value="21">Swedish (SV)</option>
-                            <option value="22">Thai (TH)</option>
-                            <option value="23">Turkish (TR)</option>
-                            <option value="24">Ukrainian (UK)</option>
-                            <option value="25">Vietnamese (VI)</option>
-                            <option value="26">Zhuang (ZH)</option>
-                            <option value="27">Chuang (ZW)</option>
+                            <option value="1" class="c_CZ">Czech (CZ)</option>
+                            <option value="2" class="c_DA">Dansk (DA)</option>
+                            <option value="3" class="c_DE">Deutsch (DE)</option>
+                            <option value="4" class="c_EN">English (EN)</option>
+                            <option value="5" class="c_EP">Spanish (ES)</option>
+                            <option value="6" class="c_FI">Finnish (FI)</option>
+                            <option value="7" class="c_FR">French (FR)</option>
+                            <option value="8" class="c_GR">Greek (GR)</option>
+                            <option value="9" class="c_HU">Magyar (HU)</option>
+                            <option value="10" class="c_ID">Bahasa Indonesia (ID)</option>
+                            <option value="11" class="c_IT">Italiano (IT)</option>
+                            <option value="12" class="c_JA">Japanese (JA)</option>
+                            <option value="13" class="c_KO">Korean (KO)</option>
+                            <option value="14" class="c_MS">Bahasa Malay (MS)</option>
+                            <option value="15" class="c_NL">Nederlands (NL)</option>
+                            <option value="16" class="c_NO">Norsk (NO)</option>
+                            <option value="17" class="c_PL">Polski (PL)</option>
+                            <option value="18" class="c_PT">Portuguese (PT)</option>
+                            <option value="19" class="c_RO">Romance (RO)</option>
+                            <option value="20" class="c_RU">Russian (RU)</option>
+                            <option value="21" class="c_SV">Swedish (SV)</option>
+                            <option value="22" class="c_TH">Thai (TH)</option>
+                            <option value="23" class="c_TR">Turkish (TR)</option>
+                            <option value="24" class="c_UA">Ukrainian (UK)</option>
+                            <option value="25" class="c_VI">Vietnamese (VI)</option>
+                            <option value="26" class="c_ZH">Zhuang (ZH)</option>
+                            <option value="27" class="c_ZW">Chuang (ZW)</option>
                         </select>
                     </td>
                 </tr>
@@ -698,33 +699,33 @@
                     <td class="cLabel">${i18n['label.profile_page.languages.thirdLang']}:</td>
                     <td>
                         <select name="thirdLanguageId" class="jSaveData jSelect" style="float:left;">
-                            <option value="1">Czech (CZ)</option>
-                            <option value="2">Dansk (DA)</option>
-                            <option value="3">Deutsch (DE)</option>
-                            <option value="4">English (EN)</option>
-                            <option value="5">Spanish (ES)</option>
-                            <option value="6">Finnish (FI)</option>
-                            <option value="7">French (FR)</option>
-                            <option value="8">Greek (GR)</option>
-                            <option value="9">Magyar (HU)</option>
-                            <option value="10">Bahasa Indonesia (ID)</option>
-                            <option value="11">Italiano (IT)</option>
-                            <option value="12">Japanese (JA)</option>
-                            <option value="13">Korean (KO)</option>
-                            <option value="14">Bahasa Malay (MS)</option>
-                            <option value="15">Nederlands (NL)</option>
-                            <option value="16">Norsk (NO)</option>
-                            <option value="17">Polski (PL)</option>
-                            <option value="18">Portuguese (PT)</option>
-                            <option value="19">Romance (RO)</option>
-                            <option value="20">Russian (RU)</option>
-                            <option value="21">Swedish (SV)</option>
-                            <option value="22">Thai (TH)</option>
-                            <option value="23">Turkish (TR)</option>
-                            <option value="24">Ukrainian (UK)</option>
-                            <option value="25">Vietnamese (VI)</option>
-                            <option value="26">Zhuang (ZH)</option>
-                            <option value="27">Chuang (ZW)</option>
+                            <option value="1" class="c_CZ">Czech (CZ)</option>
+                            <option value="2" class="c_DA">Dansk (DA)</option>
+                            <option value="3" class="c_DE">Deutsch (DE)</option>
+                            <option value="4" class="c_EN">English (EN)</option>
+                            <option value="5" class="c_EP">Spanish (ES)</option>
+                            <option value="6" class="c_FI">Finnish (FI)</option>
+                            <option value="7" class="c_FR">French (FR)</option>
+                            <option value="8" class="c_GR">Greek (GR)</option>
+                            <option value="9" class="c_HU">Magyar (HU)</option>
+                            <option value="10" class="c_ID">Bahasa Indonesia (ID)</option>
+                            <option value="11" class="c_IT">Italiano (IT)</option>
+                            <option value="12" class="c_JA">Japanese (JA)</option>
+                            <option value="13" class="c_KO">Korean (KO)</option>
+                            <option value="14" class="c_MS">Bahasa Malay (MS)</option>
+                            <option value="15" class="c_NL">Nederlands (NL)</option>
+                            <option value="16" class="c_NO">Norsk (NO)</option>
+                            <option value="17" class="c_PL">Polski (PL)</option>
+                            <option value="18" class="c_PT">Portuguese (PT)</option>
+                            <option value="19" class="c_RO">Romance (RO)</option>
+                            <option value="20" class="c_RU">Russian (RU)</option>
+                            <option value="21" class="c_SV">Swedish (SV)</option>
+                            <option value="22" class="c_TH">Thai (TH)</option>
+                            <option value="23" class="c_TR">Turkish (TR)</option>
+                            <option value="24" class="c_UA">Ukrainian (UK)</option>
+                            <option value="25" class="c_VI">Vietnamese (VI)</option>
+                            <option value="26" class="c_ZH">Zhuang (ZH)</option>
+                            <option value="27" class="c_ZW">Chuang (ZW)</option>
                         </select>
                     </td>
                 </tr>
@@ -965,9 +966,17 @@
                 saveProfile();
             });
             $('select[name!=is_male]').change(function() {
+                if($(this).attr('name') == 'countryId') {
+                    $('input[name=city]').val('');
+                    $('input[name=cityId]').val('');
+                } else if($(this).attr('name') == 'currentCountryId') {
+                    $('input[name=currentCity]').val('');
+                    $('input[name=currentCityId]').val('');
+                }
+        
                 saveProfile();
             });
-
+            
             $('span.jClearBtn')
                     .hover(
                     function() {
@@ -1013,7 +1022,6 @@
                                 $('select[name=is_male]').val(request.data.female);
                                 $('input[name=books]').val(request.data.books);
                                 $('input[name=cellPhone]').val(request.data.cellPhone);
-                                $('select[name=firstLanguageId]').val(request.data.firstLanguageId);
                                 $('input[name=firstName]').val(request.data.firstName);
                                 $('input[name=height]').val(request.data.height);
                                 $('input[name=interest]').val(request.data.interest);
@@ -1044,6 +1052,121 @@
                                     $('#currentCity').val(request.data.currentCityName);
                                     $('#currentCityId').val(request.data.currentCityId);
                                 }
+                                
+                                $('select[name=firstLanguageId]').val(request.data.firstLanguageId).selectmenu(
+                                    {
+                                        icons:[
+                                            { find: '.c_CZ' },
+                                            // 
+                                            { find: '.c_DE' },
+                                            { find: '.c_EN' },
+                                            
+                                            { find: '.c_FI' },
+                                            { find: '.c_FR' },
+                                            { find: '.c_GR' },
+                                            { find: '.c_HU' },
+
+                                            { find: '.c_ID' },
+                                            { find: '.c_IT' },
+                                            { find: '.c_JA' },
+                                            { find: '.c_KO' },
+                                            { find: '.c_MS' },
+                                            { find: '.c_NL' },
+                                            { find: '.c_NO' },
+                                            { find: '.c_PL' },
+                                            
+                                            { find: '.c_PT' },
+                                            { find: '.c_RO' },
+                                            { find: '.c_JA' },
+                                            { find: '.c_RU' },
+                                            { find: '.c_SV' },
+                                            { find: '.c_TH' },
+                                            { find: '.c_TR' },
+                                            { find: '.c_UK' },
+                                            { find: '.c_VI' },
+                                            { find: '.c_ZH' },
+                                            { find: '.c_ZW' },
+                                            
+                                            
+                                        ]
+                                    }
+                                );
+                                    $('select[name=secondLanguageId]').val(request.data.secondLanguageId).selectmenu(
+                                    {
+                                        icons:[
+                                            { find: '.c_CZ' },
+                                            // 
+                                            { find: '.c_DE' },
+                                            { find: '.c_EN' },
+                                            
+                                            { find: '.c_FI' },
+                                            { find: '.c_FR' },
+                                            { find: '.c_GR' },
+                                            { find: '.c_HU' },
+
+                                            { find: '.c_ID' },
+                                            { find: '.c_IT' },
+                                            { find: '.c_JA' },
+                                            { find: '.c_KO' },
+                                            { find: '.c_MS' },
+                                            { find: '.c_NL' },
+                                            { find: '.c_NO' },
+                                            { find: '.c_PL' },
+                                            
+                                            { find: '.c_PT' },
+                                            { find: '.c_RO' },
+                                            { find: '.c_JA' },
+                                            { find: '.c_RU' },
+                                            { find: '.c_SV' },
+                                            { find: '.c_TH' },
+                                            { find: '.c_TR' },
+                                            { find: '.c_UK' },
+                                            { find: '.c_VI' },
+                                            { find: '.c_ZH' },
+                                            { find: '.c_ZW' },
+                                            
+                                            
+                                        ]
+                                    }
+                                );
+                                    $('select[name=thirdLanguageId]').val(request.data.thirdLanguageId).selectmenu(
+                                    {
+                                        icons:[
+                                            { find: '.c_CZ' },
+                                            // 
+                                            { find: '.c_DE' },
+                                            { find: '.c_EN' },
+                                            
+                                            { find: '.c_FI' },
+                                            { find: '.c_FR' },
+                                            { find: '.c_GR' },
+                                            { find: '.c_HU' },
+
+                                            { find: '.c_ID' },
+                                            { find: '.c_IT' },
+                                            { find: '.c_JA' },
+                                            { find: '.c_KO' },
+                                            { find: '.c_MS' },
+                                            { find: '.c_NL' },
+                                            { find: '.c_NO' },
+                                            { find: '.c_PL' },
+                                            
+                                            { find: '.c_PT' },
+                                            { find: '.c_RO' },
+                                            { find: '.c_JA' },
+                                            { find: '.c_RU' },
+                                            { find: '.c_SV' },
+                                            { find: '.c_TH' },
+                                            { find: '.c_TR' },
+                                            { find: '.c_UK' },
+                                            { find: '.c_VI' },
+                                            { find: '.c_ZH' },
+                                            { find: '.c_ZW' },
+                                            
+                                            
+                                        ]
+                                    }
+                                );
 
                                 $('select[name=countryId]').val(request.data.countryId).selectmenu(
                                         {
