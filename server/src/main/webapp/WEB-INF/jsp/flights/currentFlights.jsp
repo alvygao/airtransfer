@@ -170,7 +170,7 @@
                                             $('#jFlight table .jDateTo').html(event.data.arriveDate);
 
                                             $('#jFlight table .jCountryFrom').html(event.data.fromAirport);
-                                            $('#jFlight table .jCountryFrom').html(event.data.toAirport);
+                                            $('#jFlight table .jCountryTo').html(event.data.toAirport);
 
                                             $('#jFlight table .jFlightCompanyFrom').html(event.data.flightCompanyFrom);
                                             $('#jFlight table .jTerminalFrom').html(event.data.terminalFrom);
