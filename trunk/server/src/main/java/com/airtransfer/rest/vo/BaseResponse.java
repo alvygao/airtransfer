@@ -33,4 +33,8 @@ public class BaseResponse<VO extends AbstractVO> extends AbstractResponse {
     public void setData(VO data) {
         this.data = data;
     }
+
+    public BaseResponse(boolean success, String msg) {
+        super();
+    }
 }

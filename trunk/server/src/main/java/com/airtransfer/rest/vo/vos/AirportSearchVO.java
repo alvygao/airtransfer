@@ -2,6 +2,8 @@ package com.airtransfer.rest.vo.vos;
 
 import com.airtransfer.models.Airport;
 
+import javax.swing.plaf.BorderUIResource;
+import javax.swing.plaf.ButtonUI;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -21,13 +23,18 @@ public class AirportSearchVO extends TrinityVO {
     }
 
     public AirportSearchVO(Airport airport) {
-        super(airport);
+        this.id = String.valueOf(airport.getId());
         StringBuilder builder = new StringBuilder();
-        builder.append(airport.getCountryNameEng())
+        builder.append(airport.getEngName())
+                .append(" ")
+                .append("[").append(airport.getIataCode()).append("]")
+                .append(" ")
+                .append(airport.getCountryNameEng())
                 .append(" (")
                 .append(airport.getCountryCode())
                 .append(")");
-        country = builder.toString();
+        country = airport.getCountryCode();
+        this.value = builder.toString();
     }
 
     public String getCountry() {
@@ -36,5 +43,15 @@ public class AirportSearchVO extends TrinityVO {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public static void main(String[] args) {
+        char initChar = 'A';
+        for (int i = 0; i < 26; i++) {
+            char ch = initChar++;
+            StringBuilder builder = new StringBuilder();
+            builder.append("<option value=\"").append(ch).append("\">").append(ch).append("</option>");
+            System.out.println(builder.toString());
+        }
     }
 }

@@ -11,6 +11,12 @@ import java.util.List;
  */
 public interface FlightDao extends AbstractDao<Flight, Long> {
 
-   List<Flight> getFlightsByUser(User user);
+    List<Flight> getFlightsByUser(User user);
+
+    List<Flight> getCurrentFlightsByUser(User user);
+
+    List<Flight> getFutureFlightsByUser(User user);
+
+    List<Flight> getOldFlightsByUser(final User user);
 
 }

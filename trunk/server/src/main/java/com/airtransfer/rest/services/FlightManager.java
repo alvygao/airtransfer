@@ -2,9 +2,11 @@ package com.airtransfer.rest.services;
 
 import com.airtransfer.models.Airport;
 import com.airtransfer.models.Flight;
+import com.airtransfer.models.User;
 import com.airtransfer.models.UserSession;
 import com.airtransfer.rest.vo.BaseEntityVOResponse;
 import com.airtransfer.rest.vo.BaseListVOResponse;
+import com.airtransfer.rest.vo.BaseResponse;
 import com.airtransfer.rest.vo.FlightCreationRequest;
 import com.airtransfer.rest.vo.vos.FlightVO;
 import com.airtransfer.services.dao.AirportDao;
@@ -36,14 +38,19 @@ public class FlightManager extends BaseManager {
     public BaseEntityVOResponse createFlight(FlightCreationRequest request) {
         try {
             if (!validate(request)) {
-                return new BaseEntityVOResponse();
+                return new BaseEntityVOResponse(false, "Invalid departure date or airport;");
             }
 
             Flight flight = request.model();
-            Airport from = airportDao.load(request.getFromAirport());
-            Airport to = airportDao.load(request.getToAirport());
-            flight.setFromAirport(from);
-            flight.setToAirport(to);
+            if (request.getFromAirport() != null) {
+                Airport from = airportDao.load(request.getFromAirport());
+                flight.setFromAirport(from);
+            }
+
+            if (request.getToAirport() != null) {
+                Airport to = airportDao.load(request.getToAirport());
+                flight.setToAirport(to);
+            }
 
             UserSession session = getSession();
             flight.setOwner(session.getUser());
@@ -84,7 +91,7 @@ public class FlightManager extends BaseManager {
     @Produces({MediaType.APPLICATION_JSON})
     public BaseListVOResponse getCurrentFlights() {
         try {
-            List<Flight> list = flightDao.getFlightsByUser(getSession().getUser());
+            List<Flight> list = flightDao.getCurrentFlightsByUser(getSession().getUser());
             BaseListVOResponse response = new BaseListVOResponse();
             ArrayList<FlightVO> flights = new ArrayList<FlightVO>(list.size());
             for (Flight flight : list) {
@@ -104,7 +111,7 @@ public class FlightManager extends BaseManager {
     @Produces({MediaType.APPLICATION_JSON})
     public BaseListVOResponse getRemovedFlights() {
         try {
-            List<Flight> list = flightDao.getFlightsByUser(getSession().getUser());
+            List<Flight> list = flightDao.getOldFlightsByUser(getSession().getUser());
             BaseListVOResponse response = new BaseListVOResponse();
             ArrayList<FlightVO> flights = new ArrayList<FlightVO>(list.size());
             for (Flight flight : list) {
@@ -124,7 +131,7 @@ public class FlightManager extends BaseManager {
     @Produces({MediaType.APPLICATION_JSON})
     public BaseListVOResponse getFutureFlights() {
         try {
-            List<Flight> list = flightDao.getFlightsByUser(getSession().getUser());
+            List<Flight> list = flightDao.getFutureFlightsByUser(getSession().getUser());
             BaseListVOResponse response = new BaseListVOResponse();
             ArrayList<FlightVO> flights = new ArrayList<FlightVO>(list.size());
             for (Flight flight : list) {
@@ -139,9 +146,56 @@ public class FlightManager extends BaseManager {
     }
 
 
+    @GET
+    @Path("/load/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public BaseResponse getFlight(@PathParam("id") Long id) {
+        try {
+            User user = getSession().getUser();
+            Flight flight = flightDao.get(id);
+
+            return new BaseResponse();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return new BaseResponse(false, e.getMessage());
+        }
+    }
+
+
+    @PUT
+    @Path("/update/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public BaseResponse updateFlight(@PathParam("id") Long id, FlightVO vo) {
+        try {
+            User user = getSession().getUser();
+            Flight flight = flightDao.get(id);
+            if (!user.getId().equals(flight.getOwner().getId())) {
+                return new BaseResponse(false, "Illegal Access: user is not a owner of the flight");
+            }
+            Flight model = vo.model();
+            if (vo.getFromAirportId() != null) {
+                Airport airport = airportDao.get(vo.getFromAirportId());
+                flight.setFromAirport(airport);
+            }
+            if (vo.getToAirportId() != null) {
+                Airport airport = airportDao.get(vo.getToAirportId());
+                flight.setToAirport(airport);
+            }
+            flight.update(model);
+            flightDao.persist(flight);
+
+            return new BaseResponse();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return new BaseResponse(false, e.getMessage());
+        }
+    }
+
+
     private boolean validate(FlightCreationRequest request) {
-        return (request.getArriveDate() != null && request.getDepartureDate() != null
-                && request.getFromAirport() != null && request.getToAirport() != null);
+        return (request.getDepartureDate() != null && request.getFromAirport() != null);
     }
 
 }

@@ -1,14 +1,13 @@
 package com.airtransfer.rest.vo;
 
 import com.airtransfer.models.Flight;
-import org.apache.commons.lang.StringUtils;
+import com.airtransfer.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -46,7 +45,7 @@ public class FlightCreationRequest {
         flight.setSeatTo(seatTo);
         flight.setTerminalFrom(terminalFrom);
         flight.setTerminalTo(terminalTo);
-        flight.setOneWay(twoWays);
+        flight.setBackFlight(twoWays);
 
         return flight;
     }
@@ -59,13 +58,7 @@ public class FlightCreationRequest {
     }
 
     public void setDepartureDate(String departureDate) {
-        if (StringUtils.isNotBlank(departureDate)) {
-            try {
-                this.departureDate = SimpleDateFormat.getDateInstance().parse(departureDate);
-            } catch (ParseException e) {
-                logger.warn(e.getMessage());
-            }
-        }
+        this.departureDate = DateUtils.parse(departureDate);
     }
 
     public String getArriveDate() {
@@ -73,13 +66,7 @@ public class FlightCreationRequest {
     }
 
     public void setArriveDate(String arriveDate) {
-        if (StringUtils.isNotBlank(arriveDate)) {
-            try {
-                this.arriveDate = SimpleDateFormat.getDateInstance().parse(arriveDate);
-            } catch (ParseException e) {
-                logger.warn(e.getMessage());
-            }
-        }
+        this.arriveDate = DateUtils.parse(arriveDate);
     }
 
     public Long getFromAirport() {

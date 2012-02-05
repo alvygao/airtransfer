@@ -66,7 +66,7 @@
                     <td></td>
                     <th></th>
                     <td>
-                        <a href="/html/flights/edit" class="cEdit jEditFlight"></a>
+
                         <a href="javascript:void(0)" class="cGPlus"></a>
 
                         <a href="javascript:void(0)" class="cTwitter"></a>
