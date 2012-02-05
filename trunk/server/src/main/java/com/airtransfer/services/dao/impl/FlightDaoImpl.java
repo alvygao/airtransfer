@@ -76,7 +76,7 @@ public class FlightDaoImpl extends BaseDao<Flight, Long> implements FlightDao {
             public List<Flight> doInHibernate(Session session) throws HibernateException, SQLException {
                 return session.createQuery(" SELECT f from Flight  f " +
                         " WHERE (( f.backFlight IS TRUE AND f.arriveDate < :date ) " +
-                        " OR ( f.departureDate < :date ) ) " +
+                        " OR ( f.backFlight IS TRUE AND f.departureDate < :date ) ) " +
                         " AND f.owner.id = :userId ")
                         .setDate("date", now)
                         .setLong("userId", user.getId())
