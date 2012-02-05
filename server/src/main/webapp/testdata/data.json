@@ -1,25 +1,17 @@
-{"data":{
-    "@type":"userProfileVO",
-    "aboutMe":"test",
-    "appearance":"test",
-    "books":"test",
-    "cellPhone":"test",
-    "cityId":"-1",
-    "currentCityId":"-1",
-    "currentCountryId":"1",
-    "familyStatus":"test",
-    "firstLanguageId":"1",
-    "firstName":"test",
-    "height":"12312.0",
-    "interest":"test",
-    "lastName":"test",
-    "movies":"test",
-    "music":"music",
-    "phone":"test",
-    "realId":"2",
-    "secondLanguageId":"1",
-    "siteUrl":"asfsa",
-    "skypeId":"asfsa",
-    "thirdLanguageId":"1",
-    "width":"123.0"
-},"success":"true"}
+{
+    departureDate: '03.02.2012',
+    arriveDate: '07.02.2012',
+    flightCompanyFrom:'',
+    flightCompanyTo:'',
+    seatFrom:'123',
+    seatTo:'123',
+    terminalFrom:'D',
+    terminalTo:'D',
+    fromAirportName:'Sangir',
+    fromAirportId:'6475',
+    toAirportName:'Mobile Municipal',
+    toAirportId:'4735',
+    backFlight:'',
+    realId:'10'
+};
+

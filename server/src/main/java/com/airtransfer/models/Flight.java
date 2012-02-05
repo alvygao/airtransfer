@@ -14,15 +14,16 @@ import java.util.Date;
 @Table(name = "flights")
 public class Flight extends BaseEntity {
 
-    @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = User.class)
+    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "user_id")
     private User owner;
-    @Column
+    @Column(columnDefinition = "DATE")
     private Date departureDate;
-    @Column
+    @Column(columnDefinition = "DATE")
     private Date arriveDate;
     @Column(columnDefinition = "BIT DEFAULT FALSE")
-    private Boolean oneWay;
+    private Boolean backFlight;
 
     @Column
     private String flightCompanyFrom;
@@ -44,12 +45,25 @@ public class Flight extends BaseEntity {
     @Fetch(FetchMode.JOIN)
     private Airport toAirport;
 
-    public Boolean getOneWay() {
-        return oneWay;
+
+    public void update(Flight model) {
+        this.arriveDate = model.arriveDate;
+        this.departureDate = model.departureDate;
+        this.backFlight = model.backFlight;
+        this.flightCompanyFrom = model.flightCompanyFrom;
+        this.flightCompanyTo = model.flightCompanyTo;
+        this.seatFrom = model.seatFrom;
+        this.seatTo = model.seatTo;
+        this.terminalFrom = model.terminalFrom;
+        this.terminalTo = model.terminalTo;
     }
 
-    public void setOneWay(Boolean oneWay) {
-        this.oneWay = oneWay;
+    public Boolean getBackFlight() {
+        return backFlight;
+    }
+
+    public void setBackFlight(Boolean backFlight) {
+        this.backFlight = backFlight;
     }
 
     public String getFlightCompanyFrom() {

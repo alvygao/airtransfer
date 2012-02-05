@@ -1,8 +1,8 @@
 package com.airtransfer.rest.vo.vos;
 
 import com.airtransfer.models.Flight;
+import com.airtransfer.utils.DateUtils;
 
-import javax.persistence.Column;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -19,31 +19,63 @@ public class FlightVO {
     private String departureDate;
     private String arriveDate;
     private String fromAirport;
+    private Long fromAirportId;
     private String toAirport;
-    private Boolean oneWay;
+    private Long toAirportId;
+    private Boolean backFlight;
     private String flightCompanyFrom;
     private String flightCompanyTo;
     private String seatFrom;
     private String seatTo;
     private String terminalFrom;
     private String terminalTo;
+    private Long realId;
 
 
     public FlightVO() {
     }
 
+    public Flight model() {
+        Flight flight = new Flight();
+        flight.setDepartureDate(DateUtils.parse(departureDate, "yyyy-MM-dd"));
+        flight.setArriveDate(DateUtils.parse(arriveDate, "yyyy-MM-dd"));
+        flight.setBackFlight(this.backFlight);
+        flight.setFlightCompanyFrom(this.flightCompanyFrom);
+        flight.setFlightCompanyTo(this.flightCompanyTo);
+        flight.setSeatFrom(this.seatFrom);
+        flight.setSeatTo(this.seatTo);
+        flight.setTerminalFrom(this.terminalFrom);
+        flight.setTerminalTo(this.terminalTo);
+        flight.setId(this.realId);
+        return flight;
+    }
+
     public FlightVO(Flight flight) {
-        departureDate = SimpleDateFormat.getDateInstance().format(flight.getDepartureDate());
-        arriveDate = SimpleDateFormat.getDateInstance().format(flight.getArriveDate());
-        fromAirport = flight.getFromAirport().getEngName();
-        toAirport = flight.getToAirport().getEngName();
-        oneWay = flight.getOneWay();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        if (flight.getDepartureDate() != null) {
+            departureDate = format.format(flight.getDepartureDate());
+        }
+        if (flight.getArriveDate() != null) {
+            arriveDate = format.format(flight.getArriveDate());
+        }
+        if (flight.getFromAirport() != null) {
+            fromAirport = flight.getFromAirport().getEngName();
+            fromAirportId = flight.getFromAirport().getId();
+        }
+
+        if (flight.getToAirport() != null) {
+            toAirport = flight.getToAirport().getEngName();
+            toAirportId = flight.getToAirport().getId();
+        }
+        backFlight = flight.getBackFlight();
         flightCompanyFrom = flight.getFlightCompanyFrom();
         flightCompanyTo = flight.getFlightCompanyTo();
         seatFrom = flight.getSeatFrom();
         seatTo = flight.getSeatTo();
         terminalFrom = flight.getTerminalFrom();
         terminalTo = flight.getTerminalTo();
+        realId = flight.getId();
+
     }
 
     public String getDepartureDate() {
@@ -78,12 +110,12 @@ public class FlightVO {
         this.toAirport = toAirport;
     }
 
-    public Boolean getOneWay() {
-        return oneWay;
+    public Boolean getBackFlight() {
+        return backFlight;
     }
 
-    public void setOneWay(Boolean oneWay) {
-        this.oneWay = oneWay;
+    public void setBackFlight(Boolean backFlight) {
+        this.backFlight = backFlight;
     }
 
     public String getFlightCompanyFrom() {
@@ -132,5 +164,29 @@ public class FlightVO {
 
     public void setTerminalTo(String terminalTo) {
         this.terminalTo = terminalTo;
+    }
+
+    public Long getRealId() {
+        return realId;
+    }
+
+    public void setRealId(Long realId) {
+        this.realId = realId;
+    }
+
+    public Long getFromAirportId() {
+        return fromAirportId;
+    }
+
+    public void setFromAirportId(Long fromAirportId) {
+        this.fromAirportId = fromAirportId;
+    }
+
+    public Long getToAirportId() {
+        return toAirportId;
+    }
+
+    public void setToAirportId(Long toAirportId) {
+        this.toAirportId = toAirportId;
     }
 }

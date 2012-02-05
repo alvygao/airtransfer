@@ -14,19 +14,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class TrinityVO {
-    private String id;
-    private String label;
-    private String value;
+    protected String id;
+    protected String label;
+    protected String value;
 
     public TrinityVO() {
-    }
-
-    public TrinityVO(Airport airport) {
-        id = String.valueOf(airport.getId());
-        label = airport.getEngName();
-        StringBuilder builder = new StringBuilder();
-        builder.append(airport.getEngName()).append(" [").append(airport.getIataCode()).append("]");
-        value = builder.toString();
     }
 
     public TrinityVO(City city) {

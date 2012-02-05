@@ -10,9 +10,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public abstract class AbstractResponse {
 
-    private Boolean success;
-    private String message;
-    private String code;
+    protected Boolean success;
+    protected String message;
+    protected String code;
+
+    protected AbstractResponse() {
+    }
 
     public Boolean getSuccess() {
         return success;

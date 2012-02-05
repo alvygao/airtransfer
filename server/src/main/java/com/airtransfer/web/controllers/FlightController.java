@@ -1,6 +1,11 @@
 package com.airtransfer.web.controllers;
 
+import com.airtransfer.models.Flight;
+import com.airtransfer.rest.vo.vos.FlightVO;
+import com.airtransfer.services.dao.FlightDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,6 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/flights")
 public class FlightController extends AbstractController {
+
+    @Autowired
+    protected FlightDao dao;
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createFlight(ModelAndView view) {
@@ -34,6 +42,14 @@ public class FlightController extends AbstractController {
     @RequestMapping(value = "/removed", method = RequestMethod.GET)
     public ModelAndView removedFlights(ModelAndView view) {
         view.setViewName("flights/removedFlights");
+        return view;
+    }
+
+    @RequestMapping(value = "/edit/{flightId}", method = RequestMethod.GET)
+    public ModelAndView editFlight(ModelAndView view, @PathVariable() Long flightId) {
+        Flight flight = dao.get(flightId);
+        view.addObject("flight", new FlightVO(flight));
+        view.setViewName("flights/editFlight");
         return view;
     }
 

@@ -35,7 +35,6 @@ public class AirportVO {
         } else {
             name = airport.getEngName();
         }
-
     }
 
     public Long getRealId() {
