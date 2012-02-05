@@ -635,7 +635,7 @@
                             <option value="2" class="c_DA">Dansk (DA)</option>
                             <option value="3" class="c_DE">Deutsch (DE)</option>
                             <option value="4" class="c_EN">English (EN)</option>
-                            <option value="5" class="c_EP">Spanish (ES)</option>
+                            <option value="5" class="c_ES">Spanish (ES)</option>
                             <option value="6" class="c_FI">Finnish (FI)</option>
                             <option value="7" class="c_FR">French (FR)</option>
                             <option value="8" class="c_GR">Greek (GR)</option>
@@ -669,7 +669,7 @@
                             <option value="2" class="c_DA">Dansk (DA)</option>
                             <option value="3" class="c_DE">Deutsch (DE)</option>
                             <option value="4" class="c_EN">English (EN)</option>
-                            <option value="5" class="c_EP">Spanish (ES)</option>
+                            <option value="5" class="c_ES">Spanish (ES)</option>
                             <option value="6" class="c_FI">Finnish (FI)</option>
                             <option value="7" class="c_FR">French (FR)</option>
                             <option value="8" class="c_GR">Greek (GR)</option>
@@ -703,7 +703,7 @@
                             <option value="2" class="c_DA">Dansk (DA)</option>
                             <option value="3" class="c_DE">Deutsch (DE)</option>
                             <option value="4" class="c_EN">English (EN)</option>
-                            <option value="5" class="c_EP">Spanish (ES)</option>
+                            <option value="5" class="c_ES">Spanish (ES)</option>
                             <option value="6" class="c_FI">Finnish (FI)</option>
                             <option value="7" class="c_FR">French (FR)</option>
                             <option value="8" class="c_GR">Greek (GR)</option>
@@ -1057,37 +1057,35 @@
                                     {
                                         icons:[
                                             { find: '.c_CZ' },
-                                            // 
                                             { find: '.c_DE' },
                                             { find: '.c_EN' },
-                                            
+                                            { find: '.c_ES' },
+                                            { find: '.c_DA' },
+                                            { find: '.c_GB' },
+                                            { find: '.c_JA' },
+                                            { find: '.c_JP' },
+                                            { find: '.c_KO' },
+                                            { find: '.c_VI' },
+                                            { find: '.c_ZH' },
                                             { find: '.c_FI' },
                                             { find: '.c_FR' },
                                             { find: '.c_GR' },
                                             { find: '.c_HU' },
-
                                             { find: '.c_ID' },
                                             { find: '.c_IT' },
-                                            { find: '.c_JA' },
-                                            { find: '.c_KO' },
                                             { find: '.c_MS' },
                                             { find: '.c_NL' },
                                             { find: '.c_NO' },
                                             { find: '.c_PL' },
-                                            
                                             { find: '.c_PT' },
                                             { find: '.c_RO' },
-                                            { find: '.c_JA' },
                                             { find: '.c_RU' },
                                             { find: '.c_SV' },
                                             { find: '.c_TH' },
                                             { find: '.c_TR' },
                                             { find: '.c_UK' },
-                                            { find: '.c_VI' },
-                                            { find: '.c_ZH' },
-                                            { find: '.c_ZW' },
-                                            
-                                            
+                                            { find: '.c_UA' },
+                                            { find: '.c_ZW' }
                                         ]
                                     }
                                 );
@@ -1095,37 +1093,35 @@
                                     {
                                         icons:[
                                             { find: '.c_CZ' },
-                                            // 
                                             { find: '.c_DE' },
                                             { find: '.c_EN' },
-                                            
+                                            { find: '.c_ES' },
+                                            { find: '.c_DA' },
+                                            { find: '.c_GB' },
+                                            { find: '.c_JA' },
+                                            { find: '.c_JP' },
+                                            { find: '.c_KO' },
+                                            { find: '.c_VI' },
+                                            { find: '.c_ZH' },
                                             { find: '.c_FI' },
                                             { find: '.c_FR' },
                                             { find: '.c_GR' },
                                             { find: '.c_HU' },
-
                                             { find: '.c_ID' },
                                             { find: '.c_IT' },
-                                            { find: '.c_JA' },
-                                            { find: '.c_KO' },
                                             { find: '.c_MS' },
                                             { find: '.c_NL' },
                                             { find: '.c_NO' },
                                             { find: '.c_PL' },
-                                            
                                             { find: '.c_PT' },
                                             { find: '.c_RO' },
-                                            { find: '.c_JA' },
                                             { find: '.c_RU' },
                                             { find: '.c_SV' },
                                             { find: '.c_TH' },
                                             { find: '.c_TR' },
                                             { find: '.c_UK' },
-                                            { find: '.c_VI' },
-                                            { find: '.c_ZH' },
-                                            { find: '.c_ZW' },
-                                            
-                                            
+                                            { find: '.c_UA' },
+                                            { find: '.c_ZW' }
                                         ]
                                     }
                                 );
@@ -1133,37 +1129,35 @@
                                     {
                                         icons:[
                                             { find: '.c_CZ' },
-                                            // 
                                             { find: '.c_DE' },
                                             { find: '.c_EN' },
-                                            
+                                            { find: '.c_ES' },
+                                            { find: '.c_DA' },
+                                            { find: '.c_GB' },
+                                            { find: '.c_JA' },
+                                            { find: '.c_JP' },
+                                            { find: '.c_KO' },
+                                            { find: '.c_VI' },
+                                            { find: '.c_ZH' },
                                             { find: '.c_FI' },
                                             { find: '.c_FR' },
                                             { find: '.c_GR' },
                                             { find: '.c_HU' },
-
                                             { find: '.c_ID' },
                                             { find: '.c_IT' },
-                                            { find: '.c_JA' },
-                                            { find: '.c_KO' },
                                             { find: '.c_MS' },
                                             { find: '.c_NL' },
                                             { find: '.c_NO' },
                                             { find: '.c_PL' },
-                                            
                                             { find: '.c_PT' },
                                             { find: '.c_RO' },
-                                            { find: '.c_JA' },
                                             { find: '.c_RU' },
                                             { find: '.c_SV' },
                                             { find: '.c_TH' },
                                             { find: '.c_TR' },
                                             { find: '.c_UK' },
-                                            { find: '.c_VI' },
-                                            { find: '.c_ZH' },
-                                            { find: '.c_ZW' },
-                                            
-                                            
+                                            { find: '.c_UA' },
+                                            { find: '.c_ZW' }
                                         ]
                                     }
                                 );
