@@ -16,7 +16,7 @@
                 <tr>
                     <td class="cLabel">${i18n['label.profile_page.personalData.name']}:</td>
                     <td>
-                        <input type="text" class="jSaveData" name="firstName" maxlength="255"/>
+                        <input style="text-transform: uppercase" type="text" class="jSaveData" name="firstName" maxlength="255"/>
                             <span class="cClearBtn jClearBtn">
                                 <img src="/images/clear-button.png" alt="clear"/>
                             </span>
@@ -25,7 +25,7 @@
                 <tr>
                     <td class="cLabel">${i18n['label.profile_page.personalData.lastName']}:</td>
                     <td>
-                        <input type="text" class="jSaveData" name="lastName" maxlength="255"/>
+                        <input style="text-transform: uppercase" type="text" class="jSaveData" name="lastName" maxlength="255"/>
                             <span class="cClearBtn jClearBtn">
                                 <img src="/images/clear-button.png" alt="clear"/>
                             </span>
@@ -609,6 +609,11 @@
         </select>
         </td>
         </tr>
+        <tr>
+            <td colspan="2" style="text-align: center; padding: 0px; width: 100%;">
+                <a href="javascript:void(0);"><img src="/images/location.png" /></a>
+            </td>
+        </tr>
         <tr class="cLast">
             <td class="cLabel">${i18n['label.profile_page.location.city']}:</td>
             <td>
@@ -775,9 +780,6 @@
                             <option value="5">Stout</option>
                             <option value="6">Other</option>
                         </select>
-                            <span class="cClearBtn jClearBtn">
-                                <img src="/images/clear-button.png" alt="clear"/>
-                            </span>
                     </td>
                 </tr>
                 <tr>
