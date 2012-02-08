@@ -1,6 +1,7 @@
 package com.airtransfer.rest.vo.vos;
 
 import com.airtransfer.models.UserProfile;
+import com.airtransfer.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,6 +58,7 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
     private String books;
     private String facebook;
     private String twitter;
+    private String creationDate;
 
     public UserProfileVO(UserProfile entity) {
         realId = entity.getId();
@@ -73,10 +75,10 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         thirdLanguageId = entity.getThirdLanguage() != null ? entity.getThirdLanguage().getId() : null;
         professionId = entity.getOccupation() != null ? entity.getOccupation().getId() : null;
         appearanceId = entity.getAppearance() != null ? entity.getAppearance().getId() : null;
-        familyStatusId = entity.getFamilyStatus() != null ? entity.getFamilyStatus().getId(): null ;
+        familyStatusId = entity.getFamilyStatus() != null ? entity.getFamilyStatus().getId() : null;
 
-        firstName = entity.getFirstName();
-        lastName = entity.getLastName();
+        firstName = entity.getFirstName() != null ? entity.getFirstName().toUpperCase() : null;
+        lastName = entity.getLastName() != null ? entity.getLastName().toUpperCase() : null;
         isFemale = entity.getFemale();
 
         siteUrl = entity.getSiteUrl();
@@ -96,6 +98,8 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         books = entity.getBooks();
         twitter = entity.getTwitter();
         facebook = entity.getFacebook();
+        creationDate = DateUtils.format(entity.getCreated());
+
     }
 
     public UserProfileVO() {
@@ -106,8 +110,8 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         UserProfile entity = new UserProfile();
 
         entity.setId(realId);
-        entity.setFirstName(firstName);
-        entity.setLastName(lastName);
+        entity.setFirstName(firstName != null ? firstName.toUpperCase() : null);
+        entity.setLastName(lastName != null ? lastName.toUpperCase() : null);
         entity.setFemale(isFemale);
 
         entity.setSiteUrl(siteUrl);
@@ -404,5 +408,13 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
 
     public void setTwitter(String twitter) {
         this.twitter = twitter;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 }

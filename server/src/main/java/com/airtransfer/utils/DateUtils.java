@@ -37,4 +37,12 @@ public class DateUtils {
         }
     }
 
+    public static String format(Date date) {
+        if (date == null) {
+            return null;
+        }
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        return format.format(date);
+    }
+
 }
