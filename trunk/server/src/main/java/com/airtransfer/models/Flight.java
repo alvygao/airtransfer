@@ -37,6 +37,10 @@ public class Flight extends BaseEntity {
     private String terminalFrom;
     @Column
     private String terminalTo;
+    @Column(columnDefinition = "TEXT")
+    private String comment;
+    @Column()
+    private String flightNumber;
 
     @ManyToOne(targetEntity = Airport.class, fetch = FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
@@ -154,5 +158,19 @@ public class Flight extends BaseEntity {
         this.toAirport = toAirport;
     }
 
+    public String getComment() {
+        return comment;
+    }
 
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
 }

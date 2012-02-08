@@ -12,7 +12,7 @@
     <a href="${baseAppUrl}/html/profile/flights">${i18n['label.user_menu.myAir']}</a>
 
     <div class="cDevider"></div>
-    <a class="cLast" href="#">${i18n['label.user_menu.myAlbums']}</a>
+    <a class="cLast" href="/html/profile/albums">${i18n['label.user_menu.myAlbums']}</a>
 
     <div class="cClear"></div>
 </div>
