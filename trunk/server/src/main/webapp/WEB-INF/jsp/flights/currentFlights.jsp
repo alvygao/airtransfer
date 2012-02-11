@@ -111,7 +111,6 @@
 
                     function processEdit(cmp) {
                         try {
-                            alert('aaaaaaaa');
                             dialog.dialog({
                                         resizable: false,
                                         title: title,
@@ -139,6 +138,7 @@
                                 success:function(event) {
                                     if (event.success == 'true' && !isEmpty(event.data)) {
                                         var container = [];
+                                        $('.cList').html('');
                                         if (event.data instanceof Array) {
                                             $.each(event.data, function(key, value) {
                                                 $('#jFlight table .jDateFrom').html(value.departureDate);
@@ -160,9 +160,7 @@
                                                         .attr('onClick', 'return editFlight(this);');
 
                                                 var content = $('#jFlight table').html();
-                                                $('.cList').html('');
                                                 $('.cList').append(content);
-
                                             });
                                         } else {
 
@@ -186,7 +184,6 @@
 
 
                                             var content = $('#jFlight table');
-                                            $('.cList').html('');
                                             $('.cList').append(content);
 
                                         }

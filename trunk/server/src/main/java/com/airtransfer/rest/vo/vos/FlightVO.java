@@ -26,9 +26,10 @@ public class FlightVO {
     private String flightCompanyFrom;
     private String flightCompanyTo;
     private String seatFrom;
-    private String seatTo;
     private String terminalFrom;
     private String terminalTo;
+    private String comment;
+    private String flightNumber;
     private Long realId;
 
 
@@ -43,7 +44,6 @@ public class FlightVO {
         flight.setFlightCompanyFrom(this.flightCompanyFrom);
         flight.setFlightCompanyTo(this.flightCompanyTo);
         flight.setSeatFrom(this.seatFrom);
-        flight.setSeatTo(this.seatTo);
         flight.setTerminalFrom(this.terminalFrom);
         flight.setTerminalTo(this.terminalTo);
         flight.setId(this.realId);
@@ -71,7 +71,7 @@ public class FlightVO {
         flightCompanyFrom = flight.getFlightCompanyFrom();
         flightCompanyTo = flight.getFlightCompanyTo();
         seatFrom = flight.getSeatFrom();
-        seatTo = flight.getSeatTo();
+
         terminalFrom = flight.getTerminalFrom();
         terminalTo = flight.getTerminalTo();
         realId = flight.getId();
@@ -142,14 +142,6 @@ public class FlightVO {
         this.seatFrom = seatFrom;
     }
 
-    public String getSeatTo() {
-        return seatTo;
-    }
-
-    public void setSeatTo(String seatTo) {
-        this.seatTo = seatTo;
-    }
-
     public String getTerminalFrom() {
         return terminalFrom;
     }
@@ -188,5 +180,21 @@ public class FlightVO {
 
     public void setToAirportId(Long toAirportId) {
         this.toAirportId = toAirportId;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 }

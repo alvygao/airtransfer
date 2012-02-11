@@ -38,8 +38,11 @@ public class FlightManager extends BaseManager {
     public BaseEntityVOResponse createFlight(FlightCreationRequest request) {
         try {
             if (!validate(request)) {
-                return new BaseEntityVOResponse(false, "Invalid departure date or airport;");
+                return new BaseEntityVOResponse(false, "Not all required fields are filled.;");
             }
+
+            UserSession session = getSession();
+            User user = session.getUser();
 
             Flight flight = request.model();
             if (request.getFromAirport() != null) {
@@ -52,9 +55,17 @@ public class FlightManager extends BaseManager {
                 flight.setToAirport(to);
             }
 
-            UserSession session = getSession();
-            flight.setOwner(session.getUser());
+            if (flight.getBackFlight() != null && flight.getBackFlight()) {
+                if (request.getBackFlight() != null) {
+                    Flight returnFlight = request.getBackFlight().model();
+                    returnFlight.setOwner(user);
+                    flight.setReturnFlight(returnFlight);
+                } else {
+                    logger.warn("Back flight is empty;");
+                }
+            }
 
+            flight.setOwner(user);
             flightDao.persist(flight);
 
             return new BaseEntityVOResponse();
@@ -193,9 +204,15 @@ public class FlightManager extends BaseManager {
         }
     }
 
-
     private boolean validate(FlightCreationRequest request) {
-        return (request.getDepartureDate() != null && request.getFromAirport() != null);
+        if (request.getTwoWays() != null && request.getTwoWays()) {
+            return request.getFromAirport() != null && request.getDepartureDate() != null
+                    && request.getBackFlight() != null
+                    && request.getBackFlight().getFromAirport() != null
+                    && request.getBackFlight().getDepartureDate() != null;
+        } else {
+            return request.getFromAirport() != null && request.getDepartureDate() != null;
+        }
     }
 
 }

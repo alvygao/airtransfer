@@ -103,7 +103,7 @@
                             </span>
                 </td>
                 <td>
-                    <input type="text" id="seatTo"/>
+
                 </td>
             </tr>
             <tr>
@@ -240,7 +240,7 @@
                             </span>
                 </td>
                 <td>
-                    <input type="text" id="backSeatTo"/>
+
                 </td>
             </tr>
             <tr>
@@ -379,7 +379,7 @@
                     deferRequestBy: 0,
                     noCache: false,
                     select: function(value, data) {
-                        $('#fromCityHidden').val(data.item.id);
+                        $('#backFromCityHidden').val(data.item.id);
                         return;
                     }
                 });
@@ -434,36 +434,44 @@
        return true;
     }
 
+    function clearFields(){
+
+        $('#fromCityHidden').val('');
+        $('#toCityHidden').val('');
+        $('#departureDate').val('');
+        $('#arriveDate').val('');
+    }
+
     function createFlight(){
 
        if (isValid_InputData()) {
 
           var directFlight = {
-              departureDate:$('#departureDate').val(),
-              arriveDate:$('#arriveDate').val(),
               fromAirport:$('#fromCityHidden').val(),
-              toAirport:$('#toCityHidden').val(),
-              flightCompanyFrom:'',
-              flightCompanyTo:'',
-              seatTo:$('#seatTo').val(),
-              seatFrom:$('#seatFrom').val(),
+              departureDate:$('#departureDate').val(),
+              seatTo:$('#seatFrom').val(),
               terminalFrom:$('#termFrom').val(),
+              flightNumber:$('#flightNumber').val(),
+
+              toAirport:$('#toCityHidden').val(),
+              arriveDate:$('#arriveDate').val(),
               terminalTo:$('#termTo').val(),
+              flightComment:$('#termFrom').val(),
               twoWays:$('#oneWay').is(':checked')
           };
 
           if ($('#oneWay').is(':checked')){
              var backFlight = {
-                departureDate:$('#backDepartureDate').val(),
-                arriveDate:$('#backArriveDate').val(),
-                fromAirport:$('#backFromCityHidden').val(),
-                toAirport:$('#backToCityHidden').val(),
-                flightCompanyFrom:'',
-                flightCompanyTo:'',
-                seatTo:$('#backSeatTo').val(),
-                seatFrom:$('#backSeatFrom').val(),
-                terminalFrom:$('#backTermFrom').val(),
-                terminalTo:$('#backTermTo').val()
+                 fromAirport:$('#backFromCityHidden').val(),
+                 departureDate:$('#backDepartureDate').val(),
+                 seatTo:$('#backSeatFrom').val(),
+                 terminalFrom:$('#backTermFrom').val(),
+                 flightNumber:$('#flightNumber').val(),
+
+                 toAirport:$('#backToCityHidden').val(),
+                 arriveDate:$('#backArriveDate').val(),
+                 terminalTo:$('#backTermTo').val(),
+                 flightComment:$('#backFlightComment').val()
              };
 
              directFlight.backFlight = backFlight;
@@ -475,10 +483,7 @@
                       contentType: "application/json; charset=utf-8",
                       data : JSON.stringify(directFlight),
                       success:function(event) {
-                          $('#fromCityHidden').val('');
-                          $('#toCityHidden').val('');
-                          $('#departureDate').val('');
-                          $('#arriveDate').val('');
+//                          clearFields();
                           loadFlights();
                       }
           });
