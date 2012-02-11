@@ -2,8 +2,6 @@ package com.airtransfer.rest.vo;
 
 import com.airtransfer.models.Flight;
 import com.airtransfer.utils.DateUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,34 +17,31 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class FlightCreationRequest {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
-
-    private Date departureDate;
-    private Date arriveDate;
     private Long fromAirport;
+    private Date departureDate;
+    private String seatTo;
+    private String terminalFrom;
+    private String flightNumber;
+
     private Long toAirport;
+    private Date arriveDate;
+    private String terminalTo;
+    private String flightComment;
 
     private Boolean twoWays;
 
-    private String flightCompanyFrom;
-    private String flightCompanyTo;
-    private String seatFrom;
-    private String seatTo;
-    private String terminalFrom;
-    private String terminalTo;
+
+    private FlightCreationRequest backFlight;
 
     public Flight model() {
         Flight flight = new Flight();
         flight.setArriveDate(arriveDate);
         flight.setDepartureDate(departureDate);
-        flight.setFlightCompanyFrom(flightCompanyFrom);
-        flight.setFlightCompanyTo(flightCompanyTo);
-        flight.setSeatFrom(seatFrom);
-        flight.setSeatTo(seatTo);
         flight.setTerminalFrom(terminalFrom);
         flight.setTerminalTo(terminalTo);
         flight.setBackFlight(twoWays);
-
+        flight.setFlightNumber(flightNumber);
+        flight.setComment(flightComment);
         return flight;
     }
 
@@ -93,30 +88,6 @@ public class FlightCreationRequest {
         this.twoWays = twoWays;
     }
 
-    public String getFlightCompanyFrom() {
-        return flightCompanyFrom;
-    }
-
-    public void setFlightCompanyFrom(String flightCompanyFrom) {
-        this.flightCompanyFrom = flightCompanyFrom;
-    }
-
-    public String getFlightCompanyTo() {
-        return flightCompanyTo;
-    }
-
-    public void setFlightCompanyTo(String flightCompanyTo) {
-        this.flightCompanyTo = flightCompanyTo;
-    }
-
-    public String getSeatFrom() {
-        return seatFrom;
-    }
-
-    public void setSeatFrom(String seatFrom) {
-        this.seatFrom = seatFrom;
-    }
-
     public String getSeatTo() {
         return seatTo;
     }
@@ -139,5 +110,29 @@ public class FlightCreationRequest {
 
     public void setTerminalTo(String terminalTo) {
         this.terminalTo = terminalTo;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public String getFlightComment() {
+        return flightComment;
+    }
+
+    public void setFlightComment(String flightComment) {
+        this.flightComment = flightComment;
+    }
+
+    public FlightCreationRequest getBackFlight() {
+        return backFlight;
+    }
+
+    public void setBackFlight(FlightCreationRequest backFlight) {
+        this.backFlight = backFlight;
     }
 }

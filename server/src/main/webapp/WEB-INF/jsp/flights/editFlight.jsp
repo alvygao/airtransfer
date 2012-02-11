@@ -150,7 +150,6 @@
         flightCompanyFrom:'${flight.flightCompanyFrom}',
         flightCompanyTo:'${flight.flightCompanyTo}',
         seatFrom:'${flight.seatFrom}',
-        seatTo:'${flight.seatTo}',
         terminalFrom:'${flight.terminalFrom}',
         terminalTo:'${flight.terminalTo}',
         fromAirportName:'${flight.fromAirport}',

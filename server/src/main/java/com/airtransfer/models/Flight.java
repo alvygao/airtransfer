@@ -1,5 +1,6 @@
 package com.airtransfer.models;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -32,8 +33,6 @@ public class Flight extends BaseEntity {
     @Column
     private String seatFrom;
     @Column
-    private String seatTo;
-    @Column
     private String terminalFrom;
     @Column
     private String terminalTo;
@@ -41,6 +40,9 @@ public class Flight extends BaseEntity {
     private String comment;
     @Column()
     private String flightNumber;
+
+    @OneToOne(cascade = {CascadeType.PERSIST})
+    private Flight returnFlight;
 
     @ManyToOne(targetEntity = Airport.class, fetch = FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
@@ -57,17 +59,18 @@ public class Flight extends BaseEntity {
         this.flightCompanyFrom = model.flightCompanyFrom;
         this.flightCompanyTo = model.flightCompanyTo;
         this.seatFrom = model.seatFrom;
-        this.seatTo = model.seatTo;
         this.terminalFrom = model.terminalFrom;
         this.terminalTo = model.terminalTo;
+        this.comment = model.comment;
+        this.flightNumber = model.flightNumber;
     }
 
-    public Boolean getBackFlight() {
-        return backFlight;
+    public Flight getReturnFlight() {
+        return returnFlight;
     }
 
-    public void setBackFlight(Boolean backFlight) {
-        this.backFlight = backFlight;
+    public void setReturnFlight(Flight returnFlight) {
+        this.returnFlight = returnFlight;
     }
 
     public String getFlightCompanyFrom() {
@@ -92,14 +95,6 @@ public class Flight extends BaseEntity {
 
     public void setSeatFrom(String seatFrom) {
         this.seatFrom = seatFrom;
-    }
-
-    public String getSeatTo() {
-        return seatTo;
-    }
-
-    public void setSeatTo(String seatTo) {
-        this.seatTo = seatTo;
     }
 
     public String getTerminalFrom() {
@@ -173,4 +168,14 @@ public class Flight extends BaseEntity {
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
     }
+
+    public Boolean getBackFlight() {
+        return backFlight;
+    }
+
+    public void setBackFlight(Boolean backFlight) {
+        this.backFlight = backFlight;
+    }
+
+
 }
