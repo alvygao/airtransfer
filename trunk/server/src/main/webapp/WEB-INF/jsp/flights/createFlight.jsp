@@ -108,7 +108,7 @@
             </tr>
             <tr>
                 <td><label>&nbsp;</label></td>
-                <td></td>
+                <td><label>${i18n['label.flight.form.comment']}:</label></td>
                 <td></td>
             </tr>
             <tr>
@@ -147,7 +147,7 @@
             </tr>
         </table>
             <%--==============================================- BACK FLIGHT -==============================================--%>
-        <div class="cBlock"></div>
+        <div class="cBlock" style="height: 60px;"></div>
         <table id="backFlightFrom">
             <tr>
                 <th rowspan="4" style="width: 60px; vertical-align: middle; padding-top: 10px;">
@@ -419,41 +419,74 @@
                 });
 
         $('#submitFlight').click(function() {
-            if (isEmpty($('#fromCityHidden').val())
-                    || isEmpty($('#departureDate').val())
-                    ) {
-                alert("You have to specify all values!");
-                return;
-            }
-            var flight = {
-                departureDate:$('#departureDate').val(),
-                arriveDate:$('#arriveDate').val(),
-                fromAirport:$('#fromCityHidden').val(),
-                toAirport:$('#toCityHidden').val(),
-                flightCompanyFrom:'',
-                flightCompanyTo:'',
-                seatTo:$('#seatTo').val(),
-                seatFrom:$('#seatFrom').val(),
-                terminalFrom:$('#termFrom').val(),
-                terminalTo:$('#termTo').val(),
-                twoWays:$('#oneWay').is(':checked')
-            };
-            $.ajax({
-                        type: 'post',
-                        url: "/rest/flights",
-                        contentType: "application/json; charset=utf-8",
-                        data : JSON.stringify(flight),
-                        success:function(event) {
-                            $('#fromCityHidden').val('');
-                            $('#toCityHidden').val('');
-                            $('#departureDate').val('');
-                            $('#arriveDate').val('');
-                            loadFlights();
-                        }
-                    });
-
+            createFlight();
         });
     });
+
+    function isValid_InputData(){
+
+       var isBackFlight = $('#oneWay').is(':checked');
+
+       if (isBackFlight){
+
+       }
+
+       return true;
+    }
+
+    function createFlight(){
+
+       if (isValid_InputData()) {
+
+          var directFlight = {
+              departureDate:$('#departureDate').val(),
+              arriveDate:$('#arriveDate').val(),
+              fromAirport:$('#fromCityHidden').val(),
+              toAirport:$('#toCityHidden').val(),
+              flightCompanyFrom:'',
+              flightCompanyTo:'',
+              seatTo:$('#seatTo').val(),
+              seatFrom:$('#seatFrom').val(),
+              terminalFrom:$('#termFrom').val(),
+              terminalTo:$('#termTo').val(),
+              twoWays:$('#oneWay').is(':checked')
+          };
+
+          if ($('#oneWay').is(':checked')){
+             var backFlight = {
+                departureDate:$('#backDepartureDate').val(),
+                arriveDate:$('#backArriveDate').val(),
+                fromAirport:$('#backFromCityHidden').val(),
+                toAirport:$('#backToCityHidden').val(),
+                flightCompanyFrom:'',
+                flightCompanyTo:'',
+                seatTo:$('#backSeatTo').val(),
+                seatFrom:$('#backSeatFrom').val(),
+                terminalFrom:$('#backTermFrom').val(),
+                terminalTo:$('#backTermTo').val()
+             };
+
+             directFlight.backFlight = backFlight;
+          }
+
+          $.ajax({
+                      type: 'post',
+                      url: "/rest/flights",
+                      contentType: "application/json; charset=utf-8",
+                      data : JSON.stringify(directFlight),
+                      success:function(event) {
+                          $('#fromCityHidden').val('');
+                          $('#toCityHidden').val('');
+                          $('#departureDate').val('');
+                          $('#arriveDate').val('');
+                          loadFlights();
+                      }
+          });
+
+       }
+
+
+    }
 
     function loadFlights() {
         $.ajax({
