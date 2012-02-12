@@ -9,6 +9,13 @@
 
 
         <div class="cFlight">
+            <div class="cBackFlight">
+                <a style="float: right;" class="cReturn" href="javascript:void(0)">
+                    
+                </a>
+            </div>
+        <div class="cClear"></div>
+        <div class="cFlightFromBlock" style="width: 100%; position: relative;">    
         <table id="flightFrom">
             <tr>
                 <th rowspan="4" style="width: 60px; vertical-align: middle; padding-top: 10px;">
@@ -16,9 +23,8 @@
                 </th>
                 <td><label>${i18n['label.flight.form.from']}:</label></td>
                 <td><label>${i18n['label.flight.form.departureDate']}:</label></td>
-                <td>
-                    <label>${i18n['label.flight.form.seat']}:</label>
-                </td>
+                <td></td>
+                
             </tr>
             <tr>
                 <td>
@@ -31,16 +37,24 @@
                                 <img alt="clear" src="/images/calendar.gif"/>
                             </span>
                 </td>
+                <td></td>
+                    
+            </tr>
+            <tr>
+                
+                <td>
+                    <label>${i18n['label.flight.form.seat']}:</label>
+                </td>
+                <td></td>
+                <td><label>${i18n['label.flight.form.flight_number']}</label></td>
+            </tr>
+            <tr>
                 <td>
                     <input type="text" id="seatFrom" maxlength="3"/>
                 </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td><label>${i18n['label.flight.form.flight_number']}</label></td>
-                <td></td>
-            </tr>
-            <tr>
+                <td>
+                    <input style="" type="text" id="flightNumber"/>
+                </td>
                 <td>
                     <select class=" jSelect" id="termFrom" style="float:left;">
                         <option value="${i18n['label.flight.form.term']} A">${i18n['label.flight.form.term']} A</option>
@@ -71,9 +85,7 @@
                         <option value="${i18n['label.flight.form.term']} Z">${i18n['label.flight.form.term']} Z</option>
                     </select>
                 </td>
-                <td>
-                    <input style="margin-left: 28px;" type="text" id="flightNumber"/>
-                </td>
+                
                 <td></td>
                 <td></td>
             </tr>
@@ -86,8 +98,6 @@
                 </th>
                 <td><label>${i18n['label.flight.form.to']}:</label></td>
                 <td><label>${i18n['label.flight.form.arriveDate']}:</label></td>
-                <td>
-                </td>
             </tr>
             <tr>
                 <td>
@@ -96,17 +106,16 @@
                 </td>
                 <td>
                     <input name="arriveDate" type="text" id="arriveDate" class="jCalendar"/>
-                            <span class="cClearBtn cCalendar">
-                                <img alt="clear" src="/images/calendar.gif"/>
-                            </span>
+                    <span class="cClearBtn cCalendar">
+                        <img alt="clear" src="/images/calendar.gif"/>
+                    </span>
                 </td>
                 <td>
 
                 </td>
             </tr>
             <tr>
-                <td><label>&nbsp;</label></td>
-                <td><label>${i18n['label.flight.form.comment']}:</label></td>
+                <td>&nbsp;</td>
                 <td></td>
             </tr>
             <tr>
@@ -140,12 +149,17 @@
                         <option value="${i18n['label.flight.form.term']} Z">${i18n['label.flight.form.term']} Z</option>
                     </select>
                 </td>
-                <td><textarea rows="1" cols="26" id="flightComment" style="margin-left: 30px;"></textarea></td>
+                
                 <td></td>
             </tr>
         </table>
+        <div style="position: absolute; top: 0px; right: 0px; width: 200px; height: 200px;">
+            <textarea rows="8" cols="23" id="flightComment" style=""></textarea>
+        </div>
+        </div>
             <%--==============================================- BACK FLIGHT -==============================================--%>
         <div class="cBlock" style="height: 60px;"></div>
+        <div id="jBackFlight" style="display: none; width: 100%; position: relative;">
         <table id="backFlightFrom">
             <tr>
                 <th rowspan="4" style="width: 60px; vertical-align: middle; padding-top: 10px;">
@@ -153,9 +167,7 @@
                 </th>
                 <td><label>${i18n['label.flight.form.from']}:</label></td>
                 <td><label>${i18n['label.flight.form.departureDate']}:</label></td>
-                <td>
-                    <label>${i18n['label.flight.form.seat']}:</label>
-                </td>
+                
             </tr>
             <tr>
                 <td>
@@ -168,16 +180,23 @@
                                 <img alt="clear" src="/images/calendar.gif"/>
                             </span>
                 </td>
-                <td>
-                    <input type="text" id="backSeatFrom" maxlength="3"/>
-                </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td><label>${i18n['label.flight.form.flight_number']}</label></td>
                 <td></td>
             </tr>
             <tr>
+               
+                <td>
+                    <label>${i18n['label.flight.form.seat']}:</label>
+                </td>
+                <td><label>${i18n['label.flight.form.flight_number']}</label></td>
+                <td>&nbsp;</td>
+                
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="backSeatFrom" maxlength="3"/>
+                </td>
+                <td><input style="" type="text" id="backFlightNumber"/></td>
                 <td>
                     <select class=" jSelect" id="backTermFrom" style="float:left;">
                         <option value="${i18n['label.flight.form.term']} A">${i18n['label.flight.form.term']} A</option>
@@ -208,7 +227,7 @@
                         <option value="${i18n['label.flight.form.term']} Z">${i18n['label.flight.form.term']} Z</option>
                     </select>
                 </td>
-                <td><input style="margin-left: 28px;" type="text" id="backFlightNumber"/></td>
+                
                 <td></td>
             </tr>
         </table>
@@ -221,8 +240,6 @@
                 </th>
                 <td><label>${i18n['label.flight.form.to']}:</label></td>
                 <td><label>${i18n['label.flight.form.arriveDate']}:</label></td>
-                <td>
-                </td>
             </tr>
             <tr>
                 <td>
@@ -241,7 +258,6 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><label>${i18n['label.flight.form.comment']}:</label></td>
                 <td></td>
             </tr>
             <tr>
@@ -275,20 +291,25 @@
                         <option value="${i18n['label.flight.form.term']} Z">${i18n['label.flight.form.term']} Z</option>
                     </select>
                 </td>
-                <td><textarea rows="1" cols="26" id="backflightComment" style="margin-left: 30px;"></textarea></td>
+                <td></td>
                 <td></td>
             </tr>
         </table>
+        <div style="position: absolute; top: 0px; right: 0px; width: 200px; height: 200px;">
+            <textarea rows="8" cols="23" id="backflightComment"></textarea>
+        </div>
+        </div>
         <div class="cBlock"></div>
-        <div>
-            <label for="termTo">Return:&nbsp;&nbsp;&nbsp;</label>
-            <input type="checkbox" checked="true" value="Return" id="oneWay"/>
+        <div style="height: 40px;">
+            <%-- <label for="termTo">Return:&nbsp;&nbsp;&nbsp;</label>
+            <input type="checkbox" checked="true" value="Return" id="oneWay"/> --%>
             <input id="submitFlight" type="button" value="Create Flight"/>
             <!-- Submit form after click Enter button -->
             <input type="submit" style="display: none;"/>
         </div>
         </div>
         </div>
+        <div class="cClear"></div>
     </jsp:attribute>
 </tags:main>
 <script type="text/javascript">
@@ -323,7 +344,9 @@
         $('#termTo').selectmenu({});
         $('#backTermFrom').selectmenu({});
         $('#backTermTo').selectmenu({});
-
+        $('.cReturn').click(function(){
+            $('#jBackFlight').slideToggle();
+        });
         $('.jCalendar').datepicker({
                     showAnim: 'slideDown',
                     changeMonth: true,
@@ -447,14 +470,14 @@
           var directFlight = {
               fromAirport:$('#fromCityHidden').val(),
               departureDate:$('#departureDate').val(),
-              seatFrom:$('#seatFrom').val(),
+              seatTo:$('#seatFrom').val(),
               terminalFrom:$('#termFrom').val(),
               flightNumber:$('#flightNumber').val(),
 
               toAirport:$('#toCityHidden').val(),
               arriveDate:$('#arriveDate').val(),
               terminalTo:$('#termTo').val(),
-              flightComment:$('#flightComment').val(),
+              flightComment:$('#termFrom').val(),
               twoWays:$('#oneWay').is(':checked')
           };
 
@@ -490,3 +513,19 @@
     }
 
 </script>
+<style type="text/css">
+    .cFlight td {
+        width: 160px;
+    }
+    .ui-selectmenu {
+        height: 24px;
+        width: 135px !important;
+    }
+    .ui-selectmenu-menu li a, .ui-selectmenu-status {
+         padding: 0.105em 1em;
+    }
+    
+    .ui-selectmenu-menu {
+        width: 165px !important;
+    }
+</style>
