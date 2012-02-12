@@ -98,7 +98,7 @@ public class UserProfileVO extends AbstractEntityVO<UserProfile> {
         books = entity.getBooks();
         twitter = entity.getTwitter();
         facebook = entity.getFacebook();
-        creationDate = DateUtils.format(entity.getCreated());
+        creationDate = DateUtils.formatFriendly(entity.getCreated());
 
     }
 

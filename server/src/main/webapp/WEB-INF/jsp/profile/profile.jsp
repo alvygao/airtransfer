@@ -10,7 +10,7 @@
         <form action="" name="profileForm" id="jProfileForm">
         <div class="cColumn">
         <h3>${i18n['label.profile_page.personalData']}</h3>
-
+        <lavel id="creationDate"></lavel>
         <div class="cFormBlock">
             <table border="0">
                 <tr>
@@ -1021,6 +1021,7 @@
                         success: function(request) {
                             if (request.success == 'true') {
                                 $('textarea[name=aboutMe]').val(request.data.aboutMe);
+                                $('#creationDate').html("Created at " + request.data.creationDate);
                                 $('select[name=is_male]').val(request.data.female);
                                 $('input[name=books]').val(request.data.books);
                                 $('input[name=cellPhone]').val(request.data.cellPhone);

@@ -45,4 +45,12 @@ public class DateUtils {
         return format.format(date);
     }
 
+    public static String formatFriendly(Date date) {
+        if (date == null) {
+            return null;
+        }
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return format.format(date);
+    }
+
 }
