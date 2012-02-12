@@ -43,15 +43,13 @@ public class FlightDaoImpl extends BaseDao<Flight, Long> implements FlightDao {
         return getHibernateTemplate().executeFind(new HibernateCallback<List<Flight>>() {
             public List<Flight> doInHibernate(Session session) throws HibernateException, SQLException {
                 return session.createQuery(" SELECT f from Flight  f " +
-                        " WHERE (( f.backFlight is TRUE AND :date >= f.departureDate AND :date <= f.arriveDate ) " +
-                        " OR ( :date = f.departureDate )) AND f.owner.id = :userId ")
+                        " WHERE f.owner.id = :userId AND :date >= f.departureDate AND :date <= f.arriveDate ")
                         .setDate("date", now)
                         .setLong("userId", user.getId())
                         .list();
             }
         });
     }
-
 
     @SuppressWarnings("unchecked")
     public List<Flight> getFutureFlightsByUser(final User user) {
@@ -59,8 +57,7 @@ public class FlightDaoImpl extends BaseDao<Flight, Long> implements FlightDao {
         return getHibernateTemplate().executeFind(new HibernateCallback<List<Flight>>() {
             public List<Flight> doInHibernate(Session session) throws HibernateException, SQLException {
                 return session.createQuery(" SELECT f from Flight  f " +
-                        " WHERE f.departureDate > :date AND " +
-                        " f.owner.id = :userId ")
+                        " WHERE f.owner.id = :userId AND f.departureDate > :date ")
                         .setDate("date", now)
                         .setLong("userId", user.getId())
                         .list();
@@ -68,16 +65,13 @@ public class FlightDaoImpl extends BaseDao<Flight, Long> implements FlightDao {
         });
     }
 
-
     @SuppressWarnings("unchecked")
     public List<Flight> getOldFlightsByUser(final User user) {
         final Date now = new Date();
         return getHibernateTemplate().executeFind(new HibernateCallback<List<Flight>>() {
             public List<Flight> doInHibernate(Session session) throws HibernateException, SQLException {
                 return session.createQuery(" SELECT f from Flight  f " +
-                        " WHERE (( f.backFlight IS TRUE AND f.arriveDate < :date ) " +
-                        " OR ( f.backFlight IS TRUE AND f.departureDate < :date ) ) " +
-                        " AND f.owner.id = :userId ")
+                        " WHERE f.owner.id = :userId AND f.arriveDate < :date " )
                         .setDate("date", now)
                         .setLong("userId", user.getId())
                         .list();

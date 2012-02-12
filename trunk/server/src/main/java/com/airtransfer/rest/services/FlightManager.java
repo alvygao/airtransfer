@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -59,12 +60,14 @@ public class FlightManager extends BaseManager {
                 if (request.getBackFlight() != null) {
                     Flight returnFlight = request.getBackFlight().model();
                     returnFlight.setOwner(user);
+                    returnFlight.setCreated(new Date());
                     flight.setReturnFlight(returnFlight);
                 } else {
                     logger.warn("Back flight is empty;");
                 }
             }
 
+            flight.setCreated(new Date());
             flight.setOwner(user);
             flightDao.persist(flight);
 
