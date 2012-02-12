@@ -609,7 +609,7 @@
         </select>
         </td>
         </tr>
-        <tr>
+        <tr style="display: none;">
             <td colspan="2" style="text-align: center; padding: 0px; width: 100%;">
                 <a href="javascript:void(0);"><img src="/images/location.png" /></a>
             </td>
