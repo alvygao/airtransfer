@@ -5,7 +5,7 @@
         <jsp:include page="/WEB-INF/jsp/includes/topmenu.jsp"/>
         <div class="cPage">
             <div class="cBlock"></div>
-            <h1>${i18n['label.flight.pastFlights']}</h1>
+            <h1>${i18n['label.flight.futureFlight']}</h1>
 
             <div class="cFlight" id="currentFlights">
                 <table class="cList">
@@ -43,13 +43,13 @@
                     <tr>
                         <th></th>
                         <td>
-                            <div class="cBlockF jFlightCompanyFrom"></div>
+                            <div class="cBlockF jFlightNumber"></div>
                             <div class="cBlockF jTerminalFrom"></div>
                         </td>
                         <th></th>
                         <td>
-                            <div class="cBlockF jFlightCompanyTo"></div>
                             <div class="cBlockF jTerminalTo"></div>
+
                         </td>
                     </tr>
                     <tr>
@@ -59,7 +59,7 @@
                         </td>
                         <th></th>
                         <td>
-                            <div class="cBlockF jSeatTo"></div>
+                            <div class="cBlockF jComment"></div>
                         </td>
                     </tr>
                     <tr>
@@ -111,7 +111,6 @@
 
                     function processEdit(cmp) {
                         try {
-                            alert('aaaaaaaa');
                             dialog.dialog({
                                         resizable: false,
                                         title: title,
@@ -139,6 +138,7 @@
                                 success:function(event) {
                                     if (event.success == 'true' && !isEmpty(event.data)) {
                                         var container = [];
+                                        $('.cList').html('');
                                         if (event.data instanceof Array) {
                                             $.each(event.data, function(key, value) {
                                                 $('#jFlight table .jDateFrom').html(value.departureDate);
@@ -147,22 +147,21 @@
                                                 $('#jFlight table .jCountryFrom').html(value.fromAirport);
                                                 $('#jFlight table .jCountryTo').html(value.toAirport);
 
-                                                $('#jFlight table .jFlightCompanyFrom').html(value.flightCompanyFrom);
+                                                $('#jFlight table .jFlightNumber').html("Flight #:" + (value.flightNumber == undefined ? "" : value.flightNumber ));
                                                 $('#jFlight table .jTerminalFrom').html(value.terminalFrom);
-                                                $('#jFlight table .jFlightCompanyTo').html(value.flightCompanyTo);
                                                 $('#jFlight table .jTerminalTo').html(value.terminalTo);
+                                                $('#jFlight table .jFlightCompanyTo').html(value.flightCompanyTo);
 
-                                                $('#jFlight table .jSeatFrom').html(value.seatFrom);
-                                                $('#jFlight table .jSeatTo').html(value.seatTo);
+                                                $('#jFlight table .jSeatFrom').html("Seat #:" + (value.seatFrom == undefined ? "" : value.seatFrom ));
+                                                $('#jFlight table .jComment').html( value.comment);
+
 
                                                 $('#jFlight table .jEditFlight')
                                                         .attr('href', '/html/flights/edit/' + value.realId)
                                                         .attr('onClick', 'return editFlight(this);');
 
                                                 var content = $('#jFlight table').html();
-                                                $('.cList').html('');
                                                 $('.cList').append(content);
-
                                             });
                                         } else {
 
@@ -172,13 +171,13 @@
                                             $('#jFlight table .jCountryFrom').html(event.data.fromAirport);
                                             $('#jFlight table .jCountryTo').html(event.data.toAirport);
 
-                                            $('#jFlight table .jFlightCompanyFrom').html(event.data.flightCompanyFrom);
+                                            $('#jFlight table .jFlightNumber').html("Flight #:" + (event.data.flightNumber == undefined ? "" : event.data.flightNumber ));
                                             $('#jFlight table .jTerminalFrom').html(event.data.terminalFrom);
-                                            $('#jFlight table .jFlightCompanyTo').html(event.data.flightCompanyTo);
                                             $('#jFlight table .jTerminalTo').html(event.data.terminalTo);
+                                            $('#jFlight table .jFlightCompanyTo').html(event.data.flightCompanyTo);
 
-                                            $('#jFlight table .jSeatFrom').html(event.data.seatFrom);
-                                            $('#jFlight table .jSeatTo').html(event.data.seatTo);
+                                            $('#jFlight table .jSeatFrom').html("Seat #:" + (event.data.seatFrom == undefined ? "" : event.data.seatFrom ));
+                                            $('#jFlight table .jComment').html( event.data.comment);
 
                                             $('#jFlight table .jEditFlight')
                                                     .attr('href', '/html/flights/edit/' + event.data.realId)
@@ -186,7 +185,6 @@
 
 
                                             var content = $('#jFlight table');
-                                            $('.cList').html('');
                                             $('.cList').append(content);
 
                                         }

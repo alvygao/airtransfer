@@ -47,6 +47,8 @@ public class FlightVO {
         flight.setTerminalFrom(this.terminalFrom);
         flight.setTerminalTo(this.terminalTo);
         flight.setId(this.realId);
+        flight.setComment(this.comment);
+        flight.setFlightNumber(this.flightNumber);
         return flight;
     }
 
@@ -59,7 +61,7 @@ public class FlightVO {
             arriveDate = format.format(flight.getArriveDate());
         }
         if (flight.getFromAirport() != null) {
-            fromAirport = flight.getFromAirport().getEngName();
+            fromAirport = flight.getFromAirport().getEngName() + " "  + flight.getFromAirport().getCountryCode();
             fromAirportId = flight.getFromAirport().getId();
         }
 
@@ -76,6 +78,8 @@ public class FlightVO {
         terminalTo = flight.getTerminalTo();
         realId = flight.getId();
 
+        flightNumber = flight.getFlightNumber();
+        comment = flight.getComment();
     }
 
     public String getDepartureDate() {

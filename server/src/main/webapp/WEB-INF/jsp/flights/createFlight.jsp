@@ -87,8 +87,6 @@
                 <td><label>${i18n['label.flight.form.to']}:</label></td>
                 <td><label>${i18n['label.flight.form.arriveDate']}:</label></td>
                 <td>
-                    <label>${i18n['label.flight.form.seat']}:</label>
-
                 </td>
             </tr>
             <tr>
@@ -224,8 +222,6 @@
                 <td><label>${i18n['label.flight.form.to']}:</label></td>
                 <td><label>${i18n['label.flight.form.arriveDate']}:</label></td>
                 <td>
-                    <label>${i18n['label.flight.form.seat']}:</label>
-
                 </td>
             </tr>
             <tr>
@@ -436,10 +432,12 @@
 
     function clearFields(){
 
+/*
         $('#fromCityHidden').val('');
         $('#toCityHidden').val('');
         $('#departureDate').val('');
         $('#arriveDate').val('');
+*/
     }
 
     function createFlight(){
@@ -449,14 +447,14 @@
           var directFlight = {
               fromAirport:$('#fromCityHidden').val(),
               departureDate:$('#departureDate').val(),
-              seatTo:$('#seatFrom').val(),
+              seatFrom:$('#seatFrom').val(),
               terminalFrom:$('#termFrom').val(),
               flightNumber:$('#flightNumber').val(),
 
               toAirport:$('#toCityHidden').val(),
               arriveDate:$('#arriveDate').val(),
               terminalTo:$('#termTo').val(),
-              flightComment:$('#termFrom').val(),
+              flightComment:$('#flightComment').val(),
               twoWays:$('#oneWay').is(':checked')
           };
 
@@ -484,46 +482,11 @@
                       data : JSON.stringify(directFlight),
                       success:function(event) {
 //                          clearFields();
-                          loadFlights();
                       }
           });
 
        }
 
-
     }
 
-    function loadFlights() {
-        $.ajax({
-                    type: 'get',
-                    url: "/rest/flights",
-                    contentType: "application/json; charset=utf-8",
-                    success:function(event) {
-                        if (event.success == 'true' && !isEmpty(event.data)) {
-                            var container = [];
-                            if (event.data instanceof Array) {
-                                $.each(event.data, function(key, value) {
-                                    container.push('<div class="flight-div ">'
-                                            + ' From <b>' + value.fromAirport + '</b> '
-                                            + ' To <b>' + value.toAirport + '</b> '
-                                            + ' Date <b>' + value.arriveDate + ' - '
-                                            + value.departureDate + '</b> '
-                                            + '</div>');
-                                });
-                            } else {
-                                container.push('<div class="flight-div ">'
-                                        + ' From <b>' + event.data.fromAirport + '</b> '
-                                        + ' To <b>' + event.data.toAirport + '</b> '
-                                        + ' Date <b>' + event.data.arriveDate + ' - '
-                                        + event.data.departureDate + '</b> '
-                                        + '</div>')
-                            }
-                            var test = container.join(' ');
-                            $('#currentFlights').html(container.join(' '));
-                            return;
-                        }
-                    }
-                });
-
-    }
 </script>

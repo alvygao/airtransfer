@@ -27,42 +27,44 @@
     </tr>
     <tr>
         <td><label>${i18n['label.flight.form.term']}:</label></td>
-        <td></td>
+        <td><label>${i18n['label.flight.form.flight_number']}:</label></td>
         <td></td>
     </tr>
     <tr>
         <td></td>
         <td>
             <select class=" jSelect" id="termFrom" style="float:left;">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="E">E</option>
-                <option value="F">F</option>
-                <option value="G">G</option>
-                <option value="H">H</option>
-                <option value="I">I</option>
-                <option value="J">J</option>
-                <option value="K">K</option>
-                <option value="L">L</option>
-                <option value="M">M</option>
-                <option value="N">N</option>
-                <option value="O">O</option>
-                <option value="P">P</option>
-                <option value="Q">Q</option>
-                <option value="R">R</option>
-                <option value="S">S</option>
-                <option value="T">T</option>
-                <option value="U">U</option>
-                <option value="V">V</option>
-                <option value="W">W</option>
-                <option value="X">X</option>
-                <option value="Y">Y</option>
-                <option value="Z">Z</option>
+                <option value="${i18n['label.flight.form.term']} A">${i18n['label.flight.form.term']} A</option>
+                <option value="${i18n['label.flight.form.term']} B">${i18n['label.flight.form.term']} B</option>
+                <option value="${i18n['label.flight.form.term']} C">${i18n['label.flight.form.term']} C</option>
+                <option value="${i18n['label.flight.form.term']} D">${i18n['label.flight.form.term']} D</option>
+                <option value="${i18n['label.flight.form.term']} E">${i18n['label.flight.form.term']} E</option>
+                <option value="${i18n['label.flight.form.term']} F">${i18n['label.flight.form.term']} F</option>
+                <option value="${i18n['label.flight.form.term']} G">${i18n['label.flight.form.term']} G</option>
+                <option value="${i18n['label.flight.form.term']} H">${i18n['label.flight.form.term']} H</option>
+                <option value="${i18n['label.flight.form.term']} I">${i18n['label.flight.form.term']} I</option>
+                <option value="${i18n['label.flight.form.term']} J">${i18n['label.flight.form.term']} J</option>
+                <option value="${i18n['label.flight.form.term']} K">${i18n['label.flight.form.term']} K</option>
+                <option value="${i18n['label.flight.form.term']} L">${i18n['label.flight.form.term']} L</option>
+                <option value="${i18n['label.flight.form.term']} M">${i18n['label.flight.form.term']} M</option>
+                <option value="${i18n['label.flight.form.term']} N">${i18n['label.flight.form.term']} N</option>
+                <option value="${i18n['label.flight.form.term']} O">${i18n['label.flight.form.term']} O</option>
+                <option value="${i18n['label.flight.form.term']} P">${i18n['label.flight.form.term']} P</option>
+                <option value="${i18n['label.flight.form.term']} Q">${i18n['label.flight.form.term']} Q</option>
+                <option value="${i18n['label.flight.form.term']} R">${i18n['label.flight.form.term']} R</option>
+                <option value="${i18n['label.flight.form.term']} S">${i18n['label.flight.form.term']} S</option>
+                <option value="${i18n['label.flight.form.term']} T">${i18n['label.flight.form.term']} T</option>
+                <option value="${i18n['label.flight.form.term']} U">${i18n['label.flight.form.term']} U</option>
+                <option value="${i18n['label.flight.form.term']} V">${i18n['label.flight.form.term']} V</option>
+                <option value="${i18n['label.flight.form.term']} W">${i18n['label.flight.form.term']} W</option>
+                <option value="${i18n['label.flight.form.term']} X">${i18n['label.flight.form.term']} X</option>
+                <option value="${i18n['label.flight.form.term']} Y">${i18n['label.flight.form.term']} Y</option>
+                <option value="${i18n['label.flight.form.term']} Z">${i18n['label.flight.form.term']} Z</option>
             </select>
         </td>
-        <td></td>
+        <td>
+            <input style="margin-left: 28px;" type="text" id="flightNumber"/>
+        </td>
     </tr>
 </table>
 <div class="cBlock"></div>
@@ -74,8 +76,6 @@
         <td><label>${i18n['label.flight.form.to']}:</label></td>
         <td><label>${i18n['label.flight.form.arriveDate']}:</label></td>
         <td>
-            <label>${i18n['label.flight.form.seat']}:</label>
-
         </td>
     </tr>
     <tr>
@@ -90,54 +90,52 @@
                     </span>
         </td>
         <td>
-            <input type="text" id="seatTo" maxlength="3"/>
+            <label>&nbsp;</label>
         </td>
     </tr>
     <tr>
         <td><label>${i18n['label.flight.form.term']}:</label></td>
         <td></td>
-        <td></td>
+        <td><label>&nbsp;</label></td>
     </tr>
     <tr>
         <td>
             <select class=" jSelect" id="termTo" style="float:left;">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="E">E</option>
-                <option value="F">F</option>
-                <option value="G">G</option>
-                <option value="H">H</option>
-                <option value="I">I</option>
-                <option value="J">J</option>
-                <option value="K">K</option>
-                <option value="L">L</option>
-                <option value="M">M</option>
-                <option value="N">N</option>
-                <option value="O">O</option>
-                <option value="P">P</option>
-                <option value="Q">Q</option>
-                <option value="R">R</option>
-                <option value="S">S</option>
-                <option value="T">T</option>
-                <option value="U">U</option>
-                <option value="V">V</option>
-                <option value="W">W</option>
-                <option value="X">X</option>
-                <option value="Y">Y</option>
-                <option value="Z">Z</option>
+                <option value="${i18n['label.flight.form.term']} A">${i18n['label.flight.form.term']} A</option>
+                <option value="${i18n['label.flight.form.term']} B">${i18n['label.flight.form.term']} B</option>
+                <option value="${i18n['label.flight.form.term']} C">${i18n['label.flight.form.term']} C</option>
+                <option value="${i18n['label.flight.form.term']} D">${i18n['label.flight.form.term']} D</option>
+                <option value="${i18n['label.flight.form.term']} E">${i18n['label.flight.form.term']} E</option>
+                <option value="${i18n['label.flight.form.term']} F">${i18n['label.flight.form.term']} F</option>
+                <option value="${i18n['label.flight.form.term']} G">${i18n['label.flight.form.term']} G</option>
+                <option value="${i18n['label.flight.form.term']} H">${i18n['label.flight.form.term']} H</option>
+                <option value="${i18n['label.flight.form.term']} I">${i18n['label.flight.form.term']} I</option>
+                <option value="${i18n['label.flight.form.term']} J">${i18n['label.flight.form.term']} J</option>
+                <option value="${i18n['label.flight.form.term']} K">${i18n['label.flight.form.term']} K</option>
+                <option value="${i18n['label.flight.form.term']} L">${i18n['label.flight.form.term']} L</option>
+                <option value="${i18n['label.flight.form.term']} M">${i18n['label.flight.form.term']} M</option>
+                <option value="${i18n['label.flight.form.term']} N">${i18n['label.flight.form.term']} N</option>
+                <option value="${i18n['label.flight.form.term']} O">${i18n['label.flight.form.term']} O</option>
+                <option value="${i18n['label.flight.form.term']} P">${i18n['label.flight.form.term']} P</option>
+                <option value="${i18n['label.flight.form.term']} Q">${i18n['label.flight.form.term']} Q</option>
+                <option value="${i18n['label.flight.form.term']} R">${i18n['label.flight.form.term']} R</option>
+                <option value="${i18n['label.flight.form.term']} S">${i18n['label.flight.form.term']} S</option>
+                <option value="${i18n['label.flight.form.term']} T">${i18n['label.flight.form.term']} T</option>
+                <option value="${i18n['label.flight.form.term']} U">${i18n['label.flight.form.term']} U</option>
+                <option value="${i18n['label.flight.form.term']} V">${i18n['label.flight.form.term']} V</option>
+                <option value="${i18n['label.flight.form.term']} W">${i18n['label.flight.form.term']} W</option>
+                <option value="${i18n['label.flight.form.term']} X">${i18n['label.flight.form.term']} X</option>
+                <option value="${i18n['label.flight.form.term']} Y">${i18n['label.flight.form.term']} Y</option>
+                <option value="${i18n['label.flight.form.term']} Z">${i18n['label.flight.form.term']} Z</option>
             </select>
         </td>
-        <td></td>
+        <td><textarea rows="1" cols="20" id="flightComment" style="margin-left: 30px;"></textarea></td>
         <td></td>
     </tr>
 </table>
 <div class="cBlock"></div>
 <div>
     <input id="flightId" type="hidden"/>
-    <label for="termTo">Return:&nbsp;&nbsp;&nbsp;</label>
-    <input type="checkbox" checked="true" value="Return" id="oneWay"/>
     <input id="submitFlight" type="button" value="Update Flight"/>
     <!-- Submit form after click Enter button -->
     <input type="submit" style="display: none;"/>
@@ -157,6 +155,8 @@
         toAirportName:'${flight.toAirport}',
         toAirportId:'${flight.toAirportId}',
         backFlight:'${flight.backFlight}',
+        flightNumber:'${flight.flightNumber}',
+        comment:'${flight.comment}',
         realId:'${flight.realId}'
 
     };
@@ -184,7 +184,9 @@
             $('#seatFrom').val(flight.seatFrom);
             $('#seatTo').val(flight.seatTo);
             $('#termFrom').val(flight.terminalFrom).selectmenu();
-            $('#termTo').val(flight.terminalFrom).selectmenu();
+            $('#termTo').val(flight.terminalTo).selectmenu();
+            $('#flightComment').val(flight.comment);
+            $('#flightNumber').val(flight.flightNumber);
 
             $('#oneWay').attr('checked', flight.backFlight);
             $('#flightId').val(flight.realId);
@@ -285,7 +287,9 @@
             terminalFrom: $('#termFrom').val(),
             terminalTo: $('#termTo').val(),
             backFlight: $('#oneWay').is(':checked'),
-            realId: $('#flightId').val()
+            realId: $('#flightId').val(),
+            flightNumber: $('#flightNumber').val(),
+            comment: $('#flightComment').val()
         };
 
         $.ajax({

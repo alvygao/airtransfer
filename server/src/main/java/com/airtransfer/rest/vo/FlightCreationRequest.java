@@ -19,7 +19,7 @@ public class FlightCreationRequest {
 
     private Long fromAirport;
     private Date departureDate;
-    private String seatTo;
+    private String seatFrom;
     private String terminalFrom;
     private String flightNumber;
 
@@ -42,6 +42,7 @@ public class FlightCreationRequest {
         flight.setBackFlight(twoWays);
         flight.setFlightNumber(flightNumber);
         flight.setComment(flightComment);
+        flight.setSeatFrom(seatFrom);
         return flight;
     }
 
@@ -88,12 +89,12 @@ public class FlightCreationRequest {
         this.twoWays = twoWays;
     }
 
-    public String getSeatTo() {
-        return seatTo;
+    public String getSeatFrom() {
+        return seatFrom;
     }
 
-    public void setSeatTo(String seatTo) {
-        this.seatTo = seatTo;
+    public void setSeatFrom(String seatFrom) {
+        this.seatFrom = seatFrom;
     }
 
     public String getTerminalFrom() {
