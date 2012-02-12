@@ -9,6 +9,7 @@
         <jsp:include page="/WEB-INF/jsp/includes/topmenu.jsp"/>
         <div class="cPage" id="logger">
 
+            <a href="/html/messages/dialog/1">dialog</a>
             <div style="width: 500px" id="history">
             </div>
             <div>
@@ -16,6 +17,7 @@
             </div>
         </div>
     <script type="text/javascript">
+/*
         var config = {
             contextPath: '${pageContext.request.contextPath}'
         };
@@ -90,6 +92,7 @@
             });
         })(jQuery);
 
+*/
     </script>
     </jsp:attribute>
 </tags:main>
