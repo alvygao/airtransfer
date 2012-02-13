@@ -41,7 +41,8 @@ public class Flight extends BaseEntity {
     @Column()
     private String flightNumber;
 
-    @OneToOne(cascade = {CascadeType.PERSIST})
+    @OneToOne()
+    @JoinColumn(name = "returnFlight_id")
     private Flight returnFlight;
 
     @ManyToOne(targetEntity = Airport.class, fetch = FetchType.EAGER)

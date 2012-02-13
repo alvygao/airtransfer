@@ -62,6 +62,7 @@ public class FlightManager extends BaseManager {
                     returnFlight.setOwner(user);
                     returnFlight.setCreated(new Date());
                     flight.setReturnFlight(returnFlight);
+                    flightDao.persist(returnFlight);
                 } else {
                     logger.warn("Back flight is empty;");
                 }
