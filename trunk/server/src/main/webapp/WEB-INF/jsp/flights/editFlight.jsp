@@ -301,6 +301,8 @@
                         loadFlights();
                     }
                 });
+
+        dialog.close();
     }
 </script>
 </div>
